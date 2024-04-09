@@ -56,6 +56,8 @@
             this.gunaAdvenceTileButton3 = new Guna.UI.WinForms.GunaAdvenceTileButton();
             this.gunaAdvenceTileButton2 = new Guna.UI.WinForms.GunaAdvenceTileButton();
             this.gunaAdvenceTileButton1 = new Guna.UI.WinForms.GunaAdvenceTileButton();
+            this.gunaGradient2Panel2 = new Guna.UI.WinForms.GunaGradient2Panel();
+            this.gunaGradient2Panel3 = new Guna.UI.WinForms.GunaGradient2Panel();
             this.gunaPanel1.SuspendLayout();
             this.gunaGradient2Panel1.SuspendLayout();
             this.gunaShadowPanel1.SuspendLayout();
@@ -154,6 +156,7 @@
             // 
             this.gunaShadowPanel1.BackColor = System.Drawing.Color.Transparent;
             this.gunaShadowPanel1.BaseColor = System.Drawing.Color.White;
+            this.gunaShadowPanel1.Controls.Add(this.gunaGradient2Panel3);
             this.gunaShadowPanel1.Controls.Add(this.gunaTextBox1);
             this.gunaShadowPanel1.Controls.Add(this.pictureBox1);
             this.gunaShadowPanel1.Controls.Add(this.gunaLabel2);
@@ -161,7 +164,7 @@
             this.gunaShadowPanel1.Location = new System.Drawing.Point(248, 67);
             this.gunaShadowPanel1.Name = "gunaShadowPanel1";
             this.gunaShadowPanel1.ShadowColor = System.Drawing.Color.Black;
-            this.gunaShadowPanel1.Size = new System.Drawing.Size(1005, 107);
+            this.gunaShadowPanel1.Size = new System.Drawing.Size(1199, 107);
             this.gunaShadowPanel1.TabIndex = 5;
             // 
             // gunaLabel1
@@ -496,12 +499,33 @@
             this.gunaAdvenceTileButton1.TabIndex = 5;
             this.gunaAdvenceTileButton1.Text = "Nước ép";
             // 
+            // gunaGradient2Panel2
+            // 
+            this.gunaGradient2Panel2.BackColor = System.Drawing.Color.Transparent;
+            this.gunaGradient2Panel2.GradientColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(130)))), ((int)(((byte)(68)))));
+            this.gunaGradient2Panel2.GradientColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(72)))), ((int)(((byte)(115)))));
+            this.gunaGradient2Panel2.Location = new System.Drawing.Point(1057, 180);
+            this.gunaGradient2Panel2.Name = "gunaGradient2Panel2";
+            this.gunaGradient2Panel2.Size = new System.Drawing.Size(390, 67);
+            this.gunaGradient2Panel2.TabIndex = 7;
+            // 
+            // gunaGradient2Panel3
+            // 
+            this.gunaGradient2Panel3.BackColor = System.Drawing.Color.Transparent;
+            this.gunaGradient2Panel3.GradientColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(130)))), ((int)(((byte)(68)))));
+            this.gunaGradient2Panel3.GradientColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(72)))), ((int)(((byte)(115)))));
+            this.gunaGradient2Panel3.Location = new System.Drawing.Point(987, 23);
+            this.gunaGradient2Panel3.Name = "gunaGradient2Panel3";
+            this.gunaGradient2Panel3.Size = new System.Drawing.Size(142, 67);
+            this.gunaGradient2Panel3.TabIndex = 8;
+            // 
             // SellForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(209)))), ((int)(((byte)(219)))));
             this.ClientSize = new System.Drawing.Size(1470, 911);
+            this.Controls.Add(this.gunaGradient2Panel2);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.gunaShadowPanel1);
             this.Controls.Add(this.gunaControlBox3);
@@ -552,5 +576,7 @@
         private UC_ItemSelled uC_ItemSelled3;
         private UC_ItemSelled uC_ItemSelled4;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private Guna.UI.WinForms.GunaGradient2Panel gunaGradient2Panel2;
+        private Guna.UI.WinForms.GunaGradient2Panel gunaGradient2Panel3;
     }
 }

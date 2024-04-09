@@ -70,6 +70,12 @@
     <Compile Include="SellForm.Designer.cs">
       <DependentUpon>SellForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_ItemSelected.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_ItemSelected.Designer.cs">
+      <DependentUpon>UC_ItemSelected.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_ItemSelled.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -117,44 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="icons8-vegetables-bag-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\SourcePictureShell\icons8-vegetables-bag-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-bubble-tea-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\SourcePictureShell\icons8-bubble-tea-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Screenshot 2024-04-10 020318" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\SourcePictureShell\Screenshot 2024-04-10 020318.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-yogurt-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\SourcePictureShell\icons8-yogurt-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-smoothie-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\SourcePictureShell\icons8-smoothie-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-juice-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\SourcePictureShell\icons8-juice-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-cake-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\SourcePictureShell\icons8-cake-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-find-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\SourcePictureShell\icons8-find-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-find-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\SourcePictureShell\icons8-find-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-fruit-tea-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\SourcePictureShell\icons8-fruit-tea-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="6eafb191a7f1e895b1b9ae2c50c1d03d" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\SourcePictureShell\6eafb191a7f1e895b1b9ae2c50c1d03d.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-nut-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\SourcePictureShell\icons8-nut-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-tick-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\SourcePictureShell\icons8-tick-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>

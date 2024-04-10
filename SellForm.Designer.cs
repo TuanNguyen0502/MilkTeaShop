@@ -38,14 +38,13 @@
             this.gunaControlBox3 = new Guna.UI.WinForms.GunaControlBox();
             this.gunaGradient2Panel1 = new Guna.UI.WinForms.GunaGradient2Panel();
             this.gunaShadowPanel1 = new Guna.UI.WinForms.GunaShadowPanel();
-            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
-            this.gunaLabel2 = new Guna.UI.WinForms.GunaLabel();
+            this.gunaGradient2Panel3 = new Guna.UI.WinForms.GunaGradient2Panel();
             this.gunaTextBox1 = new Guna.UI.WinForms.GunaTextBox();
+            this.gunaLabel2 = new Guna.UI.WinForms.GunaLabel();
+            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.uC_ItemSelled1 = new MilkTeaShop.UC_ItemSelled();
-            this.uC_ItemSelled2 = new MilkTeaShop.UC_ItemSelled();
-            this.uC_ItemSelled3 = new MilkTeaShop.UC_ItemSelled();
-            this.uC_ItemSelled4 = new MilkTeaShop.UC_ItemSelled();
+            this.gunaGradient2Panel2 = new Guna.UI.WinForms.GunaGradient2Panel();
+            this.gunaGradient2Panel5 = new Guna.UI.WinForms.GunaGradient2Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.gunaGradientTileButton5 = new Guna.UI.WinForms.GunaGradientTileButton();
@@ -56,14 +55,23 @@
             this.gunaAdvenceTileButton3 = new Guna.UI.WinForms.GunaAdvenceTileButton();
             this.gunaAdvenceTileButton2 = new Guna.UI.WinForms.GunaAdvenceTileButton();
             this.gunaAdvenceTileButton1 = new Guna.UI.WinForms.GunaAdvenceTileButton();
-            this.gunaGradient2Panel2 = new Guna.UI.WinForms.GunaGradient2Panel();
-            this.gunaGradient2Panel3 = new Guna.UI.WinForms.GunaGradient2Panel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.uC_ItemSelected1 = new MilkTeaShop.UC_ItemSelected();
+            this.uC_ItemSelected2 = new MilkTeaShop.UC_ItemSelected();
+            this.uC_ItemSelected3 = new MilkTeaShop.UC_ItemSelected();
+            this.label1 = new System.Windows.Forms.Label();
+            this.uC_ItemSelled1 = new MilkTeaShop.UC_ItemSelled();
+            this.uC_ItemSelled2 = new MilkTeaShop.UC_ItemSelled();
+            this.uC_ItemSelled3 = new MilkTeaShop.UC_ItemSelled();
+            this.uC_ItemSelled4 = new MilkTeaShop.UC_ItemSelled();
             this.gunaPanel1.SuspendLayout();
             this.gunaGradient2Panel1.SuspendLayout();
             this.gunaShadowPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            this.gunaGradient2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // gunaElipse1
@@ -96,7 +104,7 @@
             this.gunaControlBox1.AnimationSpeed = 0.03F;
             this.gunaControlBox1.IconColor = System.Drawing.Color.Black;
             this.gunaControlBox1.IconSize = 15F;
-            this.gunaControlBox1.Location = new System.Drawing.Point(1422, 0);
+            this.gunaControlBox1.Location = new System.Drawing.Point(1490, 0);
             this.gunaControlBox1.Name = "gunaControlBox1";
             this.gunaControlBox1.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(58)))), ((int)(((byte)(183)))));
             this.gunaControlBox1.OnHoverIconColor = System.Drawing.Color.White;
@@ -113,7 +121,7 @@
             this.gunaControlBox2.ControlBoxType = Guna.UI.WinForms.FormControlBoxType.MaximizeBox;
             this.gunaControlBox2.IconColor = System.Drawing.Color.Black;
             this.gunaControlBox2.IconSize = 15F;
-            this.gunaControlBox2.Location = new System.Drawing.Point(1371, 0);
+            this.gunaControlBox2.Location = new System.Drawing.Point(1439, 0);
             this.gunaControlBox2.Name = "gunaControlBox2";
             this.gunaControlBox2.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(58)))), ((int)(((byte)(183)))));
             this.gunaControlBox2.OnHoverIconColor = System.Drawing.Color.White;
@@ -129,7 +137,7 @@
             this.gunaControlBox3.ControlBoxType = Guna.UI.WinForms.FormControlBoxType.MinimizeBox;
             this.gunaControlBox3.IconColor = System.Drawing.Color.Black;
             this.gunaControlBox3.IconSize = 15F;
-            this.gunaControlBox3.Location = new System.Drawing.Point(1320, 0);
+            this.gunaControlBox3.Location = new System.Drawing.Point(1388, 0);
             this.gunaControlBox3.Name = "gunaControlBox3";
             this.gunaControlBox3.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(58)))), ((int)(((byte)(183)))));
             this.gunaControlBox3.OnHoverIconColor = System.Drawing.Color.White;
@@ -149,7 +157,7 @@
             this.gunaGradient2Panel1.Location = new System.Drawing.Point(103, 34);
             this.gunaGradient2Panel1.Name = "gunaGradient2Panel1";
             this.gunaGradient2Panel1.Radius = 6;
-            this.gunaGradient2Panel1.Size = new System.Drawing.Size(125, 399);
+            this.gunaGradient2Panel1.Size = new System.Drawing.Size(114, 399);
             this.gunaGradient2Panel1.TabIndex = 4;
             // 
             // gunaShadowPanel1
@@ -161,31 +169,21 @@
             this.gunaShadowPanel1.Controls.Add(this.pictureBox1);
             this.gunaShadowPanel1.Controls.Add(this.gunaLabel2);
             this.gunaShadowPanel1.Controls.Add(this.gunaLabel1);
-            this.gunaShadowPanel1.Location = new System.Drawing.Point(248, 67);
+            this.gunaShadowPanel1.Location = new System.Drawing.Point(230, 67);
             this.gunaShadowPanel1.Name = "gunaShadowPanel1";
             this.gunaShadowPanel1.ShadowColor = System.Drawing.Color.Black;
-            this.gunaShadowPanel1.Size = new System.Drawing.Size(1199, 107);
+            this.gunaShadowPanel1.Size = new System.Drawing.Size(1254, 107);
             this.gunaShadowPanel1.TabIndex = 5;
             // 
-            // gunaLabel1
+            // gunaGradient2Panel3
             // 
-            this.gunaLabel1.AutoSize = true;
-            this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel1.Location = new System.Drawing.Point(25, 20);
-            this.gunaLabel1.Name = "gunaLabel1";
-            this.gunaLabel1.Size = new System.Drawing.Size(150, 28);
-            this.gunaLabel1.TabIndex = 0;
-            this.gunaLabel1.Text = "Trà Sữa BONBA";
-            // 
-            // gunaLabel2
-            // 
-            this.gunaLabel2.AutoSize = true;
-            this.gunaLabel2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gunaLabel2.Location = new System.Drawing.Point(26, 60);
-            this.gunaLabel2.Name = "gunaLabel2";
-            this.gunaLabel2.Size = new System.Drawing.Size(179, 20);
-            this.gunaLabel2.TabIndex = 1;
-            this.gunaLabel2.Text = "Chi Nhánh VVN - Thủ Đức";
+            this.gunaGradient2Panel3.BackColor = System.Drawing.Color.Transparent;
+            this.gunaGradient2Panel3.GradientColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(130)))), ((int)(((byte)(68)))));
+            this.gunaGradient2Panel3.GradientColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(72)))), ((int)(((byte)(115)))));
+            this.gunaGradient2Panel3.Location = new System.Drawing.Point(987, 23);
+            this.gunaGradient2Panel3.Name = "gunaGradient2Panel3";
+            this.gunaGradient2Panel3.Size = new System.Drawing.Size(142, 67);
+            this.gunaGradient2Panel3.TabIndex = 8;
             // 
             // gunaTextBox1
             // 
@@ -197,7 +195,7 @@
             this.gunaTextBox1.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.gunaTextBox1.Font = new System.Drawing.Font("Segoe UI Semilight", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gunaTextBox1.ForeColor = System.Drawing.Color.Gray;
-            this.gunaTextBox1.Location = new System.Drawing.Point(306, 31);
+            this.gunaTextBox1.Location = new System.Drawing.Point(344, 31);
             this.gunaTextBox1.Name = "gunaTextBox1";
             this.gunaTextBox1.PasswordChar = '\0';
             this.gunaTextBox1.SelectedText = "";
@@ -206,6 +204,26 @@
             this.gunaTextBox1.Text = "Search for menu";
             this.gunaTextBox1.TextChanged += new System.EventHandler(this.gunaTextBox1_TextChanged);
             // 
+            // gunaLabel2
+            // 
+            this.gunaLabel2.AutoSize = true;
+            this.gunaLabel2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gunaLabel2.Location = new System.Drawing.Point(26, 60);
+            this.gunaLabel2.Name = "gunaLabel2";
+            this.gunaLabel2.Size = new System.Drawing.Size(179, 20);
+            this.gunaLabel2.TabIndex = 1;
+            this.gunaLabel2.Text = "Chi Nhánh VVN - Thủ Đức";
+            // 
+            // gunaLabel1
+            // 
+            this.gunaLabel1.AutoSize = true;
+            this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel1.Location = new System.Drawing.Point(25, 20);
+            this.gunaLabel1.Name = "gunaLabel1";
+            this.gunaLabel1.Size = new System.Drawing.Size(150, 28);
+            this.gunaLabel1.TabIndex = 0;
+            this.gunaLabel1.Text = "Trà Sữa BONBA";
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
@@ -213,51 +231,36 @@
             this.flowLayoutPanel1.Controls.Add(this.uC_ItemSelled2);
             this.flowLayoutPanel1.Controls.Add(this.uC_ItemSelled3);
             this.flowLayoutPanel1.Controls.Add(this.uC_ItemSelled4);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(248, 193);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(230, 193);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(764, 692);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(768, 692);
             this.flowLayoutPanel1.TabIndex = 6;
             // 
-            // uC_ItemSelled1
+            // gunaGradient2Panel2
             // 
-            this.uC_ItemSelled1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("uC_ItemSelled1.BackgroundImage")));
-            this.uC_ItemSelled1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.uC_ItemSelled1.Location = new System.Drawing.Point(3, 3);
-            this.uC_ItemSelled1.Name = "uC_ItemSelled1";
-            this.uC_ItemSelled1.Size = new System.Drawing.Size(240, 370);
-            this.uC_ItemSelled1.TabIndex = 0;
+            this.gunaGradient2Panel2.BackColor = System.Drawing.Color.Transparent;
+            this.gunaGradient2Panel2.Controls.Add(this.label1);
+            this.gunaGradient2Panel2.GradientColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(130)))), ((int)(((byte)(68)))));
+            this.gunaGradient2Panel2.GradientColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(72)))), ((int)(((byte)(115)))));
+            this.gunaGradient2Panel2.Location = new System.Drawing.Point(1046, 193);
+            this.gunaGradient2Panel2.Name = "gunaGradient2Panel2";
+            this.gunaGradient2Panel2.Size = new System.Drawing.Size(435, 67);
+            this.gunaGradient2Panel2.TabIndex = 7;
             // 
-            // uC_ItemSelled2
+            // gunaGradient2Panel5
             // 
-            this.uC_ItemSelled2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("uC_ItemSelled2.BackgroundImage")));
-            this.uC_ItemSelled2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.uC_ItemSelled2.Location = new System.Drawing.Point(249, 3);
-            this.uC_ItemSelled2.Name = "uC_ItemSelled2";
-            this.uC_ItemSelled2.Size = new System.Drawing.Size(240, 370);
-            this.uC_ItemSelled2.TabIndex = 1;
-            // 
-            // uC_ItemSelled3
-            // 
-            this.uC_ItemSelled3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("uC_ItemSelled3.BackgroundImage")));
-            this.uC_ItemSelled3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.uC_ItemSelled3.Location = new System.Drawing.Point(495, 3);
-            this.uC_ItemSelled3.Name = "uC_ItemSelled3";
-            this.uC_ItemSelled3.Size = new System.Drawing.Size(240, 370);
-            this.uC_ItemSelled3.TabIndex = 2;
-            // 
-            // uC_ItemSelled4
-            // 
-            this.uC_ItemSelled4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("uC_ItemSelled4.BackgroundImage")));
-            this.uC_ItemSelled4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.uC_ItemSelled4.Location = new System.Drawing.Point(3, 379);
-            this.uC_ItemSelled4.Name = "uC_ItemSelled4";
-            this.uC_ItemSelled4.Size = new System.Drawing.Size(240, 370);
-            this.uC_ItemSelled4.TabIndex = 3;
+            this.gunaGradient2Panel5.BackColor = System.Drawing.Color.Transparent;
+            this.gunaGradient2Panel5.GradientColor1 = System.Drawing.Color.White;
+            this.gunaGradient2Panel5.GradientColor2 = System.Drawing.Color.White;
+            this.gunaGradient2Panel5.Location = new System.Drawing.Point(1046, 587);
+            this.gunaGradient2Panel5.Name = "gunaGradient2Panel5";
+            this.gunaGradient2Panel5.Size = new System.Drawing.Size(438, 283);
+            this.gunaGradient2Panel5.TabIndex = 9;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::MilkTeaShop.Properties.Resources.icons8_find_100;
-            this.pictureBox1.Location = new System.Drawing.Point(230, 31);
+            this.pictureBox1.Location = new System.Drawing.Point(267, 31);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(70, 38);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -427,7 +430,7 @@
             this.gunaAdvenceTileButton3.Image = global::MilkTeaShop.Properties.Resources.icons8_smoothie_32;
             this.gunaAdvenceTileButton3.ImageSize = new System.Drawing.Size(32, 32);
             this.gunaAdvenceTileButton3.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.gunaAdvenceTileButton3.Location = new System.Drawing.Point(31, 253);
+            this.gunaAdvenceTileButton3.Location = new System.Drawing.Point(27, 253);
             this.gunaAdvenceTileButton3.Name = "gunaAdvenceTileButton3";
             this.gunaAdvenceTileButton3.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.gunaAdvenceTileButton3.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -457,7 +460,7 @@
             this.gunaAdvenceTileButton2.Image = global::MilkTeaShop.Properties.Resources.icons8_fruit_tea_32;
             this.gunaAdvenceTileButton2.ImageSize = new System.Drawing.Size(32, 32);
             this.gunaAdvenceTileButton2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.gunaAdvenceTileButton2.Location = new System.Drawing.Point(31, 103);
+            this.gunaAdvenceTileButton2.Location = new System.Drawing.Point(27, 103);
             this.gunaAdvenceTileButton2.Name = "gunaAdvenceTileButton2";
             this.gunaAdvenceTileButton2.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.gunaAdvenceTileButton2.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -487,7 +490,7 @@
             this.gunaAdvenceTileButton1.Image = global::MilkTeaShop.Properties.Resources.icons8_juice_32;
             this.gunaAdvenceTileButton1.ImageSize = new System.Drawing.Size(32, 32);
             this.gunaAdvenceTileButton1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.gunaAdvenceTileButton1.Location = new System.Drawing.Point(31, 4);
+            this.gunaAdvenceTileButton1.Location = new System.Drawing.Point(27, 4);
             this.gunaAdvenceTileButton1.Name = "gunaAdvenceTileButton1";
             this.gunaAdvenceTileButton1.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.gunaAdvenceTileButton1.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -499,32 +502,94 @@
             this.gunaAdvenceTileButton1.TabIndex = 5;
             this.gunaAdvenceTileButton1.Text = "Nước ép";
             // 
-            // gunaGradient2Panel2
+            // flowLayoutPanel2
             // 
-            this.gunaGradient2Panel2.BackColor = System.Drawing.Color.Transparent;
-            this.gunaGradient2Panel2.GradientColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(130)))), ((int)(((byte)(68)))));
-            this.gunaGradient2Panel2.GradientColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(72)))), ((int)(((byte)(115)))));
-            this.gunaGradient2Panel2.Location = new System.Drawing.Point(1057, 180);
-            this.gunaGradient2Panel2.Name = "gunaGradient2Panel2";
-            this.gunaGradient2Panel2.Size = new System.Drawing.Size(390, 67);
-            this.gunaGradient2Panel2.TabIndex = 7;
+            this.flowLayoutPanel2.AutoScroll = true;
+            this.flowLayoutPanel2.BackColor = System.Drawing.Color.White;
+            this.flowLayoutPanel2.Controls.Add(this.uC_ItemSelected1);
+            this.flowLayoutPanel2.Controls.Add(this.uC_ItemSelected2);
+            this.flowLayoutPanel2.Controls.Add(this.uC_ItemSelected3);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(1046, 253);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(435, 278);
+            this.flowLayoutPanel2.TabIndex = 10;
             // 
-            // gunaGradient2Panel3
+            // uC_ItemSelected1
             // 
-            this.gunaGradient2Panel3.BackColor = System.Drawing.Color.Transparent;
-            this.gunaGradient2Panel3.GradientColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(130)))), ((int)(((byte)(68)))));
-            this.gunaGradient2Panel3.GradientColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(72)))), ((int)(((byte)(115)))));
-            this.gunaGradient2Panel3.Location = new System.Drawing.Point(987, 23);
-            this.gunaGradient2Panel3.Name = "gunaGradient2Panel3";
-            this.gunaGradient2Panel3.Size = new System.Drawing.Size(142, 67);
-            this.gunaGradient2Panel3.TabIndex = 8;
+            this.uC_ItemSelected1.Location = new System.Drawing.Point(3, 3);
+            this.uC_ItemSelected1.Name = "uC_ItemSelected1";
+            this.uC_ItemSelected1.Size = new System.Drawing.Size(429, 85);
+            this.uC_ItemSelected1.TabIndex = 0;
+            // 
+            // uC_ItemSelected2
+            // 
+            this.uC_ItemSelected2.Location = new System.Drawing.Point(3, 94);
+            this.uC_ItemSelected2.Name = "uC_ItemSelected2";
+            this.uC_ItemSelected2.Size = new System.Drawing.Size(429, 85);
+            this.uC_ItemSelected2.TabIndex = 1;
+            // 
+            // uC_ItemSelected3
+            // 
+            this.uC_ItemSelected3.Location = new System.Drawing.Point(3, 185);
+            this.uC_ItemSelected3.Name = "uC_ItemSelected3";
+            this.uC_ItemSelected3.Size = new System.Drawing.Size(429, 85);
+            this.uC_ItemSelected3.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(21, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(106, 25);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "New Order";
+            // 
+            // uC_ItemSelled1
+            // 
+            this.uC_ItemSelled1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("uC_ItemSelled1.BackgroundImage")));
+            this.uC_ItemSelled1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.uC_ItemSelled1.Location = new System.Drawing.Point(3, 3);
+            this.uC_ItemSelled1.Name = "uC_ItemSelled1";
+            this.uC_ItemSelled1.Size = new System.Drawing.Size(240, 370);
+            this.uC_ItemSelled1.TabIndex = 0;
+            // 
+            // uC_ItemSelled2
+            // 
+            this.uC_ItemSelled2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("uC_ItemSelled2.BackgroundImage")));
+            this.uC_ItemSelled2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.uC_ItemSelled2.Location = new System.Drawing.Point(249, 3);
+            this.uC_ItemSelled2.Name = "uC_ItemSelled2";
+            this.uC_ItemSelled2.Size = new System.Drawing.Size(240, 370);
+            this.uC_ItemSelled2.TabIndex = 1;
+            // 
+            // uC_ItemSelled3
+            // 
+            this.uC_ItemSelled3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("uC_ItemSelled3.BackgroundImage")));
+            this.uC_ItemSelled3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.uC_ItemSelled3.Location = new System.Drawing.Point(495, 3);
+            this.uC_ItemSelled3.Name = "uC_ItemSelled3";
+            this.uC_ItemSelled3.Size = new System.Drawing.Size(240, 370);
+            this.uC_ItemSelled3.TabIndex = 2;
+            // 
+            // uC_ItemSelled4
+            // 
+            this.uC_ItemSelled4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("uC_ItemSelled4.BackgroundImage")));
+            this.uC_ItemSelled4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.uC_ItemSelled4.Location = new System.Drawing.Point(3, 379);
+            this.uC_ItemSelled4.Name = "uC_ItemSelled4";
+            this.uC_ItemSelled4.Size = new System.Drawing.Size(240, 370);
+            this.uC_ItemSelled4.TabIndex = 3;
             // 
             // SellForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(209)))), ((int)(((byte)(219)))));
-            this.ClientSize = new System.Drawing.Size(1470, 911);
+            this.ClientSize = new System.Drawing.Size(1538, 911);
+            this.Controls.Add(this.flowLayoutPanel2);
+            this.Controls.Add(this.gunaGradient2Panel5);
             this.Controls.Add(this.gunaGradient2Panel2);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.gunaShadowPanel1);
@@ -542,8 +607,11 @@
             this.gunaShadowPanel1.ResumeLayout(false);
             this.gunaShadowPanel1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.gunaGradient2Panel2.ResumeLayout(false);
+            this.gunaGradient2Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.flowLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -571,12 +639,18 @@
         private Guna.UI.WinForms.GunaAdvenceTileButton gunaAdvenceTileButton1;
         private Guna.UI.WinForms.GunaTextBox gunaTextBox1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private Guna.UI.WinForms.GunaGradient2Panel gunaGradient2Panel2;
+        private Guna.UI.WinForms.GunaGradient2Panel gunaGradient2Panel3;
+        private Guna.UI.WinForms.GunaGradient2Panel gunaGradient2Panel5;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private UC_ItemSelected uC_ItemSelected1;
+        private UC_ItemSelected uC_ItemSelected2;
+        private UC_ItemSelected uC_ItemSelected3;
+        private System.Windows.Forms.Label label1;
         private UC_ItemSelled uC_ItemSelled1;
         private UC_ItemSelled uC_ItemSelled2;
         private UC_ItemSelled uC_ItemSelled3;
         private UC_ItemSelled uC_ItemSelled4;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private Guna.UI.WinForms.GunaGradient2Panel gunaGradient2Panel2;
-        private Guna.UI.WinForms.GunaGradient2Panel gunaGradient2Panel3;
     }
 }

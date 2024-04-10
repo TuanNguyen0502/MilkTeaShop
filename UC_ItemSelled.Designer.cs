@@ -70,8 +70,9 @@
             this.btn_Valid.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_Valid.ForeColor = System.Drawing.Color.White;
             this.btn_Valid.Image = global::MilkTeaShop.Properties.Resources.icons8_tick_32;
+            this.btn_Valid.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.btn_Valid.ImageSize = new System.Drawing.Size(20, 20);
-            this.btn_Valid.Location = new System.Drawing.Point(197, 330);
+            this.btn_Valid.Location = new System.Drawing.Point(196, 326);
             this.btn_Valid.Name = "btn_Valid";
             this.btn_Valid.OnHoverBaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(145)))), ((int)(((byte)(221)))));
             this.btn_Valid.OnHoverBaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(85)))), ((int)(((byte)(255)))));
@@ -110,7 +111,7 @@
             this.gunaGradient2Panel1.Controls.Add(this.gunaLabel2);
             this.gunaGradient2Panel1.GradientColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(130)))), ((int)(((byte)(68)))));
             this.gunaGradient2Panel1.GradientColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(72)))), ((int)(((byte)(115)))));
-            this.gunaGradient2Panel1.Location = new System.Drawing.Point(130, 3);
+            this.gunaGradient2Panel1.Location = new System.Drawing.Point(129, 4);
             this.gunaGradient2Panel1.Name = "gunaGradient2Panel1";
             this.gunaGradient2Panel1.Radius = 5;
             this.gunaGradient2Panel1.Size = new System.Drawing.Size(107, 36);

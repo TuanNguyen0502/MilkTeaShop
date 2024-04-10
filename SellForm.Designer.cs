@@ -47,6 +47,7 @@
             this.gunaAdvenceTileButton2 = new Guna.UI.WinForms.GunaAdvenceTileButton();
             this.gunaAdvenceTileButton1 = new Guna.UI.WinForms.GunaAdvenceTileButton();
             this.gunaShadowPanel1 = new Guna.UI.WinForms.GunaShadowPanel();
+            this.gunaButton1 = new Guna.UI.WinForms.GunaButton();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.gunaGradient2Panel3 = new Guna.UI.WinForms.GunaGradient2Panel();
             this.gunaLabel3 = new Guna.UI.WinForms.GunaLabel();
@@ -75,7 +76,6 @@
             this.uC_ItemSelled2 = new MilkTeaShop.UC_ItemSelled();
             this.uC_ItemSelled3 = new MilkTeaShop.UC_ItemSelled();
             this.uC_ItemSelled4 = new MilkTeaShop.UC_ItemSelled();
-            this.gunaButton1 = new Guna.UI.WinForms.GunaButton();
             this.gunaPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.gunaGradient2Panel1.SuspendLayout();
@@ -127,6 +127,7 @@
             this.gunaGradientTileButton5.BaseColor1 = System.Drawing.Color.Transparent;
             this.gunaGradientTileButton5.BaseColor2 = System.Drawing.Color.Transparent;
             this.gunaGradientTileButton5.BorderColor = System.Drawing.Color.Black;
+            this.gunaGradientTileButton5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.gunaGradientTileButton5.DialogResult = System.Windows.Forms.DialogResult.None;
             this.gunaGradientTileButton5.FocusedColor = System.Drawing.Color.Empty;
             this.gunaGradientTileButton5.Font = new System.Drawing.Font("Segoe UI Light", 11.75F);
@@ -154,6 +155,7 @@
             this.gunaGradientTileButton4.BaseColor1 = System.Drawing.Color.Transparent;
             this.gunaGradientTileButton4.BaseColor2 = System.Drawing.Color.Transparent;
             this.gunaGradientTileButton4.BorderColor = System.Drawing.Color.Black;
+            this.gunaGradientTileButton4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.gunaGradientTileButton4.DialogResult = System.Windows.Forms.DialogResult.None;
             this.gunaGradientTileButton4.FocusedColor = System.Drawing.Color.Empty;
             this.gunaGradientTileButton4.Font = new System.Drawing.Font("Segoe UI Light", 11.75F);
@@ -181,6 +183,7 @@
             this.gunaGradientTileButton3.BaseColor1 = System.Drawing.Color.Transparent;
             this.gunaGradientTileButton3.BaseColor2 = System.Drawing.Color.Transparent;
             this.gunaGradientTileButton3.BorderColor = System.Drawing.Color.Black;
+            this.gunaGradientTileButton3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.gunaGradientTileButton3.DialogResult = System.Windows.Forms.DialogResult.None;
             this.gunaGradientTileButton3.FocusedColor = System.Drawing.Color.Empty;
             this.gunaGradientTileButton3.Font = new System.Drawing.Font("Segoe UI Light", 11.75F);
@@ -208,6 +211,7 @@
             this.gunaGradientTileButton2.BaseColor1 = System.Drawing.Color.Transparent;
             this.gunaGradientTileButton2.BaseColor2 = System.Drawing.Color.Transparent;
             this.gunaGradientTileButton2.BorderColor = System.Drawing.Color.Black;
+            this.gunaGradientTileButton2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.gunaGradientTileButton2.DialogResult = System.Windows.Forms.DialogResult.None;
             this.gunaGradientTileButton2.FocusedColor = System.Drawing.Color.Empty;
             this.gunaGradientTileButton2.Font = new System.Drawing.Font("Segoe UI Light", 10.75F);
@@ -235,6 +239,7 @@
             this.gunaGradientTileButton1.BaseColor1 = System.Drawing.Color.Transparent;
             this.gunaGradientTileButton1.BaseColor2 = System.Drawing.Color.Transparent;
             this.gunaGradientTileButton1.BorderColor = System.Drawing.Color.Black;
+            this.gunaGradientTileButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.gunaGradientTileButton1.DialogResult = System.Windows.Forms.DialogResult.None;
             this.gunaGradientTileButton1.FocusedColor = System.Drawing.Color.Empty;
             this.gunaGradientTileButton1.Font = new System.Drawing.Font("Segoe UI Light", 11.75F);
@@ -332,6 +337,7 @@
             this.gunaAdvenceTileButton3.CheckedForeColor = System.Drawing.Color.White;
             this.gunaAdvenceTileButton3.CheckedImage = ((System.Drawing.Image)(resources.GetObject("gunaAdvenceTileButton3.CheckedImage")));
             this.gunaAdvenceTileButton3.CheckedLineColor = System.Drawing.Color.DimGray;
+            this.gunaAdvenceTileButton3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.gunaAdvenceTileButton3.DialogResult = System.Windows.Forms.DialogResult.None;
             this.gunaAdvenceTileButton3.FocusedColor = System.Drawing.Color.Empty;
             this.gunaAdvenceTileButton3.Font = new System.Drawing.Font("Segoe UI Light", 10.75F);
@@ -362,6 +368,7 @@
             this.gunaAdvenceTileButton2.CheckedForeColor = System.Drawing.Color.White;
             this.gunaAdvenceTileButton2.CheckedImage = ((System.Drawing.Image)(resources.GetObject("gunaAdvenceTileButton2.CheckedImage")));
             this.gunaAdvenceTileButton2.CheckedLineColor = System.Drawing.Color.DimGray;
+            this.gunaAdvenceTileButton2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.gunaAdvenceTileButton2.DialogResult = System.Windows.Forms.DialogResult.None;
             this.gunaAdvenceTileButton2.FocusedColor = System.Drawing.Color.Empty;
             this.gunaAdvenceTileButton2.Font = new System.Drawing.Font("Segoe UI Light", 10.75F);
@@ -392,6 +399,7 @@
             this.gunaAdvenceTileButton1.CheckedForeColor = System.Drawing.Color.White;
             this.gunaAdvenceTileButton1.CheckedImage = ((System.Drawing.Image)(resources.GetObject("gunaAdvenceTileButton1.CheckedImage")));
             this.gunaAdvenceTileButton1.CheckedLineColor = System.Drawing.Color.DimGray;
+            this.gunaAdvenceTileButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.gunaAdvenceTileButton1.DialogResult = System.Windows.Forms.DialogResult.None;
             this.gunaAdvenceTileButton1.FocusedColor = System.Drawing.Color.Empty;
             this.gunaAdvenceTileButton1.Font = new System.Drawing.Font("Segoe UI Light", 10.75F);
@@ -427,6 +435,29 @@
             this.gunaShadowPanel1.ShadowColor = System.Drawing.Color.Black;
             this.gunaShadowPanel1.Size = new System.Drawing.Size(1296, 107);
             this.gunaShadowPanel1.TabIndex = 5;
+            // 
+            // gunaButton1
+            // 
+            this.gunaButton1.AnimationHoverSpeed = 0.07F;
+            this.gunaButton1.AnimationSpeed = 0.03F;
+            this.gunaButton1.BaseColor = System.Drawing.Color.Tomato;
+            this.gunaButton1.BorderColor = System.Drawing.Color.Black;
+            this.gunaButton1.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.gunaButton1.FocusedColor = System.Drawing.Color.Empty;
+            this.gunaButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gunaButton1.ForeColor = System.Drawing.Color.White;
+            this.gunaButton1.Image = ((System.Drawing.Image)(resources.GetObject("gunaButton1.Image")));
+            this.gunaButton1.ImageSize = new System.Drawing.Size(20, 20);
+            this.gunaButton1.Location = new System.Drawing.Point(723, 30);
+            this.gunaButton1.Name = "gunaButton1";
+            this.gunaButton1.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.gunaButton1.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.gunaButton1.OnHoverForeColor = System.Drawing.Color.White;
+            this.gunaButton1.OnHoverImage = null;
+            this.gunaButton1.OnPressedColor = System.Drawing.Color.Black;
+            this.gunaButton1.Size = new System.Drawing.Size(145, 42);
+            this.gunaButton1.TabIndex = 10;
+            this.gunaButton1.Text = "Tìm kiếm";
             // 
             // pictureBox3
             // 
@@ -768,29 +799,6 @@
             this.uC_ItemSelled4.Name = "uC_ItemSelled4";
             this.uC_ItemSelled4.Size = new System.Drawing.Size(240, 370);
             this.uC_ItemSelled4.TabIndex = 3;
-            // 
-            // gunaButton1
-            // 
-            this.gunaButton1.AnimationHoverSpeed = 0.07F;
-            this.gunaButton1.AnimationSpeed = 0.03F;
-            this.gunaButton1.BaseColor = System.Drawing.Color.Tomato;
-            this.gunaButton1.BorderColor = System.Drawing.Color.Black;
-            this.gunaButton1.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.gunaButton1.FocusedColor = System.Drawing.Color.Empty;
-            this.gunaButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gunaButton1.ForeColor = System.Drawing.Color.White;
-            this.gunaButton1.Image = ((System.Drawing.Image)(resources.GetObject("gunaButton1.Image")));
-            this.gunaButton1.ImageSize = new System.Drawing.Size(20, 20);
-            this.gunaButton1.Location = new System.Drawing.Point(723, 30);
-            this.gunaButton1.Name = "gunaButton1";
-            this.gunaButton1.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.gunaButton1.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.gunaButton1.OnHoverForeColor = System.Drawing.Color.White;
-            this.gunaButton1.OnHoverImage = null;
-            this.gunaButton1.OnPressedColor = System.Drawing.Color.Black;
-            this.gunaButton1.Size = new System.Drawing.Size(145, 42);
-            this.gunaButton1.TabIndex = 10;
-            this.gunaButton1.Text = "Tìm kiếm";
             // 
             // SellForm
             // 

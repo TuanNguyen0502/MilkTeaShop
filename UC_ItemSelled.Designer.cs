@@ -138,6 +138,7 @@
             this.BackgroundImage = global::MilkTeaShop.Properties.Resources._6eafb191a7f1e895b1b9ae2c50c1d03d;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.gunaLinePanel1_Valid);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "UC_ItemSelled";
             this.Size = new System.Drawing.Size(240, 370);
             this.Click += new System.EventHandler(this.UC_ItemSelled_Click);

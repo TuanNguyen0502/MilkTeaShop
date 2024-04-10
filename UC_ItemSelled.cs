@@ -30,5 +30,19 @@ namespace MilkTeaShop
                 gunaLinePanel1_Valid.Visible = false;
             }
         }
+
+        private void gunaLinePanel1_Valid_Click(object sender, EventArgs e)
+        {
+            if (btn_Valid.Visible == false)
+            {
+                btn_Valid.Visible = true;
+                gunaLinePanel1_Valid.Visible = true;
+            }
+            else
+            {
+                btn_Valid.Visible = false;
+                gunaLinePanel1_Valid.Visible = false;
+            }
+        }
     }
 }

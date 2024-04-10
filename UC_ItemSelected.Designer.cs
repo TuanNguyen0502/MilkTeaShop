@@ -45,7 +45,7 @@
             this.gunaNumeric1.ButtonForeColor = System.Drawing.Color.White;
             this.gunaNumeric1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.gunaNumeric1.ForeColor = System.Drawing.Color.Black;
-            this.gunaNumeric1.Location = new System.Drawing.Point(282, 28);
+            this.gunaNumeric1.Location = new System.Drawing.Point(314, 28);
             this.gunaNumeric1.Maximum = ((long)(9999999));
             this.gunaNumeric1.Minimum = ((long)(0));
             this.gunaNumeric1.Name = "gunaNumeric1";
@@ -76,7 +76,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(367, 36);
+            this.label3.Location = new System.Drawing.Point(401, 36);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 16);
             this.label3.TabIndex = 3;
@@ -100,7 +100,7 @@
             this.gunaLinePanel1.LineStyle = System.Windows.Forms.BorderStyle.None;
             this.gunaLinePanel1.Location = new System.Drawing.Point(0, 0);
             this.gunaLinePanel1.Name = "gunaLinePanel1";
-            this.gunaLinePanel1.Size = new System.Drawing.Size(435, 85);
+            this.gunaLinePanel1.Size = new System.Drawing.Size(478, 85);
             this.gunaLinePanel1.TabIndex = 5;
             // 
             // UC_ItemSelected
@@ -114,7 +114,7 @@
             this.Controls.Add(this.gunaNumeric1);
             this.Controls.Add(this.gunaLinePanel1);
             this.Name = "UC_ItemSelected";
-            this.Size = new System.Drawing.Size(435, 85);
+            this.Size = new System.Drawing.Size(478, 85);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

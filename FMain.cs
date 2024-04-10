@@ -38,8 +38,7 @@ namespace MilkTeaShop
 
         private void button_Sell_Click(object sender, EventArgs e)
         {
-            SellForm sellForm = new SellForm();
-            sellForm.ShowDialog();
+            OpenChildForm(new SellForm());
         }
     }
 }

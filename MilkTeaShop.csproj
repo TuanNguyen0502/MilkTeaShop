@@ -57,6 +57,7 @@
     <Compile Include="FMain.Designer.cs">
       <DependentUpon>FMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainFormManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -156,6 +157,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="SourcePictureShell\icons8-delete-trash-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SourcePictureShell\icons8-money-bag-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SourcePictureShell\icons8-save-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SourcePictureShell\icons8-employee-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SourcePictureShell\icons8-setting-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SourcePictureShell\icons8-setting-32-new.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

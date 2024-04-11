@@ -40,5 +40,10 @@ namespace MilkTeaShop
         {
             OpenChildForm(new SellForm());
         }
+
+        private void button_Customer_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FCustomer());
+        }
     }
 }

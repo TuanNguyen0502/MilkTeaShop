@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.flowLayoutPanel_Left = new System.Windows.Forms.FlowLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel_Center = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button_Home = new System.Windows.Forms.Button();
             this.button_Sell = new System.Windows.Forms.Button();
+            this.button_Receipt = new System.Windows.Forms.Button();
             this.button_Employee = new System.Windows.Forms.Button();
             this.button_Customer = new System.Windows.Forms.Button();
-            this.button_Ingredient = new System.Windows.Forms.Button();
-            this.button_Logout = new System.Windows.Forms.Button();
-            this.button_Home = new System.Windows.Forms.Button();
-            this.button_Receipt = new System.Windows.Forms.Button();
             this.button_Report = new System.Windows.Forms.Button();
+            this.button_Ingredient = new System.Windows.Forms.Button();
             this.button_App = new System.Windows.Forms.Button();
+            this.button_Logout = new System.Windows.Forms.Button();
+            this.panel_Center = new System.Windows.Forms.Panel();
             this.flowLayoutPanel_Left.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -66,6 +66,16 @@
             this.flowLayoutPanel_Left.Size = new System.Drawing.Size(328, 1050);
             this.flowLayoutPanel_Left.TabIndex = 0;
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.label1);
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(13, 13);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(315, 57);
+            this.flowLayoutPanel1.TabIndex = 2;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -77,23 +87,18 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Milk Tea Shop";
             // 
-            // flowLayoutPanel1
+            // button_Home
             // 
-            this.flowLayoutPanel1.Controls.Add(this.label1);
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(13, 13);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(315, 57);
-            this.flowLayoutPanel1.TabIndex = 2;
-            // 
-            // panel_Center
-            // 
-            this.panel_Center.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_Center.Location = new System.Drawing.Point(328, 0);
-            this.panel_Center.Name = "panel_Center";
-            this.panel_Center.Size = new System.Drawing.Size(1412, 1050);
-            this.panel_Center.TabIndex = 1;
+            this.button_Home.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button_Home.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Home.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Home.ForeColor = System.Drawing.Color.White;
+            this.button_Home.Location = new System.Drawing.Point(13, 76);
+            this.button_Home.Name = "button_Home";
+            this.button_Home.Size = new System.Drawing.Size(309, 100);
+            this.button_Home.TabIndex = 7;
+            this.button_Home.Text = "Tổng quan";
+            this.button_Home.UseVisualStyleBackColor = false;
             // 
             // button_Sell
             // 
@@ -107,6 +112,19 @@
             this.button_Sell.TabIndex = 0;
             this.button_Sell.Text = "Bán Hàng";
             this.button_Sell.UseVisualStyleBackColor = false;
+            // 
+            // button_Receipt
+            // 
+            this.button_Receipt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button_Receipt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Receipt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Receipt.ForeColor = System.Drawing.Color.White;
+            this.button_Receipt.Location = new System.Drawing.Point(13, 288);
+            this.button_Receipt.Name = "button_Receipt";
+            this.button_Receipt.Size = new System.Drawing.Size(309, 100);
+            this.button_Receipt.TabIndex = 8;
+            this.button_Receipt.Text = "Hoá Đơn";
+            this.button_Receipt.UseVisualStyleBackColor = false;
             // 
             // button_Employee
             // 
@@ -133,58 +151,7 @@
             this.button_Customer.TabIndex = 4;
             this.button_Customer.Text = "Khách Hàng";
             this.button_Customer.UseVisualStyleBackColor = false;
-            // 
-            // button_Ingredient
-            // 
-            this.button_Ingredient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.button_Ingredient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Ingredient.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Ingredient.ForeColor = System.Drawing.Color.White;
-            this.button_Ingredient.Location = new System.Drawing.Point(13, 712);
-            this.button_Ingredient.Name = "button_Ingredient";
-            this.button_Ingredient.Size = new System.Drawing.Size(309, 100);
-            this.button_Ingredient.TabIndex = 5;
-            this.button_Ingredient.Text = "Nguyên liệu";
-            this.button_Ingredient.UseVisualStyleBackColor = false;
-            // 
-            // button_Logout
-            // 
-            this.button_Logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.button_Logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Logout.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Logout.ForeColor = System.Drawing.Color.White;
-            this.button_Logout.Location = new System.Drawing.Point(13, 924);
-            this.button_Logout.Name = "button_Logout";
-            this.button_Logout.Size = new System.Drawing.Size(309, 100);
-            this.button_Logout.TabIndex = 6;
-            this.button_Logout.Text = "Đăng xuất";
-            this.button_Logout.UseVisualStyleBackColor = false;
-            // 
-            // button_Home
-            // 
-            this.button_Home.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.button_Home.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Home.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Home.ForeColor = System.Drawing.Color.White;
-            this.button_Home.Location = new System.Drawing.Point(13, 76);
-            this.button_Home.Name = "button_Home";
-            this.button_Home.Size = new System.Drawing.Size(309, 100);
-            this.button_Home.TabIndex = 7;
-            this.button_Home.Text = "Tổng quan";
-            this.button_Home.UseVisualStyleBackColor = false;
-            // 
-            // button_Receipt
-            // 
-            this.button_Receipt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.button_Receipt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Receipt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Receipt.ForeColor = System.Drawing.Color.White;
-            this.button_Receipt.Location = new System.Drawing.Point(13, 288);
-            this.button_Receipt.Name = "button_Receipt";
-            this.button_Receipt.Size = new System.Drawing.Size(309, 100);
-            this.button_Receipt.TabIndex = 8;
-            this.button_Receipt.Text = "Hoá Đơn";
-            this.button_Receipt.UseVisualStyleBackColor = false;
+            this.button_Customer.Click += new System.EventHandler(this.button_Customer_Click);
             // 
             // button_Report
             // 
@@ -199,6 +166,19 @@
             this.button_Report.Text = "Báo cáo";
             this.button_Report.UseVisualStyleBackColor = false;
             // 
+            // button_Ingredient
+            // 
+            this.button_Ingredient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button_Ingredient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Ingredient.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Ingredient.ForeColor = System.Drawing.Color.White;
+            this.button_Ingredient.Location = new System.Drawing.Point(13, 712);
+            this.button_Ingredient.Name = "button_Ingredient";
+            this.button_Ingredient.Size = new System.Drawing.Size(309, 100);
+            this.button_Ingredient.TabIndex = 5;
+            this.button_Ingredient.Text = "Nguyên liệu";
+            this.button_Ingredient.UseVisualStyleBackColor = false;
+            // 
             // button_App
             // 
             this.button_App.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
@@ -211,6 +191,27 @@
             this.button_App.TabIndex = 10;
             this.button_App.Text = "Đối tác";
             this.button_App.UseVisualStyleBackColor = false;
+            // 
+            // button_Logout
+            // 
+            this.button_Logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button_Logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Logout.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Logout.ForeColor = System.Drawing.Color.White;
+            this.button_Logout.Location = new System.Drawing.Point(13, 924);
+            this.button_Logout.Name = "button_Logout";
+            this.button_Logout.Size = new System.Drawing.Size(309, 100);
+            this.button_Logout.TabIndex = 6;
+            this.button_Logout.Text = "Đăng xuất";
+            this.button_Logout.UseVisualStyleBackColor = false;
+            // 
+            // panel_Center
+            // 
+            this.panel_Center.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_Center.Location = new System.Drawing.Point(328, 0);
+            this.panel_Center.Name = "panel_Center";
+            this.panel_Center.Size = new System.Drawing.Size(1412, 1050);
+            this.panel_Center.TabIndex = 1;
             // 
             // FMain
             // 

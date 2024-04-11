@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FCustomer.Designer.cs">
+      <DependentUpon>FCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="FMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +60,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FCustomer.resx">
+      <DependentUpon>FCustomer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FMain.resx">
       <DependentUpon>FMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -75,13 +84,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icons8-home-32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-home-32 %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-home-32 %281%291.png" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Guna.UI">
-      <HintPath>..\..\..\..\Visual Studio Code\Guna.UI-Framework-Lib-master\Guna.UI-Framework-Lib-master\Guna.UI WinForms\.net 4.0\Guna.UI.dll</HintPath>
+      <HintPath>..\..\Guna.UI-Framework-Lib-master\Guna.UI WinForms\.net 4.0\Guna.UI.dll</HintPath>
     </Reference>
     <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>packages\Guna.UI2.WinForms.2.0.4.6\lib\net48\Guna.UI2.dll</HintPath>
@@ -56,6 +56,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FCustomer.Designer.cs">
+      <DependentUpon>FCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FCustomer_Detail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FCustomer_Detail.Designer.cs">
+      <DependentUpon>FCustomer_Detail.cs</DependentUpon>
+    </Compile>
     <Compile Include="FMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +88,12 @@
     <Compile Include="SellForm.Designer.cs">
       <DependentUpon>SellForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_Customer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Customer.Designer.cs">
+      <DependentUpon>UC_Customer.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_ItemSelected.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -88,6 +106,12 @@
     <Compile Include="UC_ItemSelled.Designer.cs">
       <DependentUpon>UC_ItemSelled.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FCustomer.resx">
+      <DependentUpon>FCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FCustomer_Detail.resx">
+      <DependentUpon>FCustomer_Detail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FMain.resx">
       <DependentUpon>FMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -98,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SellForm.resx">
       <DependentUpon>SellForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Customer.resx">
+      <DependentUpon>UC_Customer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_ItemSelected.resx">
       <DependentUpon>UC_ItemSelected.cs</DependentUpon>
@@ -120,64 +147,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <None Include="Resources\icons8-home-32.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="SourcePictureShell\icons8-bubble-tea-32.png" />
+    <None Include="Resources\icons8-home-32 %281%29.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="SourcePictureShell\icons8-yogurt-32.png" />
+    <None Include="Resources\icons8-home-32 %281%291.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="SourcePictureShell\icons8-cake-32.png" />
+    <None Include="Resources\icons8-detail-24.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="SourcePictureShell\icons8-nut-32.png" />
+    <None Include="Resources\icons8-pencil-36.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="SourcePictureShell\icons8-vegetables-bag-32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="SourcePictureShell\icons8-juice-32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="SourcePictureShell\icons8-fruit-tea-32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="SourcePictureShell\icons8-smoothie-32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="SourcePictureShell\icons8-find-32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="SourcePictureShell\icons8-find-100.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="SourcePictureShell\6eafb191a7f1e895b1b9ae2c50c1d03d.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="SourcePictureShell\Screenshot 2024-04-10 020318.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="SourcePictureShell\icons8-tick-32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="SourcePictureShell\icons8-delete-trash-32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="SourcePictureShell\icons8-money-bag-32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="SourcePictureShell\icons8-save-32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="SourcePictureShell\icons8-employee-32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="SourcePictureShell\icons8-setting-32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="SourcePictureShell\icons8-setting-32-new.png" />
+    <None Include="Resources\icons8-save-64.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

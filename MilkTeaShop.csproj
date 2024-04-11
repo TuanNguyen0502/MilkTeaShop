@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BillForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BillForm.Designer.cs">
+      <DependentUpon>BillForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,12 @@
     <Compile Include="SellForm.Designer.cs">
       <DependentUpon>SellForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_BillInfomation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_BillInfomation.Designer.cs">
+      <DependentUpon>UC_BillInfomation.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_Customer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -106,6 +118,9 @@
     <Compile Include="UC_ItemSelled.Designer.cs">
       <DependentUpon>UC_ItemSelled.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BillForm.resx">
+      <DependentUpon>BillForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FCustomer.resx">
       <DependentUpon>FCustomer.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SellForm.resx">
       <DependentUpon>SellForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_BillInfomation.resx">
+      <DependentUpon>UC_BillInfomation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_Customer.resx">
       <DependentUpon>UC_Customer.cs</DependentUpon>

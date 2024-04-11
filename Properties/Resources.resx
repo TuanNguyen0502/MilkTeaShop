@@ -130,29 +130,32 @@
   <data name="icons8-employee-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\SourcePictureShell\icons8-employee-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-cake-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\SourcePictureShell\icons8-cake-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="icons8-find-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\SourcePictureShell\icons8-find-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Screenshot 2024-04-10 020318" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\SourcePictureShell\Screenshot 2024-04-10 020318.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-money-bag-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\SourcePictureShell\icons8-money-bag-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="icons8-juice-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\SourcePictureShell\icons8-juice-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-save-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\SourcePictureShell\icons8-save-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-money-bag-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SourcePictureShell\icons8-money-bag-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-setting-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SourcePictureShell\icons8-setting-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-detail-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-detail-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-yogurt-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\SourcePictureShell\icons8-yogurt-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-setting-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\SourcePictureShell\icons8-setting-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-fruit-tea-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SourcePictureShell\icons8-fruit-tea-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-setting-32-new" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SourcePictureShell\icons8-setting-32-new.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-tick-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\SourcePictureShell\icons8-tick-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,19 +163,25 @@
   <data name="icons8-bubble-tea-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\SourcePictureShell\icons8-bubble-tea-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-fruit-tea-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\SourcePictureShell\icons8-fruit-tea-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-delete-trash-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SourcePictureShell\icons8-delete-trash-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-cake-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SourcePictureShell\icons8-cake-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-find-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\SourcePictureShell\icons8-find-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-delete-trash-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\SourcePictureShell\icons8-delete-trash-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-save-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SourcePictureShell\icons8-save-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-pencil-36" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-pencil-36.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-smoothie-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\SourcePictureShell\icons8-smoothie-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-setting-32-new" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\SourcePictureShell\icons8-setting-32-new.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-save-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-save-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

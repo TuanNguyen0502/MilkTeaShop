@@ -103,6 +103,16 @@ namespace MilkTeaShop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_detail_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-detail-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_employee_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8-employee-32", resourceCulture);
@@ -173,9 +183,29 @@ namespace MilkTeaShop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_pencil_36 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-pencil-36", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_save_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8-save-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_save_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-save-64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

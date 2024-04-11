@@ -63,7 +63,7 @@
             this.flowLayoutPanel_Left.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel_Left.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel_Left.Name = "flowLayoutPanel_Left";
-            this.flowLayoutPanel_Left.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.flowLayoutPanel_Left.Padding = new System.Windows.Forms.Padding(10);
             this.flowLayoutPanel_Left.Size = new System.Drawing.Size(328, 1050);
             this.flowLayoutPanel_Left.TabIndex = 0;
             // 
@@ -75,7 +75,7 @@
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(11, 12, 11, 12);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(354, 71);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(309, 71);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // label1
@@ -98,7 +98,7 @@
             this.button_Home.Location = new System.Drawing.Point(13, 89);
             this.button_Home.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button_Home.Name = "button_Home";
-            this.button_Home.Size = new System.Drawing.Size(348, 125);
+            this.button_Home.Size = new System.Drawing.Size(309, 125);
             this.button_Home.TabIndex = 7;
             this.button_Home.Text = "Tổng quan";
             this.button_Home.UseVisualStyleBackColor = false;
@@ -170,7 +170,7 @@
             this.button_Report.Location = new System.Drawing.Point(13, 663);
             this.button_Report.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button_Report.Name = "button_Report";
-            this.button_Report.Size = new System.Drawing.Size(348, 125);
+            this.button_Report.Size = new System.Drawing.Size(309, 125);
             this.button_Report.TabIndex = 9;
             this.button_Report.Text = "Báo cáo";
             this.button_Report.UseVisualStyleBackColor = false;
@@ -198,7 +198,7 @@
             this.button_App.Location = new System.Drawing.Point(13, 900);
             this.button_App.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button_App.Name = "button_App";
-            this.button_App.Size = new System.Drawing.Size(348, 125);
+            this.button_App.Size = new System.Drawing.Size(309, 125);
             this.button_App.TabIndex = 10;
             this.button_App.Text = "Đối tác";
             this.button_App.UseVisualStyleBackColor = false;
@@ -209,7 +209,7 @@
             this.button_Logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Logout.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Logout.ForeColor = System.Drawing.Color.White;
-            this.button_Logout.Location = new System.Drawing.Point(373, 12);
+            this.button_Logout.Location = new System.Drawing.Point(328, 12);
             this.button_Logout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_Logout.Name = "button_Logout";
             this.button_Logout.Size = new System.Drawing.Size(309, 100);
@@ -223,14 +223,14 @@
             this.panel_Center.Location = new System.Drawing.Point(328, 0);
             this.panel_Center.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel_Center.Name = "panel_Center";
-            this.panel_Center.Size = new System.Drawing.Size(1412, 1050);
+            this.panel_Center.Size = new System.Drawing.Size(1357, 1050);
             this.panel_Center.TabIndex = 1;
             // 
             // FMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1740, 1050);
+            this.ClientSize = new System.Drawing.Size(1685, 1050);
             this.Controls.Add(this.panel_Center);
             this.Controls.Add(this.flowLayoutPanel_Left);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

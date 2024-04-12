@@ -26,5 +26,10 @@ namespace MilkTeaShop
         {
 
         }
+
+        private void btn_printBill_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

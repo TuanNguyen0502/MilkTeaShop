@@ -139,6 +139,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.gunaLinePanel1_Valid);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "UC_ItemSelled";
             this.Size = new System.Drawing.Size(240, 370);
             this.Click += new System.EventHandler(this.UC_ItemSelled_Click);

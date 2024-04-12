@@ -36,10 +36,15 @@
     <Reference Include="Guna.UI">
       <HintPath>..\..\Guna.UI-Framework-Lib-master\Guna.UI WinForms\.net 4.0\Guna.UI.dll</HintPath>
     </Reference>
+    <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
+      <HintPath>packages\Guna.UI2.WinForms.2.0.4.6\lib\net48\Guna.UI2.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,8 +56,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Customer.cs" />
+    <Compile Include="BillForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BillForm.Designer.cs">
+      <DependentUpon>BillForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DBConnection.cs" />
+    <Compile Include="Customer.cs" />
     <Compile Include="FCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +96,12 @@
     <Compile Include="SellForm.Designer.cs">
       <DependentUpon>SellForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_BillInfomation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_BillInfomation.Designer.cs">
+      <DependentUpon>UC_BillInfomation.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_Customer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -103,6 +120,9 @@
     <Compile Include="UC_ItemSelled.Designer.cs">
       <DependentUpon>UC_ItemSelled.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BillForm.resx">
+      <DependentUpon>BillForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FCustomer.resx">
       <DependentUpon>FCustomer.cs</DependentUpon>
     </EmbeddedResource>
@@ -120,6 +140,9 @@
     <EmbeddedResource Include="SellForm.resx">
       <DependentUpon>SellForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UC_BillInfomation.resx">
+      <DependentUpon>UC_BillInfomation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UC_Customer.resx">
       <DependentUpon>UC_Customer.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,6 +152,7 @@
     <EmbeddedResource Include="UC_ItemSelled.resx">
       <DependentUpon>UC_ItemSelled.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

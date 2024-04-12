@@ -44,7 +44,7 @@
             this.gunaAdvenceTileButton2 = new Guna.UI.WinForms.GunaAdvenceTileButton();
             this.gunaAdvenceTileButton1 = new Guna.UI.WinForms.GunaAdvenceTileButton();
             this.gunaShadowPanel1 = new Guna.UI.WinForms.GunaShadowPanel();
-            this.gunaButton1 = new Guna.UI.WinForms.GunaButton();
+            this.btn_FindProduct = new Guna.UI.WinForms.GunaButton();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.gunaGradient2Panel3 = new Guna.UI.WinForms.GunaGradient2Panel();
             this.gunaLabel3 = new Guna.UI.WinForms.GunaLabel();
@@ -61,8 +61,8 @@
             this.gunaGradient2Panel2 = new Guna.UI.WinForms.GunaGradient2Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.gunaGradient2Panel5 = new Guna.UI.WinForms.GunaGradient2Panel();
-            this.gunaAdvenceButton2 = new Guna.UI.WinForms.GunaAdvenceButton();
-            this.gunaAdvenceButton1 = new Guna.UI.WinForms.GunaAdvenceButton();
+            this.btn_saveBill = new Guna.UI.WinForms.GunaAdvenceButton();
+            this.btn_printBill = new Guna.UI.WinForms.GunaAdvenceButton();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -372,7 +372,7 @@
             // 
             this.gunaShadowPanel1.BackColor = System.Drawing.Color.Transparent;
             this.gunaShadowPanel1.BaseColor = System.Drawing.Color.White;
-            this.gunaShadowPanel1.Controls.Add(this.gunaButton1);
+            this.gunaShadowPanel1.Controls.Add(this.btn_FindProduct);
             this.gunaShadowPanel1.Controls.Add(this.pictureBox3);
             this.gunaShadowPanel1.Controls.Add(this.gunaGradient2Panel3);
             this.gunaShadowPanel1.Controls.Add(this.gunaTextBox1);
@@ -385,28 +385,28 @@
             this.gunaShadowPanel1.Size = new System.Drawing.Size(1305, 107);
             this.gunaShadowPanel1.TabIndex = 5;
             // 
-            // gunaButton1
+            // btn_FindProduct
             // 
-            this.gunaButton1.AnimationHoverSpeed = 0.07F;
-            this.gunaButton1.AnimationSpeed = 0.03F;
-            this.gunaButton1.BaseColor = System.Drawing.Color.Tomato;
-            this.gunaButton1.BorderColor = System.Drawing.Color.Black;
-            this.gunaButton1.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.gunaButton1.FocusedColor = System.Drawing.Color.Empty;
-            this.gunaButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gunaButton1.ForeColor = System.Drawing.Color.White;
-            this.gunaButton1.Image = ((System.Drawing.Image)(resources.GetObject("gunaButton1.Image")));
-            this.gunaButton1.ImageSize = new System.Drawing.Size(20, 20);
-            this.gunaButton1.Location = new System.Drawing.Point(723, 30);
-            this.gunaButton1.Name = "gunaButton1";
-            this.gunaButton1.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.gunaButton1.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.gunaButton1.OnHoverForeColor = System.Drawing.Color.White;
-            this.gunaButton1.OnHoverImage = null;
-            this.gunaButton1.OnPressedColor = System.Drawing.Color.Black;
-            this.gunaButton1.Size = new System.Drawing.Size(145, 42);
-            this.gunaButton1.TabIndex = 10;
-            this.gunaButton1.Text = "Tìm kiếm";
+            this.btn_FindProduct.AnimationHoverSpeed = 0.07F;
+            this.btn_FindProduct.AnimationSpeed = 0.03F;
+            this.btn_FindProduct.BaseColor = System.Drawing.Color.Tomato;
+            this.btn_FindProduct.BorderColor = System.Drawing.Color.Black;
+            this.btn_FindProduct.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btn_FindProduct.FocusedColor = System.Drawing.Color.Empty;
+            this.btn_FindProduct.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_FindProduct.ForeColor = System.Drawing.Color.White;
+            this.btn_FindProduct.Image = ((System.Drawing.Image)(resources.GetObject("btn_FindProduct.Image")));
+            this.btn_FindProduct.ImageSize = new System.Drawing.Size(20, 20);
+            this.btn_FindProduct.Location = new System.Drawing.Point(723, 30);
+            this.btn_FindProduct.Name = "btn_FindProduct";
+            this.btn_FindProduct.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.btn_FindProduct.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btn_FindProduct.OnHoverForeColor = System.Drawing.Color.White;
+            this.btn_FindProduct.OnHoverImage = null;
+            this.btn_FindProduct.OnPressedColor = System.Drawing.Color.Black;
+            this.btn_FindProduct.Size = new System.Drawing.Size(145, 42);
+            this.btn_FindProduct.TabIndex = 10;
+            this.btn_FindProduct.Text = "Tìm kiếm";
             // 
             // pictureBox3
             // 
@@ -520,7 +520,8 @@
             this.uC_ItemSelled1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("uC_ItemSelled1.BackgroundImage")));
             this.uC_ItemSelled1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.uC_ItemSelled1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uC_ItemSelled1.Location = new System.Drawing.Point(3, 3);
+            this.uC_ItemSelled1.Location = new System.Drawing.Point(6, 6);
+            this.uC_ItemSelled1.Margin = new System.Windows.Forms.Padding(6);
             this.uC_ItemSelled1.Name = "uC_ItemSelled1";
             this.uC_ItemSelled1.Size = new System.Drawing.Size(240, 370);
             this.uC_ItemSelled1.TabIndex = 0;
@@ -530,7 +531,8 @@
             this.uC_ItemSelled2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("uC_ItemSelled2.BackgroundImage")));
             this.uC_ItemSelled2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.uC_ItemSelled2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uC_ItemSelled2.Location = new System.Drawing.Point(249, 3);
+            this.uC_ItemSelled2.Location = new System.Drawing.Point(258, 6);
+            this.uC_ItemSelled2.Margin = new System.Windows.Forms.Padding(6);
             this.uC_ItemSelled2.Name = "uC_ItemSelled2";
             this.uC_ItemSelled2.Size = new System.Drawing.Size(240, 370);
             this.uC_ItemSelled2.TabIndex = 1;
@@ -540,7 +542,8 @@
             this.uC_ItemSelled3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("uC_ItemSelled3.BackgroundImage")));
             this.uC_ItemSelled3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.uC_ItemSelled3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uC_ItemSelled3.Location = new System.Drawing.Point(495, 3);
+            this.uC_ItemSelled3.Location = new System.Drawing.Point(510, 6);
+            this.uC_ItemSelled3.Margin = new System.Windows.Forms.Padding(6);
             this.uC_ItemSelled3.Name = "uC_ItemSelled3";
             this.uC_ItemSelled3.Size = new System.Drawing.Size(240, 370);
             this.uC_ItemSelled3.TabIndex = 2;
@@ -550,7 +553,8 @@
             this.uC_ItemSelled4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("uC_ItemSelled4.BackgroundImage")));
             this.uC_ItemSelled4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.uC_ItemSelled4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uC_ItemSelled4.Location = new System.Drawing.Point(3, 379);
+            this.uC_ItemSelled4.Location = new System.Drawing.Point(6, 388);
+            this.uC_ItemSelled4.Margin = new System.Windows.Forms.Padding(6);
             this.uC_ItemSelled4.Name = "uC_ItemSelled4";
             this.uC_ItemSelled4.Size = new System.Drawing.Size(240, 370);
             this.uC_ItemSelled4.TabIndex = 3;
@@ -580,8 +584,8 @@
             // gunaGradient2Panel5
             // 
             this.gunaGradient2Panel5.BackColor = System.Drawing.Color.Transparent;
-            this.gunaGradient2Panel5.Controls.Add(this.gunaAdvenceButton2);
-            this.gunaGradient2Panel5.Controls.Add(this.gunaAdvenceButton1);
+            this.gunaGradient2Panel5.Controls.Add(this.btn_saveBill);
+            this.gunaGradient2Panel5.Controls.Add(this.btn_printBill);
             this.gunaGradient2Panel5.Controls.Add(this.label6);
             this.gunaGradient2Panel5.Controls.Add(this.label5);
             this.gunaGradient2Panel5.Controls.Add(this.label4);
@@ -595,71 +599,72 @@
             this.gunaGradient2Panel5.Size = new System.Drawing.Size(483, 283);
             this.gunaGradient2Panel5.TabIndex = 9;
             // 
-            // gunaAdvenceButton2
+            // btn_saveBill
             // 
-            this.gunaAdvenceButton2.AnimationHoverSpeed = 0.07F;
-            this.gunaAdvenceButton2.AnimationSpeed = 0.03F;
-            this.gunaAdvenceButton2.BackColor = System.Drawing.Color.Transparent;
-            this.gunaAdvenceButton2.BaseColor = System.Drawing.Color.Transparent;
-            this.gunaAdvenceButton2.BorderColor = System.Drawing.Color.Tomato;
-            this.gunaAdvenceButton2.BorderSize = 2;
-            this.gunaAdvenceButton2.CheckedBaseColor = System.Drawing.Color.Gray;
-            this.gunaAdvenceButton2.CheckedBorderColor = System.Drawing.Color.Black;
-            this.gunaAdvenceButton2.CheckedForeColor = System.Drawing.Color.White;
-            this.gunaAdvenceButton2.CheckedImage = ((System.Drawing.Image)(resources.GetObject("gunaAdvenceButton2.CheckedImage")));
-            this.gunaAdvenceButton2.CheckedLineColor = System.Drawing.Color.DimGray;
-            this.gunaAdvenceButton2.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.gunaAdvenceButton2.FocusedColor = System.Drawing.Color.Empty;
-            this.gunaAdvenceButton2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gunaAdvenceButton2.ForeColor = System.Drawing.Color.Tomato;
-            this.gunaAdvenceButton2.Image = global::MilkTeaShop.Properties.Resources.icons8_save_32;
-            this.gunaAdvenceButton2.ImageSize = new System.Drawing.Size(23, 23);
-            this.gunaAdvenceButton2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.gunaAdvenceButton2.Location = new System.Drawing.Point(33, 201);
-            this.gunaAdvenceButton2.Name = "gunaAdvenceButton2";
-            this.gunaAdvenceButton2.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.gunaAdvenceButton2.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.gunaAdvenceButton2.OnHoverForeColor = System.Drawing.Color.White;
-            this.gunaAdvenceButton2.OnHoverImage = null;
-            this.gunaAdvenceButton2.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.gunaAdvenceButton2.OnPressedColor = System.Drawing.Color.Black;
-            this.gunaAdvenceButton2.Radius = 6;
-            this.gunaAdvenceButton2.Size = new System.Drawing.Size(120, 54);
-            this.gunaAdvenceButton2.TabIndex = 7;
-            this.gunaAdvenceButton2.Text = "Save it";
+            this.btn_saveBill.AnimationHoverSpeed = 0.07F;
+            this.btn_saveBill.AnimationSpeed = 0.03F;
+            this.btn_saveBill.BackColor = System.Drawing.Color.Transparent;
+            this.btn_saveBill.BaseColor = System.Drawing.Color.Transparent;
+            this.btn_saveBill.BorderColor = System.Drawing.Color.Tomato;
+            this.btn_saveBill.BorderSize = 2;
+            this.btn_saveBill.CheckedBaseColor = System.Drawing.Color.Gray;
+            this.btn_saveBill.CheckedBorderColor = System.Drawing.Color.Black;
+            this.btn_saveBill.CheckedForeColor = System.Drawing.Color.White;
+            this.btn_saveBill.CheckedImage = ((System.Drawing.Image)(resources.GetObject("btn_saveBill.CheckedImage")));
+            this.btn_saveBill.CheckedLineColor = System.Drawing.Color.DimGray;
+            this.btn_saveBill.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btn_saveBill.FocusedColor = System.Drawing.Color.Empty;
+            this.btn_saveBill.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_saveBill.ForeColor = System.Drawing.Color.Tomato;
+            this.btn_saveBill.Image = global::MilkTeaShop.Properties.Resources.icons8_save_32;
+            this.btn_saveBill.ImageSize = new System.Drawing.Size(23, 23);
+            this.btn_saveBill.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
+            this.btn_saveBill.Location = new System.Drawing.Point(33, 201);
+            this.btn_saveBill.Name = "btn_saveBill";
+            this.btn_saveBill.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.btn_saveBill.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btn_saveBill.OnHoverForeColor = System.Drawing.Color.White;
+            this.btn_saveBill.OnHoverImage = null;
+            this.btn_saveBill.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
+            this.btn_saveBill.OnPressedColor = System.Drawing.Color.Black;
+            this.btn_saveBill.Radius = 6;
+            this.btn_saveBill.Size = new System.Drawing.Size(120, 54);
+            this.btn_saveBill.TabIndex = 7;
+            this.btn_saveBill.Text = "Save it";
             // 
-            // gunaAdvenceButton1
+            // btn_printBill
             // 
-            this.gunaAdvenceButton1.AnimationHoverSpeed = 0.07F;
-            this.gunaAdvenceButton1.AnimationSpeed = 0.03F;
-            this.gunaAdvenceButton1.BackColor = System.Drawing.Color.Transparent;
-            this.gunaAdvenceButton1.BaseColor = System.Drawing.Color.SeaGreen;
-            this.gunaAdvenceButton1.BorderColor = System.Drawing.Color.Black;
-            this.gunaAdvenceButton1.CheckedBaseColor = System.Drawing.Color.Gray;
-            this.gunaAdvenceButton1.CheckedBorderColor = System.Drawing.Color.Black;
-            this.gunaAdvenceButton1.CheckedForeColor = System.Drawing.Color.White;
-            this.gunaAdvenceButton1.CheckedImage = ((System.Drawing.Image)(resources.GetObject("gunaAdvenceButton1.CheckedImage")));
-            this.gunaAdvenceButton1.CheckedLineColor = System.Drawing.Color.DimGray;
-            this.gunaAdvenceButton1.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.gunaAdvenceButton1.FocusedColor = System.Drawing.Color.Empty;
-            this.gunaAdvenceButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gunaAdvenceButton1.ForeColor = System.Drawing.Color.White;
-            this.gunaAdvenceButton1.Image = global::MilkTeaShop.Properties.Resources.icons8_money_bag_32;
-            this.gunaAdvenceButton1.ImageSize = new System.Drawing.Size(23, 23);
-            this.gunaAdvenceButton1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.gunaAdvenceButton1.Location = new System.Drawing.Point(288, 201);
-            this.gunaAdvenceButton1.Name = "gunaAdvenceButton1";
-            this.gunaAdvenceButton1.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.gunaAdvenceButton1.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.gunaAdvenceButton1.OnHoverForeColor = System.Drawing.Color.White;
-            this.gunaAdvenceButton1.OnHoverImage = null;
-            this.gunaAdvenceButton1.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.gunaAdvenceButton1.OnPressedColor = System.Drawing.Color.Black;
-            this.gunaAdvenceButton1.Radius = 6;
-            this.gunaAdvenceButton1.Size = new System.Drawing.Size(160, 54);
-            this.gunaAdvenceButton1.TabIndex = 6;
-            this.gunaAdvenceButton1.Text = "Pay now";
-            this.gunaAdvenceButton1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btn_printBill.AnimationHoverSpeed = 0.07F;
+            this.btn_printBill.AnimationSpeed = 0.03F;
+            this.btn_printBill.BackColor = System.Drawing.Color.Transparent;
+            this.btn_printBill.BaseColor = System.Drawing.Color.SeaGreen;
+            this.btn_printBill.BorderColor = System.Drawing.Color.Black;
+            this.btn_printBill.CheckedBaseColor = System.Drawing.Color.Gray;
+            this.btn_printBill.CheckedBorderColor = System.Drawing.Color.Black;
+            this.btn_printBill.CheckedForeColor = System.Drawing.Color.White;
+            this.btn_printBill.CheckedImage = ((System.Drawing.Image)(resources.GetObject("btn_printBill.CheckedImage")));
+            this.btn_printBill.CheckedLineColor = System.Drawing.Color.DimGray;
+            this.btn_printBill.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btn_printBill.FocusedColor = System.Drawing.Color.Empty;
+            this.btn_printBill.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_printBill.ForeColor = System.Drawing.Color.White;
+            this.btn_printBill.Image = global::MilkTeaShop.Properties.Resources.icons8_money_bag_32;
+            this.btn_printBill.ImageSize = new System.Drawing.Size(23, 23);
+            this.btn_printBill.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
+            this.btn_printBill.Location = new System.Drawing.Point(288, 201);
+            this.btn_printBill.Name = "btn_printBill";
+            this.btn_printBill.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.btn_printBill.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btn_printBill.OnHoverForeColor = System.Drawing.Color.White;
+            this.btn_printBill.OnHoverImage = null;
+            this.btn_printBill.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
+            this.btn_printBill.OnPressedColor = System.Drawing.Color.Black;
+            this.btn_printBill.Radius = 6;
+            this.btn_printBill.Size = new System.Drawing.Size(160, 54);
+            this.btn_printBill.TabIndex = 6;
+            this.btn_printBill.Text = "In hóa đơn";
+            this.btn_printBill.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btn_printBill.Click += new System.EventHandler(this.btn_printBill_Click);
             // 
             // label6
             // 
@@ -823,17 +828,17 @@
         private UC_ItemSelled uC_ItemSelled2;
         private UC_ItemSelled uC_ItemSelled3;
         private UC_ItemSelled uC_ItemSelled4;
-        private Guna.UI.WinForms.GunaAdvenceButton gunaAdvenceButton1;
+        private Guna.UI.WinForms.GunaAdvenceButton btn_printBill;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private Guna.UI.WinForms.GunaCheckBox gunaCheckBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private Guna.UI.WinForms.GunaAdvenceButton gunaAdvenceButton2;
+        private Guna.UI.WinForms.GunaAdvenceButton btn_saveBill;
         private Guna.UI.WinForms.GunaCirclePictureBox gunaCirclePictureBox1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private Guna.UI.WinForms.GunaLabel gunaLabel3;
-        private Guna.UI.WinForms.GunaButton gunaButton1;
+        private Guna.UI.WinForms.GunaButton btn_FindProduct;
     }
 }

@@ -62,6 +62,7 @@
     <Compile Include="BillForm.Designer.cs">
       <DependentUpon>BillForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DBConnection.cs" />
     <Compile Include="FCustomer.cs">
       <SubType>Form</SubType>
     </Compile>

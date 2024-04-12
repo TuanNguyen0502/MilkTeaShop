@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Customer));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label_ID = new Guna.UI.WinForms.GunaLabel();
-            this.label_Name = new Guna.UI.WinForms.GunaLabel();
-            this.label_Phone = new Guna.UI.WinForms.GunaLabel();
-            this.label_Gender = new Guna.UI.WinForms.GunaLabel();
             this.label_DOB = new Guna.UI.WinForms.GunaLabel();
+            this.label_Gender = new Guna.UI.WinForms.GunaLabel();
+            this.label_Phone = new Guna.UI.WinForms.GunaLabel();
+            this.label_Name = new Guna.UI.WinForms.GunaLabel();
+            this.label_ID = new Guna.UI.WinForms.GunaLabel();
             this.button_Detail = new Guna.UI.WinForms.GunaAdvenceButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -63,38 +63,16 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1550, 52);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // label_ID
+            // label_DOB
             // 
-            this.label_ID.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label_ID.AutoSize = true;
-            this.label_ID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_ID.Location = new System.Drawing.Point(23, 10);
-            this.label_ID.Name = "label_ID";
-            this.label_ID.Size = new System.Drawing.Size(170, 32);
-            this.label_ID.TabIndex = 0;
-            this.label_ID.Text = "MaKhachHang";
-            // 
-            // label_Name
-            // 
-            this.label_Name.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label_Name.AutoSize = true;
-            this.label_Name.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Name.Location = new System.Drawing.Point(369, 10);
-            this.label_Name.Name = "label_Name";
-            this.label_Name.Size = new System.Drawing.Size(52, 32);
-            this.label_Name.TabIndex = 1;
-            this.label_Name.Text = "Ten";
-            // 
-            // label_Phone
-            // 
-            this.label_Phone.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label_Phone.AutoSize = true;
-            this.label_Phone.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Phone.Location = new System.Drawing.Point(688, 10);
-            this.label_Phone.Name = "label_Phone";
-            this.label_Phone.Size = new System.Drawing.Size(156, 32);
-            this.label_Phone.TabIndex = 2;
-            this.label_Phone.Text = "So dien thoai";
+            this.label_DOB.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_DOB.AutoSize = true;
+            this.label_DOB.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_DOB.Location = new System.Drawing.Point(1263, 10);
+            this.label_DOB.Name = "label_DOB";
+            this.label_DOB.Size = new System.Drawing.Size(121, 32);
+            this.label_DOB.TabIndex = 4;
+            this.label_DOB.Text = "Ngay sinh";
             // 
             // label_Gender
             // 
@@ -107,16 +85,38 @@
             this.label_Gender.TabIndex = 3;
             this.label_Gender.Text = "Gioi tinh";
             // 
-            // label_DOB
+            // label_Phone
             // 
-            this.label_DOB.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label_DOB.AutoSize = true;
-            this.label_DOB.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_DOB.Location = new System.Drawing.Point(1263, 10);
-            this.label_DOB.Name = "label_DOB";
-            this.label_DOB.Size = new System.Drawing.Size(121, 32);
-            this.label_DOB.TabIndex = 4;
-            this.label_DOB.Text = "Ngay sinh";
+            this.label_Phone.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_Phone.AutoSize = true;
+            this.label_Phone.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Phone.Location = new System.Drawing.Point(688, 10);
+            this.label_Phone.Name = "label_Phone";
+            this.label_Phone.Size = new System.Drawing.Size(156, 32);
+            this.label_Phone.TabIndex = 2;
+            this.label_Phone.Text = "So dien thoai";
+            // 
+            // label_Name
+            // 
+            this.label_Name.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_Name.AutoSize = true;
+            this.label_Name.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Name.Location = new System.Drawing.Point(369, 10);
+            this.label_Name.Name = "label_Name";
+            this.label_Name.Size = new System.Drawing.Size(52, 32);
+            this.label_Name.TabIndex = 1;
+            this.label_Name.Text = "Ten";
+            // 
+            // label_ID
+            // 
+            this.label_ID.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_ID.AutoSize = true;
+            this.label_ID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_ID.Location = new System.Drawing.Point(23, 10);
+            this.label_ID.Name = "label_ID";
+            this.label_ID.Size = new System.Drawing.Size(170, 32);
+            this.label_ID.TabIndex = 0;
+            this.label_ID.Text = "MaKhachHang";
             // 
             // button_Detail
             // 

@@ -86,6 +86,7 @@
             this.button_AddCustomer.Size = new System.Drawing.Size(297, 42);
             this.button_AddCustomer.TabIndex = 1;
             this.button_AddCustomer.Text = "Thêm khách hàng";
+            this.button_AddCustomer.Click += new System.EventHandler(this.button_AddCustomer_Click);
             // 
             // gunaLabel1
             // 
@@ -187,6 +188,7 @@
             // uC_Customer1
             // 
             this.uC_Customer1.Location = new System.Drawing.Point(3, 61);
+            this.uC_Customer1.MaKH = null;
             this.uC_Customer1.Name = "uC_Customer1";
             this.uC_Customer1.Size = new System.Drawing.Size(1550, 52);
             this.uC_Customer1.TabIndex = 1;
@@ -201,6 +203,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FCustomer";
             this.Text = "FCustomer";
+            this.Load += new System.EventHandler(this.FCustomer_Load);
             this.gunaPanel1.ResumeLayout(false);
             this.gunaPanel1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);

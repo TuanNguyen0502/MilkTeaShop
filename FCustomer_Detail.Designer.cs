@@ -51,7 +51,7 @@
             this.label_ID.Name = "label_ID";
             this.label_ID.Size = new System.Drawing.Size(237, 45);
             this.label_ID.TabIndex = 0;
-            this.label_ID.Text = "Ma khach hang";
+            this.label_ID.Text = "Mã khách hàng";
             // 
             // label_Name
             // 
@@ -61,7 +61,7 @@
             this.label_Name.Name = "label_Name";
             this.label_Name.Size = new System.Drawing.Size(157, 45);
             this.label_Name.TabIndex = 1;
-            this.label_Name.Text = "Ho va ten";
+            this.label_Name.Text = "Họ và tên";
             // 
             // label_Phone
             // 
@@ -71,7 +71,7 @@
             this.label_Phone.Name = "label_Phone";
             this.label_Phone.Size = new System.Drawing.Size(208, 45);
             this.label_Phone.TabIndex = 2;
-            this.label_Phone.Text = "So dien thoai";
+            this.label_Phone.Text = "Số điện thoại";
             // 
             // label_Gender
             // 
@@ -81,7 +81,7 @@
             this.label_Gender.Name = "label_Gender";
             this.label_Gender.Size = new System.Drawing.Size(141, 45);
             this.label_Gender.TabIndex = 3;
-            this.label_Gender.Text = "Gioi tinh";
+            this.label_Gender.Text = "Giới tính";
             // 
             // label_DOB
             // 
@@ -91,7 +91,7 @@
             this.label_DOB.Name = "label_DOB";
             this.label_DOB.Size = new System.Drawing.Size(161, 45);
             this.label_DOB.TabIndex = 4;
-            this.label_DOB.Text = "Ngay sinh";
+            this.label_DOB.Text = "Ngày sinh";
             // 
             // label_MaKH
             // 

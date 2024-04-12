@@ -16,5 +16,21 @@ namespace MilkTeaShop
         {
             InitializeComponent();
         }
+
+        private void button_AddCustomer_Click(object sender, EventArgs e)
+        {
+            FCustomer_Detail fCustomer_Detail = new FCustomer_Detail();
+            fCustomer_Detail.ShowDialog();
+        }
+
+        private void FCustomer_Load(object sender, EventArgs e)
+        {
+            LoadInfor();
+        }
+
+        private void LoadInfor()
+        {
+
+        }
     }
 }

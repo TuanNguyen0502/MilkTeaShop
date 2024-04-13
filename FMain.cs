@@ -50,5 +50,10 @@ namespace MilkTeaShop
         {
             OpenChildForm(new BillForm());
         }
+
+        private void button_Ingredient_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FIngredient());
+        }
     }
 }

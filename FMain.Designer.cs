@@ -63,7 +63,7 @@
             this.flowLayoutPanel_Left.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel_Left.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel_Left.Name = "flowLayoutPanel_Left";
-            this.flowLayoutPanel_Left.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.flowLayoutPanel_Left.Padding = new System.Windows.Forms.Padding(10);
             this.flowLayoutPanel_Left.Size = new System.Drawing.Size(328, 1050);
             this.flowLayoutPanel_Left.TabIndex = 0;
             // 
@@ -146,6 +146,7 @@
             this.button_Employee.TabIndex = 3;
             this.button_Employee.Text = "Nhân Viên";
             this.button_Employee.UseVisualStyleBackColor = false;
+            this.button_Employee.Click += new System.EventHandler(this.button_Employee_Click);
             // 
             // button_Customer
             // 

@@ -55,5 +55,10 @@ namespace MilkTeaShop
         {
             OpenChildForm(new FIngredient());
         }
+
+        private void button_Employee_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FStaff());
+        }
     }
 }

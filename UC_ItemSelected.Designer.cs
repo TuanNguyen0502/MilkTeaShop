@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.gunaNumeric1 = new Guna.UI.WinForms.GunaNumeric();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lbl_NameItem = new System.Windows.Forms.Label();
+            this.lbl_BuyDate = new System.Windows.Forms.Label();
+            this.lbl_price = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gunaLinePanel1 = new Guna.UI.WinForms.GunaLinePanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -45,7 +45,7 @@
             this.gunaNumeric1.ButtonForeColor = System.Drawing.Color.White;
             this.gunaNumeric1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.gunaNumeric1.ForeColor = System.Drawing.Color.Black;
-            this.gunaNumeric1.Location = new System.Drawing.Point(314, 28);
+            this.gunaNumeric1.Location = new System.Drawing.Point(341, 27);
             this.gunaNumeric1.Maximum = ((long)(9999999));
             this.gunaNumeric1.Minimum = ((long)(0));
             this.gunaNumeric1.Name = "gunaNumeric1";
@@ -54,33 +54,33 @@
             this.gunaNumeric1.Text = "gunaNumeric1";
             this.gunaNumeric1.Value = ((long)(0));
             // 
-            // label1
+            // lbl_NameItem
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(84, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Tên sản phẩm";
+            this.lbl_NameItem.AutoSize = true;
+            this.lbl_NameItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_NameItem.Location = new System.Drawing.Point(84, 15);
+            this.lbl_NameItem.Name = "lbl_NameItem";
+            this.lbl_NameItem.Size = new System.Drawing.Size(115, 20);
+            this.lbl_NameItem.TabIndex = 1;
+            this.lbl_NameItem.Text = "Tên sản phẩm";
             // 
-            // label2
+            // lbl_BuyDate
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(85, 49);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 16);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Ngày mua";
+            this.lbl_BuyDate.AutoSize = true;
+            this.lbl_BuyDate.Location = new System.Drawing.Point(85, 49);
+            this.lbl_BuyDate.Name = "lbl_BuyDate";
+            this.lbl_BuyDate.Size = new System.Drawing.Size(69, 16);
+            this.lbl_BuyDate.TabIndex = 2;
+            this.lbl_BuyDate.Text = "Ngày mua";
             // 
-            // label3
+            // lbl_price
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(401, 36);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 16);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "25.000";
+            this.lbl_price.AutoSize = true;
+            this.lbl_price.Location = new System.Drawing.Point(428, 35);
+            this.lbl_price.Name = "lbl_price";
+            this.lbl_price.Size = new System.Drawing.Size(45, 16);
+            this.lbl_price.TabIndex = 3;
+            this.lbl_price.Text = "25.000";
             // 
             // pictureBox1
             // 
@@ -100,7 +100,7 @@
             this.gunaLinePanel1.LineStyle = System.Windows.Forms.BorderStyle.None;
             this.gunaLinePanel1.Location = new System.Drawing.Point(0, 0);
             this.gunaLinePanel1.Name = "gunaLinePanel1";
-            this.gunaLinePanel1.Size = new System.Drawing.Size(478, 85);
+            this.gunaLinePanel1.Size = new System.Drawing.Size(516, 85);
             this.gunaLinePanel1.TabIndex = 5;
             // 
             // UC_ItemSelected
@@ -108,13 +108,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbl_price);
+            this.Controls.Add(this.lbl_BuyDate);
+            this.Controls.Add(this.lbl_NameItem);
             this.Controls.Add(this.gunaNumeric1);
             this.Controls.Add(this.gunaLinePanel1);
             this.Name = "UC_ItemSelected";
-            this.Size = new System.Drawing.Size(478, 85);
+            this.Size = new System.Drawing.Size(516, 85);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -124,9 +124,9 @@
         #endregion
 
         private Guna.UI.WinForms.GunaNumeric gunaNumeric1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbl_NameItem;
+        private System.Windows.Forms.Label lbl_BuyDate;
+        private System.Windows.Forms.Label lbl_price;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Guna.UI.WinForms.GunaLinePanel gunaLinePanel1;
     }

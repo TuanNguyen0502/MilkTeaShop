@@ -31,9 +31,9 @@
             this.gunaLinePanel1_Valid = new Guna.UI.WinForms.GunaLinePanel();
             this.btn_Valid = new Guna.UI.WinForms.GunaGradientButton();
             this.gunaShadowPanel1 = new Guna.UI.WinForms.GunaShadowPanel();
-            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
+            this.lbl_NameItem = new Guna.UI.WinForms.GunaLabel();
             this.gunaGradient2Panel1 = new Guna.UI.WinForms.GunaGradient2Panel();
-            this.gunaLabel2 = new Guna.UI.WinForms.GunaLabel();
+            this.lbl_price = new Guna.UI.WinForms.GunaLabel();
             this.gunaLinePanel1_Valid.SuspendLayout();
             this.gunaShadowPanel1.SuspendLayout();
             this.gunaGradient2Panel1.SuspendLayout();
@@ -91,27 +91,27 @@
             // 
             this.gunaShadowPanel1.BackColor = System.Drawing.Color.Transparent;
             this.gunaShadowPanel1.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.gunaShadowPanel1.Controls.Add(this.gunaLabel1);
+            this.gunaShadowPanel1.Controls.Add(this.lbl_NameItem);
             this.gunaShadowPanel1.Location = new System.Drawing.Point(29, 128);
             this.gunaShadowPanel1.Name = "gunaShadowPanel1";
             this.gunaShadowPanel1.ShadowColor = System.Drawing.Color.Black;
             this.gunaShadowPanel1.Size = new System.Drawing.Size(202, 46);
             this.gunaShadowPanel1.TabIndex = 3;
             // 
-            // gunaLabel1
+            // lbl_NameItem
             // 
-            this.gunaLabel1.AutoSize = true;
-            this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gunaLabel1.Location = new System.Drawing.Point(46, 13);
-            this.gunaLabel1.Name = "gunaLabel1";
-            this.gunaLabel1.Size = new System.Drawing.Size(109, 20);
-            this.gunaLabel1.TabIndex = 0;
-            this.gunaLabel1.Text = "Trà sữa matcha";
+            this.lbl_NameItem.AutoSize = true;
+            this.lbl_NameItem.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lbl_NameItem.Location = new System.Drawing.Point(19, 12);
+            this.lbl_NameItem.Name = "lbl_NameItem";
+            this.lbl_NameItem.Size = new System.Drawing.Size(109, 20);
+            this.lbl_NameItem.TabIndex = 0;
+            this.lbl_NameItem.Text = "Trà sữa matcha";
             // 
             // gunaGradient2Panel1
             // 
             this.gunaGradient2Panel1.BackColor = System.Drawing.Color.Transparent;
-            this.gunaGradient2Panel1.Controls.Add(this.gunaLabel2);
+            this.gunaGradient2Panel1.Controls.Add(this.lbl_price);
             this.gunaGradient2Panel1.GradientColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(130)))), ((int)(((byte)(68)))));
             this.gunaGradient2Panel1.GradientColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(72)))), ((int)(((byte)(115)))));
             this.gunaGradient2Panel1.Location = new System.Drawing.Point(124, 4);
@@ -120,16 +120,16 @@
             this.gunaGradient2Panel1.Size = new System.Drawing.Size(112, 36);
             this.gunaGradient2Panel1.TabIndex = 2;
             // 
-            // gunaLabel2
+            // lbl_price
             // 
-            this.gunaLabel2.AutoSize = true;
-            this.gunaLabel2.Font = new System.Drawing.Font("Centaur", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel2.ForeColor = System.Drawing.Color.White;
-            this.gunaLabel2.Location = new System.Drawing.Point(8, 8);
-            this.gunaLabel2.Name = "gunaLabel2";
-            this.gunaLabel2.Size = new System.Drawing.Size(93, 20);
-            this.gunaLabel2.TabIndex = 1;
-            this.gunaLabel2.Text = "35.000 VNĐ";
+            this.lbl_price.AutoSize = true;
+            this.lbl_price.Font = new System.Drawing.Font("Centaur", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_price.ForeColor = System.Drawing.Color.White;
+            this.lbl_price.Location = new System.Drawing.Point(8, 8);
+            this.lbl_price.Name = "lbl_price";
+            this.lbl_price.Size = new System.Drawing.Size(93, 20);
+            this.lbl_price.TabIndex = 1;
+            this.lbl_price.Text = "35.000 VNĐ";
             // 
             // UC_ItemSelled
             // 
@@ -156,9 +156,9 @@
 
         private Guna.UI.WinForms.GunaLinePanel gunaLinePanel1_Valid;
         private Guna.UI.WinForms.GunaShadowPanel gunaShadowPanel1;
-        private Guna.UI.WinForms.GunaLabel gunaLabel1;
+        private Guna.UI.WinForms.GunaLabel lbl_NameItem;
         private Guna.UI.WinForms.GunaGradient2Panel gunaGradient2Panel1;
-        private Guna.UI.WinForms.GunaLabel gunaLabel2;
+        private Guna.UI.WinForms.GunaLabel lbl_price;
         private Guna.UI.WinForms.GunaGradientButton btn_Valid;
     }
 }

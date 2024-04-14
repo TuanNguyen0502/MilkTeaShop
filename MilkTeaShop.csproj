@@ -63,6 +63,7 @@
     <Compile Include="BillForm.Designer.cs">
       <DependentUpon>BillForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClickButtonEventArg.cs" />
     <Compile Include="DBConnection.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="FCustomer.cs">
@@ -262,6 +263,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-fix-50 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\top-8-quan-sua-chua-tran-chau-ha-long-thom-ngon-kho-cuong-01-1641920517.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\435574413_966712192126145_2678475277908280524_n.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mo-hinh-kinh-doanh-nuoc-ep-trai-cay-dia.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nuoc-ep-dau.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\8-quan-sinh-to-ngon-o-sai-gon-giup-tran-day-nang-luong-202112221952077020.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

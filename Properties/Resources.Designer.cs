@@ -63,9 +63,29 @@ namespace MilkTeaShop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _435574413_966712192126145_2678475277908280524_n {
+            get {
+                object obj = ResourceManager.GetObject("435574413_966712192126145_2678475277908280524_n", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _6eafb191a7f1e895b1b9ae2c50c1d03d {
             get {
                 object obj = ResourceManager.GetObject("6eafb191a7f1e895b1b9ae2c50c1d03d", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _8_quan_sinh_to_ngon_o_sai_gon_giup_tran_day_nang_luong_202112221952077020 {
+            get {
+                object obj = ResourceManager.GetObject("8-quan-sinh-to-ngon-o-sai-gon-giup-tran-day-nang-luong-202112221952077020", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -393,9 +413,39 @@ namespace MilkTeaShop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mo_hinh_kinh_doanh_nuoc_ep_trai_cay_dia {
+            get {
+                object obj = ResourceManager.GetObject("mo-hinh-kinh-doanh-nuoc-ep-trai-cay-dia", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap nuoc_ep_dau {
+            get {
+                object obj = ResourceManager.GetObject("nuoc-ep-dau", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Screenshot_2024_04_10_020318 {
             get {
                 object obj = ResourceManager.GetObject("Screenshot 2024-04-10 020318", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap top_8_quan_sua_chua_tran_chau_ha_long_thom_ngon_kho_cuong_01_1641920517 {
+            get {
+                object obj = ResourceManager.GetObject("top-8-quan-sua-chua-tran-chau-ha-long-thom-ngon-kho-cuong-01-1641920517", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

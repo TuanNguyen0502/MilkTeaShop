@@ -14,11 +14,10 @@ namespace MilkTeaShop
     {
         //SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr);
         readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True";
-        readonly string strConn = @"Data Source=LAPTOP-VT7S57G2\SQLEXPRESS;Initial Catalog=QLCuaHangTraSua;Integrated Security=True";
 
         public void ExecuteProcedure(string sqlQuery)
         {
-            using(SqlConnection conn = new SqlConnection(strConn))
+            using(SqlConnection conn = new SqlConnection(conStr))
             {
                 try
                 {
@@ -64,7 +63,39 @@ namespace MilkTeaShop
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Read error\n" + ex.Message);
+                    MessageBox.Show("Read error\n"+ex.Message);
+                }
+            }
+            return resultList;
+        }
+
+        public List<Dictionary<string, object>> ExecuteReaderData(string sqlStr, SqlParameter[] lstParam)
+        {
+            List<Dictionary<string, object>> resultList = new List<Dictionary<string, object>>();
+            using (SqlConnection conn = new SqlConnection(conStr))
+            {
+                try
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlStr, conn);
+                    cmd.Parameters.AddRange(lstParam);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            Dictionary<string, object> rowData = new Dictionary<string, object>();
+                            for (int i = 0; i < reader.FieldCount; i++)
+                            {
+                                rowData.Add(reader.GetName(i), reader.GetValue(i));
+                            }
+                            resultList.Add(rowData);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Read error\n"+ex.Message);
                 }
             }
             return resultList;

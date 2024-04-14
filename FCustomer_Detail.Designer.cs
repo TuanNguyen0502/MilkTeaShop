@@ -29,12 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FCustomer_Detail));
-            this.label_ID = new Guna.UI.WinForms.GunaLabel();
             this.label_Name = new Guna.UI.WinForms.GunaLabel();
             this.label_Phone = new Guna.UI.WinForms.GunaLabel();
             this.label_Gender = new Guna.UI.WinForms.GunaLabel();
             this.label_DOB = new Guna.UI.WinForms.GunaLabel();
-            this.label_MaKH = new Guna.UI.WinForms.GunaLabel();
             this.textBox_Name = new Guna.UI.WinForms.GunaTextBox();
             this.textBox_Phone = new Guna.UI.WinForms.GunaTextBox();
             this.radioButton_Male = new Guna.UI.WinForms.GunaRadioButton();
@@ -42,16 +40,6 @@
             this.dateTimePicker_DOB = new Guna.UI.WinForms.GunaDateTimePicker();
             this.button_Save = new Guna.UI.WinForms.GunaAdvenceButton();
             this.SuspendLayout();
-            // 
-            // label_ID
-            // 
-            this.label_ID.AutoSize = true;
-            this.label_ID.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_ID.Location = new System.Drawing.Point(23, 20);
-            this.label_ID.Name = "label_ID";
-            this.label_ID.Size = new System.Drawing.Size(237, 45);
-            this.label_ID.TabIndex = 0;
-            this.label_ID.Text = "Mã khách hàng";
             // 
             // label_Name
             // 
@@ -92,16 +80,6 @@
             this.label_DOB.Size = new System.Drawing.Size(161, 45);
             this.label_DOB.TabIndex = 4;
             this.label_DOB.Text = "Ngày sinh";
-            // 
-            // label_MaKH
-            // 
-            this.label_MaKH.AutoSize = true;
-            this.label_MaKH.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_MaKH.Location = new System.Drawing.Point(293, 20);
-            this.label_MaKH.Name = "label_MaKH";
-            this.label_MaKH.Size = new System.Drawing.Size(51, 45);
-            this.label_MaKH.TabIndex = 5;
-            this.label_MaKH.Text = "ID";
             // 
             // textBox_Name
             // 
@@ -235,12 +213,10 @@
             this.Controls.Add(this.radioButton_Male);
             this.Controls.Add(this.textBox_Phone);
             this.Controls.Add(this.textBox_Name);
-            this.Controls.Add(this.label_MaKH);
             this.Controls.Add(this.label_DOB);
             this.Controls.Add(this.label_Gender);
             this.Controls.Add(this.label_Phone);
             this.Controls.Add(this.label_Name);
-            this.Controls.Add(this.label_ID);
             this.Name = "FCustomer_Detail";
             this.Padding = new System.Windows.Forms.Padding(20);
             this.ShowIcon = false;
@@ -252,13 +228,10 @@
         }
 
         #endregion
-
-        private Guna.UI.WinForms.GunaLabel label_ID;
         private Guna.UI.WinForms.GunaLabel label_Name;
         private Guna.UI.WinForms.GunaLabel label_Phone;
         private Guna.UI.WinForms.GunaLabel label_Gender;
         private Guna.UI.WinForms.GunaLabel label_DOB;
-        private Guna.UI.WinForms.GunaLabel label_MaKH;
         private Guna.UI.WinForms.GunaTextBox textBox_Name;
         private Guna.UI.WinForms.GunaTextBox textBox_Phone;
         private Guna.UI.WinForms.GunaRadioButton radioButton_Male;

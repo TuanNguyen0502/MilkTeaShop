@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gunaNumeric1 = new Guna.UI.WinForms.GunaNumeric();
+            this.numeric_Quantities = new Guna.UI.WinForms.GunaNumeric();
             this.lbl_NameItem = new System.Windows.Forms.Label();
             this.lbl_BuyDate = new System.Windows.Forms.Label();
             this.lbl_price = new System.Windows.Forms.Label();
@@ -37,22 +37,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // gunaNumeric1
+            // numeric_Quantities
             // 
-            this.gunaNumeric1.BaseColor = System.Drawing.Color.White;
-            this.gunaNumeric1.BorderColor = System.Drawing.Color.Tomato;
-            this.gunaNumeric1.ButtonColor = System.Drawing.Color.Tomato;
-            this.gunaNumeric1.ButtonForeColor = System.Drawing.Color.White;
-            this.gunaNumeric1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.gunaNumeric1.ForeColor = System.Drawing.Color.Black;
-            this.gunaNumeric1.Location = new System.Drawing.Point(341, 27);
-            this.gunaNumeric1.Maximum = ((long)(9999999));
-            this.gunaNumeric1.Minimum = ((long)(0));
-            this.gunaNumeric1.Name = "gunaNumeric1";
-            this.gunaNumeric1.Size = new System.Drawing.Size(75, 30);
-            this.gunaNumeric1.TabIndex = 0;
-            this.gunaNumeric1.Text = "gunaNumeric1";
-            this.gunaNumeric1.Value = ((long)(0));
+            this.numeric_Quantities.BaseColor = System.Drawing.Color.White;
+            this.numeric_Quantities.BorderColor = System.Drawing.Color.Tomato;
+            this.numeric_Quantities.ButtonColor = System.Drawing.Color.Tomato;
+            this.numeric_Quantities.ButtonForeColor = System.Drawing.Color.White;
+            this.numeric_Quantities.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.numeric_Quantities.ForeColor = System.Drawing.Color.Black;
+            this.numeric_Quantities.Location = new System.Drawing.Point(341, 27);
+            this.numeric_Quantities.Maximum = ((long)(9999999));
+            this.numeric_Quantities.Minimum = ((long)(1));
+            this.numeric_Quantities.Name = "numeric_Quantities";
+            this.numeric_Quantities.Size = new System.Drawing.Size(75, 30);
+            this.numeric_Quantities.TabIndex = 0;
+            this.numeric_Quantities.Text = "gunaNumeric1";
+            this.numeric_Quantities.Value = ((long)(1));
             // 
             // lbl_NameItem
             // 
@@ -111,7 +111,7 @@
             this.Controls.Add(this.lbl_price);
             this.Controls.Add(this.lbl_BuyDate);
             this.Controls.Add(this.lbl_NameItem);
-            this.Controls.Add(this.gunaNumeric1);
+            this.Controls.Add(this.numeric_Quantities);
             this.Controls.Add(this.gunaLinePanel1);
             this.Name = "UC_ItemSelected";
             this.Size = new System.Drawing.Size(516, 85);
@@ -123,7 +123,7 @@
 
         #endregion
 
-        private Guna.UI.WinForms.GunaNumeric gunaNumeric1;
+        private Guna.UI.WinForms.GunaNumeric numeric_Quantities;
         private System.Windows.Forms.Label lbl_NameItem;
         private System.Windows.Forms.Label lbl_BuyDate;
         private System.Windows.Forms.Label lbl_price;

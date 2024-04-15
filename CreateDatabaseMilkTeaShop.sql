@@ -756,11 +756,5 @@ RETURN (
 SELECT * FROM func_timSanPhamTheoTen ('Trà')
 	-- test func_timNguyenLieu
 	Select * from func_timNguyenLieu ('Trà')
-	CREATE TABLE SanPham( 
-	MaSP VARCHAR(10) CONSTRAINT PK_SP PRIMARY KEY,
-	TenSP NVARCHAR(255) NOT NULL, 
-	SoLuong INT, 
-	DonGia NUMERIC(18,0) NOT NULL CHECK(DonGia > 0), 
-	MaLoaiSP VARCHAR(10) FOREIGN KEY REFERENCES LoaiSanPham(MaLoaiSP),
-	TrangThai NVARCHAR(100) DEFAULT 'Available'
-)
+SELECT * FROM NhanVien
+SELECT * FROM V_ThongTinNhanVien

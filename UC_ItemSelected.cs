@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Guna.UI.WinForms;
 
 namespace MilkTeaShop
 {
@@ -68,6 +69,11 @@ namespace MilkTeaShop
             set { icon = value; this.BackgroundImage = value; }
         }
         #endregion
+        public GunaNumeric Numeric_Quantities
+        {
+            get { return numeric_Quantities; }
+            set { numeric_Quantities = value; }
+        }
         public UC_ItemSelected()
         {
             InitializeComponent();

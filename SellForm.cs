@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
+using Guna.UI.WinForms;
 
 namespace MilkTeaShop
 {
@@ -76,6 +77,45 @@ namespace MilkTeaShop
                 flp_ContainsItem.Controls.Add(item);
             }
         }
+        public void SetBill()
+        {
+            decimal totalOrders = 0;
+            foreach (Control control in flp_ContainsOrder.Controls)
+            {
+                UC_ItemSelected item = (UC_ItemSelected)control;
+                totalOrders = totalOrders + (item.Numeric_Quantities.Value * item.DonGia);
+                MessageBox.Show($"Tên sp {item.TenSP} / Số lượng {item.Numeric_Quantities.Value} / Đơn giá {item.DonGia} / Tổng tiền {totalOrders}");
+            }
+            lbl_TotalBill.Text = totalOrders.ToString() + " VNĐ";
+            if (ckb_Sale.Checked)
+            {
+                lbl_Pay.Text = (totalOrders - totalOrders*0, 2).ToString() + " VNĐ";
+            }
+            else
+            {
+                lbl_Pay.Text = totalOrders.ToString() + " VNĐ";
+            }
+        }
+        public void quantities_ValueChanged(object sender, EventArgs e)
+        {
+
+            decimal totalOrders = 0;
+            foreach (Control control in flp_ContainsOrder.Controls)
+            {
+                UC_ItemSelected item = (UC_ItemSelected)control;
+                totalOrders = totalOrders + (item.Numeric_Quantities.Value * item.DonGia);
+                MessageBox.Show($"Tên sp {item.TenSP} / Số lượng {item.Numeric_Quantities.Value} / Đơn giá {item.DonGia} / Tổng tiền {totalOrders}");
+            }
+            lbl_TotalBill.Text = totalOrders.ToString() + " VNĐ";
+            if (ckb_Sale.Checked)
+            {
+                lbl_Pay.Text = (totalOrders - totalOrders*0, 2).ToString() + " VNĐ";
+            }
+            else
+            {
+                lbl_Pay.Text = totalOrders.ToString() + " VNĐ";
+            }
+        }
         public void itemSelling_Click(object sender, ClickButtonEventArg e)
         {
             UC_ItemSelected selectted = new UC_ItemSelected();
@@ -83,7 +123,9 @@ namespace MilkTeaShop
             selectted.TenSP = e.TenSP;
             selectted.DonGia = e.DonGia;
             selectted.ThoiGianBan = e.ThoiGianBan;
+            selectted.Numeric_Quantities.ValueChanged += new EventHandler(quantities_ValueChanged);
             flp_ContainsOrder.Controls.Add(selectted);
+            SetBill();
         }
         public void itemLineSelling_Click(object sender, ClickButtonEventArg e)
         {
@@ -94,6 +136,7 @@ namespace MilkTeaShop
                     flp_ContainsOrder.Controls.Remove(userControl);
                 }
             }
+            SetBill();
         }
         private void btn_TraSua_Click(object sender, EventArgs e)
         {
@@ -157,6 +200,7 @@ namespace MilkTeaShop
             };
             List<Dictionary<string,object>> keyValuePairs = dbConn.ExecuteReaderData_Function(sqlQuery, lstParams);
             flp_ContainsItem.Controls.Clear();
+            flp_ContainsOrder.Controls.Clear();
             foreach (var keyValue in keyValuePairs)
             {
                 UC_ItemSelled item = new UC_ItemSelled();
@@ -165,6 +209,8 @@ namespace MilkTeaShop
                 item.DonGia = (decimal)keyValue["DonGia"];
                 item.MaLoaiSP = (string)keyValue["MaLoaiSP"];
                 item.ThoiGianBan = DateTime.Now;
+                item.ClickIntoItemSelling += itemSelling_Click;
+                item.ClickIntoLineItemSelling += itemLineSelling_Click;
                 if (item.MaLoaiSP == "LSP01")
                 {
                     item.Icon = global::MilkTeaShop.Properties.Resources._6eafb191a7f1e895b1b9ae2c50c1d03d;
@@ -190,6 +236,11 @@ namespace MilkTeaShop
                 }
                 flp_ContainsItem.Controls.Add(item);
             }
+        }
+
+        private void btn_printBill_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

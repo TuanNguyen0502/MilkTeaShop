@@ -34,9 +34,7 @@
             this.lbl_price = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gunaLinePanel1 = new Guna.UI.WinForms.GunaLinePanel();
-            this.lbl_MaKH = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.gunaLinePanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // numeric_Quantities
@@ -96,7 +94,6 @@
             // 
             // gunaLinePanel1
             // 
-            this.gunaLinePanel1.Controls.Add(this.lbl_MaKH);
             this.gunaLinePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gunaLinePanel1.LineBottom = 1;
             this.gunaLinePanel1.LineColor = System.Drawing.Color.Silver;
@@ -105,15 +102,6 @@
             this.gunaLinePanel1.Name = "gunaLinePanel1";
             this.gunaLinePanel1.Size = new System.Drawing.Size(516, 85);
             this.gunaLinePanel1.TabIndex = 5;
-            // 
-            // lbl_MaKH
-            // 
-            this.lbl_MaKH.AutoSize = true;
-            this.lbl_MaKH.Location = new System.Drawing.Point(236, 49);
-            this.lbl_MaKH.Name = "lbl_MaKH";
-            this.lbl_MaKH.Size = new System.Drawing.Size(47, 16);
-            this.lbl_MaKH.TabIndex = 3;
-            this.lbl_MaKH.Text = "Mã KH";
             // 
             // UC_ItemSelected
             // 
@@ -128,8 +116,6 @@
             this.Name = "UC_ItemSelected";
             this.Size = new System.Drawing.Size(516, 85);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.gunaLinePanel1.ResumeLayout(false);
-            this.gunaLinePanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,6 +129,5 @@
         private System.Windows.Forms.Label lbl_price;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Guna.UI.WinForms.GunaLinePanel gunaLinePanel1;
-        private System.Windows.Forms.Label lbl_MaKH;
     }
 }

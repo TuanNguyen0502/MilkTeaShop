@@ -29,30 +29,30 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lbl_ThoiGianDat = new System.Windows.Forms.Label();
+            this.lbl_GhiChu = new System.Windows.Forms.Label();
+            this.lbl_TenNV = new System.Windows.Forms.Label();
+            this.lbl_MaHD = new System.Windows.Forms.Label();
+            this.lbl_TenKH = new System.Windows.Forms.Label();
+            this.lbl_TotalBill = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 6;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.07102F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.10653F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.10653F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.85167F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.15625F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.708F));
-            this.tableLayoutPanel1.Controls.Add(this.label6, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 5, 0);
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.71342F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.07014F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.07014F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.86281F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.1908F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.0927F));
+            this.tableLayoutPanel1.Controls.Add(this.lbl_ThoiGianDat, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_GhiChu, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_TenNV, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_MaHD, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_TenKH, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_TotalBill, 5, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
@@ -60,72 +60,72 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1377, 59);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // label1
+            // lbl_ThoiGianDat
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(169, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(146, 28);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Tên khách hàng";
+            this.lbl_ThoiGianDat.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl_ThoiGianDat.AutoSize = true;
+            this.lbl_ThoiGianDat.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_ThoiGianDat.Location = new System.Drawing.Point(641, 15);
+            this.lbl_ThoiGianDat.Name = "lbl_ThoiGianDat";
+            this.lbl_ThoiGianDat.Size = new System.Drawing.Size(127, 28);
+            this.lbl_ThoiGianDat.TabIndex = 9;
+            this.lbl_ThoiGianDat.Text = "Thời gian đặt";
             // 
-            // label4
+            // lbl_GhiChu
             // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.LightSeaGreen;
-            this.label4.Location = new System.Drawing.Point(1135, 15);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(184, 28);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Tổng tiền đơn hàng";
+            this.lbl_GhiChu.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl_GhiChu.AutoSize = true;
+            this.lbl_GhiChu.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_GhiChu.Location = new System.Drawing.Point(900, 15);
+            this.lbl_GhiChu.Name = "lbl_GhiChu";
+            this.lbl_GhiChu.Size = new System.Drawing.Size(78, 28);
+            this.lbl_GhiChu.TabIndex = 8;
+            this.lbl_GhiChu.Text = "Ghi chú";
             // 
-            // label2
+            // lbl_TenNV
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(10, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(118, 28);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Mã hóa đơn";
+            this.lbl_TenNV.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl_TenNV.AutoSize = true;
+            this.lbl_TenNV.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_TenNV.Location = new System.Drawing.Point(413, 15);
+            this.lbl_TenNV.Name = "lbl_TenNV";
+            this.lbl_TenNV.Size = new System.Drawing.Size(130, 28);
+            this.lbl_TenNV.TabIndex = 7;
+            this.lbl_TenNV.Text = "Tên nhân viên";
             // 
-            // label3
+            // lbl_MaHD
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(385, 15);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(130, 28);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Tên nhân viên";
+            this.lbl_MaHD.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl_MaHD.AutoSize = true;
+            this.lbl_MaHD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_MaHD.Location = new System.Drawing.Point(14, 15);
+            this.lbl_MaHD.Name = "lbl_MaHD";
+            this.lbl_MaHD.Size = new System.Drawing.Size(118, 28);
+            this.lbl_MaHD.TabIndex = 6;
+            this.lbl_MaHD.Text = "Mã hóa đơn";
             // 
-            // label5
+            // lbl_TenKH
             // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(818, 15);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(213, 28);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Thời gian xuất hóa đơn";
+            this.lbl_TenKH.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl_TenKH.AutoSize = true;
+            this.lbl_TenKH.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_TenKH.Location = new System.Drawing.Point(184, 15);
+            this.lbl_TenKH.Name = "lbl_TenKH";
+            this.lbl_TenKH.Size = new System.Drawing.Size(146, 28);
+            this.lbl_TenKH.TabIndex = 3;
+            this.lbl_TenKH.Text = "Tên khách hàng";
             // 
-            // label6
+            // lbl_TotalBill
             // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(599, 15);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(127, 28);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Thời gian đặt";
+            this.lbl_TotalBill.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl_TotalBill.AutoSize = true;
+            this.lbl_TotalBill.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_TotalBill.ForeColor = System.Drawing.Color.LightSeaGreen;
+            this.lbl_TotalBill.Location = new System.Drawing.Point(1125, 15);
+            this.lbl_TotalBill.Name = "lbl_TotalBill";
+            this.lbl_TotalBill.Size = new System.Drawing.Size(184, 28);
+            this.lbl_TotalBill.TabIndex = 5;
+            this.lbl_TotalBill.Text = "Tổng tiền đơn hàng";
             // 
             // UC_BillInfomation
             // 
@@ -143,11 +143,11 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbl_ThoiGianDat;
+        private System.Windows.Forms.Label lbl_GhiChu;
+        private System.Windows.Forms.Label lbl_TenNV;
+        private System.Windows.Forms.Label lbl_MaHD;
+        private System.Windows.Forms.Label lbl_TenKH;
+        private System.Windows.Forms.Label lbl_TotalBill;
     }
 }

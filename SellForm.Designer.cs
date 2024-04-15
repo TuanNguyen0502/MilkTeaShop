@@ -57,6 +57,8 @@
             this.gunaGradient2Panel2 = new Guna.UI.WinForms.GunaGradient2Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.gunaGradient2Panel5 = new Guna.UI.WinForms.GunaGradient2Panel();
+            this.lbl_SDTKH = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.btn_saveBill = new Guna.UI.WinForms.GunaAdvenceButton();
             this.btn_printBill = new Guna.UI.WinForms.GunaAdvenceButton();
             this.lbl_Pay = new System.Windows.Forms.Label();
@@ -68,8 +70,7 @@
             this.flp_ContainsOrder = new System.Windows.Forms.FlowLayoutPanel();
             this.gunaGradient2Panel4 = new Guna.UI.WinForms.GunaGradient2Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lbl_SDTKH = new System.Windows.Forms.Label();
+            this.cbb_options = new Guna.UI.WinForms.GunaComboBox();
             this.gunaPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.gunaGradient2Panel1.SuspendLayout();
@@ -516,6 +517,7 @@
             // gunaGradient2Panel2
             // 
             this.gunaGradient2Panel2.BackColor = System.Drawing.Color.Transparent;
+            this.gunaGradient2Panel2.Controls.Add(this.cbb_options);
             this.gunaGradient2Panel2.Controls.Add(this.label1);
             this.gunaGradient2Panel2.GradientColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(130)))), ((int)(((byte)(68)))));
             this.gunaGradient2Panel2.GradientColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(72)))), ((int)(((byte)(115)))));
@@ -554,6 +556,26 @@
             this.gunaGradient2Panel5.Name = "gunaGradient2Panel5";
             this.gunaGradient2Panel5.Size = new System.Drawing.Size(511, 325);
             this.gunaGradient2Panel5.TabIndex = 9;
+            // 
+            // lbl_SDTKH
+            // 
+            this.lbl_SDTKH.AutoSize = true;
+            this.lbl_SDTKH.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_SDTKH.Location = new System.Drawing.Point(352, 24);
+            this.lbl_SDTKH.Name = "lbl_SDTKH";
+            this.lbl_SDTKH.Size = new System.Drawing.Size(42, 23);
+            this.lbl_SDTKH.TabIndex = 9;
+            this.lbl_SDTKH.Text = "20%";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(46, 24);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(205, 23);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Số điện thoại khách hàng";
             // 
             // btn_saveBill
             // 
@@ -602,9 +624,10 @@
             this.btn_printBill.CheckedLineColor = System.Drawing.Color.DimGray;
             this.btn_printBill.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btn_printBill.FocusedColor = System.Drawing.Color.Empty;
-            this.btn_printBill.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_printBill.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btn_printBill.ForeColor = System.Drawing.Color.White;
             this.btn_printBill.Image = global::MilkTeaShop.Properties.Resources.icons8_money_bag_32;
+            this.btn_printBill.ImageOffsetX = 5;
             this.btn_printBill.ImageSize = new System.Drawing.Size(23, 23);
             this.btn_printBill.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
             this.btn_printBill.Location = new System.Drawing.Point(305, 254);
@@ -619,7 +642,7 @@
             this.btn_printBill.Size = new System.Drawing.Size(160, 54);
             this.btn_printBill.TabIndex = 6;
             this.btn_printBill.Text = "In hóa đơn";
-            this.btn_printBill.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btn_printBill.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.btn_printBill.Click += new System.EventHandler(this.btn_printBill_Click);
             // 
             // lbl_Pay
@@ -716,25 +739,42 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Danh sách sản phẩm";
             // 
-            // label4
+            // cbb_options
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(52, 24);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(205, 23);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Số điện thoại khách hàng";
-            // 
-            // lbl_SDTKH
-            // 
-            this.lbl_SDTKH.AutoSize = true;
-            this.lbl_SDTKH.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_SDTKH.Location = new System.Drawing.Point(352, 24);
-            this.lbl_SDTKH.Name = "lbl_SDTKH";
-            this.lbl_SDTKH.Size = new System.Drawing.Size(42, 23);
-            this.lbl_SDTKH.TabIndex = 9;
-            this.lbl_SDTKH.Text = "20%";
+            this.cbb_options.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cbb_options.BackColor = System.Drawing.Color.Transparent;
+            this.cbb_options.BaseColor = System.Drawing.Color.White;
+            this.cbb_options.BorderColor = System.Drawing.Color.Silver;
+            this.cbb_options.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbb_options.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbb_options.FocusedColor = System.Drawing.Color.Empty;
+            this.cbb_options.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbb_options.ForeColor = System.Drawing.Color.Black;
+            this.cbb_options.FormattingEnabled = true;
+            this.cbb_options.Items.AddRange(new object[] {
+            "0123156789",
+            "0123456791",
+            "0123458791",
+            "0123186792",
+            "0123459793",
+            "0934167890",
+            "0934463791",
+            "0341234567",
+            "0394506792",
+            "0934267893",
+            "0934567870",
+            "0934562991",
+            "0391233567",
+            "0394561792",
+            "0934467893"});
+            this.cbb_options.Location = new System.Drawing.Point(310, 11);
+            this.cbb_options.Name = "cbb_options";
+            this.cbb_options.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.cbb_options.OnHoverItemForeColor = System.Drawing.Color.White;
+            this.cbb_options.Radius = 6;
+            this.cbb_options.Size = new System.Drawing.Size(199, 31);
+            this.cbb_options.TabIndex = 9;
+            this.cbb_options.SelectedIndexChanged += new System.EventHandler(this.cbb_options_SelectedIndexChanged);
             // 
             // SellForm
             // 
@@ -817,5 +857,6 @@
         private Guna.UI.WinForms.GunaTextBox txt_KeyWord;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lbl_SDTKH;
+        private Guna.UI.WinForms.GunaComboBox cbb_options;
     }
 }

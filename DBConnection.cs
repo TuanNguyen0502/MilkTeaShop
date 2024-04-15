@@ -15,7 +15,7 @@ namespace MilkTeaShop
         //SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr);
         readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True";
 
-        public void ExecuteProcedure(string sqlQuery)
+        public void ExecuteProcedure(string sqlQuery, SqlParameter[] lstParams)
         {
             using(SqlConnection conn = new SqlConnection(conStr))
             {
@@ -25,8 +25,7 @@ namespace MilkTeaShop
                     {
                         conn.Open();
                         SqlCommand cmd = new SqlCommand(sqlQuery, conn);
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.CommandText = sqlQuery;
+                        cmd.Parameters.AddRange(lstParams);
                         if (cmd.ExecuteNonQuery() > 0)
                             MessageBox.Show("Execute procedure successful !");
                     }

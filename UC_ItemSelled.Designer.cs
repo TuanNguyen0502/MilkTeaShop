@@ -42,8 +42,8 @@
             // gunaLinePanel1_Valid
             // 
             this.gunaLinePanel1_Valid.BackColor = System.Drawing.Color.Transparent;
-            this.gunaLinePanel1_Valid.Controls.Add(this.btn_Valid);
             this.gunaLinePanel1_Valid.Controls.Add(this.gunaShadowPanel1);
+            this.gunaLinePanel1_Valid.Controls.Add(this.btn_Valid);
             this.gunaLinePanel1_Valid.Controls.Add(this.gunaGradient2Panel1);
             this.gunaLinePanel1_Valid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gunaLinePanel1_Valid.LineBottom = 3;
@@ -142,6 +142,7 @@
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "UC_ItemSelled";
             this.Size = new System.Drawing.Size(240, 370);
+            this.Load += new System.EventHandler(this.UC_ItemSelled_Load);
             this.Click += new System.EventHandler(this.UC_ItemSelled_Click);
             this.gunaLinePanel1_Valid.ResumeLayout(false);
             this.gunaShadowPanel1.ResumeLayout(false);

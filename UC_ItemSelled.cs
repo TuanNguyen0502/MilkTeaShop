@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Guna.UI.WinForms;
 
 namespace MilkTeaShop
 {
@@ -68,6 +69,8 @@ namespace MilkTeaShop
             set { icon = value; this.BackgroundImage = value; }
         }
         #endregion
+        Label label;
+        GunaShadowPanel shadowPanel;
         public UC_ItemSelled()
         {
             InitializeComponent();
@@ -101,6 +104,29 @@ namespace MilkTeaShop
                 btn_Valid.Visible = false;
                 gunaLinePanel1_Valid.Visible = false;
             }
+        }
+
+        private void UC_ItemSelled_Load(object sender, EventArgs e)
+        {
+            label = new Label();
+            label.AutoSize = true;
+            label.Font = new System.Drawing.Font("Segoe UI", 9F);
+            label.Location = new System.Drawing.Point(14, 12);
+            label.Name = "lbl_NameItem_Main";
+            label.Size = new System.Drawing.Size(109, 20);
+            label.TabIndex = 0;
+            label.Text = TenSP;
+            shadowPanel = new GunaShadowPanel();
+            shadowPanel.BackColor = System.Drawing.Color.Transparent;
+            shadowPanel.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            shadowPanel.Controls.Add(label);
+            shadowPanel.Location = new System.Drawing.Point(17, 112);
+            shadowPanel.Name = "gunaShadowPanel1";
+            shadowPanel.ShadowColor = System.Drawing.Color.Black;
+            shadowPanel.Size = new System.Drawing.Size(154, 42);
+            shadowPanel.TabIndex = 3;
+
+            this.Controls.Add(shadowPanel);
         }
     }
 }

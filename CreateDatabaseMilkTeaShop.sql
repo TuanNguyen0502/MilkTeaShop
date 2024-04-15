@@ -135,7 +135,10 @@ CREATE TABLE HoaDon(
 	TriGiaHoaDon NUMERIC(18,0) NOT NULL CHECK(TriGiaHoaDon > 0), 
 	GhiChu NVARCHAR(MAX)
 )
-
+SELECT hd.MaHD, nv.HoTen, kh.TenKH, hd.ThoiGianDat, hd.GhiChu, hd.TriGiaHoaDon
+FROM HoaDon hd
+JOIN NhanVien nv ON hd.MaNV = nv.MaNV
+JOIN KhachHang kh ON hd.SDT = kh.SDT
 GO
 -- Tao bang ChiTietHoaDon
 CREATE TABLE ChiTietHoaDon( 
@@ -199,7 +202,7 @@ GO
     (N'Lê Bích Vân', '0391233567', N'Nữ', '2013-09-25'),
     (N'Phạm Khánh Chi', '0394561792', 'Nam', '2008-11-30'),
     (N'Hoàng Nguyễn Bảo Như', '0934467893', N'Nữ', '2011-06-20');
-
+	
 GO
 	-- Nhà Cung Cấp
 	INSERT INTO NhaCungCap(MaNCC, TenNCC, DiaChi, Sdt) VALUES	 

@@ -31,6 +31,16 @@ namespace MilkTeaShop
             GetItemSelled("LSP04", global::MilkTeaShop.Properties.Resources.nuoc_ep_dau);
             GetItemSelled("LSP03", global::MilkTeaShop.Properties.Resources.mo_hinh_kinh_doanh_nuoc_ep_trai_cay_dia);
             GetItemSelled("LSP02", global::MilkTeaShop.Properties.Resources._8_quan_sinh_to_ngon_o_sai_gon_giup_tran_day_nang_luong_202112221952077020);
+            string userInput = ShowInputDialog("Nhập giá trị", "Nhập SĐT khách hàng:");
+            // Kiểm tra xem người dùng đã nhập giá trị hay chưa
+            if (userInput != null)
+            {
+                lbl_SDTKH.Text = userInput;
+            }
+            else
+            {
+                MessageBox.Show("Bạn đã hủy nhập giá trị.");
+            }
         }
         private void gunaControlBox1_Click(object sender, EventArgs e)
         {
@@ -84,7 +94,6 @@ namespace MilkTeaShop
             {
                 UC_ItemSelected item = (UC_ItemSelected)control;
                 totalOrders = totalOrders + (item.Numeric_Quantities.Value * item.DonGia);
-                MessageBox.Show($"Tên sp {item.TenSP} / Số lượng {item.Numeric_Quantities.Value} / Đơn giá {item.DonGia} / Tổng tiền {totalOrders}");
             }
             lbl_TotalBill.Text = totalOrders.ToString() + " VNĐ";
             if (ckb_Sale.Checked)
@@ -104,7 +113,6 @@ namespace MilkTeaShop
             {
                 UC_ItemSelected item = (UC_ItemSelected)control;
                 totalOrders = totalOrders + (item.Numeric_Quantities.Value * item.DonGia);
-                MessageBox.Show($"Tên sp {item.TenSP} / Số lượng {item.Numeric_Quantities.Value} / Đơn giá {item.DonGia} / Tổng tiền {totalOrders}");
             }
             lbl_TotalBill.Text = totalOrders.ToString() + " VNĐ";
             if (ckb_Sale.Checked)
@@ -116,9 +124,56 @@ namespace MilkTeaShop
                 lbl_Pay.Text = totalOrders.ToString() + " VNĐ";
             }
         }
+        private string ShowInputDialog(string title, string prompt)
+        {
+            Form form = new Form();
+            Label label = new Label();
+            TextBox textBox = new TextBox();
+            Button buttonOk = new Button();
+            Button buttonCancel = new Button();
+
+            form.Text = title;
+            label.Text = prompt;
+
+            buttonOk.Text = "OK";
+            buttonCancel.Text = "Cancel";
+            buttonOk.DialogResult = DialogResult.OK;
+            buttonCancel.DialogResult = DialogResult.Cancel;
+
+            label.SetBounds(9, 20, 372, 13);
+            textBox.SetBounds(12, 36, 372, 20);
+            buttonOk.SetBounds(228, 72, 75, 23);
+            buttonCancel.SetBounds(309, 72, 75, 23);
+
+            label.AutoSize = true;
+            textBox.Anchor = textBox.Anchor | AnchorStyles.Right;
+            buttonOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            buttonCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+
+            form.ClientSize = new System.Drawing.Size(396, 107);
+            form.Controls.AddRange(new Control[] { label, textBox, buttonOk, buttonCancel });
+            form.ClientSize = new System.Drawing.Size(Math.Max(300, label.Right + 10), form.ClientSize.Height);
+            form.FormBorderStyle = FormBorderStyle.FixedDialog;
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.MinimizeBox = false;
+            form.MaximizeBox = false;
+            form.AcceptButton = buttonOk;
+            form.CancelButton = buttonCancel;
+
+            DialogResult dialogResult = form.ShowDialog();
+            if (dialogResult == DialogResult.OK)
+            {
+                return textBox.Text;
+            }
+            else
+            {
+                return null;
+            }
+        }
         public void itemSelling_Click(object sender, ClickButtonEventArg e)
         {
             UC_ItemSelected selectted = new UC_ItemSelected();
+            
             selectted.MaSP = e.MaSP;
             selectted.TenSP = e.TenSP;
             selectted.DonGia = e.DonGia;
@@ -237,9 +292,35 @@ namespace MilkTeaShop
                 flp_ContainsItem.Controls.Add(item);
             }
         }
-
+        /*public Staff GetStaffByID(string MaNV)
+        {
+            sqlQuery = "SELECT * FROM NhanVien WHERE MaNV = @MaNV";
+            SqlParameter[] lstParams =
+            {
+                new SqlParameter("@MaNV", SqlDbType.VarChar) {Value = MaNV},
+            };
+            List<Dictionary<string,object>> keyValues = dbConn.ExecuteReaderData(sqlQuery, lstParams);
+            Staff staff = new Staff();
+            foreach (var value in keyValues)
+            {
+                staff.
+            }
+        }*/
         private void btn_printBill_Click(object sender, EventArgs e)
         {
+            foreach (Control control in flp_ContainsOrder.Controls)
+            {
+                UC_ItemSelected item = (UC_ItemSelected)control;
+                sqlQuery = "exec proc_CreateBill @SDT, @MaNV, @ThoiGianDat, @TriGiaHD";
+                SqlParameter[] lstParams =
+                {
+                    new SqlParameter("@SDT", SqlDbType.VarChar) {Value = item.MaKH},
+                    new SqlParameter("@MaNV", SqlDbType.VarChar) {Value = lbl_CurrentStaff.Text},
+                    new SqlParameter("@ThoiGianDat", SqlDbType.VarChar) {Value = item.ThoiGianBan},
+                    new SqlParameter("@TriGiaHD", SqlDbType.VarChar) {Value = lbl_Pay.Text},
+                };
+
+            }
             
         }
     }

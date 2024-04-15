@@ -110,6 +110,7 @@
     <Compile Include="SellForm.Designer.cs">
       <DependentUpon>SellForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Staff.cs" />
     <Compile Include="UC_BillInfomation.cs">
       <SubType>UserControl</SubType>
     </Compile>

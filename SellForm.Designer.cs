@@ -48,7 +48,7 @@
             this.btn_FindProduct = new Guna.UI.WinForms.GunaButton();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.gunaGradient2Panel3 = new Guna.UI.WinForms.GunaGradient2Panel();
-            this.gunaLabel3 = new Guna.UI.WinForms.GunaLabel();
+            this.lbl_CurrentStaff = new Guna.UI.WinForms.GunaLabel();
             this.gunaCirclePictureBox1 = new Guna.UI.WinForms.GunaCirclePictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gunaLabel2 = new Guna.UI.WinForms.GunaLabel();
@@ -68,6 +68,8 @@
             this.flp_ContainsOrder = new System.Windows.Forms.FlowLayoutPanel();
             this.gunaGradient2Panel4 = new Guna.UI.WinForms.GunaGradient2Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lbl_SDTKH = new System.Windows.Forms.Label();
             this.gunaPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.gunaGradient2Panel1.SuspendLayout();
@@ -440,7 +442,7 @@
             // gunaGradient2Panel3
             // 
             this.gunaGradient2Panel3.BackColor = System.Drawing.Color.Transparent;
-            this.gunaGradient2Panel3.Controls.Add(this.gunaLabel3);
+            this.gunaGradient2Panel3.Controls.Add(this.lbl_CurrentStaff);
             this.gunaGradient2Panel3.Controls.Add(this.gunaCirclePictureBox1);
             this.gunaGradient2Panel3.GradientColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(130)))), ((int)(((byte)(68)))));
             this.gunaGradient2Panel3.GradientColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(72)))), ((int)(((byte)(115)))));
@@ -450,16 +452,16 @@
             this.gunaGradient2Panel3.Size = new System.Drawing.Size(142, 57);
             this.gunaGradient2Panel3.TabIndex = 8;
             // 
-            // gunaLabel3
+            // lbl_CurrentStaff
             // 
-            this.gunaLabel3.AutoSize = true;
-            this.gunaLabel3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gunaLabel3.ForeColor = System.Drawing.Color.White;
-            this.gunaLabel3.Location = new System.Drawing.Point(67, 17);
-            this.gunaLabel3.Name = "gunaLabel3";
-            this.gunaLabel3.Size = new System.Drawing.Size(53, 20);
-            this.gunaLabel3.TabIndex = 9;
-            this.gunaLabel3.Text = "NV001";
+            this.lbl_CurrentStaff.AutoSize = true;
+            this.lbl_CurrentStaff.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lbl_CurrentStaff.ForeColor = System.Drawing.Color.White;
+            this.lbl_CurrentStaff.Location = new System.Drawing.Point(67, 17);
+            this.lbl_CurrentStaff.Name = "lbl_CurrentStaff";
+            this.lbl_CurrentStaff.Size = new System.Drawing.Size(53, 20);
+            this.lbl_CurrentStaff.TabIndex = 9;
+            this.lbl_CurrentStaff.Text = "NV001";
             // 
             // gunaCirclePictureBox1
             // 
@@ -536,6 +538,8 @@
             // gunaGradient2Panel5
             // 
             this.gunaGradient2Panel5.BackColor = System.Drawing.Color.Transparent;
+            this.gunaGradient2Panel5.Controls.Add(this.lbl_SDTKH);
+            this.gunaGradient2Panel5.Controls.Add(this.label4);
             this.gunaGradient2Panel5.Controls.Add(this.btn_saveBill);
             this.gunaGradient2Panel5.Controls.Add(this.btn_printBill);
             this.gunaGradient2Panel5.Controls.Add(this.lbl_Pay);
@@ -548,7 +552,7 @@
             this.gunaGradient2Panel5.GradientColor2 = System.Drawing.Color.White;
             this.gunaGradient2Panel5.Location = new System.Drawing.Point(1078, 589);
             this.gunaGradient2Panel5.Name = "gunaGradient2Panel5";
-            this.gunaGradient2Panel5.Size = new System.Drawing.Size(511, 283);
+            this.gunaGradient2Panel5.Size = new System.Drawing.Size(511, 325);
             this.gunaGradient2Panel5.TabIndex = 9;
             // 
             // btn_saveBill
@@ -571,7 +575,7 @@
             this.btn_saveBill.Image = global::MilkTeaShop.Properties.Resources.icons8_save_32;
             this.btn_saveBill.ImageSize = new System.Drawing.Size(23, 23);
             this.btn_saveBill.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.btn_saveBill.Location = new System.Drawing.Point(50, 200);
+            this.btn_saveBill.Location = new System.Drawing.Point(50, 254);
             this.btn_saveBill.Name = "btn_saveBill";
             this.btn_saveBill.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btn_saveBill.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -603,7 +607,7 @@
             this.btn_printBill.Image = global::MilkTeaShop.Properties.Resources.icons8_money_bag_32;
             this.btn_printBill.ImageSize = new System.Drawing.Size(23, 23);
             this.btn_printBill.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.btn_printBill.Location = new System.Drawing.Point(305, 200);
+            this.btn_printBill.Location = new System.Drawing.Point(305, 254);
             this.btn_printBill.Name = "btn_printBill";
             this.btn_printBill.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btn_printBill.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -622,7 +626,7 @@
             // 
             this.lbl_Pay.AutoSize = true;
             this.lbl_Pay.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Pay.Location = new System.Drawing.Point(331, 144);
+            this.lbl_Pay.Location = new System.Drawing.Point(318, 187);
             this.lbl_Pay.Name = "lbl_Pay";
             this.lbl_Pay.Size = new System.Drawing.Size(147, 32);
             this.lbl_Pay.TabIndex = 5;
@@ -631,10 +635,10 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(49, 144);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(49, 187);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(98, 23);
+            this.label5.Size = new System.Drawing.Size(136, 32);
             this.label5.TabIndex = 4;
             this.label5.Text = "Thanh toán";
             // 
@@ -642,7 +646,7 @@
             // 
             this.lbl_Sale.AutoSize = true;
             this.lbl_Sale.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Sale.Location = new System.Drawing.Point(352, 86);
+            this.lbl_Sale.Location = new System.Drawing.Point(352, 129);
             this.lbl_Sale.Name = "lbl_Sale";
             this.lbl_Sale.Size = new System.Drawing.Size(42, 23);
             this.lbl_Sale.TabIndex = 3;
@@ -655,7 +659,7 @@
             this.ckb_Sale.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.ckb_Sale.FillColor = System.Drawing.Color.White;
             this.ckb_Sale.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckb_Sale.Location = new System.Drawing.Point(50, 82);
+            this.ckb_Sale.Location = new System.Drawing.Point(50, 125);
             this.ckb_Sale.Name = "ckb_Sale";
             this.ckb_Sale.Size = new System.Drawing.Size(91, 27);
             this.ckb_Sale.TabIndex = 2;
@@ -665,7 +669,7 @@
             // 
             this.lbl_TotalBill.AutoSize = true;
             this.lbl_TotalBill.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TotalBill.Location = new System.Drawing.Point(352, 27);
+            this.lbl_TotalBill.Location = new System.Drawing.Point(352, 70);
             this.lbl_TotalBill.Name = "lbl_TotalBill";
             this.lbl_TotalBill.Size = new System.Drawing.Size(104, 23);
             this.lbl_TotalBill.TabIndex = 1;
@@ -675,7 +679,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(47, 27);
+            this.label2.Location = new System.Drawing.Point(47, 70);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(118, 23);
             this.label2.TabIndex = 0;
@@ -711,6 +715,26 @@
             this.label3.Size = new System.Drawing.Size(197, 25);
             this.label3.TabIndex = 0;
             this.label3.Text = "Danh sách sản phẩm";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(52, 24);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(205, 23);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Số điện thoại khách hàng";
+            // 
+            // lbl_SDTKH
+            // 
+            this.lbl_SDTKH.AutoSize = true;
+            this.lbl_SDTKH.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_SDTKH.Location = new System.Drawing.Point(352, 24);
+            this.lbl_SDTKH.Name = "lbl_SDTKH";
+            this.lbl_SDTKH.Size = new System.Drawing.Size(42, 23);
+            this.lbl_SDTKH.TabIndex = 9;
+            this.lbl_SDTKH.Text = "20%";
             // 
             // SellForm
             // 
@@ -786,10 +810,12 @@
         private Guna.UI.WinForms.GunaAdvenceButton btn_saveBill;
         private Guna.UI.WinForms.GunaCirclePictureBox gunaCirclePictureBox1;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private Guna.UI.WinForms.GunaLabel gunaLabel3;
+        private Guna.UI.WinForms.GunaLabel lbl_CurrentStaff;
         private Guna.UI.WinForms.GunaButton btn_FindProduct;
         private Guna.UI.WinForms.GunaGradient2Panel gunaGradient2Panel4;
         private System.Windows.Forms.Label label3;
         private Guna.UI.WinForms.GunaTextBox txt_KeyWord;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbl_SDTKH;
     }
 }

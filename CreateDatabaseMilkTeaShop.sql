@@ -685,7 +685,8 @@ BEGIN
 	INSERT INTO HoaDon(SDT, MaNV, ThoiGianDat, TriGiaHoaDon)
 	VALUES(@SDT, @MaNV, @ThoiGianDat, @TriGiaHoaDon);
 END;
-
+exec proc_CreateBill '0123156789', 'NV002', '2024-04-11', '50000'
+SELECT * FROM HoaDon
 GO
 
 -- Procedure tìm kiếm hóa đơn

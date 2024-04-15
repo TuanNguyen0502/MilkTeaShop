@@ -22,6 +22,7 @@ namespace MilkTeaShop
         private string trangthai;
         private Image icon;
         private DateTime thoigianban;
+        private string makh;
         public string MaSP
         {
             get { return masp; }
@@ -67,6 +68,11 @@ namespace MilkTeaShop
         {
             get { return icon; }
             set { icon = value; this.BackgroundImage = value; }
+        }
+        public string MaKH
+        {
+            get { return makh; }
+            set { makh = value; lbl_MaKH.Text = value; }
         }
         #endregion
         public GunaNumeric Numeric_Quantities

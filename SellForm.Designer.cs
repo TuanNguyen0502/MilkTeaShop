@@ -37,7 +37,6 @@
             this.gunaShadowPanel1 = new Guna.UI.WinForms.GunaShadowPanel();
             this.gunaGradient2Panel3 = new Guna.UI.WinForms.GunaGradient2Panel();
             this.gunaLabel3 = new Guna.UI.WinForms.GunaLabel();
-            this.txt_KeyWord = new Guna.UI.WinForms.GunaTextBox();
             this.gunaLabel2 = new Guna.UI.WinForms.GunaLabel();
             this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.flp_ContainsItem = new System.Windows.Forms.FlowLayoutPanel();
@@ -51,6 +50,8 @@
             this.lbl_TotalBill = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.flp_ContainsOrder = new System.Windows.Forms.FlowLayoutPanel();
+            this.gunaGradient2Panel4 = new Guna.UI.WinForms.GunaGradient2Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.btn_saveBill = new Guna.UI.WinForms.GunaAdvenceButton();
             this.btn_printBill = new Guna.UI.WinForms.GunaAdvenceButton();
             this.btn_FindProduct = new Guna.UI.WinForms.GunaButton();
@@ -66,12 +67,14 @@
             this.btn_SinhTo = new Guna.UI.WinForms.GunaAdvenceTileButton();
             this.btn_TraiCay = new Guna.UI.WinForms.GunaAdvenceTileButton();
             this.btn_NuocEp = new Guna.UI.WinForms.GunaAdvenceTileButton();
+            this.txt_KeyWord = new Guna.UI.WinForms.GunaTextBox();
             this.gunaPanel1.SuspendLayout();
             this.gunaGradient2Panel1.SuspendLayout();
             this.gunaShadowPanel1.SuspendLayout();
             this.gunaGradient2Panel3.SuspendLayout();
             this.gunaGradient2Panel2.SuspendLayout();
             this.gunaGradient2Panel5.SuspendLayout();
+            this.gunaGradient2Panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -120,14 +123,14 @@
             // 
             this.gunaShadowPanel1.BackColor = System.Drawing.Color.Transparent;
             this.gunaShadowPanel1.BaseColor = System.Drawing.Color.White;
+            this.gunaShadowPanel1.Controls.Add(this.txt_KeyWord);
             this.gunaShadowPanel1.Controls.Add(this.btn_FindProduct);
             this.gunaShadowPanel1.Controls.Add(this.pictureBox3);
             this.gunaShadowPanel1.Controls.Add(this.gunaGradient2Panel3);
-            this.gunaShadowPanel1.Controls.Add(this.txt_KeyWord);
             this.gunaShadowPanel1.Controls.Add(this.pictureBox1);
             this.gunaShadowPanel1.Controls.Add(this.gunaLabel2);
             this.gunaShadowPanel1.Controls.Add(this.gunaLabel1);
-            this.gunaShadowPanel1.Location = new System.Drawing.Point(245, 67);
+            this.gunaShadowPanel1.Location = new System.Drawing.Point(245, 62);
             this.gunaShadowPanel1.Name = "gunaShadowPanel1";
             this.gunaShadowPanel1.ShadowColor = System.Drawing.Color.Black;
             this.gunaShadowPanel1.Size = new System.Drawing.Size(1362, 107);
@@ -157,24 +160,6 @@
             this.gunaLabel3.TabIndex = 9;
             this.gunaLabel3.Text = "NV001";
             // 
-            // txt_KeyWord
-            // 
-            this.txt_KeyWord.BaseColor = System.Drawing.Color.Transparent;
-            this.txt_KeyWord.BorderColor = System.Drawing.Color.Transparent;
-            this.txt_KeyWord.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txt_KeyWord.FocusedBaseColor = System.Drawing.Color.Transparent;
-            this.txt_KeyWord.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.txt_KeyWord.FocusedForeColor = System.Drawing.SystemColors.ControlText;
-            this.txt_KeyWord.Font = new System.Drawing.Font("Segoe UI Semilight", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_KeyWord.ForeColor = System.Drawing.Color.Gray;
-            this.txt_KeyWord.Location = new System.Drawing.Point(347, 34);
-            this.txt_KeyWord.Name = "txt_KeyWord";
-            this.txt_KeyWord.PasswordChar = '\0';
-            this.txt_KeyWord.SelectedText = "";
-            this.txt_KeyWord.Size = new System.Drawing.Size(298, 38);
-            this.txt_KeyWord.TabIndex = 3;
-            this.txt_KeyWord.Text = "Search for menu";
-            // 
             // gunaLabel2
             // 
             this.gunaLabel2.AutoSize = true;
@@ -198,9 +183,9 @@
             // flp_ContainsItem
             // 
             this.flp_ContainsItem.AutoScroll = true;
-            this.flp_ContainsItem.Location = new System.Drawing.Point(245, 193);
+            this.flp_ContainsItem.Location = new System.Drawing.Point(245, 253);
             this.flp_ContainsItem.Name = "flp_ContainsItem";
-            this.flp_ContainsItem.Size = new System.Drawing.Size(788, 845);
+            this.flp_ContainsItem.Size = new System.Drawing.Size(788, 785);
             this.flp_ContainsItem.TabIndex = 6;
             // 
             // gunaGradient2Panel2
@@ -282,7 +267,7 @@
             this.gunaCheckBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gunaCheckBox1.Location = new System.Drawing.Point(50, 82);
             this.gunaCheckBox1.Name = "gunaCheckBox1";
-            this.gunaCheckBox1.Size = new System.Drawing.Size(76, 20);
+            this.gunaCheckBox1.Size = new System.Drawing.Size(91, 27);
             this.gunaCheckBox1.TabIndex = 2;
             this.gunaCheckBox1.Text = "Ngày lễ";
             // 
@@ -314,6 +299,28 @@
             this.flp_ContainsOrder.Name = "flp_ContainsOrder";
             this.flp_ContainsOrder.Size = new System.Drawing.Size(544, 278);
             this.flp_ContainsOrder.TabIndex = 10;
+            // 
+            // gunaGradient2Panel4
+            // 
+            this.gunaGradient2Panel4.BackColor = System.Drawing.Color.Transparent;
+            this.gunaGradient2Panel4.Controls.Add(this.label3);
+            this.gunaGradient2Panel4.GradientColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(130)))), ((int)(((byte)(68)))));
+            this.gunaGradient2Panel4.GradientColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(72)))), ((int)(((byte)(115)))));
+            this.gunaGradient2Panel4.Location = new System.Drawing.Point(245, 193);
+            this.gunaGradient2Panel4.Name = "gunaGradient2Panel4";
+            this.gunaGradient2Panel4.Size = new System.Drawing.Size(788, 67);
+            this.gunaGradient2Panel4.TabIndex = 11;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(21, 11);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(197, 25);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Danh sách sản phẩm";
             // 
             // btn_saveBill
             // 
@@ -403,6 +410,7 @@
             this.btn_FindProduct.Size = new System.Drawing.Size(145, 42);
             this.btn_FindProduct.TabIndex = 10;
             this.btn_FindProduct.Text = "Tìm kiếm";
+            this.btn_FindProduct.Click += new System.EventHandler(this.btn_FindProduct_Click);
             // 
             // pictureBox3
             // 
@@ -461,7 +469,7 @@
             this.btn_MonKho.ForeColor = System.Drawing.Color.Gray;
             this.btn_MonKho.Image = global::MilkTeaShop.Properties.Resources.icons8_vegetables_bag_32;
             this.btn_MonKho.ImageSize = new System.Drawing.Size(36, 36);
-            this.btn_MonKho.Location = new System.Drawing.Point(12, 561);
+            this.btn_MonKho.Location = new System.Drawing.Point(12, 563);
             this.btn_MonKho.Name = "btn_MonKho";
             this.btn_MonKho.OnHoverBaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(145)))), ((int)(((byte)(221)))));
             this.btn_MonKho.OnHoverBaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(85)))), ((int)(((byte)(255)))));
@@ -488,9 +496,9 @@
             this.btn_Hat.FocusedColor = System.Drawing.Color.Empty;
             this.btn_Hat.Font = new System.Drawing.Font("Segoe UI Light", 11.75F);
             this.btn_Hat.ForeColor = System.Drawing.Color.Gray;
-            this.btn_Hat.Image = global::MilkTeaShop.Properties.Resources.icons8_nut_32;
+            this.btn_Hat.Image = global::MilkTeaShop.Properties.Resources.icons8_product_32;
             this.btn_Hat.ImageSize = new System.Drawing.Size(36, 36);
-            this.btn_Hat.Location = new System.Drawing.Point(12, 451);
+            this.btn_Hat.Location = new System.Drawing.Point(12, 82);
             this.btn_Hat.Name = "btn_Hat";
             this.btn_Hat.OnHoverBaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(145)))), ((int)(((byte)(221)))));
             this.btn_Hat.OnHoverBaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(85)))), ((int)(((byte)(255)))));
@@ -499,9 +507,9 @@
             this.btn_Hat.OnHoverImage = null;
             this.btn_Hat.OnPressedColor = System.Drawing.Color.Black;
             this.btn_Hat.Radius = 5;
-            this.btn_Hat.Size = new System.Drawing.Size(103, 93);
+            this.btn_Hat.Size = new System.Drawing.Size(103, 116);
             this.btn_Hat.TabIndex = 4;
-            this.btn_Hat.Text = "Hạt";
+            this.btn_Hat.Text = "All Products";
             this.btn_Hat.Click += new System.EventHandler(this.btn_Hat_Click);
             // 
             // btn_BanhNgot
@@ -519,7 +527,7 @@
             this.btn_BanhNgot.ForeColor = System.Drawing.Color.Gray;
             this.btn_BanhNgot.Image = global::MilkTeaShop.Properties.Resources.icons8_cake_32;
             this.btn_BanhNgot.ImageSize = new System.Drawing.Size(36, 36);
-            this.btn_BanhNgot.Location = new System.Drawing.Point(12, 322);
+            this.btn_BanhNgot.Location = new System.Drawing.Point(3, 432);
             this.btn_BanhNgot.Name = "btn_BanhNgot";
             this.btn_BanhNgot.OnHoverBaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(145)))), ((int)(((byte)(221)))));
             this.btn_BanhNgot.OnHoverBaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(85)))), ((int)(((byte)(255)))));
@@ -528,7 +536,7 @@
             this.btn_BanhNgot.OnHoverImage = null;
             this.btn_BanhNgot.OnPressedColor = System.Drawing.Color.Black;
             this.btn_BanhNgot.Radius = 5;
-            this.btn_BanhNgot.Size = new System.Drawing.Size(103, 111);
+            this.btn_BanhNgot.Size = new System.Drawing.Size(119, 111);
             this.btn_BanhNgot.TabIndex = 3;
             this.btn_BanhNgot.Text = "Bánh ngọt";
             this.btn_BanhNgot.Click += new System.EventHandler(this.btn_BanhNgot_Click);
@@ -548,7 +556,7 @@
             this.btn_SuaChua.ForeColor = System.Drawing.Color.Gray;
             this.btn_SuaChua.Image = global::MilkTeaShop.Properties.Resources.icons8_yogurt_32;
             this.btn_SuaChua.ImageSize = new System.Drawing.Size(36, 36);
-            this.btn_SuaChua.Location = new System.Drawing.Point(12, 201);
+            this.btn_SuaChua.Location = new System.Drawing.Point(12, 328);
             this.btn_SuaChua.Name = "btn_SuaChua";
             this.btn_SuaChua.OnHoverBaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(145)))), ((int)(((byte)(221)))));
             this.btn_SuaChua.OnHoverBaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(85)))), ((int)(((byte)(255)))));
@@ -577,7 +585,7 @@
             this.btn_TraSua.ForeColor = System.Drawing.Color.Gray;
             this.btn_TraSua.Image = global::MilkTeaShop.Properties.Resources.icons8_bubble_tea_32;
             this.btn_TraSua.ImageSize = new System.Drawing.Size(36, 36);
-            this.btn_TraSua.Location = new System.Drawing.Point(12, 90);
+            this.btn_TraSua.Location = new System.Drawing.Point(12, 222);
             this.btn_TraSua.Name = "btn_TraSua";
             this.btn_TraSua.OnHoverBaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(130)))), ((int)(((byte)(68)))));
             this.btn_TraSua.OnHoverBaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(72)))), ((int)(((byte)(115)))));
@@ -687,6 +695,22 @@
             this.btn_NuocEp.Text = "Nước ép";
             this.btn_NuocEp.Click += new System.EventHandler(this.btn_NuocEp_Click);
             // 
+            // txt_KeyWord
+            // 
+            this.txt_KeyWord.BaseColor = System.Drawing.Color.White;
+            this.txt_KeyWord.BorderColor = System.Drawing.Color.Silver;
+            this.txt_KeyWord.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txt_KeyWord.FocusedBaseColor = System.Drawing.Color.White;
+            this.txt_KeyWord.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.txt_KeyWord.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.txt_KeyWord.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txt_KeyWord.Location = new System.Drawing.Point(343, 31);
+            this.txt_KeyWord.Name = "txt_KeyWord";
+            this.txt_KeyWord.PasswordChar = '\0';
+            this.txt_KeyWord.SelectedText = "";
+            this.txt_KeyWord.Size = new System.Drawing.Size(286, 41);
+            this.txt_KeyWord.TabIndex = 0;
+            // 
             // SellForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -700,10 +724,12 @@
             this.Controls.Add(this.gunaShadowPanel1);
             this.Controls.Add(this.gunaPanel1);
             this.Controls.Add(this.gunaGradient2Panel1);
+            this.Controls.Add(this.gunaGradient2Panel4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SellForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SellForm";
+            this.Load += new System.EventHandler(this.SellForm_Load);
             this.gunaPanel1.ResumeLayout(false);
             this.gunaGradient2Panel1.ResumeLayout(false);
             this.gunaShadowPanel1.ResumeLayout(false);
@@ -714,6 +740,8 @@
             this.gunaGradient2Panel2.PerformLayout();
             this.gunaGradient2Panel5.ResumeLayout(false);
             this.gunaGradient2Panel5.PerformLayout();
+            this.gunaGradient2Panel4.ResumeLayout(false);
+            this.gunaGradient2Panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -740,7 +768,6 @@
         private Guna.UI.WinForms.GunaAdvenceTileButton btn_SinhTo;
         private Guna.UI.WinForms.GunaAdvenceTileButton btn_TraiCay;
         private Guna.UI.WinForms.GunaAdvenceTileButton btn_NuocEp;
-        private Guna.UI.WinForms.GunaTextBox txt_KeyWord;
         private System.Windows.Forms.FlowLayoutPanel flp_ContainsItem;
         private System.Windows.Forms.PictureBox pictureBox2;
         private Guna.UI.WinForms.GunaGradient2Panel gunaGradient2Panel2;
@@ -760,5 +787,8 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private Guna.UI.WinForms.GunaLabel gunaLabel3;
         private Guna.UI.WinForms.GunaButton btn_FindProduct;
+        private Guna.UI.WinForms.GunaGradient2Panel gunaGradient2Panel4;
+        private System.Windows.Forms.Label label3;
+        private Guna.UI.WinForms.GunaTextBox txt_KeyWord;
     }
 }

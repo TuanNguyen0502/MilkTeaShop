@@ -279,5 +279,8 @@
   <ItemGroup>
     <None Include="Resources\8-quan-sinh-to-ngon-o-sai-gon-giup-tran-day-nang-luong-202112221952077020.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-product-32.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

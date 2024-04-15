@@ -1,6 +1,4 @@
-﻿CREATE DATABASE MilkTeaShop 
-GO
-USE MilkTeaShop 
+﻿USE MilkTeaShop 
 
 GO
 -- Tao bang CongViec
@@ -53,7 +51,7 @@ CREATE TABLE NguyenLieu(
 
 GO
 -- Tao bang DonNhapNguyenLieu
-CREATE TABLE DonNhapNL(
+CREATE TABLE DonNhapNguyenLieu(
 	MaDNNL INT IDENTITY (1,1) CONSTRAINT PK_MaDNNL PRIMARY KEY,
 	NgayNhap DATE NOT NULL CHECK(DATEDIFF(year, NgayNhap, GETDATE()) >= 0), 
 	TriGiaDonNhap NUMERIC(18,0) NOT NULL CHECK(TriGiaDonNhap > 0),
@@ -62,8 +60,8 @@ CREATE TABLE DonNhapNL(
 
 GO
 -- Tao bang ChiTietDNNL
-CREATE TABLE ChiTiet_DNNL(
-	MaDNNL INT CONSTRAINT ChiTiet_DNNL_DN FOREIGN KEY REFERENCES DonNhapNL(MaDNNL),
+CREATE TABLE ChiTiet_DonNhapNguyenLieu(
+	MaDNNL INT CONSTRAINT ChiTiet_DNNL_DN FOREIGN KEY REFERENCES DonNhapNguyenLieu(MaDNNL),
 	MaNL VARCHAR(10) CONSTRAINT ChiTiet_DNNL_NL FOREIGN KEY REFERENCES NguyenLieu(MaNL),
 	CONSTRAINT PK_ChiTiet_DNNL PRIMARY KEY (MaDNNL, MaNL), 
 	SoLuong INT NOT NULL CHECK(SoLuong > 0), 
@@ -73,7 +71,7 @@ CREATE TABLE ChiTiet_DNNL(
 
 GO
 -- Tao bang DonXuatNguyenLieu
-CREATE TABLE DonXuatNL(
+CREATE TABLE DonXuatNguyenLieu(
 	MaDXNL INT IDENTITY (1,1) CONSTRAINT PK_DonXuatNL PRIMARY KEY,
 	NgayXuat DATE NOT NULL CHECK(DATEDIFF(year, NgayXuat, GETDATE()) >= 0), 
 	MaNV VARCHAR(10) CONSTRAINT FK_DonXuatNL_NV FOREIGN KEY REFERENCES NhanVien(MaNV)
@@ -81,8 +79,8 @@ CREATE TABLE DonXuatNL(
 
 GO
 -- Tao bang ChiTietDXNL
-CREATE TABLE ChiTiet_DXNL(
-	MaDXNL INT CONSTRAINT ChiTiet_DXNL_DN FOREIGN KEY REFERENCES DonXuatNL(MaDXNL),
+CREATE TABLE ChiTiet_DonXuatNguyenLieu(
+	MaDXNL INT CONSTRAINT ChiTiet_DXNL_DN FOREIGN KEY REFERENCES DonXuatNguyenLieu(MaDXNL),
 	MaNL VARCHAR(10) CONSTRAINT ChiTiet_DXNL_NL FOREIGN KEY REFERENCES NguyenLieu(MaNL),
 	CONSTRAINT PK_ChiTiet_DXNL PRIMARY KEY (MaDXNL, MaNL), 
 	SoLuong INT NOT NULL CHECK(SoLuong > 0), 
@@ -109,7 +107,7 @@ CREATE TABLE SanPham(
 
 GO
 -- Tao bang DonNhapSanPham
-CREATE TABLE DonNhapSP( 
+CREATE TABLE DonNhapSanPham( 
 	MaDNSP INT IDENTITY (1,1) CONSTRAINT PK_DonNhapSP PRIMARY KEY,
 	NgayNhap DATE NOT NULL CHECK(DATEDIFF(year, NgayNhap, GETDATE()) >= 0), 
 	TriGiaDonNhap NUMERIC(18,0) NOT NULL CHECK(TriGiaDonNhap > 0), 
@@ -118,8 +116,8 @@ CREATE TABLE DonNhapSP(
 
 GO
 -- Tao bang ChiTietDNSP
-CREATE TABLE ChiTiet_DNSP(
-	MaDNSP INT CONSTRAINT ChiTiet_DNSP_DN FOREIGN KEY REFERENCES DonNhapSP(MaDNSP),
+CREATE TABLE ChiTiet_DonNhapSanPham(
+	MaDNSP INT CONSTRAINT ChiTiet_DNSP_DN FOREIGN KEY REFERENCES DonNhapSanPham(MaDNSP),
 	MaSP VARCHAR(10) CONSTRAINT ChiTiet_DNSP_SP FOREIGN KEY REFERENCES SanPham(MaSP),
 	CONSTRAINT PK_ChiTiet_DNSP PRIMARY KEY (MaDNSP, MaSP), 
 	SoLuong INT NOT NULL CHECK(SoLuong > 0), 
@@ -241,7 +239,7 @@ GO
 
 GO
 	-- Đơn nhập nguyên liệu
-	INSERT INTO DonNhapNL(NgayNhap, TriGiaDonNhap, MaNCC) VALUES
+	INSERT INTO DonNhapNguyenLieu(NgayNhap, TriGiaDonNhap, MaNCC) VALUES
 	('2024-03-28', 6150000, 'NCC001'),
 	('2024-03-28', 7375000, 'NCC002'),
 	('2024-04-01', 6400000, 'NCC003'),
@@ -249,7 +247,7 @@ GO
 
 GO
 	-- Chi tiết đơn nhập nguyên liệu
-	INSERT INTO ChiTiet_DNNL(MaDNNL, MaNL, SoLuong, DonVi, DonGia) VALUES
+	INSERT INTO ChiTiet_DonNhapNguyenLieu(MaDNNL, MaNL, SoLuong, DonVi, DonGia) VALUES
 	-- DNNL1
 	(1, 'NL001', 55, N'Túi', 50000),
 	(1, 'NL003', 20, N'Hủ', 30000), 
@@ -277,13 +275,13 @@ GO
 
 GO
 	-- Đơn xuất nguyên liệu
-	INSERT INTO DonXuatNL(NgayXuat, MaNV) VALUES
+	INSERT INTO DonXuatNguyenLieu(NgayXuat, MaNV) VALUES
 	('2024-04-04', 'NV001'),
 	('2024-04-05', 'NV007');
 
 GO
 	-- Chi tiết đơn xuất nguyên liệu
-	INSERT INTO ChiTiet_DXNL(MaDXNL, MaNL, SoLuong, DonVi) VALUES
+	INSERT INTO ChiTiet_DonXuatNguyenLieu(MaDXNL, MaNL, SoLuong, DonVi) VALUES
 	(1, 'NL001', 5, N'Túi'),
 	(1, 'NL002', 5, N'Lon'),
 	(1, 'NL003', 5, N'Hủ'),
@@ -338,13 +336,13 @@ GO
 
 GO
 	-- Đơn nhập sản phẩm
-	INSERT INTO DonNhapSP(NgayNhap, TriGiaDonNhap, MaNCC) VALUES 
+	INSERT INTO DonNhapSanPham(NgayNhap, TriGiaDonNhap, MaNCC) VALUES 
 	('2024-04-01', 4000000, 'NCC006'),
 	('2024-04-02', 1500000, 'NCC009');
 
 GO
 	-- Chi tiết đơn nhập sản phẩm
-	INSERT INTO ChiTiet_DNSP(MaDNSP, MaSP, SoLuong, DonVi, DonGia) VALUES
+	INSERT INTO ChiTiet_DonNhapSanPham(MaDNSP, MaSP, SoLuong, DonVi, DonGia) VALUES
 	(1, 'SP18', 50, N'Bánh', 1000000),
 	(1, 'SP19', 50, N'Bánh', 1000000),
 	(1, 'SP20', 50, N'Bánh', 1000000),
@@ -435,11 +433,28 @@ GO
 	(6, 'SP07', 3),
 	(6, 'SP21', 2);
 
--- Tạo view xem thông tin khách hàng
-CREATE VIEW vie_ThongTinKH AS
-	SELECT * FROM KhachHang
+GO
+
+-- View thông tin nhân viên và công việc của nhân viên đó
+CREATE VIEW V_ThongTinNhanVien
+AS
+	SELECT nv.MaNV, nv.HoTen, nv.GioiTinh, nv.NgaySinh, nv.DiaChi, nv.SDT, nv.NgayTuyenDung, cv.TenCV, cv.Luong
+	FROM NhanVien nv, CongViec cv
+	WHERE nv.MaCV = cv.MaCV
+
+GO
+
+-- Tạo view xem thông tin sản phẩm
+CREATE VIEW v_ThongTinSanPham 
+AS
+	SELECT lsp.TenLoaiSP, sp.TenSP, sp.SoLuong, sp.DonGia
+	FROM SanPham AS sp
+	JOIN LoaiSanPham AS lsp ON sp.MaLoaiSP = lsp.MaLoaiSP
+
+GO
+
 -- Tạo view xem doanh thu đã bán tại quầy trong ngày
-CREATE VIEW vie_DoanhThuTaiQuayTrongNgay AS
+CREATE VIEW v_DoanhThuTaiQuayTrongNgay AS
 	SELECT sp.MaSP, sp.TenSP, SUM(cthd.SoLuong*sp.DonGia) AS 'Doanh thu tại quầy',
 			cthd.SoLuong AS 'Số lượng tại quầy'
 	FROM HoaDon AS hd
@@ -447,13 +462,86 @@ CREATE VIEW vie_DoanhThuTaiQuayTrongNgay AS
 	JOIN SanPham AS sp ON cthd.MaSP = sp.MaSP 
 	WHERE CONVERT(DATE, hd.ThoiGianDat) = CONVERT(DATE, GETDATE())
 	GROUP BY sp.MaSP,sp.TenSP, cthd.SoLuong
--- Tạo view xem thông tin sản phẩm
-CREATE VIEW vie_ThongTinSP AS
-	SELECT lsp.TenLoaiSP, sp.TenSP, sp.SoLuong, sp.DonGia
-	FROM SanPham AS sp
-	JOIN LoaiSanPham AS lsp ON sp.MaLoaiSP = lsp.MaLoaiSP
--- Trigger kiểm tra nguyên liệu hoặc sản phẩm còn để bán không
 
+GO
+
+-- Xem thông tin nhà cung cấp
+CREATE VIEW v_ThongTinNhaCungCap AS
+    SELECT 
+        MaNCC, 
+        TenNCC, 
+        DiaChi, 
+        SDT
+    FROM NhaCungCap
+GO
+
+-- Xem cách chế biến sản phẩm
+CREATE VIEW v_CachCheBienSanPham AS
+    SELECT 
+        SP.TenSP, 
+        NL.TenNL, 
+        CB.LieuLuong, 
+        CB.DonVi
+    FROM SanPham SP
+        INNER JOIN CheBien CB ON SP.MaSP = CB.MaSP
+        INNER JOIN NguyenLieu NL ON CB.MaNL = NL.MaNL
+GO
+
+-- View xem số lượng nguyên liệu còn lại
+CREATE VIEW v_NguyenLieuConLai AS
+	SELECT MaNL, TenNL, SoLuong, DonVi
+	FROM NguyenLieu
+	WHERE SoLuong > 0
+
+GO
+
+-- Tạo view xem thông tin khách hàng
+CREATE VIEW v_ThongTinKhacHang
+AS
+	SELECT * FROM KhachHang
+
+GO
+
+-- Xem lịch sử mua hàng của khách hàng
+CREATE VIEW v_LichSuMuaHang AS
+	SELECT 
+		k.TenKH,
+		K.SDT,
+		H.MaHD,
+		H.ThoiGianDat,
+		S.TenSP,
+		C.SoLuong,
+		S.DonGia
+	FROM KhachHang K 
+		INNER JOIN HoaDon H ON K.SDT = H.SDT
+		INNER JOIN ChiTietHoaDon C ON H.MaHD = C.MaHD
+		INNER JOIN SanPham S ON C.MaSP = S.MaSP
+
+GO
+
+--Trigger kiểm tra tên sản phẩm đã tồn tại chưa (khi thêm hoặc update sp)
+CREATE TRIGGER TG_TrungTenSanPham ON SanPham
+FOR INSERT, UPDATE
+AS
+BEGIN
+	IF EXISTS (
+		SELECT *
+		FROM inserted i
+		WHERE EXISTS (
+			SELECT *
+			FROM SanPham sp
+			WHERE sp.TenSP = i.TenSP AND sp.MaSP <> i.MaSP
+		)
+	)
+	BEGIN
+		PRINT N'Tên sản phẩm bị trùng'
+		ROLLBACK;
+	END
+END
+
+GO
+
+-- Trigger kiểm tra nguyên liệu còn để bán không
 CREATE TRIGGER tg_KiemTraTrangThaiNguyenLieu
 ON NguyenLieu
 AFTER INSERT, UPDATE
@@ -470,7 +558,10 @@ BEGIN
 		SET TrangThai = 'Available'
 	END
 END
--- 
+
+GO
+
+-- TRigger kiểm tra sản phẩm còn để bán không
 CREATE TRIGGER tg_KiemTraTrangThaiSanPham
 ON ChiTietHoaDon
 AFTER INSERT
@@ -478,8 +569,6 @@ AS
 BEGIN
 	Declare @MaSP nvarchar(10)
 	Select @MaSP = i.MaSP From inserted i
-	IF (@MaSP = 'SP15' OR @MaSP = 'SP16' OR @MaSP = 'SP17' OR @MaSP = 'SP18' 
-		OR @MaSP = 'SP19' OR @MaSP = 'SP20' OR @MaSP = 'SP21')
 	BEGIN
 		IF EXISTS (SELECT * FROM SanPham WHERE SoLuong < 10 
 					AND (MaSP = 'SP15' OR MaSP = 'SP16' OR MaSP = 'SP17' OR MaSP = 'SP18' 
@@ -500,6 +589,94 @@ BEGIN
 	END
 END
 
+GO
+
+-- Trigger cập nhật số lượng nguyên liệu sau khi nhập hàng
+CREATE TRIGGER trg_CapNhatSoLuongNguyenLieuKhiNhap
+ON ChiTiet_DonNhapNguyenLieu
+AFTER INSERT
+AS
+BEGIN
+    UPDATE NguyenLieu
+    SET NguyenLieu.SoLuong = NguyenLieu.SoLuong + i.SoLuong 
+    FROM inserted i
+    WHERE NguyenLieu.MaNL = i.MaNL; 
+END;
+
+GO
+
+-- Trigger cập nhật số lượng sản phẩm sau khi nhập hàng
+CREATE TRIGGER trg_CapNhatSoLuongSanPhamKhiNhap
+ON ChiTiet_DonNhapSanPham
+AFTER INSERT
+AS
+BEGIN
+	UPDATE SanPham
+	SET SanPham.SoLuong = SanPham.SoLuong + i.SoLuong
+	From inserted i
+	WHERE SanPham.MaSP = i.MaSP
+END;
+
+GO
+
+-- Trigger cập nhật số lượng nguyên liệu khi xuất hàng.
+CREATE TRIGGER trg_CapNhatSoLuongNguyenLieuKhiXuat
+ON ChiTiet_DonXuatNguyenLieu
+AFTER INSERT
+AS
+BEGIN
+    DECLARE @MaNL VARCHAR(10);
+    DECLARE @SoLuong INT;
+
+    SELECT @MaNL = i.MaNL, @SoLuong = i.SoLuong
+    FROM inserted i;
+
+    IF NOT EXISTS (SELECT 1 FROM NguyenLieu WHERE MaNL = @MaNL AND SoLuong >= @SoLuong)
+    BEGIN
+        PRINT N'Số lượng nguyên liệu không đủ để xuất.';
+        ROLLBACK;
+    END
+    ELSE
+    BEGIN
+        UPDATE NguyenLieu
+        SET SoLuong = SoLuong - @SoLuong
+        WHERE MaNL = @MaNL;
+    END
+END;
+
+GO
+
+-- Trigger cập nhật số lượng sản phẩm sau khi bán
+CREATE TRIGGER trg_CapNhatSoLuongSanPhamKhiBan
+ON ChiTietHoaDon
+AFTER INSERT
+AS
+BEGIN
+    DECLARE @MaSP VARCHAR(10);
+    DECLARE @SoLuong INT;
+
+    SELECT @MaSP = i.MaSP, @SoLuong = i.SoLuong
+    FROM inserted i;
+
+    IF NOT EXISTS (SELECT 1 FROM CheBien WHERE MaSP = @MaSP)
+    BEGIN
+        IF EXISTS (SELECT 1 FROM SanPham WHERE MaSP = @MaSP AND SoLuong >= @SoLuong)
+        BEGIN
+            UPDATE SanPham
+            SET SoLuong = SoLuong - @SoLuong
+            WHERE MaSP = @MaSP;
+        END
+        ELSE
+        BEGIN
+            PRINT N'Số lượng sản phẩm không đủ để bán.';
+            ROLLBACK;
+            RETURN;
+        END
+    END
+END;
+
+GO
+
 -- Procedure tạo hóa đơn
 CREATE PROCEDURE proc_CreateBill
 @SDT varchar(12), @MaNV varchar(10), @ThoiGianDat datetime, @TriGiaHoaDon NUMERIC(18,0)
@@ -508,6 +685,9 @@ BEGIN
 	INSERT INTO HoaDon(SDT, MaNV, ThoiGianDat, TriGiaHoaDon)
 	VALUES(@SDT, @MaNV, @ThoiGianDat, @TriGiaHoaDon);
 END;
+
+GO
+
 -- Procedure tìm kiếm hóa đơn
 CREATE PROCEDURE proc_FindBill
 AS
@@ -519,6 +699,68 @@ BEGIN
 		  ThoiGianDat LIKE '%'+@Keyword+'%' OR TriGiaHoaDon LIKE '%'+@Keyword+'%'
 END;
 
-SELECT * FROM SanPham
-SELECT * FROM LoaiSanPham
-SELECT * FROM SanPham sp WHERE sp.MaLoaiSP = 'LSP01'
+GO
+
+-- Procedure thêm nguyên liệu
+CREATE PROCEDURE proc_themNguyenLieu
+@MaNL varchar(10),
+@TenNL nvarchar(255),
+@SoLuong int,
+@DonVi nvarchar(20),
+@TrangThai varchar(15)
+AS
+BEGIN
+	BEGIN TRY
+		--Thêm mới sản phẩm
+		INSERT INTO dbo.NguyenLieu (MaNL, TenNL, SoLuong, DonVi, TrangThai)
+		VALUES (@MaNL, @TenNL, @SoLuong, @DonVi, @TrangThai)
+	END TRY
+	BEGIN CATCH
+		DECLARE @err NVARCHAR(MAX)
+		SELECT @err = N'Lỗi ' + ERROR_MESSAGE()
+		RAISERROR(@err, 16, 1)
+	END CATCH
+END
+
+GO
+	-- Test proc_themNguyenLieu
+	Execute proc_themNguyenLieu 'NL020', N'Trà Test', 50, N'Túi','Available' 
+	select * from NguyenLieu
+	delete nguyenlieu where MaNL= 'NL020'
+
+GO
+
+-- Hàm tìm kiếm nguyên liệu
+CREATE FUNCTION func_timNguyenLieu (@string NVARCHAR(255))
+RETURNS @IngreList TABLE (MaNL varchar(10), TenNL nvarchar(255),SoLuong int, DonVi nvarchar(10), TrangThai varchar(15))
+AS
+BEGIN
+	INSERT INTO @IngreList
+	SELECT *
+	FROM dbo.NguyenLieu
+	WHERE CONCAT(MaNL, TenNL, DonVi, TrangThai) LIKE N'%' + @string + '%'
+	RETURN
+END
+
+GO
+--(MaSP varchar(10), TenSP nvarchar(255), SoLuong int, DonGia numeric(18,0), MaLoaiSP varchar(10), TrangThai nvarchar(100) )
+CREATE FUNCTION func_timSanPhamTheoTen (
+	@keyword nvarchar(255)
+)
+RETURNS TABLE AS
+RETURN (
+	SELECT *
+	FROM SanPham
+	WHERE TenSP LIKE N'%'+@keyword+'%' OR MaLoaiSP LIKE N'%'+@keyword+'%'
+)
+SELECT * FROM func_timSanPhamTheoTen ('Trà')
+	-- test func_timNguyenLieu
+	Select * from func_timNguyenLieu ('Trà')
+	CREATE TABLE SanPham( 
+	MaSP VARCHAR(10) CONSTRAINT PK_SP PRIMARY KEY,
+	TenSP NVARCHAR(255) NOT NULL, 
+	SoLuong INT, 
+	DonGia NUMERIC(18,0) NOT NULL CHECK(DonGia > 0), 
+	MaLoaiSP VARCHAR(10) FOREIGN KEY REFERENCES LoaiSanPham(MaLoaiSP),
+	TrangThai NVARCHAR(100) DEFAULT 'Available'
+)

@@ -96,6 +96,12 @@
     <Compile Include="FStaff.Designer.cs">
       <DependentUpon>FStaff.cs</DependentUpon>
     </Compile>
+    <Compile Include="FStaff_Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FStaff_Add.Designer.cs">
+      <DependentUpon>FStaff_Add.cs</DependentUpon>
+    </Compile>
     <Compile Include="FStaff_Detail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FStaff.resx">
       <DependentUpon>FStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FStaff_Add.resx">
+      <DependentUpon>FStaff_Add.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FStaff_Detail.resx">
       <DependentUpon>FStaff_Detail.cs</DependentUpon>

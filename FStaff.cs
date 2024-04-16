@@ -52,5 +52,11 @@ namespace MilkTeaShop
                 }
             }
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+           FStaff_Add fStaff_Add = new FStaff_Add();
+            fStaff_Add.ShowDialog();
+        }
     }
 }

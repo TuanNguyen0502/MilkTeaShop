@@ -171,6 +171,9 @@
     <EmbeddedResource Include="FStaff.resx">
       <DependentUpon>FStaff.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FStaff_Detail.resx">
+      <DependentUpon>FStaff_Detail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>

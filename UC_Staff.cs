@@ -18,11 +18,6 @@ namespace MilkTeaShop
             InitializeComponent();
         }
 
-        private void button_Detail_Click(object sender, EventArgs e)
-        {
-
-        }
-
         public GunaLabel LblID { get => lblID; set => lblID = value; }
         public GunaLabel LblName { get => lblName; set => lblName = value; }
         public GunaLabel LblSex { get => lblSex; set => lblSex = value; }
@@ -32,5 +27,11 @@ namespace MilkTeaShop
         public GunaLabel LblNgayTuyenDung { get => lblDOREC; set => lblDOREC = value; }
         public GunaLabel LblJob { get => lblJob; set => lblJob = value; }
         public GunaLabel LblSalary { get => lblSalary; set => lblSalary = value; }
+
+        private void button_Detail_Click(object sender, EventArgs e)
+        {
+            FStaff_Detail fStaff_Detail = new FStaff_Detail();
+            fStaff_Detail.ShowDialog();
+        }
     }
 }

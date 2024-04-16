@@ -55,7 +55,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.27577F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.345361F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.569588F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 76F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 83F));
             this.tableLayoutPanel1.Controls.Add(this.lblDOREC, 6, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblJob, 7, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblSalary, 8, 0);
@@ -78,7 +78,7 @@
             this.lblDOREC.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDOREC.AutoSize = true;
             this.lblDOREC.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDOREC.Location = new System.Drawing.Point(1142, 13);
+            this.lblDOREC.Location = new System.Drawing.Point(1136, 13);
             this.lblDOREC.Name = "lblDOREC";
             this.lblDOREC.Size = new System.Drawing.Size(150, 25);
             this.lblDOREC.TabIndex = 9;
@@ -90,7 +90,7 @@
             this.lblJob.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblJob.AutoSize = true;
             this.lblJob.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblJob.Location = new System.Drawing.Point(1317, 13);
+            this.lblJob.Location = new System.Drawing.Point(1309, 13);
             this.lblJob.Name = "lblJob";
             this.lblJob.Size = new System.Drawing.Size(90, 25);
             this.lblJob.TabIndex = 10;
@@ -102,7 +102,7 @@
             this.lblSalary.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSalary.AutoSize = true;
             this.lblSalary.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSalary.Location = new System.Drawing.Point(1454, 13);
+            this.lblSalary.Location = new System.Drawing.Point(1445, 13);
             this.lblSalary.Name = "lblSalary";
             this.lblSalary.Size = new System.Drawing.Size(63, 25);
             this.lblSalary.TabIndex = 8;
@@ -126,7 +126,7 @@
             this.lblName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(159, 13);
+            this.lblName.Location = new System.Drawing.Point(157, 13);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(89, 25);
             this.lblName.TabIndex = 4;
@@ -138,7 +138,7 @@
             this.lblSex.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSex.AutoSize = true;
             this.lblSex.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSex.Location = new System.Drawing.Point(336, 13);
+            this.lblSex.Location = new System.Drawing.Point(333, 13);
             this.lblSex.Name = "lblSex";
             this.lblSex.Size = new System.Drawing.Size(78, 25);
             this.lblSex.TabIndex = 5;
@@ -150,7 +150,7 @@
             this.lblPhone.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblPhone.AutoSize = true;
             this.lblPhone.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhone.Location = new System.Drawing.Point(476, 13);
+            this.lblPhone.Location = new System.Drawing.Point(473, 13);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(44, 25);
             this.lblPhone.TabIndex = 11;
@@ -162,7 +162,7 @@
             this.lblDOB.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDOB.AutoSize = true;
             this.lblDOB.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDOB.Location = new System.Drawing.Point(1001, 13);
+            this.lblDOB.Location = new System.Drawing.Point(996, 13);
             this.lblDOB.Name = "lblDOB";
             this.lblDOB.Size = new System.Drawing.Size(91, 25);
             this.lblDOB.TabIndex = 6;
@@ -174,7 +174,7 @@
             this.lblAddress.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblAddress.AutoSize = true;
             this.lblAddress.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddress.Location = new System.Drawing.Point(735, 13);
+            this.lblAddress.Location = new System.Drawing.Point(731, 13);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(65, 25);
             this.lblAddress.TabIndex = 7;
@@ -202,7 +202,7 @@
             this.button_Detail.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.button_Detail.ImageSize = new System.Drawing.Size(20, 20);
             this.button_Detail.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.button_Detail.Location = new System.Drawing.Point(1561, 8);
+            this.button_Detail.Location = new System.Drawing.Point(1557, 8);
             this.button_Detail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_Detail.Name = "button_Detail";
             this.button_Detail.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
@@ -214,6 +214,7 @@
             this.button_Detail.Radius = 10;
             this.button_Detail.Size = new System.Drawing.Size(61, 34);
             this.button_Detail.TabIndex = 12;
+            this.button_Detail.Click += new System.EventHandler(this.button_Detail_Click);
             // 
             // UC_Staff
             // 

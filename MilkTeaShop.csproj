@@ -96,6 +96,12 @@
     <Compile Include="FStaff.Designer.cs">
       <DependentUpon>FStaff.cs</DependentUpon>
     </Compile>
+    <Compile Include="FStaff_Detail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FStaff_Detail.Designer.cs">
+      <DependentUpon>FStaff_Detail.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainFormManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -135,10 +135,7 @@ CREATE TABLE HoaDon(
 	TriGiaHoaDon NUMERIC(18,0) NOT NULL CHECK(TriGiaHoaDon > 0), 
 	GhiChu NVARCHAR(MAX)
 )
-SELECT hd.MaHD, nv.HoTen, kh.TenKH, hd.ThoiGianDat, hd.GhiChu, hd.TriGiaHoaDon
-FROM HoaDon hd
-JOIN NhanVien nv ON hd.MaNV = nv.MaNV
-JOIN KhachHang kh ON hd.SDT = kh.SDT
+
 GO
 -- Tao bang ChiTietHoaDon
 CREATE TABLE ChiTietHoaDon( 
@@ -694,15 +691,18 @@ GO
 
 -- Procedure tìm kiếm hóa đơn
 CREATE PROCEDURE proc_FindBill
+@Keyword nvarchar(100)
 AS
 BEGIN
-	Declare @Keyword nvarchar(100)
-	SELECT *
-	FROM HoaDon
-	WHERE MaHD LIKE '%'+@Keyword+'%' OR MaNV LIKE '%'+@Keyword+'%' OR MaHD LIKE '%'+@Keyword+'%' OR
-		  ThoiGianDat LIKE '%'+@Keyword+'%' OR TriGiaHoaDon LIKE '%'+@Keyword+'%'
+	SELECT hd.MaHD, nv.HoTen, kh.TenKH, hd.ThoiGianDat, hd.GhiChu, hd.TriGiaHoaDon
+	FROM HoaDon hd
+	JOIN NhanVien nv ON hd.MaNV = nv.MaNV
+	JOIN KhachHang kh ON hd.SDT = kh.SDT
+	WHERE hd.MaHD LIKE '%'+@Keyword+'%' OR nv.HoTen LIKE '%'+@Keyword+'%' OR kh.TenKH LIKE '%'+@Keyword+'%' OR
+		  hd.ThoiGianDat LIKE '%'+@Keyword+'%' OR hd.TriGiaHoaDon LIKE '%'+@Keyword+'%' OR hd.GhiChu LIKE '%'+@Keyword+'%'
 END;
-
+exec proc_FindBill N'Long'
+SELECT * FROM HoaDon
 GO
 
 -- Procedure thêm nguyên liệu

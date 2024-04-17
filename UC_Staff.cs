@@ -30,7 +30,7 @@ namespace MilkTeaShop
 
         private void button_Detail_Click(object sender, EventArgs e)
         {
-            FStaff_Detail fStaff_Detail = new FStaff_Detail();
+            FStaff_Detail fStaff_Detail = new FStaff_Detail(lblID.Text);
             fStaff_Detail.ShowDialog();
         }
     }

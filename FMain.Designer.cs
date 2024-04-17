@@ -222,6 +222,7 @@
             // 
             // panel_Center
             // 
+            this.panel_Center.AutoScroll = true;
             this.panel_Center.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_Center.Location = new System.Drawing.Point(328, 0);
             this.panel_Center.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

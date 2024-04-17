@@ -13,9 +13,11 @@ namespace MilkTeaShop
 {
     public partial class UC_Customer : UserControl
     {
-        public UC_Customer()
+        private string sdt;
+        public UC_Customer(string sdt)
         {
             InitializeComponent();
+            this.sdt = sdt;
         }
 
         public GunaLabel Label_Name { get => label_Name; set => label_Name = value; }
@@ -25,7 +27,7 @@ namespace MilkTeaShop
 
         private void button_Detail_Click(object sender, EventArgs e)
         {
-            FCustomer_Detail fCustomer_Detail = new FCustomer_Detail();
+            FCustomer_Detail fCustomer_Detail = new FCustomer_Detail(sdt);
             fCustomer_Detail.ShowDialog();
         }
     }

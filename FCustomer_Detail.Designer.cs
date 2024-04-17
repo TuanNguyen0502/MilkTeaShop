@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FCustomer_Detail));
             this.label_Name = new Guna.UI.WinForms.GunaLabel();
             this.label_Phone = new Guna.UI.WinForms.GunaLabel();
             this.label_Gender = new Guna.UI.WinForms.GunaLabel();
@@ -38,6 +37,7 @@
             this.radioButton_Male = new Guna.UI.WinForms.GunaRadioButton();
             this.radioButton_Female = new Guna.UI.WinForms.GunaRadioButton();
             this.dateTimePicker_DOB = new Guna.UI.WinForms.GunaDateTimePicker();
+            this.button_Delete = new Guna.UI.WinForms.GunaAdvenceButton();
             this.button_Save = new Guna.UI.WinForms.GunaAdvenceButton();
             this.SuspendLayout();
             // 
@@ -170,6 +170,39 @@
             this.dateTimePicker_DOB.Text = "4/11/2024";
             this.dateTimePicker_DOB.Value = new System.DateTime(2024, 4, 11, 9, 52, 58, 243);
             // 
+            // button_Delete
+            // 
+            this.button_Delete.AnimationHoverSpeed = 0.07F;
+            this.button_Delete.AnimationSpeed = 0.03F;
+            this.button_Delete.BackColor = System.Drawing.Color.Transparent;
+            this.button_Delete.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.button_Delete.BorderColor = System.Drawing.Color.Black;
+            this.button_Delete.CheckedBaseColor = System.Drawing.Color.Gray;
+            this.button_Delete.CheckedBorderColor = System.Drawing.Color.Black;
+            this.button_Delete.CheckedForeColor = System.Drawing.Color.White;
+            this.button_Delete.CheckedImage = global::MilkTeaShop.Properties.Resources.icons8_delete_64;
+            this.button_Delete.CheckedLineColor = System.Drawing.Color.DimGray;
+            this.button_Delete.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.button_Delete.FocusedColor = System.Drawing.Color.Empty;
+            this.button_Delete.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Delete.ForeColor = System.Drawing.Color.White;
+            this.button_Delete.Image = global::MilkTeaShop.Properties.Resources.icons8_delete_64;
+            this.button_Delete.ImageSize = new System.Drawing.Size(30, 30);
+            this.button_Delete.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
+            this.button_Delete.Location = new System.Drawing.Point(241, 395);
+            this.button_Delete.Name = "button_Delete";
+            this.button_Delete.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.button_Delete.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.button_Delete.OnHoverForeColor = System.Drawing.Color.White;
+            this.button_Delete.OnHoverImage = null;
+            this.button_Delete.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
+            this.button_Delete.OnPressedColor = System.Drawing.Color.Black;
+            this.button_Delete.Radius = 10;
+            this.button_Delete.Size = new System.Drawing.Size(178, 65);
+            this.button_Delete.TabIndex = 11;
+            this.button_Delete.Text = "Delete";
+            this.button_Delete.Click += new System.EventHandler(this.button_Delete_Click);
+            // 
             // button_Save
             // 
             this.button_Save.AnimationHoverSpeed = 0.07F;
@@ -180,7 +213,7 @@
             this.button_Save.CheckedBaseColor = System.Drawing.Color.Gray;
             this.button_Save.CheckedBorderColor = System.Drawing.Color.Black;
             this.button_Save.CheckedForeColor = System.Drawing.Color.White;
-            this.button_Save.CheckedImage = ((System.Drawing.Image)(resources.GetObject("button_Save.CheckedImage")));
+            this.button_Save.CheckedImage = global::MilkTeaShop.Properties.Resources.icons8_save_64;
             this.button_Save.CheckedLineColor = System.Drawing.Color.DimGray;
             this.button_Save.DialogResult = System.Windows.Forms.DialogResult.None;
             this.button_Save.FocusedColor = System.Drawing.Color.Empty;
@@ -201,12 +234,14 @@
             this.button_Save.Size = new System.Drawing.Size(153, 65);
             this.button_Save.TabIndex = 11;
             this.button_Save.Text = "Save";
+            this.button_Save.Click += new System.EventHandler(this.button_Save_Click);
             // 
             // FCustomer_Detail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 483);
+            this.Controls.Add(this.button_Delete);
             this.Controls.Add(this.button_Save);
             this.Controls.Add(this.dateTimePicker_DOB);
             this.Controls.Add(this.radioButton_Female);
@@ -222,6 +257,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detail";
+            this.Load += new System.EventHandler(this.FCustomer_Detail_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,5 +274,6 @@
         private Guna.UI.WinForms.GunaRadioButton radioButton_Female;
         private Guna.UI.WinForms.GunaDateTimePicker dateTimePicker_DOB;
         private Guna.UI.WinForms.GunaAdvenceButton button_Save;
+        private Guna.UI.WinForms.GunaAdvenceButton button_Delete;
     }
 }

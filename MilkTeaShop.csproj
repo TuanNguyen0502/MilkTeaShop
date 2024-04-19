@@ -57,11 +57,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BillForm.cs">
+    <Compile Include="FBillForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BillForm.Designer.cs">
-      <DependentUpon>BillForm.cs</DependentUpon>
+    <Compile Include="FBillForm.Designer.cs">
+      <DependentUpon>FBillForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ClickButtonEventArg.cs" />
     <Compile Include="DBConnection.cs" />
@@ -116,11 +116,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SellForm.cs">
+    <Compile Include="FSellForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SellForm.Designer.cs">
-      <DependentUpon>SellForm.cs</DependentUpon>
+    <Compile Include="FSellForm.Designer.cs">
+      <DependentUpon>FSellForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Staff.cs" />
     <Compile Include="UC_BillInfomation.cs">
@@ -159,8 +159,8 @@
     <Compile Include="UC_Staff.Designer.cs">
       <DependentUpon>UC_Staff.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="BillForm.resx">
-      <DependentUpon>BillForm.cs</DependentUpon>
+    <EmbeddedResource Include="FBillForm.resx">
+      <DependentUpon>FBillForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FCustomer.resx">
       <DependentUpon>FCustomer.cs</DependentUpon>
@@ -188,8 +188,8 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="SellForm.resx">
-      <DependentUpon>SellForm.cs</DependentUpon>
+    <EmbeddedResource Include="FSellForm.resx">
+      <DependentUpon>FSellForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_BillInfomation.resx">
       <DependentUpon>UC_BillInfomation.cs</DependentUpon>

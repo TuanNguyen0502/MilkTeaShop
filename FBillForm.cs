@@ -10,12 +10,12 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 namespace MilkTeaShop
 {
-    public partial class BillForm : Form
+    public partial class FBillForm : Form
     {
         readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True";
         DBConnection dbConn = new DBConnection();
         string sqlQuery;
-        public BillForm()
+        public FBillForm()
         {
             InitializeComponent();
         }

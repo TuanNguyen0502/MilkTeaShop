@@ -13,11 +13,12 @@ using Guna.UI.WinForms;
 
 namespace MilkTeaShop
 {
-    public partial class SellForm : Form
+    public partial class FSellForm : Form
     {
+        readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True";
         DBConnection dbConn = new DBConnection();
         string sqlQuery;
-        public SellForm()
+        public FSellForm()
         {
             InitializeComponent();
 
@@ -25,6 +26,10 @@ namespace MilkTeaShop
         private void SellForm_Load(object sender, EventArgs e)
         {
             flp_ContainsItem.Controls.Clear();
+            lbl_TotalBill.Text = "0 VNĐ";
+            lbl_Pay.Text = "0 VNĐ";
+            lbl_SDTKH.Text = "";
+            lbl_Sale.Text = "Sale 20%";
             GetItemSelled("LSP01");
             GetItemSelled("LSP05", global::MilkTeaShop.Properties.Resources.top_8_quan_sua_chua_tran_chau_ha_long_thom_ngon_kho_cuong_01_1641920517);
             GetItemSelled("LSP06", global::MilkTeaShop.Properties.Resources._435574413_966712192126145_2678475277908280524_n);
@@ -250,6 +255,34 @@ namespace MilkTeaShop
                 staff.
             }
         }*/
+        private void saveChiTietHoaDons()
+        {
+            using (SqlConnection conn = new SqlConnection(conStr))
+            {
+                conn.Open();
+                string sqlGetProducts = "SELECT TOP 1 MaHD"+
+                                        " FROM HoaDon"+
+                                        " ORDER BY MaHD Desc";
+                SqlCommand cmdGetProducts = new SqlCommand(sqlGetProducts, conn);
+                int MaHD = (int)cmdGetProducts.ExecuteScalar();
+                MessageBox.Show(MaHD.ToString());
+                foreach (Control control in flp_ContainsOrder.Controls)
+                {
+                    UC_ItemSelected selected = (UC_ItemSelected)control;
+                    string sqlInsertCTHD = "INSERT INTO ChiTietHoaDon(MaHD, MaSP, SoLuong)"+
+                                            " VALUES (@MaHD, @MaSP, @SoLuong)";
+                    SqlCommand cmdInsertCTHD = new SqlCommand(sqlInsertCTHD, conn);
+                    SqlParameter[] lstParams =
+                    {
+                        new SqlParameter("@MaHD", SqlDbType.Int) {Value = MaHD},
+                        new SqlParameter("@MaSP", SqlDbType.NVarChar) {Value = selected.MaSP},
+                        new SqlParameter("@SoLuong", SqlDbType.Int) {Value = selected.Numeric_Quantities.Value}
+                    };
+                    cmdInsertCTHD.Parameters.AddRange(lstParams);
+                    cmdInsertCTHD.ExecuteNonQuery(); 
+                }
+            }
+        }
         private void btn_printBill_Click(object sender, EventArgs e)
         {
             if (cbb_options.SelectedIndex == -1)
@@ -258,21 +291,40 @@ namespace MilkTeaShop
             }
             else
             {
-                sqlQuery = "exec proc_CreateBill @SDT, @MaNV, @ThoiGianDat, @TriGiaHD";
-                SqlParameter[] lstParams =
+                using (SqlConnection conn = new SqlConnection(conStr))
                 {
-                    new SqlParameter("@SDT", SqlDbType.VarChar) {Value = cbb_options.SelectedItem.ToString()},
-                    new SqlParameter("@MaNV", SqlDbType.VarChar) {Value = lbl_CurrentStaff.Text},
-                    new SqlParameter("@ThoiGianDat", SqlDbType.DateTime) {Value = DateTime.Now},
-                    new SqlParameter("@TriGiaHD", SqlDbType.Decimal) {Value = Convert.ToDecimal(lbl_Pay.Text.Substring(0, lbl_Pay.Text.Length - 4))},
-                };
-                dbConn.ExecuteProcedure(sqlQuery, lstParams);
+                    try
+                    {
+                        conn.Open();
+                        SqlCommand cmd = new SqlCommand("exec proc_CreateBill @SDT, @MaNV, @ThoiGianDat, @TriGiaHD", conn);
+                        SqlParameter[] lstParams =
+                        {
+                                new SqlParameter("@SDT", SqlDbType.VarChar) {Value = cbb_options.SelectedItem.ToString()},
+                                new SqlParameter("@MaNV", SqlDbType.VarChar) {Value = lbl_CurrentStaff.Text},
+                                new SqlParameter("@ThoiGianDat", SqlDbType.DateTime) {Value = DateTime.Now},
+                                new SqlParameter("@TriGiaHD", SqlDbType.Decimal) {Value = Convert.ToDecimal(lbl_Pay.Text.Substring(0, lbl_Pay.Text.Length - 4))},
+                            };
+                        cmd.Parameters.AddRange(lstParams);
+                        if (cmd.ExecuteNonQuery() > 0)
+                            MessageBox.Show("In hóa đơn thành công !");
+                        saveChiTietHoaDons();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("In hóa đơn thất bại.\n"+ex.Message);
+                    }
+                }
             }
         }
 
         private void cbb_options_SelectedIndexChanged(object sender, EventArgs e)
         {
             lbl_SDTKH.Text = cbb_options.SelectedItem.ToString();
+        }
+
+        private void btn_saveBill_Click(object sender, EventArgs e)
+        {
+            saveChiTietHoaDons();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace MilkTeaShop
 {
-    partial class BillForm
+    partial class FBillForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BillForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FBillForm));
             this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_PayYet = new Guna.UI.WinForms.GunaAdvenceButton();

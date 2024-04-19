@@ -1,6 +1,6 @@
 ﻿namespace MilkTeaShop
 {
-    partial class SellForm
+    partial class FSellForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SellForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FSellForm));
             this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
             this.gunaPanel1 = new Guna.UI.WinForms.GunaPanel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -44,7 +44,7 @@
             this.btn_TraiCay = new Guna.UI.WinForms.GunaAdvenceTileButton();
             this.btn_NuocEp = new Guna.UI.WinForms.GunaAdvenceTileButton();
             this.gunaShadowPanel1 = new Guna.UI.WinForms.GunaShadowPanel();
-            this.txt_KeyWord = new Guna.UI.WinForms.GunaTextBox();
+            this.txt_KeyWord = new Guna.UI2.WinForms.Guna2TextBox();
             this.btn_FindProduct = new Guna.UI.WinForms.GunaButton();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.gunaGradient2Panel3 = new Guna.UI.WinForms.GunaGradient2Panel();
@@ -55,6 +55,7 @@
             this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.flp_ContainsItem = new System.Windows.Forms.FlowLayoutPanel();
             this.gunaGradient2Panel2 = new Guna.UI.WinForms.GunaGradient2Panel();
+            this.cbb_options = new Guna.UI.WinForms.GunaComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gunaGradient2Panel5 = new Guna.UI.WinForms.GunaGradient2Panel();
             this.lbl_SDTKH = new System.Windows.Forms.Label();
@@ -70,7 +71,6 @@
             this.flp_ContainsOrder = new System.Windows.Forms.FlowLayoutPanel();
             this.gunaGradient2Panel4 = new Guna.UI.WinForms.GunaGradient2Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.cbb_options = new Guna.UI.WinForms.GunaComboBox();
             this.gunaPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.gunaGradient2Panel1.SuspendLayout();
@@ -392,19 +392,23 @@
             // 
             // txt_KeyWord
             // 
-            this.txt_KeyWord.BaseColor = System.Drawing.Color.White;
-            this.txt_KeyWord.BorderColor = System.Drawing.Color.Silver;
             this.txt_KeyWord.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txt_KeyWord.FocusedBaseColor = System.Drawing.Color.White;
-            this.txt_KeyWord.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.txt_KeyWord.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.txt_KeyWord.DefaultText = "";
+            this.txt_KeyWord.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txt_KeyWord.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txt_KeyWord.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txt_KeyWord.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txt_KeyWord.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txt_KeyWord.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txt_KeyWord.Location = new System.Drawing.Point(343, 31);
+            this.txt_KeyWord.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txt_KeyWord.Location = new System.Drawing.Point(352, 23);
+            this.txt_KeyWord.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_KeyWord.Name = "txt_KeyWord";
             this.txt_KeyWord.PasswordChar = '\0';
+            this.txt_KeyWord.PlaceholderText = "Nhập tên sản phẩm muốn tìm";
             this.txt_KeyWord.SelectedText = "";
-            this.txt_KeyWord.Size = new System.Drawing.Size(286, 41);
-            this.txt_KeyWord.TabIndex = 0;
+            this.txt_KeyWord.Size = new System.Drawing.Size(278, 54);
+            this.txt_KeyWord.TabIndex = 11;
             // 
             // btn_FindProduct
             // 
@@ -526,6 +530,43 @@
             this.gunaGradient2Panel2.Size = new System.Drawing.Size(544, 67);
             this.gunaGradient2Panel2.TabIndex = 7;
             // 
+            // cbb_options
+            // 
+            this.cbb_options.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cbb_options.BackColor = System.Drawing.Color.Transparent;
+            this.cbb_options.BaseColor = System.Drawing.Color.White;
+            this.cbb_options.BorderColor = System.Drawing.Color.Silver;
+            this.cbb_options.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbb_options.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbb_options.FocusedColor = System.Drawing.Color.Empty;
+            this.cbb_options.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbb_options.ForeColor = System.Drawing.Color.Black;
+            this.cbb_options.FormattingEnabled = true;
+            this.cbb_options.Items.AddRange(new object[] {
+            "0123156789",
+            "0123456791",
+            "0123458791",
+            "0123186792",
+            "0123459793",
+            "0934167890",
+            "0934463791",
+            "0341234567",
+            "0394506792",
+            "0934267893",
+            "0934567870",
+            "0934562991",
+            "0391233567",
+            "0394561792",
+            "0934467893"});
+            this.cbb_options.Location = new System.Drawing.Point(310, 11);
+            this.cbb_options.Name = "cbb_options";
+            this.cbb_options.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.cbb_options.OnHoverItemForeColor = System.Drawing.Color.White;
+            this.cbb_options.Radius = 6;
+            this.cbb_options.Size = new System.Drawing.Size(199, 31);
+            this.cbb_options.TabIndex = 9;
+            this.cbb_options.SelectedIndexChanged += new System.EventHandler(this.cbb_options_SelectedIndexChanged);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -609,6 +650,7 @@
             this.btn_saveBill.Size = new System.Drawing.Size(120, 54);
             this.btn_saveBill.TabIndex = 7;
             this.btn_saveBill.Text = "Save it";
+            this.btn_saveBill.Click += new System.EventHandler(this.btn_saveBill_Click);
             // 
             // btn_printBill
             // 
@@ -739,44 +781,7 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Danh sách sản phẩm";
             // 
-            // cbb_options
-            // 
-            this.cbb_options.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cbb_options.BackColor = System.Drawing.Color.Transparent;
-            this.cbb_options.BaseColor = System.Drawing.Color.White;
-            this.cbb_options.BorderColor = System.Drawing.Color.Silver;
-            this.cbb_options.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbb_options.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbb_options.FocusedColor = System.Drawing.Color.Empty;
-            this.cbb_options.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cbb_options.ForeColor = System.Drawing.Color.Black;
-            this.cbb_options.FormattingEnabled = true;
-            this.cbb_options.Items.AddRange(new object[] {
-            "0123156789",
-            "0123456791",
-            "0123458791",
-            "0123186792",
-            "0123459793",
-            "0934167890",
-            "0934463791",
-            "0341234567",
-            "0394506792",
-            "0934267893",
-            "0934567870",
-            "0934562991",
-            "0391233567",
-            "0394561792",
-            "0934467893"});
-            this.cbb_options.Location = new System.Drawing.Point(310, 11);
-            this.cbb_options.Name = "cbb_options";
-            this.cbb_options.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.cbb_options.OnHoverItemForeColor = System.Drawing.Color.White;
-            this.cbb_options.Radius = 6;
-            this.cbb_options.Size = new System.Drawing.Size(199, 31);
-            this.cbb_options.TabIndex = 9;
-            this.cbb_options.SelectedIndexChanged += new System.EventHandler(this.cbb_options_SelectedIndexChanged);
-            // 
-            // SellForm
+            // FSellForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -791,7 +796,7 @@
             this.Controls.Add(this.gunaGradient2Panel1);
             this.Controls.Add(this.gunaGradient2Panel4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "SellForm";
+            this.Name = "FSellForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SellForm";
             this.Load += new System.EventHandler(this.SellForm_Load);
@@ -854,9 +859,9 @@
         private Guna.UI.WinForms.GunaButton btn_FindProduct;
         private Guna.UI.WinForms.GunaGradient2Panel gunaGradient2Panel4;
         private System.Windows.Forms.Label label3;
-        private Guna.UI.WinForms.GunaTextBox txt_KeyWord;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lbl_SDTKH;
         private Guna.UI.WinForms.GunaComboBox cbb_options;
+        private Guna.UI2.WinForms.Guna2TextBox txt_KeyWord;
     }
 }

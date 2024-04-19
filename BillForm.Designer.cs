@@ -378,9 +378,10 @@
             // 
             // flp_ContainsBill
             // 
+            this.flp_ContainsBill.AutoScroll = true;
             this.flp_ContainsBill.Location = new System.Drawing.Point(3, 133);
             this.flp_ContainsBill.Name = "flp_ContainsBill";
-            this.flp_ContainsBill.Size = new System.Drawing.Size(1394, 604);
+            this.flp_ContainsBill.Size = new System.Drawing.Size(1394, 681);
             this.flp_ContainsBill.TabIndex = 3;
             // 
             // BillForm

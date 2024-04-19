@@ -91,6 +91,8 @@ namespace MilkTeaShop
                         }
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Employee details updated successfully!");
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
                     }
                 }
                 catch (Exception ex)

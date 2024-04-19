@@ -61,6 +61,7 @@ namespace MilkTeaShop
                     {
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Employee added successfully!");
+                        this.DialogResult = DialogResult.OK;
                         this.Close();
                     }
                     catch (Exception ex)

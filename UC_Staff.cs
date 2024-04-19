@@ -13,6 +13,8 @@ namespace MilkTeaShop
 {
     public partial class UC_Staff : UserControl
     {
+        public event EventHandler OnDetailsUpdated;
+
         public UC_Staff()
         {
             InitializeComponent();
@@ -31,7 +33,11 @@ namespace MilkTeaShop
         private void button_Detail_Click(object sender, EventArgs e)
         {
             FStaff_Detail fStaff_Detail = new FStaff_Detail(lblID.Text);
-            fStaff_Detail.ShowDialog();
+            if (fStaff_Detail.ShowDialog() == DialogResult.OK)
+            {
+                OnDetailsUpdated?.Invoke(this, EventArgs.Empty);
+            }
+
         }
     }
 }

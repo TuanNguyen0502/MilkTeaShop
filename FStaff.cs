@@ -23,6 +23,7 @@ namespace MilkTeaShop
         }
         public void LoadStaff()
         {
+            flpanelListStaff.Controls.Clear();
             string sqlQuery = "SELECT * FROM V_ThongTinNhanVien";
             using (SqlConnection conn = new SqlConnection(conStr))
             {
@@ -51,12 +52,22 @@ namespace MilkTeaShop
                     }
                 }
             }
+            foreach (Control control in flpanelListStaff.Controls)
+            {
+                if (control is UC_Staff staffControl)
+                {
+                    staffControl.OnDetailsUpdated += (s, e) => LoadStaff();
+                }
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
            FStaff_Add fStaff_Add = new FStaff_Add();
-            fStaff_Add.ShowDialog();
+            if (fStaff_Add.ShowDialog() == DialogResult.OK)
+            {
+                LoadStaff();
+            }
         }
     }
 }

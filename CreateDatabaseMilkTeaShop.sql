@@ -696,7 +696,7 @@ AS
 BEGIN
 	INSERT INTO ChiTietHoaDon(MaHD, MaSP, SoLuong)
 	VALUES (@MaHD, @MaSP, @SoLuong);
-END;
+END
 
 -- Procedure tìm kiếm hóa đơn
 CREATE PROCEDURE proc_FindBill
@@ -710,10 +710,16 @@ BEGIN
 	WHERE hd.MaHD LIKE '%'+@Keyword+'%' OR nv.HoTen LIKE '%'+@Keyword+'%' OR kh.TenKH LIKE '%'+@Keyword+'%' OR
 		  hd.ThoiGianDat LIKE '%'+@Keyword+'%' OR hd.TriGiaHoaDon LIKE '%'+@Keyword+'%' OR hd.GhiChu LIKE '%'+@Keyword+'%'
 END;
-exec proc_FindBill N'Long'
-SELECT * FROM HoaDon
+GO
+-- View xem hóa đơn khi  bán
+CREATE VIEW vie_XemHoaDon AS
+	SELECT hd.MaHD, nv.HoTen, kh.TenKH, hd.ThoiGianDat, hd.GhiChu, hd.TriGiaHoaDon
+	FROM HoaDon hd
+	JOIN NhanVien nv ON hd.MaNV = nv.MaNV
+	JOIN KhachHang kh ON hd.SDT = kh.SDT
 GO
 
+SELECT * FROM vie_XemHoaDon
 
 -- Procedure thêm nguyên liệu
 CREATE PROCEDURE proc_themNguyenLieu

@@ -259,27 +259,33 @@ namespace MilkTeaShop
         {
             using (SqlConnection conn = new SqlConnection(conStr))
             {
-                conn.Open();
-                string sqlGetProducts = "SELECT TOP 1 MaHD"+
-                                        " FROM HoaDon"+
-                                        " ORDER BY MaHD Desc";
-                SqlCommand cmdGetProducts = new SqlCommand(sqlGetProducts, conn);
-                int MaHD = (int)cmdGetProducts.ExecuteScalar();
-                MessageBox.Show(MaHD.ToString());
-                foreach (Control control in flp_ContainsOrder.Controls)
+                try
                 {
-                    UC_ItemSelected selected = (UC_ItemSelected)control;
-                    string sqlInsertCTHD = "INSERT INTO ChiTietHoaDon(MaHD, MaSP, SoLuong)"+
-                                            " VALUES (@MaHD, @MaSP, @SoLuong)";
-                    SqlCommand cmdInsertCTHD = new SqlCommand(sqlInsertCTHD, conn);
-                    SqlParameter[] lstParams =
+                    conn.Open();
+                    string sqlGetProducts = "SELECT TOP 1 MaHD"+
+                                            " FROM HoaDon"+
+                                            " ORDER BY MaHD Desc";
+                    SqlCommand cmdGetProducts = new SqlCommand(sqlGetProducts, conn);
+                    int MaHD = (int)cmdGetProducts.ExecuteScalar();
+                    MessageBox.Show(MaHD.ToString());
+                    foreach (Control control in flp_ContainsOrder.Controls)
                     {
+                        UC_ItemSelected selected = (UC_ItemSelected)control;
+                        string sqlInsertCTHD = "exec proc_CreateBillDetails @MaHD, @MaSP, @SoLuong";
+                        SqlCommand cmdInsertCTHD = new SqlCommand(sqlInsertCTHD, conn);
+                        SqlParameter[] lstParams =
+                        {
                         new SqlParameter("@MaHD", SqlDbType.Int) {Value = MaHD},
                         new SqlParameter("@MaSP", SqlDbType.NVarChar) {Value = selected.MaSP},
                         new SqlParameter("@SoLuong", SqlDbType.Int) {Value = selected.Numeric_Quantities.Value}
                     };
-                    cmdInsertCTHD.Parameters.AddRange(lstParams);
-                    cmdInsertCTHD.ExecuteNonQuery(); 
+                        cmdInsertCTHD.Parameters.AddRange(lstParams);
+                        cmdInsertCTHD.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error\n" + ex.Message);
                 }
             }
         }

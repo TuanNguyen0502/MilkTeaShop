@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
 
@@ -11,12 +11,43 @@ namespace MilkTeaShop
 {
     public class DBConnection
     {
-        //SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr);
-        readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True";
+        SqlConnection conn = new SqlConnection(@"Data Source=DIEMQUYNH;Initial Catalog=MilkTeaShop;Integrated Security=True;Encrypt=False");
 
+        public DataTable LoadData (string query)
+        {
+            string sqlStr = string.Format(query);
+            SqlDataAdapter adapter = new SqlDataAdapter(sqlStr, conStr);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            return dt;
+        }
+        //SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr);
+        readonly string conStr = @"Data Source=DIEMQUYNH;Initial Catalog=MilkTeaShop;Integrated Security=True;Encrypt=False";
+        public void ThucThi(string thucthi)
+        {
+            try
+            {
+                conn.Open();
+                string sqlStr = thucthi;
+                SqlCommand command = new SqlCommand(sqlStr, conn);
+                if(command.ExecuteNonQuery() > 0)
+                {
+                    MessageBox.Show("Thành công");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
         public void ExecuteProcedure(string sqlQuery, SqlParameter[] lstParams)
         {
-            using(SqlConnection conn = new SqlConnection(conStr))
+            using (SqlConnection conn = new SqlConnection(conStr))
             {
                 try
                 {
@@ -31,7 +62,7 @@ namespace MilkTeaShop
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error\n"+ex.Message);
+                    MessageBox.Show("Error\n" + ex.Message);
                 }
             }
         }
@@ -97,7 +128,7 @@ namespace MilkTeaShop
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Read error\n"+ex.Message);
+                    MessageBox.Show("Read error\n" + ex.Message);
                 }
             }
             return resultList;
@@ -129,7 +160,7 @@ namespace MilkTeaShop
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Read error\n"+ex.Message);
+                    MessageBox.Show("Read error\n" + ex.Message);
                 }
             }
             return resultList;

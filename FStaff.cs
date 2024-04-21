@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -69,5 +70,48 @@ namespace MilkTeaShop
                 LoadStaff();
             }
         }
+
+        private void textBox_Search_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_Search_Click(object sender, EventArgs e)
+        {
+            flpanelListStaff.Controls.Clear();
+            string keyword = txtSearch.Text.Trim();
+            string sqlQuery = "SELECT * FROM func_FindStaff(@keyword)";
+
+            using (SqlConnection conn = new SqlConnection(conStr))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(sqlQuery, conn))
+                {
+                    cmd.Parameters.AddWithValue("@keyword", keyword);
+
+                    using (SqlDataReader dataReader = cmd.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            UC_Staff staff = new UC_Staff();
+                            staff.LblID.Text = dataReader["MaNV"].ToString();
+                            staff.LblName.Text = dataReader["HoTen"].ToString();
+                            staff.LblSex.Text = dataReader["GioiTinh"].ToString();
+                            DateTime dob = dataReader.GetDateTime(dataReader.GetOrdinal("NgaySinh"));
+                            staff.LblDob.Text = dob.ToString("yyyy-MM-dd");
+                            staff.LblAddress.Text = dataReader["DiaChi"].ToString();
+                            staff.LblPhone.Text = dataReader["SDT"].ToString();
+                            DateTime hiringDate = dataReader.GetDateTime(dataReader.GetOrdinal("NgayTuyenDung"));
+                            staff.LblNgayTuyenDung.Text = hiringDate.ToString("yyyy-MM-dd");
+                            staff.LblJob.Text = dataReader["TenCV"].ToString();
+                            staff.LblSalary.Text = dataReader["Luong"].ToString();
+
+                            flpanelListStaff.Controls.Add(staff);
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }

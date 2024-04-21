@@ -52,8 +52,9 @@ namespace MilkTeaShop
                             dtpDOB.Value = Convert.ToDateTime(dataReader["NgaySinh"]);
                             txtAddress.Text = dataReader["DiaChi"].ToString();
                             txtPhone.Text = dataReader["SDT"].ToString();
-                            dtpDOREC.Value = Convert.ToDateTime(dataReader["NgayTuyenDung"]);                           
+                            dtpDOREC.Value = Convert.ToDateTime(dataReader["NgayTuyenDung"]);
                             cbbIDJOB.SelectedItem = dataReader["MaCV"].ToString().Trim();
+                            cbbWorkStatus.SelectedItem = dataReader["TrangThaiLamViec"].ToString().Trim();
                         }
                     }
                 }
@@ -91,6 +92,8 @@ namespace MilkTeaShop
                         }
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Employee details updated successfully!");
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
                     }
                 }
                 catch (Exception ex)
@@ -102,6 +105,32 @@ namespace MilkTeaShop
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection(conStr))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand("proc_DeleteStaff", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@manv", lblID.Text);
+                        
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Staff deleted successfully!");
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to delete this staff. Error: " + ex.Message);
+                }
+            }
         }
     }
 }

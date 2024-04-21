@@ -10,22 +10,19 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 namespace MilkTeaShop
 {
-    public partial class BillForm : Form
+    public partial class FBillForm : Form
     {
         readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True";
         DBConnection dbConn = new DBConnection();
         string sqlQuery;
-        public BillForm()
+        public FBillForm()
         {
             InitializeComponent();
         }
 
         private void btn_AllBill_Click(object sender, EventArgs e)
         {
-            sqlQuery = "SELECT hd.MaHD, nv.HoTen, kh.TenKH, hd.ThoiGianDat, hd.GhiChu, hd.TriGiaHoaDon"
-                       +" FROM HoaDon hd"
-                       +" JOIN NhanVien nv ON hd.MaNV = nv.MaNV"
-                       +" JOIN KhachHang kh ON hd.SDT = kh.SDT";
+            sqlQuery = "SELECT * FROM vie_XemHoaDon";
             List<Dictionary<string, object>> keyValues = dbConn.ExecuteReaderData(sqlQuery);
             using (SqlConnection conn = new SqlConnection(conStr))
             {
@@ -51,10 +48,7 @@ namespace MilkTeaShop
 
         private void BillForm_Load(object sender, EventArgs e)
         {
-            sqlQuery = "SELECT hd.MaHD, nv.HoTen, kh.TenKH, hd.ThoiGianDat, hd.GhiChu, hd.TriGiaHoaDon"
-                       +" FROM HoaDon hd"
-                       +" JOIN NhanVien nv ON hd.MaNV = nv.MaNV"
-                       +" JOIN KhachHang kh ON hd.SDT = kh.SDT";
+            sqlQuery = "SELECT * FROM vie_XemHoaDon";
             List<Dictionary<string,object>> keyValues = dbConn.ExecuteReaderData(sqlQuery);
             using (SqlConnection conn = new SqlConnection(conStr))
             {
@@ -117,6 +111,11 @@ namespace MilkTeaShop
                     }
                 }
             }
+        }
+
+        private void btn_AllBillDetails_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

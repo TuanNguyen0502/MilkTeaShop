@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panelInfo = new Guna.UI.WinForms.GunaPanel();
+            this.cbbWorkStatus = new Guna.UI.WinForms.GunaComboBox();
+            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.cbbIDJOB = new Guna.UI.WinForms.GunaComboBox();
             this.rdobtnFemale = new Guna.UI.WinForms.GunaRadioButton();
             this.rdobtnMale = new Guna.UI.WinForms.GunaRadioButton();
@@ -49,12 +51,15 @@
             this.lblContext = new Guna.UI.WinForms.GunaLabel();
             this.btnUpdate = new Guna.UI.WinForms.GunaButton();
             this.btnExit = new Guna.UI.WinForms.GunaButton();
+            this.btnDelete = new Guna.UI.WinForms.GunaButton();
             this.panelInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelInfo
             // 
             this.panelInfo.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.panelInfo.Controls.Add(this.cbbWorkStatus);
+            this.panelInfo.Controls.Add(this.gunaLabel1);
             this.panelInfo.Controls.Add(this.cbbIDJOB);
             this.panelInfo.Controls.Add(this.rdobtnFemale);
             this.panelInfo.Controls.Add(this.rdobtnMale);
@@ -77,6 +82,36 @@
             this.panelInfo.Size = new System.Drawing.Size(758, 454);
             this.panelInfo.TabIndex = 0;
             // 
+            // cbbWorkStatus
+            // 
+            this.cbbWorkStatus.BackColor = System.Drawing.Color.Transparent;
+            this.cbbWorkStatus.BaseColor = System.Drawing.Color.White;
+            this.cbbWorkStatus.BorderColor = System.Drawing.Color.Silver;
+            this.cbbWorkStatus.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbbWorkStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbWorkStatus.FocusedColor = System.Drawing.Color.Empty;
+            this.cbbWorkStatus.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbbWorkStatus.ForeColor = System.Drawing.Color.Black;
+            this.cbbWorkStatus.Items.AddRange(new object[] {
+            "Đang làm việc",
+            "Đã nghĩ việc"});
+            this.cbbWorkStatus.Location = new System.Drawing.Point(547, 367);
+            this.cbbWorkStatus.Name = "cbbWorkStatus";
+            this.cbbWorkStatus.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.cbbWorkStatus.OnHoverItemForeColor = System.Drawing.Color.White;
+            this.cbbWorkStatus.Size = new System.Drawing.Size(142, 31);
+            this.cbbWorkStatus.TabIndex = 18;
+            // 
+            // gunaLabel1
+            // 
+            this.gunaLabel1.AutoSize = true;
+            this.gunaLabel1.Font = new System.Drawing.Font("Leelawadee UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel1.Location = new System.Drawing.Point(445, 370);
+            this.gunaLabel1.Name = "gunaLabel1";
+            this.gunaLabel1.Size = new System.Drawing.Size(93, 23);
+            this.gunaLabel1.TabIndex = 17;
+            this.gunaLabel1.Text = "Trạng thái";
+            // 
             // cbbIDJOB
             // 
             this.cbbIDJOB.BackColor = System.Drawing.Color.Transparent;
@@ -94,7 +129,7 @@
             "CV004",
             "CV005",
             "CV006"});
-            this.cbbIDJOB.Location = new System.Drawing.Point(539, 367);
+            this.cbbIDJOB.Location = new System.Drawing.Point(547, 295);
             this.cbbIDJOB.Name = "cbbIDJOB";
             this.cbbIDJOB.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.cbbIDJOB.OnHoverItemForeColor = System.Drawing.Color.White;
@@ -108,7 +143,7 @@
             this.rdobtnFemale.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.rdobtnFemale.FillColor = System.Drawing.Color.White;
             this.rdobtnFemale.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdobtnFemale.Location = new System.Drawing.Point(634, 304);
+            this.rdobtnFemale.Location = new System.Drawing.Point(634, 232);
             this.rdobtnFemale.Name = "rdobtnFemale";
             this.rdobtnFemale.Size = new System.Drawing.Size(52, 24);
             this.rdobtnFemale.TabIndex = 15;
@@ -121,7 +156,7 @@
             this.rdobtnMale.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.rdobtnMale.FillColor = System.Drawing.Color.White;
             this.rdobtnMale.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdobtnMale.Location = new System.Drawing.Point(552, 304);
+            this.rdobtnMale.Location = new System.Drawing.Point(552, 232);
             this.rdobtnMale.Name = "rdobtnMale";
             this.rdobtnMale.Size = new System.Drawing.Size(64, 24);
             this.rdobtnMale.TabIndex = 14;
@@ -238,7 +273,7 @@
             // 
             this.lblJob.AutoSize = true;
             this.lblJob.Font = new System.Drawing.Font("Leelawadee UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblJob.Location = new System.Drawing.Point(445, 370);
+            this.lblJob.Location = new System.Drawing.Point(445, 298);
             this.lblJob.Name = "lblJob";
             this.lblJob.Size = new System.Drawing.Size(88, 23);
             this.lblJob.TabIndex = 7;
@@ -288,7 +323,7 @@
             // 
             this.lblSex.AutoSize = true;
             this.lblSex.Font = new System.Drawing.Font("Leelawadee UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSex.Location = new System.Drawing.Point(445, 301);
+            this.lblSex.Location = new System.Drawing.Point(445, 229);
             this.lblSex.Name = "lblSex";
             this.lblSex.Size = new System.Drawing.Size(80, 23);
             this.lblSex.TabIndex = 2;
@@ -337,7 +372,7 @@
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
             this.btnUpdate.Image = null;
             this.btnUpdate.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnUpdate.Location = new System.Drawing.Point(276, 510);
+            this.btnUpdate.Location = new System.Drawing.Point(234, 510);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btnUpdate.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -361,7 +396,7 @@
             this.btnExit.ForeColor = System.Drawing.Color.White;
             this.btnExit.Image = null;
             this.btnExit.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnExit.Location = new System.Drawing.Point(437, 510);
+            this.btnExit.Location = new System.Drawing.Point(486, 510);
             this.btnExit.Name = "btnExit";
             this.btnExit.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btnExit.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -374,12 +409,38 @@
             this.btnExit.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // btnDelete
+            // 
+            this.btnDelete.AnimationHoverSpeed = 0.07F;
+            this.btnDelete.AnimationSpeed = 0.03F;
+            this.btnDelete.BaseColor = System.Drawing.SystemColors.Highlight;
+            this.btnDelete.BorderColor = System.Drawing.Color.Black;
+            this.btnDelete.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnDelete.FocusedColor = System.Drawing.Color.Empty;
+            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.Image = null;
+            this.btnDelete.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnDelete.Location = new System.Drawing.Point(361, 510);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.btnDelete.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnDelete.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnDelete.OnHoverImage = null;
+            this.btnDelete.OnPressedColor = System.Drawing.Color.Black;
+            this.btnDelete.Size = new System.Drawing.Size(83, 42);
+            this.btnDelete.TabIndex = 4;
+            this.btnDelete.Text = "Xóa ";
+            this.btnDelete.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // FStaff_Detail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(798, 559);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.lblContext);
@@ -418,5 +479,8 @@
         private Guna.UI.WinForms.GunaTextBox txtName;
         private Guna.UI.WinForms.GunaComboBox cbbIDJOB;
         private Guna.UI.WinForms.GunaRadioButton rdobtnFemale;
+        private Guna.UI.WinForms.GunaComboBox cbbWorkStatus;
+        private Guna.UI.WinForms.GunaLabel gunaLabel1;
+        private Guna.UI.WinForms.GunaButton btnDelete;
     }
 }

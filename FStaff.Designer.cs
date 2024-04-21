@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FStaff));
             this.gunaPanel1 = new Guna.UI.WinForms.GunaPanel();
+            this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
+            this.btnSearch = new Guna.UI.WinForms.GunaAdvenceButton();
             this.btnAdd = new Guna.UI.WinForms.GunaAdvenceButton();
             this.lblFStaff = new Guna.UI.WinForms.GunaLabel();
             this.flpanelListStaff = new System.Windows.Forms.FlowLayoutPanel();
@@ -51,14 +53,72 @@
             // gunaPanel1
             // 
             this.gunaPanel1.AutoSize = true;
+            this.gunaPanel1.Controls.Add(this.txtSearch);
+            this.gunaPanel1.Controls.Add(this.btnSearch);
             this.gunaPanel1.Controls.Add(this.btnAdd);
             this.gunaPanel1.Controls.Add(this.lblFStaff);
             this.gunaPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.gunaPanel1.Location = new System.Drawing.Point(0, 0);
             this.gunaPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gunaPanel1.Name = "gunaPanel1";
-            this.gunaPanel1.Size = new System.Drawing.Size(1635, 90);
+            this.gunaPanel1.Size = new System.Drawing.Size(1635, 89);
             this.gunaPanel1.TabIndex = 1;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.BorderRadius = 20;
+            this.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtSearch.DefaultText = "";
+            this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtSearch.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtSearch.Location = new System.Drawing.Point(288, 37);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(6);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.PasswordChar = '\0';
+            this.txtSearch.PlaceholderText = "";
+            this.txtSearch.SelectedText = "";
+            this.txtSearch.Size = new System.Drawing.Size(648, 46);
+            this.txtSearch.TabIndex = 4;
+            this.txtSearch.TextChanged += new System.EventHandler(this.textBox_Search_TextChanged);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.AnimationHoverSpeed = 0.07F;
+            this.btnSearch.AnimationSpeed = 0.03F;
+            this.btnSearch.BackColor = System.Drawing.Color.Transparent;
+            this.btnSearch.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.btnSearch.BorderColor = System.Drawing.Color.Black;
+            this.btnSearch.CheckedBaseColor = System.Drawing.Color.Gray;
+            this.btnSearch.CheckedBorderColor = System.Drawing.Color.Black;
+            this.btnSearch.CheckedForeColor = System.Drawing.Color.White;
+            this.btnSearch.CheckedImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.CheckedImage")));
+            this.btnSearch.CheckedLineColor = System.Drawing.Color.DimGray;
+            this.btnSearch.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnSearch.FocusedColor = System.Drawing.Color.Empty;
+            this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.ForeColor = System.Drawing.Color.White;
+            this.btnSearch.Image = global::MilkTeaShop.Properties.Resources.icons8_find_1001;
+            this.btnSearch.ImageSize = new System.Drawing.Size(50, 50);
+            this.btnSearch.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
+            this.btnSearch.Location = new System.Drawing.Point(961, 37);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.btnSearch.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnSearch.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnSearch.OnHoverImage = null;
+            this.btnSearch.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
+            this.btnSearch.OnPressedColor = System.Drawing.Color.Black;
+            this.btnSearch.Radius = 10;
+            this.btnSearch.Size = new System.Drawing.Size(183, 46);
+            this.btnSearch.TabIndex = 3;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.Click += new System.EventHandler(this.button_Search_Click);
             // 
             // btnAdd
             // 
@@ -79,7 +139,7 @@
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
             this.btnAdd.ImageSize = new System.Drawing.Size(20, 20);
             this.btnAdd.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.btnAdd.Location = new System.Drawing.Point(18, 54);
+            this.btnAdd.Location = new System.Drawing.Point(15, 46);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
@@ -111,9 +171,9 @@
             this.flpanelListStaff.BackColor = System.Drawing.Color.WhiteSmoke;
             this.flpanelListStaff.Controls.Add(this.tableLayoutPanel1);
             this.flpanelListStaff.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpanelListStaff.Location = new System.Drawing.Point(0, 90);
+            this.flpanelListStaff.Location = new System.Drawing.Point(0, 89);
             this.flpanelListStaff.Name = "flpanelListStaff";
-            this.flpanelListStaff.Size = new System.Drawing.Size(1635, 750);
+            this.flpanelListStaff.Size = new System.Drawing.Size(1635, 751);
             this.flpanelListStaff.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -129,7 +189,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.31222F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.498384F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.457069F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 89F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 104F));
             this.tableLayoutPanel1.Controls.Add(this.lblDOREC, 6, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblJob, 7, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblSalary, 8, 0);
@@ -151,7 +211,7 @@
             this.lblDOREC.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDOREC.AutoSize = true;
             this.lblDOREC.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDOREC.Location = new System.Drawing.Point(1129, 13);
+            this.lblDOREC.Location = new System.Drawing.Point(1118, 13);
             this.lblDOREC.Name = "lblDOREC";
             this.lblDOREC.Size = new System.Drawing.Size(150, 25);
             this.lblDOREC.TabIndex = 9;
@@ -163,7 +223,7 @@
             this.lblJob.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblJob.AutoSize = true;
             this.lblJob.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblJob.Location = new System.Drawing.Point(1304, 13);
+            this.lblJob.Location = new System.Drawing.Point(1291, 13);
             this.lblJob.Name = "lblJob";
             this.lblJob.Size = new System.Drawing.Size(90, 25);
             this.lblJob.TabIndex = 10;
@@ -175,7 +235,7 @@
             this.lblSalary.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSalary.AutoSize = true;
             this.lblSalary.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSalary.Location = new System.Drawing.Point(1440, 13);
+            this.lblSalary.Location = new System.Drawing.Point(1426, 13);
             this.lblSalary.Name = "lblSalary";
             this.lblSalary.Size = new System.Drawing.Size(63, 25);
             this.lblSalary.TabIndex = 8;
@@ -199,7 +259,7 @@
             this.lblName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(157, 13);
+            this.lblName.Location = new System.Drawing.Point(155, 13);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(89, 25);
             this.lblName.TabIndex = 4;
@@ -211,7 +271,7 @@
             this.lblSex.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSex.AutoSize = true;
             this.lblSex.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSex.Location = new System.Drawing.Point(332, 13);
+            this.lblSex.Location = new System.Drawing.Point(328, 13);
             this.lblSex.Name = "lblSex";
             this.lblSex.Size = new System.Drawing.Size(78, 25);
             this.lblSex.TabIndex = 5;
@@ -223,7 +283,7 @@
             this.lblPhone.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblPhone.AutoSize = true;
             this.lblPhone.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhone.Location = new System.Drawing.Point(471, 13);
+            this.lblPhone.Location = new System.Drawing.Point(466, 13);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(44, 25);
             this.lblPhone.TabIndex = 11;
@@ -235,7 +295,7 @@
             this.lblDOB.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDOB.AutoSize = true;
             this.lblDOB.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDOB.Location = new System.Drawing.Point(990, 13);
+            this.lblDOB.Location = new System.Drawing.Point(980, 13);
             this.lblDOB.Name = "lblDOB";
             this.lblDOB.Size = new System.Drawing.Size(91, 25);
             this.lblDOB.TabIndex = 6;
@@ -247,7 +307,7 @@
             this.lblAddress.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblAddress.AutoSize = true;
             this.lblAddress.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddress.Location = new System.Drawing.Point(727, 13);
+            this.lblAddress.Location = new System.Drawing.Point(720, 13);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(65, 25);
             this.lblAddress.TabIndex = 7;
@@ -291,5 +351,7 @@
         private Guna.UI.WinForms.GunaLabel lblDOREC;
         private Guna.UI.WinForms.GunaLabel lblJob;
         private Guna.UI.WinForms.GunaLabel lblPhone;
+        private Guna.UI2.WinForms.Guna2TextBox txtSearch;
+        private Guna.UI.WinForms.GunaAdvenceButton btnSearch;
     }
 }

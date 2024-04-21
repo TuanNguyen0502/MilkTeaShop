@@ -1,6 +1,6 @@
 ﻿namespace MilkTeaShop
 {
-    partial class BillForm
+    partial class FBillForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BillForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FBillForm));
             this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_PayYet = new Guna.UI.WinForms.GunaAdvenceButton();
+            this.btn_AllBillDetails = new Guna.UI.WinForms.GunaAdvenceButton();
             this.btn_Paid = new Guna.UI.WinForms.GunaAdvenceButton();
             this.btn_AllBill = new Guna.UI.WinForms.GunaAdvenceButton();
             this.cbb_options = new Guna.UI.WinForms.GunaComboBox();
@@ -68,7 +68,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.63589F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.46399F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.99245F));
-            this.tableLayoutPanel1.Controls.Add(this.btn_PayYet, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btn_AllBillDetails, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_Paid, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_AllBill, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.cbb_options, 3, 0);
@@ -81,38 +81,39 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1394, 59);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // btn_PayYet
+            // btn_AllBillDetails
             // 
-            this.btn_PayYet.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_PayYet.AnimationHoverSpeed = 0.07F;
-            this.btn_PayYet.AnimationSpeed = 0.03F;
-            this.btn_PayYet.BackColor = System.Drawing.Color.Transparent;
-            this.btn_PayYet.BaseColor = System.Drawing.Color.CadetBlue;
-            this.btn_PayYet.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(72)))), ((int)(((byte)(115)))));
-            this.btn_PayYet.CheckedBaseColor = System.Drawing.Color.Gray;
-            this.btn_PayYet.CheckedBorderColor = System.Drawing.Color.Black;
-            this.btn_PayYet.CheckedForeColor = System.Drawing.Color.White;
-            this.btn_PayYet.CheckedImage = ((System.Drawing.Image)(resources.GetObject("btn_PayYet.CheckedImage")));
-            this.btn_PayYet.CheckedLineColor = System.Drawing.Color.DimGray;
-            this.btn_PayYet.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btn_PayYet.FocusedColor = System.Drawing.Color.Empty;
-            this.btn_PayYet.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_PayYet.ForeColor = System.Drawing.Color.MistyRose;
-            this.btn_PayYet.Image = ((System.Drawing.Image)(resources.GetObject("btn_PayYet.Image")));
-            this.btn_PayYet.ImageSize = new System.Drawing.Size(20, 20);
-            this.btn_PayYet.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.btn_PayYet.Location = new System.Drawing.Point(487, 8);
-            this.btn_PayYet.Name = "btn_PayYet";
-            this.btn_PayYet.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(130)))), ((int)(((byte)(68)))));
-            this.btn_PayYet.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(85)))), ((int)(((byte)(255)))));
-            this.btn_PayYet.OnHoverForeColor = System.Drawing.Color.White;
-            this.btn_PayYet.OnHoverImage = null;
-            this.btn_PayYet.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.btn_PayYet.OnPressedColor = System.Drawing.Color.Black;
-            this.btn_PayYet.Radius = 4;
-            this.btn_PayYet.Size = new System.Drawing.Size(180, 42);
-            this.btn_PayYet.TabIndex = 10;
-            this.btn_PayYet.Text = "Chưa thanh toán";
+            this.btn_AllBillDetails.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_AllBillDetails.AnimationHoverSpeed = 0.07F;
+            this.btn_AllBillDetails.AnimationSpeed = 0.03F;
+            this.btn_AllBillDetails.BackColor = System.Drawing.Color.Transparent;
+            this.btn_AllBillDetails.BaseColor = System.Drawing.Color.CadetBlue;
+            this.btn_AllBillDetails.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(72)))), ((int)(((byte)(115)))));
+            this.btn_AllBillDetails.CheckedBaseColor = System.Drawing.Color.Gray;
+            this.btn_AllBillDetails.CheckedBorderColor = System.Drawing.Color.Black;
+            this.btn_AllBillDetails.CheckedForeColor = System.Drawing.Color.White;
+            this.btn_AllBillDetails.CheckedImage = ((System.Drawing.Image)(resources.GetObject("btn_AllBillDetails.CheckedImage")));
+            this.btn_AllBillDetails.CheckedLineColor = System.Drawing.Color.DimGray;
+            this.btn_AllBillDetails.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btn_AllBillDetails.FocusedColor = System.Drawing.Color.Empty;
+            this.btn_AllBillDetails.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_AllBillDetails.ForeColor = System.Drawing.Color.MistyRose;
+            this.btn_AllBillDetails.Image = ((System.Drawing.Image)(resources.GetObject("btn_AllBillDetails.Image")));
+            this.btn_AllBillDetails.ImageSize = new System.Drawing.Size(20, 20);
+            this.btn_AllBillDetails.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
+            this.btn_AllBillDetails.Location = new System.Drawing.Point(472, 8);
+            this.btn_AllBillDetails.Name = "btn_AllBillDetails";
+            this.btn_AllBillDetails.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(130)))), ((int)(((byte)(68)))));
+            this.btn_AllBillDetails.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(85)))), ((int)(((byte)(255)))));
+            this.btn_AllBillDetails.OnHoverForeColor = System.Drawing.Color.White;
+            this.btn_AllBillDetails.OnHoverImage = null;
+            this.btn_AllBillDetails.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
+            this.btn_AllBillDetails.OnPressedColor = System.Drawing.Color.Black;
+            this.btn_AllBillDetails.Radius = 4;
+            this.btn_AllBillDetails.Size = new System.Drawing.Size(210, 42);
+            this.btn_AllBillDetails.TabIndex = 10;
+            this.btn_AllBillDetails.Text = "Tất cả chi tiết hóa đơn";
+            this.btn_AllBillDetails.Click += new System.EventHandler(this.btn_AllBillDetails_Click);
             // 
             // btn_Paid
             // 
@@ -193,9 +194,14 @@
             this.cbb_options.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbb_options.ForeColor = System.Drawing.Color.Black;
             this.cbb_options.FormattingEnabled = true;
+            this.cbb_options.Items.AddRange(new object[] {
+            "Mới nhất",
+            "Cũ nhất",
+            "Số tiền hóa đơn cao nhất",
+            "Số tiền hóa đơn thấp nhất"});
             this.cbb_options.Location = new System.Drawing.Point(709, 14);
             this.cbb_options.Name = "cbb_options";
-            this.cbb_options.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.cbb_options.OnHoverItemBaseColor = System.Drawing.Color.Tomato;
             this.cbb_options.OnHoverItemForeColor = System.Drawing.Color.White;
             this.cbb_options.Radius = 6;
             this.cbb_options.Size = new System.Drawing.Size(199, 31);
@@ -384,7 +390,7 @@
             this.flp_ContainsBill.Size = new System.Drawing.Size(1394, 681);
             this.flp_ContainsBill.TabIndex = 3;
             // 
-            // BillForm
+            // FBillForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -392,7 +398,7 @@
             this.Controls.Add(this.flp_Container);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "BillForm";
+            this.Name = "FBillForm";
             this.Text = "BillForm";
             this.Load += new System.EventHandler(this.BillForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -415,7 +421,7 @@
         private System.Windows.Forms.FlowLayoutPanel flp_Container;
         private Guna.UI.WinForms.GunaAdvenceButton btn_AllBill;
         private Guna.UI.WinForms.GunaAdvenceButton btn_SeachForBill;
-        private Guna.UI.WinForms.GunaAdvenceButton btn_PayYet;
+        private Guna.UI.WinForms.GunaAdvenceButton btn_AllBillDetails;
         private Guna.UI.WinForms.GunaAdvenceButton btn_Paid;
         private Guna.UI.WinForms.GunaTextBox txt_KeyWord;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;

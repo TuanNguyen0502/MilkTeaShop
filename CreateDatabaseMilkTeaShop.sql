@@ -688,6 +688,15 @@ END;
 exec proc_CreateBill '0123156789', 'NV002', '2024-04-11', '50000'
 SELECT * FROM HoaDon
 GO
+SELECT * FROM ChiTietHoaDon
+-- Procedure tạo chi tiết hóa đơn
+CREATE PROCEDURE proc_CreateBillDetails
+@MaHD int, @MaSP nvarchar(10), @SoLuong int
+AS
+BEGIN
+	INSERT INTO ChiTietHoaDon(MaHD, MaSP, SoLuong)
+	VALUES (@MaHD, @MaSP, @SoLuong);
+END
 
 -- Procedure tìm kiếm hóa đơn
 CREATE PROCEDURE proc_FindBill
@@ -701,9 +710,16 @@ BEGIN
 	WHERE hd.MaHD LIKE '%'+@Keyword+'%' OR nv.HoTen LIKE '%'+@Keyword+'%' OR kh.TenKH LIKE '%'+@Keyword+'%' OR
 		  hd.ThoiGianDat LIKE '%'+@Keyword+'%' OR hd.TriGiaHoaDon LIKE '%'+@Keyword+'%' OR hd.GhiChu LIKE '%'+@Keyword+'%'
 END;
-exec proc_FindBill N'Long'
-SELECT * FROM HoaDon
 GO
+-- View xem hóa đơn khi  bán
+CREATE VIEW vie_XemHoaDon AS
+	SELECT hd.MaHD, nv.HoTen, kh.TenKH, hd.ThoiGianDat, hd.GhiChu, hd.TriGiaHoaDon
+	FROM HoaDon hd
+	JOIN NhanVien nv ON hd.MaNV = nv.MaNV
+	JOIN KhachHang kh ON hd.SDT = kh.SDT
+GO
+
+SELECT * FROM vie_XemHoaDon
 
 -- Procedure thêm nguyên liệu
 CREATE PROCEDURE proc_themNguyenLieu
@@ -762,3 +778,112 @@ SELECT * FROM func_timSanPhamTheoTen ('Trà')
 	Select * from func_timNguyenLieu ('Trà')
 SELECT * FROM NhanVien
 SELECT * FROM V_ThongTinNhanVien
+CREATE TRIGGER trg_CheckNhanVien
+ON NhanVien
+FOR INSERT, UPDATE
+AS
+BEGIN
+    -- check HoTen
+    IF EXISTS (SELECT * FROM inserted WHERE TRIM(HoTen) = '' )
+    BEGIN
+        RAISERROR('Tên nhân viên không được để trống', 16, 1)
+        ROLLBACK TRANSACTION
+        RETURN
+    END
+    
+    -- Check Địa Chỉ
+    IF EXISTS (SELECT * FROM inserted WHERE TRIM(DiaChi) = '' )
+    BEGIN
+        RAISERROR('Địa chỉ không được để trống', 16, 1)
+        ROLLBACK TRANSACTION
+        RETURN
+    END
+    
+    -- check SĐT
+    IF EXISTS (SELECT 1 FROM inserted i INNER JOIN NhanVien n ON i.MaNV != n.MaNV
+    AND TRIM(i.SDT) = TRIM(n.SDT))
+    BEGIN
+        RAISERROR('Số điện thoại đã tồn tại', 16, 1)
+        ROLLBACK TRANSACTION
+        RETURN
+    END
+    
+    -- check Tuổi
+    IF EXISTS (
+    SELECT * FROM inserted WHERE
+    datediff(year, inserted.NgaySinh, getdate()) < 18)
+    BEGIN
+        RAISERROR ('Nhân viên phải trên 18 tuổi', 16, 1)
+        ROLLBACK TRANSACTION
+        RETURN
+    END
+    
+    -- check ngay tuyen dung
+    IF EXISTS (
+    SELECT * FROM inserted WHERE
+    datediff(day, inserted.NgayTuyenDung, getdate()) < 0)
+    BEGIN
+        RAISERROR ('Ngày tuyển dụng không thể là trong tương lai', 16, 1)
+        ROLLBACK TRANSACTION
+        RETURN
+    END
+
+    -- check Giới Tính
+    IF EXISTS (SELECT * FROM inserted WHERE NOT (TRIM(GioiTinh) IN ('Nam', 'Nữ', '')))
+    BEGIN
+        RAISERROR('Giới tính phải là Nam, Nữ.', 16, 1)
+        ROLLBACK TRANSACTION
+        RETURN
+    END
+END;
+
+GO
+CREATE PROC proc_EditStaff
+    @manv nchar(10), 
+    @hoten nvarchar(30), 
+    @ngaysinh date,
+    @gioitinh nvarchar(3), 
+    @diachi nvarchar(255), 
+    @sdt nchar(11), 
+    @macv nchar(10),
+    @ngaytuyendung date
+AS
+BEGIN
+    BEGIN TRY
+        UPDATE NhanVien
+        SET
+            HoTen = @hoten,
+            NgaySinh = @ngaysinh,
+            GioiTinh = @gioitinh,
+            DiaChi = @diachi,
+            SDT = @sdt,
+            MaCV = @macv,
+            NgayTuyenDung = @ngaytuyendung
+        WHERE MaNV = @manv
+    END TRY
+    BEGIN CATCH
+        DECLARE @err NVARCHAR(MAX)
+        SELECT @err = N'Lỗi: ' + ERROR_MESSAGE()
+        RAISERROR(@err, 16, 1)
+    END CATCH
+END
+
+GO
+CREATE PROCEDURE proc_AddStaff
+    @manv nchar(10),
+    @hoten nvarchar(30),
+    @ngaysinh date,
+    @gioitinh nvarchar(3),
+    @diachi nvarchar(255),
+    @sdt nchar(11),
+    @ngaytuyendung date,
+    @macv nchar(10)
+AS
+BEGIN
+    INSERT INTO NhanVien (
+        MaNV, HoTen, NgaySinh, GioiTinh, DiaChi, SDT, NgayTuyenDung, MaCV
+    )
+    VALUES (
+        @manv, @hoten, @ngaysinh, @gioitinh, @diachi, @sdt, @ngaytuyendung, @macv
+    )
+END

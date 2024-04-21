@@ -38,7 +38,7 @@ namespace MilkTeaShop
 
         private void button_Sell_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new SellForm());
+            OpenChildForm(new FSellForm());
         }
 
         private void button_Customer_Click(object sender, EventArgs e)
@@ -48,7 +48,7 @@ namespace MilkTeaShop
 
         private void button_Receipt_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new BillForm());
+            OpenChildForm(new FBillForm());
         }
 
         private void button_Ingredient_Click(object sender, EventArgs e)

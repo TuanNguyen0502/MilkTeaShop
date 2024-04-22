@@ -533,6 +533,8 @@
             // cbb_options
             // 
             this.cbb_options.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cbb_options.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbb_options.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbb_options.BackColor = System.Drawing.Color.Transparent;
             this.cbb_options.BaseColor = System.Drawing.Color.White;
             this.cbb_options.BorderColor = System.Drawing.Color.Silver;

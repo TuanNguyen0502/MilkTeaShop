@@ -887,3 +887,61 @@ BEGIN
         @manv, @hoten, @ngaysinh, @gioitinh, @diachi, @sdt, @ngaytuyendung, @macv
     )
 END
+
+-- Tạo view xem Chi tiết hóa đơn
+CREATE VIEW vie_XemCTHD AS
+	SELECT cthd.MaHD, STRING_AGG(cthd.MaSP + ' (' + CAST(cthd.SoLuong as varchar) + ') ', ' ') AS 'Danh sách sản phẩm', hd.ThoiGianDat, hd.TriGiaHoaDon
+	FROM ChiTietHoaDon cthd
+	JOIN HoaDon hd ON cthd.MaHD = hd.MaHD
+	GROUP BY cthd.MaHD, hd.ThoiGianDat, hd.TriGiaHoaDon
+
+SELECT * FROM HoaDon
+-- Procedure xếp hóa đơn giảm dần theo ngày đặt
+CREATE PROCEDURE proc_HoaDonGiamTheoOrderTime AS 
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT hd.MaHD, nv.HoTen, kh.TenKH, hd.ThoiGianDat, hd.GhiChu, hd.TriGiaHoaDon
+	FROM HoaDon hd
+	JOIN NhanVien nv ON hd.MaNV = nv.MaNV
+	JOIN KhachHang kh ON hd.SDT = kh.SDT
+	ORDER BY hd.ThoiGianDat Desc
+END
+GO
+-- Procedure xếp hóa đơn tăng dần theo ngày đặt
+CREATE PROCEDURE proc_HoaDonTangTheoOrderTime AS 
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT hd.MaHD, nv.HoTen, kh.TenKH, hd.ThoiGianDat, hd.GhiChu, hd.TriGiaHoaDon
+	FROM HoaDon hd
+	JOIN NhanVien nv ON hd.MaNV = nv.MaNV
+	JOIN KhachHang kh ON hd.SDT = kh.SDT
+	ORDER BY hd.ThoiGianDat
+END
+GO
+-- Procedure xếp hóa đơn giảm dần theo tổng giá trị đơn hàng
+
+CREATE PROCEDURE proc_HoaDonGiamTheoTotalBill AS 
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT hd.MaHD, nv.HoTen, kh.TenKH, hd.ThoiGianDat, hd.GhiChu, hd.TriGiaHoaDon
+	FROM HoaDon hd
+	JOIN NhanVien nv ON hd.MaNV = nv.MaNV
+	JOIN KhachHang kh ON hd.SDT = kh.SDT
+	ORDER BY hd.TriGiaHoaDon Desc
+END
+GO
+-- Procedure xếp hóa đơn tăng dần theo tổng giá trị đơn hàng
+CREATE PROCEDURE proc_HoaDonTangTheoTotalBill AS 
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT hd.MaHD, nv.HoTen, kh.TenKH, hd.ThoiGianDat, hd.GhiChu, hd.TriGiaHoaDon
+	FROM HoaDon hd
+	JOIN NhanVien nv ON hd.MaNV = nv.MaNV
+	JOIN KhachHang kh ON hd.SDT = kh.SDT
+	ORDER BY hd.TriGiaHoaDon 
+END
+GO

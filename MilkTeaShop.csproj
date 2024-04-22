@@ -57,6 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UC_BillDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_BillDetails.Designer.cs">
+      <DependentUpon>UC_BillDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="FBillForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +165,9 @@
     <Compile Include="UC_Staff.Designer.cs">
       <DependentUpon>UC_Staff.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UC_BillDetails.resx">
+      <DependentUpon>UC_BillDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FBillForm.resx">
       <DependentUpon>FBillForm.cs</DependentUpon>
     </EmbeddedResource>

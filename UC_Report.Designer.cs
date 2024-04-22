@@ -53,22 +53,22 @@
             this.lbl_Sales.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_Sales.AutoSize = true;
             this.lbl_Sales.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Sales.Location = new System.Drawing.Point(1079, 14);
+            this.lbl_Sales.Location = new System.Drawing.Point(1064, 14);
             this.lbl_Sales.Name = "lbl_Sales";
-            this.lbl_Sales.Size = new System.Drawing.Size(95, 28);
+            this.lbl_Sales.Size = new System.Drawing.Size(126, 28);
             this.lbl_Sales.TabIndex = 19;
-            this.lbl_Sales.Text = "Doanh số";
+            this.lbl_Sales.Text = "DOANH THU";
             // 
             // lblTime
             // 
             this.lblTime.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTime.AutoSize = true;
             this.lblTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTime.Location = new System.Drawing.Point(334, 14);
+            this.lblTime.Location = new System.Drawing.Point(318, 14);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(176, 28);
+            this.lblTime.Size = new System.Drawing.Size(208, 28);
             this.lblTime.TabIndex = 15;
-            this.lblTime.Text = "Thời gian thống kê";
+            this.lblTime.Text = "THỜI GIAN THỐNG KÊ";
             // 
             // UC_Report
             // 

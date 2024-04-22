@@ -68,6 +68,10 @@ CREATE TABLE ChiTiet_DonNhapNguyenLieu(
 	DonVi NVARCHAR(20) NOT NULL, 
 	DonGia NUMERIC(18,0) NOT NULL CHECK(DonGia > 0),
 )
+SELECT 
+    SUM(SoLuong * DonGia) AS TongTien
+FROM 
+    ChiTiet_DonNhapNguyenLieu
 
 GO
 -- Tao bang DonXuatNguyenLieu
@@ -982,8 +986,34 @@ BEGIN
 	 RETURN @doanhThu;
 END;
 GO
-
-SELECT * FROM HoaDon
-DECLARE @doanhThu DECIMAL;
-SELECT dbo.func_tinhDoanhThuTheoNgay(28, 3, 2024) AS ;
-SELECT @doanhThu AS 'Doanh thu';
+-- Viết các function thống kê chi phí nhập nguyên liệu và sản phẩm
+CREATE FUNCTION func_ChiPhiTheoThang
+(@thang int, @nam int)
+RETURNS DECIMAL
+AS
+BEGIN
+	DECLARE @ChiPhi decimal = 0;
+	SELECT @ChiPhi = @ChiPhi + COALESCE(SUM(TriGiaDonNhap), 0)
+					FROM DonNhapNguyenLieu
+					WHERE MONTH(NgayNhap) = @thang AND YEAR(NgayNhap) = @nam;
+	SELECT @ChiPhi = @ChiPhi + COALESCE(SUM(TriGiaDonNhap), 0)
+					FROM DonNhapSanPham
+					WHERE MONTH(NgayNhap) = @thang AND YEAR(NgayNhap) = @nam;
+	RETURN @ChiPhi;
+END;
+GO
+CREATE FUNCTION func_ChiPhiTheoNam
+(@nam int)
+RETURNS DECIMAL
+AS
+BEGIN
+	DECLARE @ChiPhi decimal = 0;
+	SELECT @ChiPhi = @ChiPhi + COALESCE(SUM(TriGiaDonNhap), 0)
+					FROM DonNhapNguyenLieu
+					WHERE YEAR(NgayNhap) = @nam;
+	SELECT @ChiPhi = @ChiPhi + COALESCE(SUM(TriGiaDonNhap), 0)
+					FROM DonNhapSanPham
+					WHERE YEAR(NgayNhap) = @nam;
+	RETURN @ChiPhi;
+END;
+GO

@@ -34,18 +34,18 @@
             this.cbb_OptionMain = new Guna.UI.WinForms.GunaComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.rdb_Year = new Guna.UI2.WinForms.Guna2RadioButton();
+            this.rdb_Month = new Guna.UI2.WinForms.Guna2RadioButton();
             this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.flp_ContainsHeader = new System.Windows.Forms.FlowLayoutPanel();
-            this.flp_ContainsReport = new System.Windows.Forms.FlowLayoutPanel();
             this.dtp_DMY = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.rdb_Day = new Guna.UI2.WinForms.Guna2RadioButton();
-            this.rdb_Month = new Guna.UI2.WinForms.Guna2RadioButton();
-            this.rdb_Year = new Guna.UI2.WinForms.Guna2RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.dtp_From = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.dtp_To = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.flp_ContainsHeader = new System.Windows.Forms.FlowLayoutPanel();
+            this.flp_ContainsReport = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -130,16 +130,47 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1447, 56);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
-            // label4
+            // rdb_Year
             // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(964, 14);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 28);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "Từ";
+            this.rdb_Year.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rdb_Year.AutoSize = true;
+            this.rdb_Year.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.rdb_Year.CheckedState.BorderThickness = 0;
+            this.rdb_Year.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.rdb_Year.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.rdb_Year.CheckedState.InnerOffset = -4;
+            this.rdb_Year.ForeColor = System.Drawing.Color.Tomato;
+            this.rdb_Year.Location = new System.Drawing.Point(576, 18);
+            this.rdb_Year.Name = "rdb_Year";
+            this.rdb_Year.Size = new System.Drawing.Size(57, 20);
+            this.rdb_Year.TabIndex = 22;
+            this.rdb_Year.Text = "Năm";
+            this.rdb_Year.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.rdb_Year.UncheckedState.BorderThickness = 2;
+            this.rdb_Year.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            this.rdb_Year.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            this.rdb_Year.CheckedChanged += new System.EventHandler(this.rdb_Year_CheckedChanged);
+            // 
+            // rdb_Month
+            // 
+            this.rdb_Month.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rdb_Month.AutoSize = true;
+            this.rdb_Month.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.rdb_Month.CheckedState.BorderThickness = 0;
+            this.rdb_Month.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.rdb_Month.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.rdb_Month.CheckedState.InnerOffset = -4;
+            this.rdb_Month.ForeColor = System.Drawing.Color.Tomato;
+            this.rdb_Month.Location = new System.Drawing.Point(458, 18);
+            this.rdb_Month.Name = "rdb_Month";
+            this.rdb_Month.Size = new System.Drawing.Size(67, 20);
+            this.rdb_Month.TabIndex = 21;
+            this.rdb_Month.Text = "Tháng";
+            this.rdb_Month.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.rdb_Month.UncheckedState.BorderThickness = 2;
+            this.rdb_Month.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            this.rdb_Month.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            this.rdb_Month.CheckedChanged += new System.EventHandler(this.rdb_Month_CheckedChanged);
             // 
             // label2
             // 
@@ -152,6 +183,17 @@
             this.label2.TabIndex = 15;
             this.label2.Text = "Doanh thu theo giai đoạn";
             // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(964, 14);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(34, 28);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Từ";
+            // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -162,20 +204,6 @@
             this.label1.Size = new System.Drawing.Size(96, 28);
             this.label1.TabIndex = 14;
             this.label1.Text = "Lọc theo :";
-            // 
-            // flp_ContainsHeader
-            // 
-            this.flp_ContainsHeader.Location = new System.Drawing.Point(0, 128);
-            this.flp_ContainsHeader.Name = "flp_ContainsHeader";
-            this.flp_ContainsHeader.Size = new System.Drawing.Size(1447, 57);
-            this.flp_ContainsHeader.TabIndex = 6;
-            // 
-            // flp_ContainsReport
-            // 
-            this.flp_ContainsReport.Location = new System.Drawing.Point(0, 191);
-            this.flp_ContainsReport.Name = "flp_ContainsReport";
-            this.flp_ContainsReport.Size = new System.Drawing.Size(1470, 615);
-            this.flp_ContainsReport.TabIndex = 7;
             // 
             // dtp_DMY
             // 
@@ -211,46 +239,6 @@
             this.rdb_Day.UncheckedState.FillColor = System.Drawing.Color.Transparent;
             this.rdb_Day.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
             this.rdb_Day.CheckedChanged += new System.EventHandler(this.rdb_Day_CheckedChanged);
-            // 
-            // rdb_Month
-            // 
-            this.rdb_Month.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.rdb_Month.AutoSize = true;
-            this.rdb_Month.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdb_Month.CheckedState.BorderThickness = 0;
-            this.rdb_Month.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdb_Month.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.rdb_Month.CheckedState.InnerOffset = -4;
-            this.rdb_Month.ForeColor = System.Drawing.Color.Tomato;
-            this.rdb_Month.Location = new System.Drawing.Point(458, 18);
-            this.rdb_Month.Name = "rdb_Month";
-            this.rdb_Month.Size = new System.Drawing.Size(67, 20);
-            this.rdb_Month.TabIndex = 21;
-            this.rdb_Month.Text = "Tháng";
-            this.rdb_Month.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.rdb_Month.UncheckedState.BorderThickness = 2;
-            this.rdb_Month.UncheckedState.FillColor = System.Drawing.Color.Transparent;
-            this.rdb_Month.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
-            // 
-            // rdb_Year
-            // 
-            this.rdb_Year.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.rdb_Year.AutoSize = true;
-            this.rdb_Year.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdb_Year.CheckedState.BorderThickness = 0;
-            this.rdb_Year.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdb_Year.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.rdb_Year.CheckedState.InnerOffset = -4;
-            this.rdb_Year.ForeColor = System.Drawing.Color.Tomato;
-            this.rdb_Year.Location = new System.Drawing.Point(576, 18);
-            this.rdb_Year.Name = "rdb_Year";
-            this.rdb_Year.Size = new System.Drawing.Size(57, 20);
-            this.rdb_Year.TabIndex = 22;
-            this.rdb_Year.Text = "Năm";
-            this.rdb_Year.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.rdb_Year.UncheckedState.BorderThickness = 2;
-            this.rdb_Year.UncheckedState.FillColor = System.Drawing.Color.Transparent;
-            this.rdb_Year.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
             // 
             // label3
             // 
@@ -290,6 +278,20 @@
             this.dtp_To.Size = new System.Drawing.Size(170, 36);
             this.dtp_To.TabIndex = 25;
             this.dtp_To.Value = new System.DateTime(2024, 4, 22, 11, 18, 53, 940);
+            // 
+            // flp_ContainsHeader
+            // 
+            this.flp_ContainsHeader.Location = new System.Drawing.Point(0, 128);
+            this.flp_ContainsHeader.Name = "flp_ContainsHeader";
+            this.flp_ContainsHeader.Size = new System.Drawing.Size(1447, 57);
+            this.flp_ContainsHeader.TabIndex = 6;
+            // 
+            // flp_ContainsReport
+            // 
+            this.flp_ContainsReport.Location = new System.Drawing.Point(0, 191);
+            this.flp_ContainsReport.Name = "flp_ContainsReport";
+            this.flp_ContainsReport.Size = new System.Drawing.Size(1470, 615);
+            this.flp_ContainsReport.TabIndex = 7;
             // 
             // FReport
             // 

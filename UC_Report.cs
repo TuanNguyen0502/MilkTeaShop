@@ -15,10 +15,12 @@ namespace MilkTeaShop
         private DateTime time;
         private decimal sales;
         public DateTime Time { get { return time; } set { time = value; lblTime.Text = $"Ngày {value.Day} Tháng {value.Month} Năm {value.Year}"; } }
-        public decimal Sales { get { return sales; } set { sales = value; lbl_Sales.Text = value.ToString() + " VNĐ"; } }
+        public decimal Sales { get { return sales; } set { sales = value; lbl_Sales.Text = value.ToString("#,##0 đồng"); } }
+        
         public UC_Report()
         {
             InitializeComponent();
         }
+        public Label LblSale { get { return lbl_Sales; } }
     }
 }

@@ -945,3 +945,45 @@ BEGIN
 	ORDER BY hd.TriGiaHoaDon 
 END
 GO
+
+-- Thống kê doanh thu và chi phí
+CREATE FUNCTION func_tinhDoanhThuTheoNgay
+(@ngay INT, @thang INT, @nam INT)
+RETURNS DECIMAL
+AS
+BEGIN
+	 DECLARE @doanhThu DECIMAL = 0;
+	 SELECT @doanhThu = COALESCE(SUM(TriGiaHoaDon), 0)
+	 FROM HoaDon
+	 WHERE DAY(ThoiGianDat) = @ngay AND MONTH(ThoiGianDat) = @thang AND
+			YEAR(ThoiGianDat) = @nam;
+	RETURN @doanhThu;
+END;
+GO
+CREATE FUNCTION func_tinhDoanhThuTheoThang
+(@thang INT, @nam INT)
+RETURNS DECIMAL
+BEGIN
+	 DECLARE @doanhThu decimal = 0;
+	 SELECT @doanhthu = COALESCE(SUM(TriGiaHoaDon), 0)
+	 FROM HoaDon
+	 WHERE MONTH(ThoiGianDat) = @thang AND YEAR(ThoiGianDat) = @nam;
+	 RETURN @doanhThu;
+END;
+GO
+CREATE FUNCTION func_tinhDoanhThuTheoNam
+(@nam INT) 
+RETURNS DECIMAL
+BEGIN
+	 DECLARE @doanhThu decimal = 0;
+	 SELECT @doanhthu = COALESCE(SUM(TriGiaHoaDon), 0)
+	 FROM HoaDon
+	 WHERE YEAR(ThoiGianDat) = @nam;
+	 RETURN @doanhThu;
+END;
+GO
+
+SELECT * FROM HoaDon
+DECLARE @doanhThu DECIMAL;
+SELECT dbo.func_tinhDoanhThuTheoNgay(28, 3, 2024) AS ;
+SELECT @doanhThu AS 'Doanh thu';

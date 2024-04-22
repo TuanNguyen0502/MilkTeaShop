@@ -47,10 +47,17 @@ namespace MilkTeaShop
             if (Convert.ToInt32(lbl_Number.Text) > 2)
             {
                 //picture_TrangThai.Image = Image.FromFile("C:\\Users\\PC\\Downloads\\tick.png");
+                System.Drawing.Image image = Properties.Resources.tick; // Thay "TenAnh" bằng tên của ảnh trong Resource
+
+                // Gán ảnh vào PictureBox
+                picture_TrangThai.Image = image;
             }
             else
             {
-                //picture_TrangThai.Image = Image.FromFile("C:\\Users\\PC\\Downloads\\x.png");
+                System.Drawing.Image image = Properties.Resources.x; // Thay "TenAnh" bằng tên của ảnh trong Resource
+
+                // Gán ảnh vào PictureBox
+                picture_TrangThai.Image = image; ;
             }
         }
 

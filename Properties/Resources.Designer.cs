@@ -423,29 +423,9 @@ namespace MilkTeaShop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_tick_48__2_ {
-            get {
-                object obj = ResourceManager.GetObject("icons8-tick-48 (2)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap icons8_vegetables_bag_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8-vegetables-bag-32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_x_48 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-x-48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -493,6 +473,16 @@ namespace MilkTeaShop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap tick {
+            get {
+                object obj = ResourceManager.GetObject("tick", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap top_8_quan_sua_chua_tran_chau_ha_long_thom_ngon_kho_cuong_01_1641920517 {
             get {
                 object obj = ResourceManager.GetObject("top-8-quan-sua-chua-tran-chau-ha-long-thom-ngon-kho-cuong-01-1641920517", resourceCulture);
@@ -516,6 +506,16 @@ namespace MilkTeaShop.Properties {
         internal static System.Drawing.Bitmap Vending_Machine1 {
             get {
                 object obj = ResourceManager.GetObject("Vending Machine1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap x {
+            get {
+                object obj = ResourceManager.GetObject("x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

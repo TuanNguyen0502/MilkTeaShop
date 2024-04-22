@@ -97,7 +97,7 @@
             // 
             // picture_TrangThai
             // 
-            this.picture_TrangThai.Image = global::MilkTeaShop.Properties.Resources.icons8_tick_48__2_;
+            this.picture_TrangThai.Image = global::MilkTeaShop.Properties.Resources.tick;
             this.picture_TrangThai.ImageRotate = 0F;
             this.picture_TrangThai.Location = new System.Drawing.Point(25, 6);
             this.picture_TrangThai.Name = "picture_TrangThai";

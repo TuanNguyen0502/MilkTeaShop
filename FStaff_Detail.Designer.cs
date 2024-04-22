@@ -94,7 +94,7 @@
             this.cbbWorkStatus.ForeColor = System.Drawing.Color.Black;
             this.cbbWorkStatus.Items.AddRange(new object[] {
             "Đang làm việc",
-            "Đã nghĩ việc"});
+            "Đã nghỉ việc"});
             this.cbbWorkStatus.Location = new System.Drawing.Point(547, 367);
             this.cbbWorkStatus.Name = "cbbWorkStatus";
             this.cbbWorkStatus.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));

@@ -90,6 +90,16 @@ namespace MilkTeaShop
                         {
                             cmd.Parameters.Add(new SqlParameter("@MaCV", SqlDbType.NChar, 10) { Value = selectedJob.ToString() });
                         }
+                        object selectedWorkStatus = cbbWorkStatus.SelectedValue;
+                        if (selectedWorkStatus == null)
+                        {
+                            selectedWorkStatus = cbbWorkStatus.SelectedItem;
+                        }
+
+                        if (selectedJob != null)
+                        {
+                            cmd.Parameters.Add(new SqlParameter("@trangthailamviec", SqlDbType.NVarChar, 30) { Value = selectedWorkStatus.ToString() });
+                        }
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Employee details updated successfully!");
                         this.DialogResult = DialogResult.OK;

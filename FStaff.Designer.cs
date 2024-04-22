@@ -45,6 +45,8 @@
             this.lblPhone = new Guna.UI.WinForms.GunaLabel();
             this.lblDOB = new Guna.UI.WinForms.GunaLabel();
             this.lblAddress = new Guna.UI.WinForms.GunaLabel();
+            this.cbbWorkStatus = new Guna.UI.WinForms.GunaComboBox();
+            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.gunaPanel1.SuspendLayout();
             this.flpanelListStaff.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -53,7 +55,9 @@
             // gunaPanel1
             // 
             this.gunaPanel1.AutoSize = true;
+            this.gunaPanel1.Controls.Add(this.cbbWorkStatus);
             this.gunaPanel1.Controls.Add(this.txtSearch);
+            this.gunaPanel1.Controls.Add(this.gunaLabel1);
             this.gunaPanel1.Controls.Add(this.btnSearch);
             this.gunaPanel1.Controls.Add(this.btnAdd);
             this.gunaPanel1.Controls.Add(this.lblFStaff);
@@ -189,7 +193,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.31222F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.498384F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.457069F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 104F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 114F));
             this.tableLayoutPanel1.Controls.Add(this.lblDOREC, 6, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblJob, 7, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblSalary, 8, 0);
@@ -211,7 +215,7 @@
             this.lblDOREC.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDOREC.AutoSize = true;
             this.lblDOREC.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDOREC.Location = new System.Drawing.Point(1118, 13);
+            this.lblDOREC.Location = new System.Drawing.Point(1111, 13);
             this.lblDOREC.Name = "lblDOREC";
             this.lblDOREC.Size = new System.Drawing.Size(150, 25);
             this.lblDOREC.TabIndex = 9;
@@ -223,7 +227,7 @@
             this.lblJob.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblJob.AutoSize = true;
             this.lblJob.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblJob.Location = new System.Drawing.Point(1291, 13);
+            this.lblJob.Location = new System.Drawing.Point(1283, 13);
             this.lblJob.Name = "lblJob";
             this.lblJob.Size = new System.Drawing.Size(90, 25);
             this.lblJob.TabIndex = 10;
@@ -235,7 +239,7 @@
             this.lblSalary.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSalary.AutoSize = true;
             this.lblSalary.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSalary.Location = new System.Drawing.Point(1426, 13);
+            this.lblSalary.Location = new System.Drawing.Point(1418, 13);
             this.lblSalary.Name = "lblSalary";
             this.lblSalary.Size = new System.Drawing.Size(63, 25);
             this.lblSalary.TabIndex = 8;
@@ -259,7 +263,7 @@
             this.lblName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(155, 13);
+            this.lblName.Location = new System.Drawing.Point(154, 13);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(89, 25);
             this.lblName.TabIndex = 4;
@@ -271,7 +275,7 @@
             this.lblSex.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSex.AutoSize = true;
             this.lblSex.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSex.Location = new System.Drawing.Point(328, 13);
+            this.lblSex.Location = new System.Drawing.Point(326, 13);
             this.lblSex.Name = "lblSex";
             this.lblSex.Size = new System.Drawing.Size(78, 25);
             this.lblSex.TabIndex = 5;
@@ -283,7 +287,7 @@
             this.lblPhone.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblPhone.AutoSize = true;
             this.lblPhone.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhone.Location = new System.Drawing.Point(466, 13);
+            this.lblPhone.Location = new System.Drawing.Point(464, 13);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(44, 25);
             this.lblPhone.TabIndex = 11;
@@ -295,7 +299,7 @@
             this.lblDOB.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDOB.AutoSize = true;
             this.lblDOB.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDOB.Location = new System.Drawing.Point(980, 13);
+            this.lblDOB.Location = new System.Drawing.Point(974, 13);
             this.lblDOB.Name = "lblDOB";
             this.lblDOB.Size = new System.Drawing.Size(91, 25);
             this.lblDOB.TabIndex = 6;
@@ -307,12 +311,44 @@
             this.lblAddress.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblAddress.AutoSize = true;
             this.lblAddress.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddress.Location = new System.Drawing.Point(720, 13);
+            this.lblAddress.Location = new System.Drawing.Point(716, 13);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(65, 25);
             this.lblAddress.TabIndex = 7;
             this.lblAddress.Text = "Địa chỉ";
             this.lblAddress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // cbbWorkStatus
+            // 
+            this.cbbWorkStatus.BackColor = System.Drawing.Color.Transparent;
+            this.cbbWorkStatus.BaseColor = System.Drawing.Color.White;
+            this.cbbWorkStatus.BorderColor = System.Drawing.Color.Silver;
+            this.cbbWorkStatus.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbbWorkStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbWorkStatus.FocusedColor = System.Drawing.Color.Empty;
+            this.cbbWorkStatus.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbbWorkStatus.ForeColor = System.Drawing.Color.Black;
+            this.cbbWorkStatus.Items.AddRange(new object[] {
+            "Tất cả",
+            "Đang làm việc",
+            "Đã nghỉ việc"});
+            this.cbbWorkStatus.Location = new System.Drawing.Point(1342, 48);
+            this.cbbWorkStatus.Name = "cbbWorkStatus";
+            this.cbbWorkStatus.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.cbbWorkStatus.OnHoverItemForeColor = System.Drawing.Color.White;
+            this.cbbWorkStatus.Size = new System.Drawing.Size(142, 31);
+            this.cbbWorkStatus.TabIndex = 18;
+            this.cbbWorkStatus.SelectedIndexChanged += new System.EventHandler(this.cbbWorkStatus_SelectedIndexChanged);
+            // 
+            // gunaLabel1
+            // 
+            this.gunaLabel1.AutoSize = true;
+            this.gunaLabel1.Font = new System.Drawing.Font("Leelawadee UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel1.Location = new System.Drawing.Point(1160, 51);
+            this.gunaLabel1.Name = "gunaLabel1";
+            this.gunaLabel1.Size = new System.Drawing.Size(164, 23);
+            this.gunaLabel1.TabIndex = 17;
+            this.gunaLabel1.Text = "Trạng thái làm việc";
             // 
             // FStaff
             // 
@@ -353,5 +389,7 @@
         private Guna.UI.WinForms.GunaLabel lblPhone;
         private Guna.UI2.WinForms.Guna2TextBox txtSearch;
         private Guna.UI.WinForms.GunaAdvenceButton btnSearch;
+        private Guna.UI.WinForms.GunaComboBox cbbWorkStatus;
+        private Guna.UI.WinForms.GunaLabel gunaLabel1;
     }
 }

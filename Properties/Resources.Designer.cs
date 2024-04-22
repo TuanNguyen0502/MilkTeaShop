@@ -443,6 +443,16 @@ namespace MilkTeaShop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_x_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-x-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_yogurt_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8-yogurt-32", resourceCulture);

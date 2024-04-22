@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Guna.UI2.WinForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,11 +8,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace MilkTeaShop
 {
     public partial class FIngredient : Form
     {
+        DBConnection db = new DBConnection();
+        UC_Ingredient uC_Ing = new UC_Ingredient();
+        IngredientsDAO igDao = new IngredientsDAO();
+        public Guna2TextBox Txt_MaNL { get => txt_MaNL; set => txt_MaNL = value; }
+        public Guna2TextBox Txt_NameNL { get => txt_NameNL; set => txt_NameNL = value; }
+        public Guna2TextBox Txt_SoLuong { get => txt_SoLuong; set => txt_SoLuong = value; }
+        public Guna2TextBox Txt_DonVi { get => txt_DonVi; set => txt_DonVi = value; }
+
         public FIngredient()
         {
             InitializeComponent();
@@ -19,7 +27,101 @@ namespace MilkTeaShop
 
         private void FIngredient_Load(object sender, EventArgs e)
         {
+            string query = "Select * from NguyenLieu";
+            GeneratePanel(query);
+        }
 
+        private void btn_Tim_Click(object sender, EventArgs e)
+        {
+            string query = "Select * from func_timNguyenLieu (N'"+txt_SearchNL.Text+"')";
+            GeneratePanel(query);
+            this.Refresh();
+        }
+        public void GeneratePanel(string query)
+        {
+            Panel_NL.Controls.Clear();
+            DataTable dt = new DataTable();
+            dt = db.LoadData(query);
+            int x = 0;
+            foreach (DataRow dr in dt.Rows)
+            {
+                Panel panel = new Panel
+                {
+                    Size = new Size(520, 58),
+                    Location = new Point(0, x),
+                    BorderStyle = BorderStyle.FixedSingle,
+                };
+                Ingredient ig = new Ingredient(dr);
+                UC_Ingredient uC_Ingredient = new UC_Ingredient(ig,this);
+                x += 58;
+                panel.Controls.Add(uC_Ingredient);
+                Panel_NL.Controls.Add(panel);
+            }
+        }
+        
+        private void btn_Add_Click(object sender, EventArgs e)
+        {
+            Ingredient ig = new Ingredient(txt_MaNL.Text, txt_NameNL.Text, Convert.ToInt32(txt_SoLuong.Text), txt_DonVi.Text, "Available");
+            igDao.Them(ig);
+            FIngredient_Load(sender, e);
+            CleanTextBox();
+
+        }
+
+        private void btn_Fix_Click(object sender, EventArgs e)
+        {
+            Ingredient ig = new Ingredient(txt_MaNL.Text, txt_NameNL.Text, Convert.ToInt32(txt_SoLuong.Text), txt_DonVi.Text,"Available");
+            igDao.Sua(ig);
+            FIngredient_Load(sender,e);
+            CleanTextBox();
+
+        }
+
+        private void cb_ConHang_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cb_ConHang.Checked)
+            {
+                string query = "Select * from NguyenLieu where TrangThai = 'Available'";
+                GeneratePanel(query);
+                this.Refresh();
+                cb_HetHang.Enabled = false;
+            }
+            else
+            {
+                cb_HetHang.Enabled = true;
+                FIngredient_Load(sender, e);
+            }
+        }
+
+        private void cb_HetHang_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cb_HetHang.Checked)
+            {
+                string query = "Select * from NguyenLieu where TrangThai = 'Unavailable'";
+                GeneratePanel(query);
+                this.Refresh();
+                cb_ConHang.Enabled = false;
+            }
+            else
+            {
+                cb_ConHang.Enabled = true;
+                FIngredient_Load(sender, e);
+            }
+        }
+
+        private void btn_Delete_Click(object sender, EventArgs e)
+        {
+            Ingredient ig = new Ingredient(txt_MaNL.Text, txt_NameNL.Text, Convert.ToInt32(txt_SoLuong.Text), txt_DonVi.Text, "Available");
+            igDao.Xoa(ig);
+            FIngredient_Load(sender, e);
+            CleanTextBox();
+        }
+        public void CleanTextBox()
+        {
+            txt_MaNL.Text = "";
+            txt_NameNL.Text = "";
+            txt_SoLuong.Text = "";
+            txt_DonVi.Text = "";
         }
     }
 }

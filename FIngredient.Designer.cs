@@ -1,4 +1,8 @@
-﻿namespace MilkTeaShop
+﻿using Guna.UI.WinForms;
+using Guna.UI2.WinForms;
+using System.Windows.Forms;
+
+namespace MilkTeaShop
 {
     partial class FIngredient
     {
@@ -39,21 +43,21 @@
             this.txt_SoLuong = new Guna.UI2.WinForms.Guna2TextBox();
             this.txt_DonVi = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel_ThongTin = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btn_Tim = new Guna.UI2.WinForms.Guna2Button();
             this.cb_ConHang = new Guna.UI2.WinForms.Guna2CheckBox();
             this.cb_HetHang = new Guna.UI2.WinForms.Guna2CheckBox();
             this.Panel_NL = new Guna.UI2.WinForms.Guna2Panel();
-            this.txt_TinhTrangNl = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.txt_SearchNL = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.P = new Guna.UI2.WinForms.Guna2Panel();
+            this.txt_TinhTrangNl = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.btn_Delete = new Guna.UI2.WinForms.Guna2Button();
+            this.btn_Fix = new Guna.UI2.WinForms.Guna2Button();
+            this.btn_Add = new Guna.UI2.WinForms.Guna2Button();
+            this.txt_SearchNL = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel_ThongTin.SuspendLayout();
-            this.Panel_NL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
+            this.Panel_NL.SuspendLayout();
             this.SuspendLayout();
             // 
             // gunaContextMenuStrip1
@@ -246,6 +250,17 @@
             this.panel_ThongTin.Size = new System.Drawing.Size(541, 655);
             this.panel_ThongTin.TabIndex = 0;
             // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.Image = global::MilkTeaShop.Properties.Resources.icons8_milk_48;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(122, 27);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(34, 29);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.guna2PictureBox1.TabIndex = 2;
+            this.guna2PictureBox1.TabStop = false;
+            // 
             // guna2HtmlLabel1
             // 
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
@@ -253,6 +268,7 @@
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(3, 2);
             this.guna2HtmlLabel1.TabIndex = 0;
+            this.guna2HtmlLabel1.Text = null;
             // 
             // btn_Tim
             // 
@@ -269,6 +285,7 @@
             this.btn_Tim.Size = new System.Drawing.Size(92, 45);
             this.btn_Tim.TabIndex = 3;
             this.btn_Tim.Text = "Tìm";
+            this.btn_Tim.Click += new System.EventHandler(this.btn_Tim_Click);
             // 
             // cb_ConHang
             // 
@@ -288,6 +305,7 @@
             this.cb_ConHang.UncheckedState.BorderRadius = 0;
             this.cb_ConHang.UncheckedState.BorderThickness = 0;
             this.cb_ConHang.UncheckedState.FillColor = System.Drawing.Color.White;
+            this.cb_ConHang.CheckedChanged += new System.EventHandler(this.cb_ConHang_CheckedChanged);
             // 
             // cb_HetHang
             // 
@@ -307,15 +325,26 @@
             this.cb_HetHang.UncheckedState.BorderRadius = 0;
             this.cb_HetHang.UncheckedState.BorderThickness = 0;
             this.cb_HetHang.UncheckedState.FillColor = System.Drawing.Color.White;
+            this.cb_HetHang.CheckedChanged += new System.EventHandler(this.cb_HetHang_CheckedChanged);
             // 
             // Panel_NL
             // 
+            this.Panel_NL.AutoScroll = true;
             this.Panel_NL.Controls.Add(this.P);
             this.Panel_NL.FillColor = System.Drawing.SystemColors.InactiveBorder;
             this.Panel_NL.Location = new System.Drawing.Point(122, 206);
             this.Panel_NL.Name = "Panel_NL";
-            this.Panel_NL.Size = new System.Drawing.Size(704, 608);
+            this.Panel_NL.Size = new System.Drawing.Size(722, 608);
             this.Panel_NL.TabIndex = 13;
+            // 
+            // P
+            // 
+            this.P.BorderColor = System.Drawing.Color.OrangeRed;
+            this.P.FillColor = System.Drawing.Color.White;
+            this.P.Location = new System.Drawing.Point(0, 0);
+            this.P.Name = "P";
+            this.P.Size = new System.Drawing.Size(704, 69);
+            this.P.TabIndex = 0;
             // 
             // txt_TinhTrangNl
             // 
@@ -329,56 +358,59 @@
             this.txt_TinhTrangNl.TabIndex = 17;
             this.txt_TinhTrangNl.Text = "Tình trạng :";
             // 
-            // guna2Button4
+            // btn_Delete
             // 
-            this.guna2Button4.BorderRadius = 15;
-            this.guna2Button4.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button4.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.guna2Button4.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button4.ForeColor = System.Drawing.Color.White;
-            this.guna2Button4.Image = global::MilkTeaShop.Properties.Resources.icons8_delete_48;
-            this.guna2Button4.Location = new System.Drawing.Point(1355, 769);
-            this.guna2Button4.Name = "guna2Button4";
-            this.guna2Button4.Size = new System.Drawing.Size(92, 45);
-            this.guna2Button4.TabIndex = 16;
-            this.guna2Button4.Text = "Xóa";
+            this.btn_Delete.BorderRadius = 15;
+            this.btn_Delete.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_Delete.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_Delete.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_Delete.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_Delete.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btn_Delete.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Delete.ForeColor = System.Drawing.Color.White;
+            this.btn_Delete.Image = global::MilkTeaShop.Properties.Resources.icons8_delete_48;
+            this.btn_Delete.Location = new System.Drawing.Point(1355, 769);
+            this.btn_Delete.Name = "btn_Delete";
+            this.btn_Delete.Size = new System.Drawing.Size(92, 45);
+            this.btn_Delete.TabIndex = 16;
+            this.btn_Delete.Text = "Xóa";
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
-            // guna2Button3
+            // btn_Fix
             // 
-            this.guna2Button3.BorderRadius = 15;
-            this.guna2Button3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.guna2Button3.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button3.ForeColor = System.Drawing.Color.White;
-            this.guna2Button3.Image = global::MilkTeaShop.Properties.Resources.icons8_fix_50__1_;
-            this.guna2Button3.Location = new System.Drawing.Point(1142, 769);
-            this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.Size = new System.Drawing.Size(92, 45);
-            this.guna2Button3.TabIndex = 15;
-            this.guna2Button3.Text = "Sửa";
+            this.btn_Fix.BorderRadius = 15;
+            this.btn_Fix.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_Fix.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_Fix.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_Fix.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_Fix.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btn_Fix.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Fix.ForeColor = System.Drawing.Color.White;
+            this.btn_Fix.Image = global::MilkTeaShop.Properties.Resources.icons8_fix_50__1_;
+            this.btn_Fix.Location = new System.Drawing.Point(1142, 769);
+            this.btn_Fix.Name = "btn_Fix";
+            this.btn_Fix.Size = new System.Drawing.Size(92, 45);
+            this.btn_Fix.TabIndex = 15;
+            this.btn_Fix.Text = "Sửa";
+            this.btn_Fix.Click += new System.EventHandler(this.btn_Fix_Click);
             // 
-            // guna2Button1
+            // btn_Add
             // 
-            this.guna2Button1.BorderRadius = 15;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.guna2Button1.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Image = global::MilkTeaShop.Properties.Resources.icons8_add_30;
-            this.guna2Button1.Location = new System.Drawing.Point(906, 769);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(92, 45);
-            this.guna2Button1.TabIndex = 14;
-            this.guna2Button1.Text = "Thêm";
+            this.btn_Add.BorderRadius = 15;
+            this.btn_Add.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_Add.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_Add.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_Add.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_Add.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btn_Add.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Add.ForeColor = System.Drawing.Color.White;
+            this.btn_Add.Image = global::MilkTeaShop.Properties.Resources.icons8_add_30;
+            this.btn_Add.Location = new System.Drawing.Point(906, 769);
+            this.btn_Add.Name = "btn_Add";
+            this.btn_Add.Size = new System.Drawing.Size(92, 45);
+            this.btn_Add.TabIndex = 14;
+            this.btn_Add.Text = "Thêm";
+            this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
             // 
             // txt_SearchNL
             // 
@@ -404,25 +436,6 @@
             this.txt_SearchNL.Size = new System.Drawing.Size(567, 46);
             this.txt_SearchNL.TabIndex = 1;
             // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.Image = global::MilkTeaShop.Properties.Resources.icons8_milk_48;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(122, 27);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(34, 29);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.guna2PictureBox1.TabIndex = 2;
-            this.guna2PictureBox1.TabStop = false;
-            // 
-            // P
-            // 
-            this.P.FillColor = System.Drawing.Color.White;
-            this.P.Location = new System.Drawing.Point(0, 0);
-            this.P.Name = "P";
-            this.P.Size = new System.Drawing.Size(704, 69);
-            this.P.TabIndex = 0;
-            // 
             // FIngredient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -430,9 +443,9 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1589, 1050);
             this.Controls.Add(this.txt_TinhTrangNl);
-            this.Controls.Add(this.guna2Button4);
-            this.Controls.Add(this.guna2Button3);
-            this.Controls.Add(this.guna2Button1);
+            this.Controls.Add(this.btn_Delete);
+            this.Controls.Add(this.btn_Fix);
+            this.Controls.Add(this.btn_Add);
             this.Controls.Add(this.Panel_NL);
             this.Controls.Add(this.cb_HetHang);
             this.Controls.Add(this.cb_ConHang);
@@ -446,8 +459,8 @@
             this.Load += new System.EventHandler(this.FIngredient_Load);
             this.panel_ThongTin.ResumeLayout(false);
             this.panel_ThongTin.PerformLayout();
-            this.Panel_NL.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
+            this.Panel_NL.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -473,10 +486,14 @@
         private Guna.UI2.WinForms.Guna2CheckBox cb_ConHang;
         private Guna.UI2.WinForms.Guna2CheckBox cb_HetHang;
         private Guna.UI2.WinForms.Guna2Panel Panel_NL;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button3;
-        private Guna.UI2.WinForms.Guna2Button guna2Button4;
+        private Guna.UI2.WinForms.Guna2Button btn_Add;
+        private Guna.UI2.WinForms.Guna2Button btn_Fix;
+        private Guna.UI2.WinForms.Guna2Button btn_Delete;
         private Guna.UI2.WinForms.Guna2HtmlLabel txt_TinhTrangNl;
         private Guna.UI2.WinForms.Guna2Panel P;
+
+       
+        
+        
     }
 }

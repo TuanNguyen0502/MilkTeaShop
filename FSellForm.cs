@@ -112,11 +112,26 @@ namespace MilkTeaShop
             lbl_TotalBill.Text = totalOrders.ToString() + " VNĐ";
             if (ckb_Sale.Checked)
             {
-                lbl_Pay.Text = (totalOrders - totalOrders*0, 2).ToString() + " VNĐ";
+                //decimal totalOrders = Convert.ToDecimal(lbl_TotalBill.Text.Substring(0, lbl_TotalBill.Text.Length - 4));
+                decimal totalPay = totalOrders - (totalOrders*2)/10;
+                lbl_Pay.Text = totalPay.ToString() + " VNĐ";
             }
             else
             {
                 lbl_Pay.Text = totalOrders.ToString() + " VNĐ";
+            }
+        }
+        private void ckb_Sale_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckb_Sale.Checked)
+            {
+                decimal totalOrders = Convert.ToDecimal(lbl_TotalBill.Text.Substring(0, lbl_TotalBill.Text.Length - 4));
+                decimal totalPay = totalOrders - (totalOrders*2)/10;
+                lbl_Pay.Text = totalPay.ToString() + " VNĐ";
+            }
+            else
+            {
+                lbl_Pay.Text = lbl_TotalBill.Text;
             }
         }
         public void itemSelling_Click(object sender, ClickButtonEventArg e)
@@ -241,20 +256,6 @@ namespace MilkTeaShop
                 flp_ContainsItem.Controls.Add(item);
             }
         }
-        /*public Staff GetStaffByID(string MaNV)
-        {
-            sqlQuery = "SELECT * FROM NhanVien WHERE MaNV = @MaNV";
-            SqlParameter[] lstParams =
-            {
-                new SqlParameter("@MaNV", SqlDbType.VarChar) {Value = MaNV},
-            };
-            List<Dictionary<string,object>> keyValues = dbConn.ExecuteReaderData(sqlQuery, lstParams);
-            Staff staff = new Staff();
-            foreach (var value in keyValues)
-            {
-                staff.
-            }
-        }*/
         private void saveChiTietHoaDons()
         {
             using (SqlConnection conn = new SqlConnection(conStr))
@@ -275,10 +276,10 @@ namespace MilkTeaShop
                         SqlCommand cmdInsertCTHD = new SqlCommand(sqlInsertCTHD, conn);
                         SqlParameter[] lstParams =
                         {
-                        new SqlParameter("@MaHD", SqlDbType.Int) {Value = MaHD},
-                        new SqlParameter("@MaSP", SqlDbType.NVarChar) {Value = selected.MaSP},
-                        new SqlParameter("@SoLuong", SqlDbType.Int) {Value = selected.Numeric_Quantities.Value}
-                    };
+                            new SqlParameter("@MaHD", SqlDbType.Int) {Value = MaHD},
+                            new SqlParameter("@MaSP", SqlDbType.NVarChar) {Value = selected.MaSP},
+                            new SqlParameter("@SoLuong", SqlDbType.Int) {Value = selected.Numeric_Quantities.Value}
+                        };
                         cmdInsertCTHD.Parameters.AddRange(lstParams);
                         cmdInsertCTHD.ExecuteNonQuery();
                     }
@@ -332,5 +333,6 @@ namespace MilkTeaShop
         {
             saveChiTietHoaDons();
         }
+
     }
 }

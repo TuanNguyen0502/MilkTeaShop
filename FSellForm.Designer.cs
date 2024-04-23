@@ -731,6 +731,7 @@
             this.ckb_Sale.Size = new System.Drawing.Size(91, 27);
             this.ckb_Sale.TabIndex = 2;
             this.ckb_Sale.Text = "Ngày lễ";
+            this.ckb_Sale.CheckedChanged += new System.EventHandler(this.ckb_Sale_CheckedChanged);
             // 
             // lbl_TotalBill
             // 

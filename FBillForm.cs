@@ -89,26 +89,25 @@ namespace MilkTeaShop
                     if (!string.IsNullOrEmpty(txt_KeyWord.Text))
                     {
                         command.Parameters.Add("@Keyword", SqlDbType.NVarChar, 100).Value = txt_KeyWord.Text;
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            flp_ContainsBill.Controls.Clear();
+                            while (reader.Read())
+                            {
+                                UC_BillInfomation hoaDon = new UC_BillInfomation();
+                                hoaDon.MaHD = reader.GetInt32(reader.GetOrdinal("MaHD"));
+                                hoaDon.TenNV = reader.GetString(reader.GetOrdinal("HoTen"));
+                                hoaDon.TenKH = reader.GetString(reader.GetOrdinal("TenKH"));
+                                hoaDon.ThoiGianDat = reader.GetDateTime(reader.GetOrdinal("ThoiGianDat"));
+                                hoaDon.TriGiaDH = reader.GetDecimal(reader.GetOrdinal("TriGiaHoaDon"));
+                                hoaDon.GhiChu = reader.IsDBNull(reader.GetOrdinal("GhiChu")) ? "Không có ghi chú thêm." : reader.GetString(reader.GetOrdinal("GhiChu"));
+                                flp_ContainsBill.Controls.Add(hoaDon);
+                            }
+                        }
                     }
                     else
                     {
                         MessageBox.Show("Không có từ khóa được cung cấp");
-                    }
-
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        flp_ContainsBill.Controls.Clear();
-                        while (reader.Read())
-                        {
-                            UC_BillInfomation hoaDon = new UC_BillInfomation();
-                            hoaDon.MaHD = reader.GetInt32(reader.GetOrdinal("MaHD"));
-                            hoaDon.TenNV = reader.GetString(reader.GetOrdinal("HoTen"));
-                            hoaDon.TenKH = reader.GetString(reader.GetOrdinal("TenKH"));
-                            hoaDon.ThoiGianDat = reader.GetDateTime(reader.GetOrdinal("ThoiGianDat"));
-                            hoaDon.TriGiaDH = reader.GetDecimal(reader.GetOrdinal("TriGiaHoaDon"));
-                            hoaDon.GhiChu = reader.IsDBNull(reader.GetOrdinal("GhiChu")) ? "Không có ghi chú thêm." : reader.GetString(reader.GetOrdinal("GhiChu"));
-                            flp_ContainsBill.Controls.Add(hoaDon);
-                        }
                     }
                 }
             }

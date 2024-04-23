@@ -123,6 +123,16 @@ namespace MilkTeaShop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_company_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-company-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_delete_48 {
             get {
                 object obj = ResourceManager.GetObject("icons8-delete-48", resourceCulture);
@@ -386,6 +396,16 @@ namespace MilkTeaShop.Properties {
         internal static System.Drawing.Bitmap icons8_smoothie_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8-smoothie-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_supplier_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-supplier-64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

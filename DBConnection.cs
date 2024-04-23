@@ -11,8 +11,7 @@ namespace MilkTeaShop
 {
     public class DBConnection
     {
-        //SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True;Encrypt=False");
-        SqlConnection conn = new SqlConnection(@"Data Source=DIEMQUYNH;Initial Catalog=MilkTeaShop;Integrated Security=True;Encrypt=False");
+        SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True;Encrypt=False");
 
         public DataTable LoadData (string query)
         {
@@ -23,8 +22,7 @@ namespace MilkTeaShop
             return dt;
         }
         //SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr);
-        //readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True;Encrypt=False";
-        readonly string conStr = @"Data Source=DIEMQUYNH;Initial Catalog=MilkTeaShop;Integrated Security=True;Encrypt=False";
+        readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True;Encrypt=False";
         public void ThucThi(string thucthi)
         {
             try

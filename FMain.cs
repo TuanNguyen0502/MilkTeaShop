@@ -65,5 +65,18 @@ namespace MilkTeaShop
         {
             OpenChildForm(new FReport());
         }
+
+        private void button_Nhaphang_Click(object sender, EventArgs e)
+        { if (button_nhapNL.Visible)
+            {
+                button_nhapSP.Visible = false;
+                button_nhapNL.Visible = false;
+            }
+        else
+            {
+                button_nhapSP.Visible = true;
+                button_nhapNL.Visible = true;
+            }
+        }
     }
 }

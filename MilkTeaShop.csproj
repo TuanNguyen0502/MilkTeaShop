@@ -170,6 +170,12 @@
     <Compile Include="UC_Customer.Designer.cs">
       <DependentUpon>UC_Customer.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_DNNL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_DNNL.Designer.cs">
+      <DependentUpon>UC_DNNL.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_Expenditures.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -212,9 +218,6 @@
     <Compile Include="UC_Suppliers.Designer.cs">
       <DependentUpon>UC_Suppliers.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FProcessing.resx">
-      <DependentUpon>FProcessing.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FReport.resx">
       <DependentUpon>FReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -261,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC_Customer.resx">
       <DependentUpon>UC_Customer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_DNNL.resx">
+      <DependentUpon>UC_DNNL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_Expenditures.resx">
       <DependentUpon>UC_Expenditures.cs</DependentUpon>

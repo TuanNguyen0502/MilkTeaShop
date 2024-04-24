@@ -31,13 +31,16 @@
             this.flowLayoutPanel_Left = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.button_Home = new System.Windows.Forms.Button();
             this.button_Sell = new System.Windows.Forms.Button();
             this.button_Receipt = new System.Windows.Forms.Button();
             this.button_Employee = new System.Windows.Forms.Button();
             this.button_Customer = new System.Windows.Forms.Button();
-            this.button_Report = new System.Windows.Forms.Button();
             this.button_Ingredient = new System.Windows.Forms.Button();
+            this.button_Nhaphang = new System.Windows.Forms.Button();
+            this.button_nhapSP = new System.Windows.Forms.Button();
+            this.button_nhapNL = new System.Windows.Forms.Button();
+            this.button_xuatNL = new System.Windows.Forms.Button();
+            this.button_Report = new System.Windows.Forms.Button();
             this.button_App = new System.Windows.Forms.Button();
             this.button_Logout = new System.Windows.Forms.Button();
             this.panel_Center = new System.Windows.Forms.Panel();
@@ -47,15 +50,19 @@
             // 
             // flowLayoutPanel_Left
             // 
+            this.flowLayoutPanel_Left.AutoScroll = true;
             this.flowLayoutPanel_Left.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.flowLayoutPanel_Left.Controls.Add(this.flowLayoutPanel1);
-            this.flowLayoutPanel_Left.Controls.Add(this.button_Home);
             this.flowLayoutPanel_Left.Controls.Add(this.button_Sell);
             this.flowLayoutPanel_Left.Controls.Add(this.button_Receipt);
             this.flowLayoutPanel_Left.Controls.Add(this.button_Employee);
             this.flowLayoutPanel_Left.Controls.Add(this.button_Customer);
-            this.flowLayoutPanel_Left.Controls.Add(this.button_Report);
             this.flowLayoutPanel_Left.Controls.Add(this.button_Ingredient);
+            this.flowLayoutPanel_Left.Controls.Add(this.button_Nhaphang);
+            this.flowLayoutPanel_Left.Controls.Add(this.button_nhapSP);
+            this.flowLayoutPanel_Left.Controls.Add(this.button_nhapNL);
+            this.flowLayoutPanel_Left.Controls.Add(this.button_xuatNL);
+            this.flowLayoutPanel_Left.Controls.Add(this.button_Report);
             this.flowLayoutPanel_Left.Controls.Add(this.button_App);
             this.flowLayoutPanel_Left.Controls.Add(this.button_Logout);
             this.flowLayoutPanel_Left.Dock = System.Windows.Forms.DockStyle.Left;
@@ -64,7 +71,7 @@
             this.flowLayoutPanel_Left.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel_Left.Name = "flowLayoutPanel_Left";
             this.flowLayoutPanel_Left.Padding = new System.Windows.Forms.Padding(9, 8, 9, 8);
-            this.flowLayoutPanel_Left.Size = new System.Drawing.Size(292, 840);
+            this.flowLayoutPanel_Left.Size = new System.Drawing.Size(292, 1055);
             this.flowLayoutPanel_Left.TabIndex = 0;
             // 
             // flowLayoutPanel1
@@ -74,7 +81,7 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 10);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(275, 57);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
@@ -89,29 +96,16 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Milk Tea Shop";
             // 
-            // button_Home
-            // 
-            this.button_Home.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.button_Home.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Home.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Home.ForeColor = System.Drawing.Color.White;
-            this.button_Home.Location = new System.Drawing.Point(12, 72);
-            this.button_Home.Name = "button_Home";
-            this.button_Home.Size = new System.Drawing.Size(275, 100);
-            this.button_Home.TabIndex = 7;
-            this.button_Home.Text = "Tổng quan";
-            this.button_Home.UseVisualStyleBackColor = false;
-            // 
             // button_Sell
             // 
             this.button_Sell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.button_Sell.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Sell.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Sell.ForeColor = System.Drawing.Color.White;
-            this.button_Sell.Location = new System.Drawing.Point(12, 177);
+            this.button_Sell.Location = new System.Drawing.Point(12, 71);
             this.button_Sell.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_Sell.Name = "button_Sell";
-            this.button_Sell.Size = new System.Drawing.Size(275, 80);
+            this.button_Sell.Size = new System.Drawing.Size(275, 66);
             this.button_Sell.TabIndex = 0;
             this.button_Sell.Text = "Bán Hàng";
             this.button_Sell.UseVisualStyleBackColor = false;
@@ -123,10 +117,10 @@
             this.button_Receipt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Receipt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Receipt.ForeColor = System.Drawing.Color.White;
-            this.button_Receipt.Location = new System.Drawing.Point(12, 261);
+            this.button_Receipt.Location = new System.Drawing.Point(12, 141);
             this.button_Receipt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_Receipt.Name = "button_Receipt";
-            this.button_Receipt.Size = new System.Drawing.Size(275, 100);
+            this.button_Receipt.Size = new System.Drawing.Size(275, 66);
             this.button_Receipt.TabIndex = 8;
             this.button_Receipt.Text = "Hoá Đơn";
             this.button_Receipt.UseVisualStyleBackColor = false;
@@ -138,10 +132,10 @@
             this.button_Employee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Employee.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Employee.ForeColor = System.Drawing.Color.White;
-            this.button_Employee.Location = new System.Drawing.Point(12, 365);
+            this.button_Employee.Location = new System.Drawing.Point(12, 211);
             this.button_Employee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_Employee.Name = "button_Employee";
-            this.button_Employee.Size = new System.Drawing.Size(275, 80);
+            this.button_Employee.Size = new System.Drawing.Size(275, 66);
             this.button_Employee.TabIndex = 3;
             this.button_Employee.Text = "Nhân Viên";
             this.button_Employee.UseVisualStyleBackColor = false;
@@ -153,28 +147,14 @@
             this.button_Customer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Customer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Customer.ForeColor = System.Drawing.Color.White;
-            this.button_Customer.Location = new System.Drawing.Point(12, 449);
+            this.button_Customer.Location = new System.Drawing.Point(12, 281);
             this.button_Customer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_Customer.Name = "button_Customer";
-            this.button_Customer.Size = new System.Drawing.Size(275, 80);
+            this.button_Customer.Size = new System.Drawing.Size(275, 66);
             this.button_Customer.TabIndex = 4;
             this.button_Customer.Text = "Khách Hàng";
             this.button_Customer.UseVisualStyleBackColor = false;
             this.button_Customer.Click += new System.EventHandler(this.button_Customer_Click);
-            // 
-            // button_Report
-            // 
-            this.button_Report.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.button_Report.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Report.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Report.ForeColor = System.Drawing.Color.White;
-            this.button_Report.Location = new System.Drawing.Point(12, 534);
-            this.button_Report.Name = "button_Report";
-            this.button_Report.Size = new System.Drawing.Size(275, 100);
-            this.button_Report.TabIndex = 9;
-            this.button_Report.Text = "Báo cáo";
-            this.button_Report.UseVisualStyleBackColor = false;
-            this.button_Report.Click += new System.EventHandler(this.button_Report_Click);
             // 
             // button_Ingredient
             // 
@@ -182,14 +162,89 @@
             this.button_Ingredient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Ingredient.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Ingredient.ForeColor = System.Drawing.Color.White;
-            this.button_Ingredient.Location = new System.Drawing.Point(12, 639);
+            this.button_Ingredient.Location = new System.Drawing.Point(12, 351);
             this.button_Ingredient.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_Ingredient.Name = "button_Ingredient";
-            this.button_Ingredient.Size = new System.Drawing.Size(275, 80);
+            this.button_Ingredient.Size = new System.Drawing.Size(275, 66);
             this.button_Ingredient.TabIndex = 5;
             this.button_Ingredient.Text = "Nguyên liệu";
             this.button_Ingredient.UseVisualStyleBackColor = false;
             this.button_Ingredient.Click += new System.EventHandler(this.button_Ingredient_Click);
+            // 
+            // button_Nhaphang
+            // 
+            this.button_Nhaphang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button_Nhaphang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Nhaphang.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Nhaphang.ForeColor = System.Drawing.Color.White;
+            this.button_Nhaphang.Location = new System.Drawing.Point(12, 421);
+            this.button_Nhaphang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_Nhaphang.Name = "button_Nhaphang";
+            this.button_Nhaphang.Size = new System.Drawing.Size(275, 66);
+            this.button_Nhaphang.TabIndex = 11;
+            this.button_Nhaphang.Text = "Nhập hàng";
+            this.button_Nhaphang.UseVisualStyleBackColor = false;
+            this.button_Nhaphang.Click += new System.EventHandler(this.button_Nhaphang_Click);
+            // 
+            // button_nhapSP
+            // 
+            this.button_nhapSP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_nhapSP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button_nhapSP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_nhapSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_nhapSP.ForeColor = System.Drawing.Color.White;
+            this.button_nhapSP.Location = new System.Drawing.Point(86, 491);
+            this.button_nhapSP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_nhapSP.Name = "button_nhapSP";
+            this.button_nhapSP.Size = new System.Drawing.Size(201, 66);
+            this.button_nhapSP.TabIndex = 12;
+            this.button_nhapSP.Text = "Sản phẩm";
+            this.button_nhapSP.UseVisualStyleBackColor = false;
+            this.button_nhapSP.Visible = false;
+            // 
+            // button_nhapNL
+            // 
+            this.button_nhapNL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_nhapNL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button_nhapNL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_nhapNL.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_nhapNL.ForeColor = System.Drawing.Color.White;
+            this.button_nhapNL.Location = new System.Drawing.Point(86, 561);
+            this.button_nhapNL.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_nhapNL.Name = "button_nhapNL";
+            this.button_nhapNL.Size = new System.Drawing.Size(201, 66);
+            this.button_nhapNL.TabIndex = 13;
+            this.button_nhapNL.Text = "Nguyên liệu";
+            this.button_nhapNL.UseVisualStyleBackColor = false;
+            this.button_nhapNL.Visible = false;
+            // 
+            // button_xuatNL
+            // 
+            this.button_xuatNL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button_xuatNL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_xuatNL.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_xuatNL.ForeColor = System.Drawing.Color.White;
+            this.button_xuatNL.Location = new System.Drawing.Point(12, 631);
+            this.button_xuatNL.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_xuatNL.Name = "button_xuatNL";
+            this.button_xuatNL.Size = new System.Drawing.Size(275, 66);
+            this.button_xuatNL.TabIndex = 14;
+            this.button_xuatNL.Text = "Xuất nguyên liệu";
+            this.button_xuatNL.UseVisualStyleBackColor = false;
+            // 
+            // button_Report
+            // 
+            this.button_Report.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button_Report.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Report.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Report.ForeColor = System.Drawing.Color.White;
+            this.button_Report.Location = new System.Drawing.Point(12, 702);
+            this.button_Report.Name = "button_Report";
+            this.button_Report.Size = new System.Drawing.Size(275, 66);
+            this.button_Report.TabIndex = 9;
+            this.button_Report.Text = "Báo cáo";
+            this.button_Report.UseVisualStyleBackColor = false;
+            this.button_Report.Click += new System.EventHandler(this.button_Report_Click);
             // 
             // button_App
             // 
@@ -197,9 +252,9 @@
             this.button_App.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_App.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_App.ForeColor = System.Drawing.Color.White;
-            this.button_App.Location = new System.Drawing.Point(12, 724);
+            this.button_App.Location = new System.Drawing.Point(12, 774);
             this.button_App.Name = "button_App";
-            this.button_App.Size = new System.Drawing.Size(275, 100);
+            this.button_App.Size = new System.Drawing.Size(275, 66);
             this.button_App.TabIndex = 10;
             this.button_App.Text = "Đối tác";
             this.button_App.UseVisualStyleBackColor = false;
@@ -210,28 +265,28 @@
             this.button_Logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Logout.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Logout.ForeColor = System.Drawing.Color.White;
-            this.button_Logout.Location = new System.Drawing.Point(293, 10);
+            this.button_Logout.Location = new System.Drawing.Point(12, 845);
             this.button_Logout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_Logout.Name = "button_Logout";
-            this.button_Logout.Size = new System.Drawing.Size(275, 80);
+            this.button_Logout.Size = new System.Drawing.Size(275, 66);
             this.button_Logout.TabIndex = 6;
             this.button_Logout.Text = "Đăng xuất";
             this.button_Logout.UseVisualStyleBackColor = false;
             // 
             // panel_Center
             // 
+            this.panel_Center.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_Center.AutoScroll = true;
-            this.panel_Center.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_Center.Location = new System.Drawing.Point(292, 0);
             this.panel_Center.Name = "panel_Center";
-            this.panel_Center.Size = new System.Drawing.Size(1206, 840);
+            this.panel_Center.Size = new System.Drawing.Size(1206, 1055);
             this.panel_Center.TabIndex = 1;
             // 
             // FMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1498, 840);
+            this.ClientSize = new System.Drawing.Size(1498, 1055);
             this.Controls.Add(this.panel_Center);
             this.Controls.Add(this.flowLayoutPanel_Left);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -256,10 +311,13 @@
         private System.Windows.Forms.Button button_Customer;
         private System.Windows.Forms.Button button_Ingredient;
         private System.Windows.Forms.Button button_Logout;
-        private System.Windows.Forms.Button button_Home;
         private System.Windows.Forms.Button button_Receipt;
         private System.Windows.Forms.Button button_Report;
         private System.Windows.Forms.Button button_App;
+        private System.Windows.Forms.Button button_Nhaphang;
+        private System.Windows.Forms.Button button_nhapSP;
+        private System.Windows.Forms.Button button_nhapNL;
+        private System.Windows.Forms.Button button_xuatNL;
     }
 }
 

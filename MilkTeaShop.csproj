@@ -70,11 +70,11 @@
     <Compile Include="FImportIngredients.Designer.cs">
       <DependentUpon>FImportIngredients.cs</DependentUpon>
     </Compile>
-    <Compile Include="FImport_Ingredients.cs">
+    <Compile Include="FExport_Ingredients.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FImport_Ingredients.Designer.cs">
-      <DependentUpon>FImport_Ingredients.cs</DependentUpon>
+    <Compile Include="FExport_Ingredients.Designer.cs">
+      <DependentUpon>FExport_Ingredients.cs</DependentUpon>
     </Compile>
     <Compile Include="FProcessing.cs">
       <SubType>Form</SubType>
@@ -239,8 +239,8 @@
     <EmbeddedResource Include="FImportIngredients.resx">
       <DependentUpon>FImportIngredients.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FImport_Ingredients.resx">
-      <DependentUpon>FImport_Ingredients.cs</DependentUpon>
+    <EmbeddedResource Include="FExport_Ingredients.resx">
+      <DependentUpon>FExport_Ingredients.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FProcessing.resx">
       <DependentUpon>FProcessing.cs</DependentUpon>

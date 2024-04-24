@@ -41,11 +41,11 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 5;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.68932F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 56.31068F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 241F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 329F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.47573F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.73049F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.54006F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.23517F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.324662F));
             this.tableLayoutPanel1.Controls.Add(this.lblTongDon, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblNgayNhap, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblMaDNNL, 0, 0);
@@ -55,7 +55,7 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(961, 46);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
@@ -64,7 +64,7 @@
             this.lblTongDon.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTongDon.AutoSize = true;
             this.lblTongDon.Font = new System.Drawing.Font("Leelawadee UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTongDon.Location = new System.Drawing.Point(364, 11);
+            this.lblTongDon.Location = new System.Drawing.Point(377, 11);
             this.lblTongDon.Name = "lblTongDon";
             this.lblTongDon.Size = new System.Drawing.Size(144, 23);
             this.lblTongDon.TabIndex = 33;
@@ -76,7 +76,7 @@
             this.lblNgayNhap.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblNgayNhap.AutoSize = true;
             this.lblNgayNhap.Font = new System.Drawing.Font("Leelawadee UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNgayNhap.Location = new System.Drawing.Point(178, 11);
+            this.lblNgayNhap.Location = new System.Drawing.Point(208, 11);
             this.lblNgayNhap.Name = "lblNgayNhap";
             this.lblNgayNhap.Size = new System.Drawing.Size(97, 23);
             this.lblNgayNhap.TabIndex = 32;
@@ -88,7 +88,7 @@
             this.lblMaDNNL.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblMaDNNL.AutoSize = true;
             this.lblMaDNNL.Font = new System.Drawing.Font("Leelawadee UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaDNNL.Location = new System.Drawing.Point(25, 11);
+            this.lblMaDNNL.Location = new System.Drawing.Point(39, 11);
             this.lblMaDNNL.Name = "lblMaDNNL";
             this.lblMaDNNL.Size = new System.Drawing.Size(88, 23);
             this.lblMaDNNL.TabIndex = 31;
@@ -100,7 +100,7 @@
             this.lblTenNCC.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTenNCC.AutoSize = true;
             this.lblTenNCC.Font = new System.Drawing.Font("Leelawadee UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTenNCC.Location = new System.Drawing.Point(646, 11);
+            this.lblTenNCC.Location = new System.Drawing.Point(640, 11);
             this.lblTenNCC.Name = "lblTenNCC";
             this.lblTenNCC.Size = new System.Drawing.Size(150, 23);
             this.lblTenNCC.TabIndex = 34;
@@ -128,7 +128,7 @@
             this.button_Detail.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.button_Detail.ImageSize = new System.Drawing.Size(20, 20);
             this.button_Detail.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.button_Detail.Location = new System.Drawing.Point(893, 6);
+            this.button_Detail.Location = new System.Drawing.Point(889, 6);
             this.button_Detail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_Detail.Name = "button_Detail";
             this.button_Detail.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
@@ -140,6 +140,7 @@
             this.button_Detail.Radius = 10;
             this.button_Detail.Size = new System.Drawing.Size(61, 34);
             this.button_Detail.TabIndex = 35;
+            this.button_Detail.Click += new System.EventHandler(this.button_Detail_Click);
             // 
             // UCDNNL
             // 

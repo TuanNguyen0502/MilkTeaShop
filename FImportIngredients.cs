@@ -15,10 +15,48 @@ namespace MilkTeaShop
     {
         readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True";
         private int currentOrderId;
+        string query;
         public FImportIngredients()
         {
             InitializeComponent();
             InitializeDataGridView();
+            LoadListDNNL();
+        }
+
+        private void LoadListDNNL()
+        {
+            flpDSDNNL.Controls.Clear();
+             query = "SELECT * FROM V_DonNhapNguyenLieu";
+            using (SqlConnection conn = new SqlConnection(conStr))
+            {
+                try
+                {
+                    conn.Open();
+                    using(SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        using(SqlDataReader dataReader = cmd.ExecuteReader())
+                        {
+                            while (dataReader.Read())
+                            {
+                                UCDNNL uCDNNL = new UCDNNL();
+                                uCDNNL.LblMaDNNL.Text = dataReader["MaDNNL"].ToString();
+                                uCDNNL.LblImportDate.Text = dataReader["NgayNhap"].ToString();
+                                uCDNNL.LblTriGia.Text = dataReader["TriGiaDonNhap"].ToString();
+                                uCDNNL.LblTenNCC.Text = dataReader["TenNCC"].ToString();
+                                flpDSDNNL.Controls.Add(uCDNNL);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+                finally
+                {
+
+                }
+            }
         }
         private void InitializeDataGridView()
         {

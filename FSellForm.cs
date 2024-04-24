@@ -43,7 +43,7 @@ namespace MilkTeaShop
         }
         public void GetItemSelled(string MaLoaiSP)
         {
-            sqlQuery = "SELECT MaSP, TenSP, DonGia FROM SanPham sp WHERE sp.MaLoaiSP = @MaLoaiSP";
+            sqlQuery = "exec proc_GetProductByCategory @MaLoaiSP";
             SqlParameter[] lstParams =
             {
                 new SqlParameter("@MaLoaiSP", SqlDbType.VarChar) {Value = MaLoaiSP}
@@ -65,7 +65,7 @@ namespace MilkTeaShop
         }
         public void GetItemSelled(string MaLoaiSP, System.Drawing.Image icon)
         {
-            sqlQuery = "SELECT MaSP, TenSP, DonGia FROM SanPham sp WHERE sp.MaLoaiSP = @MaLoaiSP";
+            sqlQuery = "exec proc_GetProductByCategory @MaLoaiSP";
             SqlParameter[] lstParams =
             {
                 new SqlParameter("@MaLoaiSP", SqlDbType.VarChar) {Value = MaLoaiSP}

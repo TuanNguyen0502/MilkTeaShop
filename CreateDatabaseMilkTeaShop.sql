@@ -1201,8 +1201,13 @@ BEGIN
         RAISERROR ('Sản phẩm không được chế biến theo công thức', 16, 1)
     END CATCH;
 END;
-DROP PROCEDURE proc_LayCongThucCheBien
-
-exec proc_LayCongThucCheBien 'SP15';
-SELECT * FROM SanPham
-SELECT * FROM CheBien
+GO
+-- Procedure lấy sản phẩm theo loại
+CREATE PROCEDURE proc_GetProductByCategory
+(@MaLoaiSP varchar(10))
+AS
+BEGIN
+	SELECT MaSP, TenSP, DonGia 
+	FROM SanPham sp 
+	WHERE sp.MaLoaiSP = @MaLoaiSP
+END;

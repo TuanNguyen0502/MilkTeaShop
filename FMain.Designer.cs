@@ -275,8 +275,8 @@
             // 
             // panel_Center
             // 
-            this.panel_Center.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_Center.AutoScroll = true;
+            this.panel_Center.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_Center.Location = new System.Drawing.Point(292, 0);
             this.panel_Center.Name = "panel_Center";
             this.panel_Center.Size = new System.Drawing.Size(1206, 1055);

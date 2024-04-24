@@ -59,6 +59,7 @@ namespace MilkTeaShop
                 item.ClickIntoItemSelling += itemSelling_Click;
                 item.ClickIntoLineItemSelling += itemLineSelling_Click;
                 item.ShadowPanel_CheBien_Click += shadowPanel_CheBien_Click;
+                item.NameItem_Click += nameItem_Click;
                 flp_ContainsItem.Controls.Add(item);
             }
         }
@@ -81,6 +82,7 @@ namespace MilkTeaShop
                 item.ClickIntoItemSelling += itemSelling_Click;
                 item.ClickIntoLineItemSelling += itemLineSelling_Click;
                 item.ShadowPanel_CheBien_Click += shadowPanel_CheBien_Click;
+                item.NameItem_Click += nameItem_Click;
                 flp_ContainsItem.Controls.Add(item);
             }
         }
@@ -162,6 +164,12 @@ namespace MilkTeaShop
         public void shadowPanel_CheBien_Click(object sender, ClickButtonEventArg e)
         {
             FProcessing processing = new FProcessing(e.MaSP, e.TenSP);
+            processing.ShowDialog();
+        }
+        public void nameItem_Click(object sender, ClickButtonEventArg e)
+        {
+            FProcessing processing = new FProcessing(e.MaSP, e.TenSP);
+            processing.ShowDialog();
         }
         private void btn_TraSua_Click(object sender, EventArgs e)
         {
@@ -237,6 +245,7 @@ namespace MilkTeaShop
                 item.ClickIntoItemSelling += itemSelling_Click;
                 item.ClickIntoLineItemSelling += itemLineSelling_Click;
                 item.ShadowPanel_CheBien_Click += shadowPanel_CheBien_Click;
+                item.NameItem_Click += nameItem_Click;
                 if (item.MaLoaiSP == "LSP01")
                 {
                     item.Icon = global::MilkTeaShop.Properties.Resources._6eafb191a7f1e895b1b9ae2c50c1d03d;

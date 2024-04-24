@@ -1,4 +1,6 @@
-﻿namespace MilkTeaShop
+﻿using Guna.UI2.WinForms;
+
+namespace MilkTeaShop
 {
     partial class UC_Ingredient
     {
@@ -134,5 +136,7 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_Number;
         private Guna.UI2.WinForms.Guna2PictureBox picture_TrangThai;
+
+       
     }
 }

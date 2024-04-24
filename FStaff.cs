@@ -21,7 +21,7 @@ namespace MilkTeaShop
         public FStaff()
         {
             InitializeComponent();
-            LoadStaff();
+            LoadStaff_Working();
             cbbWorkStatus.Text = "Đang làm việc";
         }
         public void LoadStaff()
@@ -66,7 +66,6 @@ namespace MilkTeaShop
 
         public void LoadStaff_Working()
         {
-            flpanelListStaff.Controls.Clear();
             string sqlQuery = "SELECT * FROM V_ThongTinNhanVienDangLamViec";
             using (SqlConnection conn = new SqlConnection(conStr))
             {

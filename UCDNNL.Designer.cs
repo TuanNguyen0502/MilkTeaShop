@@ -51,7 +51,6 @@
             this.tableLayoutPanel1.Controls.Add(this.lblMaDNNL, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblTenNCC, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.button_Detail, 4, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;

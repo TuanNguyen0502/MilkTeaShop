@@ -25,7 +25,7 @@ namespace MilkTeaShop
 
         private void LoadListDNNL()
         {
-            flpDSDNNL.Controls.Clear();
+            
              query = "SELECT * FROM V_DonNhapNguyenLieu";
             using (SqlConnection conn = new SqlConnection(conStr))
             {
@@ -100,13 +100,14 @@ namespace MilkTeaShop
                 finally
                 {
                     conn.Close();
+                    LoadListDNNL();
                 }
             }
         }
 
         private void btnLuuDon_Click(object sender, EventArgs e)
         {
-
+            LoadListDNNL();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)

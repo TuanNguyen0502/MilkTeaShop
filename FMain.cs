@@ -81,7 +81,7 @@ namespace MilkTeaShop
 
         private void button_nhapSP_Click(object sender, EventArgs e)
         {
-            
+            OpenChildForm(new FImportProduct());
         }
 
         private void button_nhapNL_Click(object sender, EventArgs e)

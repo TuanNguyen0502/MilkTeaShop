@@ -22,7 +22,12 @@ namespace MilkTeaShop
         public GunaLabel LblTriGia { get => lblTongDon; set => lblTongDon = value; }
         public GunaLabel LblTenNCC { get => lblTenNCC; set => lblTenNCC = value; }
 
-        private void button_Detail_Click(object sender, EventArgs e)
+        private void UCDNNL_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTenNCC_Click(object sender, EventArgs e)
         {
 
         }

@@ -35,15 +35,15 @@
             this.button_Receipt = new System.Windows.Forms.Button();
             this.button_Employee = new System.Windows.Forms.Button();
             this.button_Customer = new System.Windows.Forms.Button();
-            this.button_Report = new System.Windows.Forms.Button();
             this.button_Ingredient = new System.Windows.Forms.Button();
-            this.button_App = new System.Windows.Forms.Button();
-            this.button_Logout = new System.Windows.Forms.Button();
-            this.panel_Center = new System.Windows.Forms.Panel();
             this.button_Nhaphang = new System.Windows.Forms.Button();
             this.button_nhapSP = new System.Windows.Forms.Button();
             this.button_nhapNL = new System.Windows.Forms.Button();
             this.button_xuatNL = new System.Windows.Forms.Button();
+            this.button_Report = new System.Windows.Forms.Button();
+            this.button_App = new System.Windows.Forms.Button();
+            this.button_Logout = new System.Windows.Forms.Button();
+            this.panel_Center = new System.Windows.Forms.Panel();
             this.flowLayoutPanel_Left.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -156,20 +156,6 @@
             this.button_Customer.UseVisualStyleBackColor = false;
             this.button_Customer.Click += new System.EventHandler(this.button_Customer_Click);
             // 
-            // button_Report
-            // 
-            this.button_Report.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.button_Report.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Report.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Report.ForeColor = System.Drawing.Color.White;
-            this.button_Report.Location = new System.Drawing.Point(12, 702);
-            this.button_Report.Name = "button_Report";
-            this.button_Report.Size = new System.Drawing.Size(275, 66);
-            this.button_Report.TabIndex = 9;
-            this.button_Report.Text = "Báo cáo";
-            this.button_Report.UseVisualStyleBackColor = false;
-            this.button_Report.Click += new System.EventHandler(this.button_Report_Click);
-            // 
             // button_Ingredient
             // 
             this.button_Ingredient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
@@ -184,42 +170,6 @@
             this.button_Ingredient.Text = "Nguyên liệu";
             this.button_Ingredient.UseVisualStyleBackColor = false;
             this.button_Ingredient.Click += new System.EventHandler(this.button_Ingredient_Click);
-            // 
-            // button_App
-            // 
-            this.button_App.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.button_App.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_App.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_App.ForeColor = System.Drawing.Color.White;
-            this.button_App.Location = new System.Drawing.Point(12, 774);
-            this.button_App.Name = "button_App";
-            this.button_App.Size = new System.Drawing.Size(275, 66);
-            this.button_App.TabIndex = 10;
-            this.button_App.Text = "Đối tác";
-            this.button_App.UseVisualStyleBackColor = false;
-            // 
-            // button_Logout
-            // 
-            this.button_Logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.button_Logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Logout.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Logout.ForeColor = System.Drawing.Color.White;
-            this.button_Logout.Location = new System.Drawing.Point(12, 845);
-            this.button_Logout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button_Logout.Name = "button_Logout";
-            this.button_Logout.Size = new System.Drawing.Size(275, 66);
-            this.button_Logout.TabIndex = 6;
-            this.button_Logout.Text = "Đăng xuất";
-            this.button_Logout.UseVisualStyleBackColor = false;
-            // 
-            // panel_Center
-            // 
-            this.panel_Center.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel_Center.AutoScroll = true;
-            this.panel_Center.Location = new System.Drawing.Point(292, 0);
-            this.panel_Center.Name = "panel_Center";
-            this.panel_Center.Size = new System.Drawing.Size(1206, 840);
-            this.panel_Center.TabIndex = 1;
             // 
             // button_Nhaphang
             // 
@@ -281,6 +231,56 @@
             this.button_xuatNL.TabIndex = 14;
             this.button_xuatNL.Text = "Xuất nguyên liệu";
             this.button_xuatNL.UseVisualStyleBackColor = false;
+            // 
+            // button_Report
+            // 
+            this.button_Report.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button_Report.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Report.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Report.ForeColor = System.Drawing.Color.White;
+            this.button_Report.Location = new System.Drawing.Point(12, 702);
+            this.button_Report.Name = "button_Report";
+            this.button_Report.Size = new System.Drawing.Size(275, 66);
+            this.button_Report.TabIndex = 9;
+            this.button_Report.Text = "Báo cáo";
+            this.button_Report.UseVisualStyleBackColor = false;
+            this.button_Report.Click += new System.EventHandler(this.button_Report_Click);
+            // 
+            // button_App
+            // 
+            this.button_App.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button_App.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_App.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_App.ForeColor = System.Drawing.Color.White;
+            this.button_App.Location = new System.Drawing.Point(12, 774);
+            this.button_App.Name = "button_App";
+            this.button_App.Size = new System.Drawing.Size(275, 66);
+            this.button_App.TabIndex = 10;
+            this.button_App.Text = "Đối tác";
+            this.button_App.UseVisualStyleBackColor = false;
+            // 
+            // button_Logout
+            // 
+            this.button_Logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button_Logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Logout.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Logout.ForeColor = System.Drawing.Color.White;
+            this.button_Logout.Location = new System.Drawing.Point(12, 845);
+            this.button_Logout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_Logout.Name = "button_Logout";
+            this.button_Logout.Size = new System.Drawing.Size(275, 66);
+            this.button_Logout.TabIndex = 6;
+            this.button_Logout.Text = "Đăng xuất";
+            this.button_Logout.UseVisualStyleBackColor = false;
+            // 
+            // panel_Center
+            // 
+            this.panel_Center.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel_Center.AutoScroll = true;
+            this.panel_Center.Location = new System.Drawing.Point(292, 0);
+            this.panel_Center.Name = "panel_Center";
+            this.panel_Center.Size = new System.Drawing.Size(1206, 1055);
+            this.panel_Center.TabIndex = 1;
             // 
             // FMain
             // 

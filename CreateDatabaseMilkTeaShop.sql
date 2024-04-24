@@ -1183,20 +1183,31 @@ CREATE PROCEDURE proc_LayCongThucCheBien
 (@MaSP varchar(10))
 AS
 BEGIN
-	IF @MaSP = 'SP15' OR @MaSP = 'SP16' OR @MaSP = 'SP17' OR @MaSP = 'SP18' OR @MaSP = 'SP19' OR @MaSP = 'SP20' OR @MaSP = 'SP21'
-	BEGIN
-		RAISERROR ('Sản phẩm không được chế biến theo công thức', 16, 1)
-		ROLLBACK TRANSACTION
-		RETURN
-	END;
-	
-	ELSE
-	BEGIN
-		SELECT nl.TenNL, cb.LieuLuong, cb.DonVi as 'Don vi che bien', nl.SoLuong, nl.DonVi as 'Don vi nguyen lieu'
-		FROM CheBien cb
-		JOIN NguyenLieu nl ON cb.MaNL = nl.MaNL
-		WHERE MaSP = @MaSP
-	END;
-END;
+    BEGIN TRY
+        IF @MaSP IN ('SP15', 'SP16', 'SP17', 'SP18', 'SP19', 'SP20', 'SP21')
+        BEGIN
+            RETURN
+        END;
 
-exec proc_LayCongThucCheBien 'SP01'
+        ELSE
+        BEGIN
+            SELECT nl.TenNL, cb.LieuLuong, cb.DonVi as 'Don vi che bien', nl.SoLuong, nl.DonVi as 'Don vi nguyen lieu'
+            FROM CheBien cb
+            JOIN NguyenLieu nl ON cb.MaNL = nl.MaNL
+            WHERE MaSP = @MaSP
+        END;
+    END TRY
+    BEGIN CATCH
+        RAISERROR ('Sản phẩm không được chế biến theo công thức', 16, 1)
+    END CATCH;
+END;
+GO
+-- Procedure lấy sản phẩm theo loại
+CREATE PROCEDURE proc_GetProductByCategory
+(@MaLoaiSP varchar(10))
+AS
+BEGIN
+	SELECT MaSP, TenSP, DonGia 
+	FROM SanPham sp 
+	WHERE sp.MaLoaiSP = @MaLoaiSP
+END;

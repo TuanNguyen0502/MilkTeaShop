@@ -206,6 +206,12 @@
     <Compile Include="UC_ItemSelled.Designer.cs">
       <DependentUpon>UC_ItemSelled.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_Processing.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Processing.Designer.cs">
+      <DependentUpon>UC_Processing.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_Report.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -226,6 +232,9 @@
     </Compile>
     <EmbeddedResource Include="FImportIngredients.resx">
       <DependentUpon>FImportIngredients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FProcessing.resx">
+      <DependentUpon>FProcessing.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FReport.resx">
       <DependentUpon>FReport.cs</DependentUpon>
@@ -288,6 +297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC_ItemSelled.resx">
       <DependentUpon>UC_ItemSelled.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Processing.resx">
+      <DependentUpon>UC_Processing.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_Report.resx">
       <DependentUpon>UC_Report.cs</DependentUpon>

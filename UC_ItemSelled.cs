@@ -116,6 +116,7 @@ namespace MilkTeaShop
             label.Size = new System.Drawing.Size(109, 20);
             label.TabIndex = 0;
             label.Text = TenSP;
+            label.Click += lbl_NameItem_Click;
             shadowPanel = new GunaShadowPanel();
             shadowPanel.Click += shadowpanel_CheBien_Click;
             shadowPanel.BackColor = System.Drawing.Color.Transparent;
@@ -138,6 +139,11 @@ namespace MilkTeaShop
         private void shadowpanel_CheBien_Click(object sender, EventArgs e)
         {
             ShadowPanel_CheBien_Click?.Invoke(this, new ClickButtonEventArg(MaSP, TenSP, DonGia, ThoiGianBan));
+        }
+        public event EventHandler<ClickButtonEventArg> NameItem_Click;
+        private void lbl_NameItem_Click(object sender, EventArgs e)
+        {
+            NameItem_Click?.Invoke(this, new ClickButtonEventArg(MaSP, TenSP, DonGia, ThoiGianBan));
         }
     }
 }

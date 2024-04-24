@@ -81,6 +81,7 @@
             this.lbl_NameItem.Size = new System.Drawing.Size(109, 20);
             this.lbl_NameItem.TabIndex = 0;
             this.lbl_NameItem.Text = "Trà sữa matcha";
+            this.lbl_NameItem.Click += new System.EventHandler(this.lbl_NameItem_Click);
             // 
             // btn_Valid
             // 

@@ -32,15 +32,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FBillForm));
             this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_AllBillDetails = new Guna.UI.WinForms.GunaAdvenceButton();
             this.btn_AllBill = new Guna.UI.WinForms.GunaAdvenceButton();
             this.cbb_options = new Guna.UI.WinForms.GunaComboBox();
             this.txt_KeyWord = new Guna.UI.WinForms.GunaTextBox();
             this.btn_SeachForBill = new Guna.UI.WinForms.GunaAdvenceButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btn_AllBillDetails = new Guna.UI.WinForms.GunaAdvenceButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.flp_Container = new System.Windows.Forms.FlowLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
             this.flp_ContainsHeader = new System.Windows.Forms.FlowLayoutPanel();
             this.tlp_HoaDon = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_ThoiGianDat = new System.Windows.Forms.Label();
@@ -82,40 +82,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1481, 59);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // btn_AllBillDetails
-            // 
-            this.btn_AllBillDetails.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_AllBillDetails.AnimationHoverSpeed = 0.07F;
-            this.btn_AllBillDetails.AnimationSpeed = 0.03F;
-            this.btn_AllBillDetails.BackColor = System.Drawing.Color.Transparent;
-            this.btn_AllBillDetails.BaseColor = System.Drawing.Color.CadetBlue;
-            this.btn_AllBillDetails.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(72)))), ((int)(((byte)(115)))));
-            this.btn_AllBillDetails.CheckedBaseColor = System.Drawing.Color.Gray;
-            this.btn_AllBillDetails.CheckedBorderColor = System.Drawing.Color.Black;
-            this.btn_AllBillDetails.CheckedForeColor = System.Drawing.Color.White;
-            this.btn_AllBillDetails.CheckedImage = ((System.Drawing.Image)(resources.GetObject("btn_AllBillDetails.CheckedImage")));
-            this.btn_AllBillDetails.CheckedLineColor = System.Drawing.Color.DimGray;
-            this.btn_AllBillDetails.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btn_AllBillDetails.FocusedColor = System.Drawing.Color.Empty;
-            this.btn_AllBillDetails.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_AllBillDetails.ForeColor = System.Drawing.Color.MistyRose;
-            this.btn_AllBillDetails.Image = ((System.Drawing.Image)(resources.GetObject("btn_AllBillDetails.Image")));
-            this.btn_AllBillDetails.ImageSize = new System.Drawing.Size(20, 20);
-            this.btn_AllBillDetails.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.btn_AllBillDetails.Location = new System.Drawing.Point(276, 8);
-            this.btn_AllBillDetails.Name = "btn_AllBillDetails";
-            this.btn_AllBillDetails.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(130)))), ((int)(((byte)(68)))));
-            this.btn_AllBillDetails.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(85)))), ((int)(((byte)(255)))));
-            this.btn_AllBillDetails.OnHoverForeColor = System.Drawing.Color.White;
-            this.btn_AllBillDetails.OnHoverImage = null;
-            this.btn_AllBillDetails.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.btn_AllBillDetails.OnPressedColor = System.Drawing.Color.Black;
-            this.btn_AllBillDetails.Radius = 4;
-            this.btn_AllBillDetails.Size = new System.Drawing.Size(210, 42);
-            this.btn_AllBillDetails.TabIndex = 10;
-            this.btn_AllBillDetails.Text = "Tất cả chi tiết hóa đơn";
-            this.btn_AllBillDetails.Click += new System.EventHandler(this.btn_AllBillDetails_Click);
             // 
             // btn_AllBill
             // 
@@ -231,6 +197,51 @@
             this.btn_SeachForBill.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.btn_SeachForBill.Click += new System.EventHandler(this.btn_SeachForBill_Click);
             // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(544, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(96, 28);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Lọc theo :";
+            // 
+            // btn_AllBillDetails
+            // 
+            this.btn_AllBillDetails.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_AllBillDetails.AnimationHoverSpeed = 0.07F;
+            this.btn_AllBillDetails.AnimationSpeed = 0.03F;
+            this.btn_AllBillDetails.BackColor = System.Drawing.Color.Transparent;
+            this.btn_AllBillDetails.BaseColor = System.Drawing.Color.CadetBlue;
+            this.btn_AllBillDetails.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(72)))), ((int)(((byte)(115)))));
+            this.btn_AllBillDetails.CheckedBaseColor = System.Drawing.Color.Gray;
+            this.btn_AllBillDetails.CheckedBorderColor = System.Drawing.Color.Black;
+            this.btn_AllBillDetails.CheckedForeColor = System.Drawing.Color.White;
+            this.btn_AllBillDetails.CheckedImage = ((System.Drawing.Image)(resources.GetObject("btn_AllBillDetails.CheckedImage")));
+            this.btn_AllBillDetails.CheckedLineColor = System.Drawing.Color.DimGray;
+            this.btn_AllBillDetails.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btn_AllBillDetails.FocusedColor = System.Drawing.Color.Empty;
+            this.btn_AllBillDetails.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_AllBillDetails.ForeColor = System.Drawing.Color.MistyRose;
+            this.btn_AllBillDetails.Image = ((System.Drawing.Image)(resources.GetObject("btn_AllBillDetails.Image")));
+            this.btn_AllBillDetails.ImageSize = new System.Drawing.Size(20, 20);
+            this.btn_AllBillDetails.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
+            this.btn_AllBillDetails.Location = new System.Drawing.Point(276, 8);
+            this.btn_AllBillDetails.Name = "btn_AllBillDetails";
+            this.btn_AllBillDetails.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(130)))), ((int)(((byte)(68)))));
+            this.btn_AllBillDetails.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(85)))), ((int)(((byte)(255)))));
+            this.btn_AllBillDetails.OnHoverForeColor = System.Drawing.Color.White;
+            this.btn_AllBillDetails.OnHoverImage = null;
+            this.btn_AllBillDetails.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
+            this.btn_AllBillDetails.OnPressedColor = System.Drawing.Color.Black;
+            this.btn_AllBillDetails.Radius = 4;
+            this.btn_AllBillDetails.Size = new System.Drawing.Size(210, 42);
+            this.btn_AllBillDetails.TabIndex = 10;
+            this.btn_AllBillDetails.Text = "Tất cả chi tiết hóa đơn";
+            this.btn_AllBillDetails.Click += new System.EventHandler(this.btn_AllBillDetails_Click);
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.label5);
@@ -262,17 +273,6 @@
             this.flp_Container.Name = "flp_Container";
             this.flp_Container.Size = new System.Drawing.Size(1522, 881);
             this.flp_Container.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(544, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 28);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Lọc theo :";
             // 
             // flp_ContainsHeader
             // 
@@ -373,6 +373,7 @@
             // 
             // flp_ContainsBill
             // 
+            this.flp_ContainsBill.AutoScroll = true;
             this.flp_ContainsBill.Location = new System.Drawing.Point(3, 141);
             this.flp_ContainsBill.Name = "flp_ContainsBill";
             this.flp_ContainsBill.Size = new System.Drawing.Size(1507, 715);

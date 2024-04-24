@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             this.gunaLinePanel1_Valid = new Guna.UI.WinForms.GunaLinePanel();
-            this.btn_Valid = new Guna.UI.WinForms.GunaGradientButton();
-            this.gunaShadowPanel1 = new Guna.UI.WinForms.GunaShadowPanel();
+            this.shadowpanel_CheBien = new Guna.UI.WinForms.GunaShadowPanel();
             this.lbl_NameItem = new Guna.UI.WinForms.GunaLabel();
+            this.btn_Valid = new Guna.UI.WinForms.GunaGradientButton();
             this.gunaGradient2Panel1 = new Guna.UI.WinForms.GunaGradient2Panel();
             this.lbl_price = new Guna.UI.WinForms.GunaLabel();
             this.gunaLinePanel1_Valid.SuspendLayout();
-            this.gunaShadowPanel1.SuspendLayout();
+            this.shadowpanel_CheBien.SuspendLayout();
             this.gunaGradient2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gunaLinePanel1_Valid
             // 
             this.gunaLinePanel1_Valid.BackColor = System.Drawing.Color.Transparent;
-            this.gunaLinePanel1_Valid.Controls.Add(this.gunaShadowPanel1);
+            this.gunaLinePanel1_Valid.Controls.Add(this.shadowpanel_CheBien);
             this.gunaLinePanel1_Valid.Controls.Add(this.btn_Valid);
             this.gunaLinePanel1_Valid.Controls.Add(this.gunaGradient2Panel1);
             this.gunaLinePanel1_Valid.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -58,6 +58,29 @@
             this.gunaLinePanel1_Valid.TabIndex = 2;
             this.gunaLinePanel1_Valid.Visible = false;
             this.gunaLinePanel1_Valid.Click += new System.EventHandler(this.gunaLinePanel1_Valid_Click);
+            // 
+            // shadowpanel_CheBien
+            // 
+            this.shadowpanel_CheBien.BackColor = System.Drawing.Color.Transparent;
+            this.shadowpanel_CheBien.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.shadowpanel_CheBien.Controls.Add(this.lbl_NameItem);
+            this.shadowpanel_CheBien.Location = new System.Drawing.Point(29, 128);
+            this.shadowpanel_CheBien.Name = "shadowpanel_CheBien";
+            this.shadowpanel_CheBien.ShadowColor = System.Drawing.Color.Black;
+            this.shadowpanel_CheBien.Size = new System.Drawing.Size(202, 46);
+            this.shadowpanel_CheBien.TabIndex = 3;
+            this.shadowpanel_CheBien.Click += new System.EventHandler(this.shadowpanel_CheBien_Click);
+            this.shadowpanel_CheBien.Paint += new System.Windows.Forms.PaintEventHandler(this.gunaShadowPanel1_Paint);
+            // 
+            // lbl_NameItem
+            // 
+            this.lbl_NameItem.AutoSize = true;
+            this.lbl_NameItem.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lbl_NameItem.Location = new System.Drawing.Point(19, 12);
+            this.lbl_NameItem.Name = "lbl_NameItem";
+            this.lbl_NameItem.Size = new System.Drawing.Size(109, 20);
+            this.lbl_NameItem.TabIndex = 0;
+            this.lbl_NameItem.Text = "Trà sữa matcha";
             // 
             // btn_Valid
             // 
@@ -86,27 +109,6 @@
             this.btn_Valid.Size = new System.Drawing.Size(40, 40);
             this.btn_Valid.TabIndex = 4;
             this.btn_Valid.Visible = false;
-            // 
-            // gunaShadowPanel1
-            // 
-            this.gunaShadowPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.gunaShadowPanel1.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.gunaShadowPanel1.Controls.Add(this.lbl_NameItem);
-            this.gunaShadowPanel1.Location = new System.Drawing.Point(29, 128);
-            this.gunaShadowPanel1.Name = "gunaShadowPanel1";
-            this.gunaShadowPanel1.ShadowColor = System.Drawing.Color.Black;
-            this.gunaShadowPanel1.Size = new System.Drawing.Size(202, 46);
-            this.gunaShadowPanel1.TabIndex = 3;
-            // 
-            // lbl_NameItem
-            // 
-            this.lbl_NameItem.AutoSize = true;
-            this.lbl_NameItem.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lbl_NameItem.Location = new System.Drawing.Point(19, 12);
-            this.lbl_NameItem.Name = "lbl_NameItem";
-            this.lbl_NameItem.Size = new System.Drawing.Size(109, 20);
-            this.lbl_NameItem.TabIndex = 0;
-            this.lbl_NameItem.Text = "Trà sữa matcha";
             // 
             // gunaGradient2Panel1
             // 
@@ -145,8 +147,8 @@
             this.Load += new System.EventHandler(this.UC_ItemSelled_Load);
             this.Click += new System.EventHandler(this.UC_ItemSelled_Click);
             this.gunaLinePanel1_Valid.ResumeLayout(false);
-            this.gunaShadowPanel1.ResumeLayout(false);
-            this.gunaShadowPanel1.PerformLayout();
+            this.shadowpanel_CheBien.ResumeLayout(false);
+            this.shadowpanel_CheBien.PerformLayout();
             this.gunaGradient2Panel1.ResumeLayout(false);
             this.gunaGradient2Panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -156,7 +158,7 @@
         #endregion
 
         private Guna.UI.WinForms.GunaLinePanel gunaLinePanel1_Valid;
-        private Guna.UI.WinForms.GunaShadowPanel gunaShadowPanel1;
+        private Guna.UI.WinForms.GunaShadowPanel shadowpanel_CheBien;
         private Guna.UI.WinForms.GunaLabel lbl_NameItem;
         private Guna.UI.WinForms.GunaGradient2Panel gunaGradient2Panel1;
         private Guna.UI.WinForms.GunaLabel lbl_price;

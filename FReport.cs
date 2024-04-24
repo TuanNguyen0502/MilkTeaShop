@@ -26,7 +26,7 @@ namespace MilkTeaShop
             {
                 conn.Open();
                 sqlQuery = "DECLARE @doanhThu DECIMAL;"
-                          +"SELECT @doanhThu = dbo.func_tinhDoanhThuTheoNgay(28, 3, 2024);"
+                          +"SELECT @doanhThu = dbo.func_tinhDoanhThuTheoNgay(@ngay, @thang, @nam);"
                           +"SELECT @doanhThu AS 'Doanh thu';";
                 SqlCommand command = new SqlCommand(sqlQuery, conn);
                 command.CommandType = CommandType.StoredProcedure;
@@ -41,7 +41,7 @@ namespace MilkTeaShop
 
                 // Lấy giá trị doanh thu từ parameter đầu ra
                 UC_Report report = new UC_Report();
-                report.Time = timePicked;
+                report.Time = DateTime.Now;
                 report.Sales = doanhThu;
                 flp_ContainsReport.Controls.Add(report);
             }
@@ -58,6 +58,10 @@ namespace MilkTeaShop
                 {
                     rdb_Day.Enabled = false;
                 }
+                else if (cbb_OptionMain.SelectedItem.ToString() == "Doanh thu")
+                {
+                    rdb_Day.Enabled = true;
+                }
             }
         }
 
@@ -67,7 +71,7 @@ namespace MilkTeaShop
             {
                 flp_ContainsHeader.Controls.Clear();
                 UC_Report report_Header = new UC_Report();
-                report_Header.LblSale.Text = "DOANH THU THEO NGÀY";
+                report_Header.LblSale.Text = $"DOANH THU CHO NGÀY {dtp_DMY.Value.Day}/{dtp_DMY.Value.Month}/{dtp_DMY.Value.Year}";
                 flp_ContainsHeader.Controls.Add(report_Header);
                 flp_ContainsReport.Controls.Clear();
                 DateTime timePicked = dtp_DMY.Value;
@@ -91,7 +95,7 @@ namespace MilkTeaShop
 
                     // Lấy giá trị doanh thu từ parameter đầu ra
                     UC_Report report = new UC_Report();
-                    report.Time = timePicked;
+                    report.Time = DateTime.Now;
                     report.Sales = doanhThu;
                     flp_ContainsReport.Controls.Add(report);
                 }
@@ -105,7 +109,7 @@ namespace MilkTeaShop
             {
                 flp_ContainsHeader.Controls.Clear();
                 UC_Report report_Header = new UC_Report();
-                report_Header.LblSale.Text = "DOANH THU THEO THÁNG";
+                report_Header.LblSale.Text = $"DOANH THU CHO THÁNG {dtp_DMY.Value.Month}/{dtp_DMY.Value.Year}";
                 flp_ContainsHeader.Controls.Add(report_Header);
                 flp_ContainsReport.Controls.Clear();
                 DateTime timePicked = dtp_DMY.Value;
@@ -128,7 +132,7 @@ namespace MilkTeaShop
 
                     // Lấy giá trị doanh thu từ parameter đầu ra
                     UC_Report report = new UC_Report();
-                    report.Time = timePicked;
+                    report.Time = DateTime.Now;
                     report.Sales = doanhThu;
                     flp_ContainsReport.Controls.Add(report);
                 }
@@ -137,7 +141,7 @@ namespace MilkTeaShop
             {
                 flp_ContainsHeader.Controls.Clear();
                 UC_Report report_Header = new UC_Report();
-                report_Header.LblSale.Text = "KHOẢN CHI THEO THÁNG";
+                report_Header.LblSale.Text = $"KHOẢN CHI CHO THÁNG {dtp_DMY.Value.Month}/{dtp_DMY.Value.Year}";
                 flp_ContainsHeader.Controls.Add(report_Header);
                 flp_ContainsReport.Controls.Clear();
                 DateTime timePicked = dtp_DMY.Value;
@@ -160,7 +164,7 @@ namespace MilkTeaShop
 
                     // Lấy giá trị doanh thu từ parameter đầu ra
                     UC_Report report = new UC_Report();
-                    report.Time = timePicked;
+                    report.Time = DateTime.Now;
                     report.Sales = chiPhi;
                     flp_ContainsReport.Controls.Add(report);
                 }
@@ -173,7 +177,7 @@ namespace MilkTeaShop
             {
                 flp_ContainsHeader.Controls.Clear();
                 UC_Report report_Header = new UC_Report();
-                report_Header.LblSale.Text = "DOANH THU THEO NĂM";
+                report_Header.LblSale.Text = $"DOANH THU CHO NĂM {dtp_DMY.Value.Year}";
                 flp_ContainsHeader.Controls.Add(report_Header);
                 flp_ContainsReport.Controls.Clear();
                 DateTime timePicked = dtp_DMY.Value;
@@ -195,7 +199,7 @@ namespace MilkTeaShop
 
                     // Lấy giá trị doanh thu từ parameter đầu ra
                     UC_Report report = new UC_Report();
-                    report.Time = timePicked;
+                    report.Time = DateTime.Now;
                     report.Sales = doanhThu;
                     flp_ContainsReport.Controls.Add(report);
                 }
@@ -204,7 +208,7 @@ namespace MilkTeaShop
             {
                 flp_ContainsHeader.Controls.Clear();
                 UC_Report report_Header = new UC_Report();
-                report_Header.LblSale.Text = "KHOẢN CHI THEO NĂM";
+                report_Header.LblSale.Text = $"KHOẢN CHI CHO NĂM {dtp_DMY.Value.Year}";
                 flp_ContainsHeader.Controls.Add(report_Header);
                 flp_ContainsReport.Controls.Clear();
                 DateTime timePicked = dtp_DMY.Value;
@@ -226,7 +230,77 @@ namespace MilkTeaShop
 
                     // Lấy giá trị doanh thu từ parameter đầu ra
                     UC_Report report = new UC_Report();
-                    report.Time = timePicked;
+                    report.Time = DateTime.Now;
+                    report.Sales = chiPhi;
+                    flp_ContainsReport.Controls.Add(report);
+                }
+            }
+        }
+
+        private void lbl_DoanhThuTheoGD_Click(object sender, EventArgs e)
+        {
+            if (cbb_OptionMain.SelectedItem.ToString() == "Doanh thu")
+            {
+                flp_ContainsHeader.Controls.Clear();
+                UC_Report report_Header = new UC_Report();
+                report_Header.LblSale.Text = $"DOANH THU CHO GIAI ĐOẠN TỪ {dtp_From.Value.Day}/{dtp_From.Value.Month}/{dtp_From.Value.Year} ĐẾN {dtp_To.Value.Day}/{dtp_To.Value.Month}/{dtp_To.Value.Year}";
+                flp_ContainsHeader.Controls.Add(report_Header);
+                flp_ContainsReport.Controls.Clear();
+                DateTime startDate = dtp_From.Value;
+                DateTime endDate = dtp_To.Value;
+                using (SqlConnection conn = new SqlConnection(conStr))
+                {
+                    conn.Open();
+                    sqlQuery = "SELECT dbo.func_DoanhThuTheoGiaiDoan(@startDate,@endDate) AS 'Doanh thu theo giai doan';";
+                    SqlCommand command = new SqlCommand(sqlQuery, conn);
+
+                    // Thêm các tham số và giá trị tương ứng
+                    command.Parameters.AddWithValue("@startDate", startDate);
+                    command.Parameters.AddWithValue("@endDate", endDate);
+
+                    object result = command.ExecuteScalar();
+                    decimal doanhThu = 0;
+                    if (result != null && result != DBNull.Value)
+                    {
+                        doanhThu = Convert.ToDecimal(result);
+                    }
+
+                    // Lấy giá trị doanh thu từ parameter đầu ra
+                    UC_Report report = new UC_Report();
+                    report.Time = DateTime.Now;
+                    report.Sales = doanhThu;
+                    flp_ContainsReport.Controls.Add(report);
+                }
+            }
+            else if (cbb_OptionMain.SelectedItem.ToString() == "Khoản chi")
+            {
+                flp_ContainsHeader.Controls.Clear();
+                UC_Report report_Header = new UC_Report();
+                report_Header.LblSale.Text = $"CHI PHÍ CHO GIAI ĐOẠN TỪ {dtp_From.Value.Day}/{dtp_From.Value.Month}/{dtp_From.Value.Year} ĐẾN {dtp_To.Value.Day}/{dtp_To.Value.Month}/{dtp_To.Value.Year}";
+                flp_ContainsHeader.Controls.Add(report_Header);
+                flp_ContainsReport.Controls.Clear();
+                DateTime startDate = dtp_From.Value;
+                DateTime endDate = dtp_To.Value;
+                using (SqlConnection conn = new SqlConnection(conStr))
+                {
+                    conn.Open();
+                    sqlQuery = "SELECT dbo.func_ChiPhiTheoGiaiDoan(@startDate,@endDate) AS 'Doanh thu theo giai doan';";
+                    SqlCommand command = new SqlCommand(sqlQuery, conn);
+
+                    // Thêm các tham số và giá trị tương ứng
+                    command.Parameters.AddWithValue("@startDate", startDate);
+                    command.Parameters.AddWithValue("@endDate", endDate);
+
+                    object result = command.ExecuteScalar();
+                    decimal chiPhi = 0;
+                    if (result != null && result != DBNull.Value)
+                    {
+                        chiPhi = Convert.ToDecimal(result);
+                    }
+
+                    // Lấy giá trị doanh thu từ parameter đầu ra
+                    UC_Report report = new UC_Report();
+                    report.Time = DateTime.Now;
                     report.Sales = chiPhi;
                     flp_ContainsReport.Controls.Add(report);
                 }

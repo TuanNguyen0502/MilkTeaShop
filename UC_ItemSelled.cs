@@ -117,6 +117,7 @@ namespace MilkTeaShop
             label.TabIndex = 0;
             label.Text = TenSP;
             shadowPanel = new GunaShadowPanel();
+            shadowPanel.Click += shadowpanel_CheBien_Click;
             shadowPanel.BackColor = System.Drawing.Color.Transparent;
             shadowPanel.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             shadowPanel.Controls.Add(label);
@@ -127,6 +128,16 @@ namespace MilkTeaShop
             shadowPanel.TabIndex = 3;
 
             this.Controls.Add(shadowPanel);
+        }
+
+        private void gunaShadowPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        public event EventHandler<ClickButtonEventArg> ShadowPanel_CheBien_Click;
+        private void shadowpanel_CheBien_Click(object sender, EventArgs e)
+        {
+            ShadowPanel_CheBien_Click?.Invoke(this, new ClickButtonEventArg(MaSP, TenSP, DonGia, ThoiGianBan));
         }
     }
 }

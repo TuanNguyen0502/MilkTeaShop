@@ -58,6 +58,7 @@ namespace MilkTeaShop
                 item.ThoiGianBan = DateTime.Now;
                 item.ClickIntoItemSelling += itemSelling_Click;
                 item.ClickIntoLineItemSelling += itemLineSelling_Click;
+                item.ShadowPanel_CheBien_Click += shadowPanel_CheBien_Click;
                 flp_ContainsItem.Controls.Add(item);
             }
         }
@@ -79,6 +80,7 @@ namespace MilkTeaShop
                 item.Icon = icon;
                 item.ClickIntoItemSelling += itemSelling_Click;
                 item.ClickIntoLineItemSelling += itemLineSelling_Click;
+                item.ShadowPanel_CheBien_Click += shadowPanel_CheBien_Click;
                 flp_ContainsItem.Controls.Add(item);
             }
         }
@@ -93,7 +95,8 @@ namespace MilkTeaShop
             lbl_TotalBill.Text = totalOrders.ToString() + " VNĐ";
             if (ckb_Sale.Checked)
             {
-                lbl_Pay.Text = (totalOrders - totalOrders*0, 2).ToString() + " VNĐ";
+                decimal totalPay = totalOrders - (totalOrders*2)/10;
+                lbl_Pay.Text = totalPay.ToString() + " VNĐ";
             }
             else
             {
@@ -112,7 +115,6 @@ namespace MilkTeaShop
             lbl_TotalBill.Text = totalOrders.ToString() + " VNĐ";
             if (ckb_Sale.Checked)
             {
-                //decimal totalOrders = Convert.ToDecimal(lbl_TotalBill.Text.Substring(0, lbl_TotalBill.Text.Length - 4));
                 decimal totalPay = totalOrders - (totalOrders*2)/10;
                 lbl_Pay.Text = totalPay.ToString() + " VNĐ";
             }
@@ -156,6 +158,10 @@ namespace MilkTeaShop
                 }
             }
             SetBill();
+        }
+        public void shadowPanel_CheBien_Click(object sender, ClickButtonEventArg e)
+        {
+            FProcessing processing = new FProcessing(e.MaSP, e.TenSP);
         }
         private void btn_TraSua_Click(object sender, EventArgs e)
         {
@@ -230,6 +236,7 @@ namespace MilkTeaShop
                 item.ThoiGianBan = DateTime.Now;
                 item.ClickIntoItemSelling += itemSelling_Click;
                 item.ClickIntoLineItemSelling += itemLineSelling_Click;
+                item.ShadowPanel_CheBien_Click += shadowPanel_CheBien_Click;
                 if (item.MaLoaiSP == "LSP01")
                 {
                     item.Icon = global::MilkTeaShop.Properties.Resources._6eafb191a7f1e895b1b9ae2c50c1d03d;
@@ -303,7 +310,7 @@ namespace MilkTeaShop
                     try
                     {
                         conn.Open();
-                        SqlCommand cmd = new SqlCommand("exec proc_CreateBill @SDT, @MaNV, @ThoiGianDat, @TriGiaHD", conn);
+                        SqlCommand cmd = new SqlCommand("exec proc_CreateBill_Test @SDT, @MaNV, @ThoiGianDat, @TriGiaHD", conn);
                         SqlParameter[] lstParams =
                         {
                                 new SqlParameter("@SDT", SqlDbType.VarChar) {Value = cbb_options.SelectedItem.ToString()},
@@ -331,7 +338,6 @@ namespace MilkTeaShop
 
         private void btn_saveBill_Click(object sender, EventArgs e)
         {
-            saveChiTietHoaDons();
         }
 
     }

@@ -36,7 +36,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.rdb_Year = new Guna.UI2.WinForms.Guna2RadioButton();
             this.rdb_Month = new Guna.UI2.WinForms.Guna2RadioButton();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbl_DoanhThuTheoGD = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dtp_DMY = new Guna.UI2.WinForms.Guna2DateTimePicker();
@@ -115,7 +115,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.24573F));
             this.tableLayoutPanel1.Controls.Add(this.rdb_Year, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.rdb_Month, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_DoanhThuTheoGD, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.label4, 6, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.dtp_DMY, 0, 0);
@@ -139,6 +139,7 @@
             this.rdb_Year.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.rdb_Year.CheckedState.InnerColor = System.Drawing.Color.White;
             this.rdb_Year.CheckedState.InnerOffset = -4;
+            this.rdb_Year.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdb_Year.ForeColor = System.Drawing.Color.Tomato;
             this.rdb_Year.Location = new System.Drawing.Point(576, 18);
             this.rdb_Year.Name = "rdb_Year";
@@ -160,6 +161,7 @@
             this.rdb_Month.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.rdb_Month.CheckedState.InnerColor = System.Drawing.Color.White;
             this.rdb_Month.CheckedState.InnerOffset = -4;
+            this.rdb_Month.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdb_Month.ForeColor = System.Drawing.Color.Tomato;
             this.rdb_Month.Location = new System.Drawing.Point(458, 18);
             this.rdb_Month.Name = "rdb_Month";
@@ -172,16 +174,18 @@
             this.rdb_Month.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
             this.rdb_Month.CheckedChanged += new System.EventHandler(this.rdb_Month_CheckedChanged);
             // 
-            // label2
+            // lbl_DoanhThuTheoGD
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(685, 14);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(236, 28);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Doanh thu theo giai đoạn";
+            this.lbl_DoanhThuTheoGD.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl_DoanhThuTheoGD.AutoSize = true;
+            this.lbl_DoanhThuTheoGD.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbl_DoanhThuTheoGD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_DoanhThuTheoGD.Location = new System.Drawing.Point(685, 14);
+            this.lbl_DoanhThuTheoGD.Name = "lbl_DoanhThuTheoGD";
+            this.lbl_DoanhThuTheoGD.Size = new System.Drawing.Size(236, 28);
+            this.lbl_DoanhThuTheoGD.TabIndex = 15;
+            this.lbl_DoanhThuTheoGD.Text = "Doanh thu theo giai đoạn";
+            this.lbl_DoanhThuTheoGD.Click += new System.EventHandler(this.lbl_DoanhThuTheoGD_Click);
             // 
             // label4
             // 
@@ -228,6 +232,7 @@
             this.rdb_Day.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.rdb_Day.CheckedState.InnerColor = System.Drawing.Color.White;
             this.rdb_Day.CheckedState.InnerOffset = -4;
+            this.rdb_Day.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdb_Day.ForeColor = System.Drawing.Color.Tomato;
             this.rdb_Day.Location = new System.Drawing.Point(348, 18);
             this.rdb_Day.Name = "rdb_Day";
@@ -255,6 +260,7 @@
             // 
             this.dtp_From.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dtp_From.Checked = true;
+            this.dtp_From.Cursor = System.Windows.Forms.Cursors.AppStarting;
             this.dtp_From.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtp_From.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dtp_From.Location = new System.Drawing.Point(1020, 10);
@@ -269,6 +275,7 @@
             // 
             this.dtp_To.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dtp_To.Checked = true;
+            this.dtp_To.Cursor = System.Windows.Forms.Cursors.AppStarting;
             this.dtp_To.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtp_To.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dtp_To.Location = new System.Drawing.Point(1271, 10);
@@ -321,7 +328,7 @@
         private Guna.UI.WinForms.GunaComboBox cbb_OptionMain;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbl_DoanhThuTheoGD;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FlowLayoutPanel flp_ContainsReport;
         private System.Windows.Forms.FlowLayoutPanel flp_ContainsHeader;

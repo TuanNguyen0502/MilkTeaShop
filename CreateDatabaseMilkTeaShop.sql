@@ -68,10 +68,6 @@ CREATE TABLE ChiTiet_DonNhapNguyenLieu(
 	DonVi NVARCHAR(20) NOT NULL, 
 	DonGia NUMERIC(18,0) NOT NULL CHECK(DonGia > 0),
 )
-SELECT 
-    SUM(SoLuong * DonGia) AS TongTien
-FROM 
-    ChiTiet_DonNhapNguyenLieu
 
 GO
 -- Tao bang DonXuatNguyenLieu
@@ -680,7 +676,48 @@ BEGIN
 END;
 
 GO
+-- thủ tục khôi phục
+CREATE PROCEDURE proc_CreateBill_Test
+@SDT varchar(12), 
+@MaNV varchar(10), 
+@ThoiGianDat datetime, 
+@TriGiaHoaDon NUMERIC(18,0)
+AS
+BEGIN
+    BEGIN TRY
+        BEGIN TRANSACTION;
 
+        -- Kiểm tra số lượng sản phẩm trước khi thêm hóa đơn
+        DECLARE @OutOfStock INT;
+        SET @OutOfStock = (
+            SELECT COUNT(*)
+            FROM ChiTietHoaDon c
+            JOIN SanPham s ON c.MaSP = s.MaSP
+            WHERE s.SoLuong < c.SoLuong
+        );
+
+        IF @OutOfStock > 0
+        BEGIN
+            -- Nếu có sản phẩm hết hàng, hủy bỏ transaction và không thêm hóa đơn
+            RAISERROR ('Some products are out of stock. Please check your order.', 16, 1);
+            ROLLBACK TRANSACTION;
+            RETURN;
+        END
+
+        -- Thêm hóa đơn vào bảng HoaDon
+        INSERT INTO HoaDon(SDT, MaNV, ThoiGianDat, TriGiaHoaDon)
+        VALUES(@SDT, @MaNV, @ThoiGianDat, @TriGiaHoaDon);
+
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        -- Nếu có lỗi xảy ra, hủy bỏ transaction và trả về lỗi
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION;
+        THROW;
+    END CATCH;
+END;
+GO
 -- Procedure tạo hóa đơn
 CREATE PROCEDURE proc_CreateBill
 @SDT varchar(12), @MaNV varchar(10), @ThoiGianDat datetime, @TriGiaHoaDon NUMERIC(18,0)
@@ -689,10 +726,65 @@ BEGIN
 	INSERT INTO HoaDon(SDT, MaNV, ThoiGianDat, TriGiaHoaDon)
 	VALUES(@SDT, @MaNV, @ThoiGianDat, @TriGiaHoaDon);
 END;
-exec proc_CreateBill '0123156789', 'NV002', '2024-04-11', '50000'
-SELECT * FROM HoaDon
-GO
+
+SELECT * FROM NguyenLieu
+SELECT * FROM SanPham
+SELECT * FROM CheBien
+
+--CREATE PROCEDURE proc_ChuyenNLSangSP
+SELECT * 
+FROM CheBien cb
+JOIN NguyenLieu nl ON cb.MaNL = nl.MaNL
+WHERE cb.MaSP = 'SP10'
 SELECT * FROM ChiTietHoaDon
+GO
+CREATE PROCEDURE proc_CreateBill_Test_
+@SDT varchar(12), 
+@MaNV varchar(10), 
+@ThoiGianDat datetime, 
+@TriGiaHoaDon NUMERIC(18,0)
+AS
+BEGIN
+    BEGIN TRY
+        BEGIN TRANSACTION;
+
+        -- Kiểm tra số lượng sản phẩm trước khi thêm hóa đơn
+        DECLARE @HetSanPham INT;
+        SET @HetSanPham = (
+            SELECT COUNT(*)
+            FROM ChiTietHoaDon c
+            JOIN SanPham s ON c.MaSP = s.MaSP
+            WHERE (c.SoLuong > s.SoLuong - 3) OR (MaSP = 'SP15' OR MaSP = 'SP16' OR MaSP = 'SP17' OR MaSP = 'SP18' 
+											OR MaSP = 'SP19' OR MaSP = 'SP20' OR MaSP = 'SP21')
+        );
+		DECLARE @sl1 int, @sl2 int, @sl3 int
+		SELECT *
+		FROM ChiTietHoaDon cthd
+		JOIN CheBien cb ON cthd.MaSP = cb.MaSP
+		JOIN NguyenLieu nl ON cb.MaNL = nl.MaNL
+
+        IF @HetSanPham > 0
+        BEGIN
+            -- Nếu có sản phẩm hết hàng, hủy bỏ transaction và không thêm hóa đơn
+            RAISERROR ('Some products are out of stock. Please check your order.', 16, 1);
+            ROLLBACK TRANSACTION;
+            RETURN;
+        END
+
+        -- Thêm hóa đơn vào bảng HoaDon
+        INSERT INTO HoaDon(SDT, MaNV, ThoiGianDat, TriGiaHoaDon)
+        VALUES(@SDT, @MaNV, @ThoiGianDat, @TriGiaHoaDon);
+
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        -- Nếu có lỗi xảy ra, hủy bỏ transaction và trả về lỗi
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION;
+        THROW;
+    END CATCH;
+END;
+GO
 -- Procedure tạo chi tiết hóa đơn
 CREATE PROCEDURE proc_CreateBillDetails
 @MaHD int, @MaSP nvarchar(10), @SoLuong int
@@ -701,7 +793,7 @@ BEGIN
 	INSERT INTO ChiTietHoaDon(MaHD, MaSP, SoLuong)
 	VALUES (@MaHD, @MaSP, @SoLuong);
 END
-
+GO
 -- Procedure tìm kiếm hóa đơn
 CREATE PROCEDURE proc_FindBill
 @Keyword nvarchar(100)
@@ -722,8 +814,6 @@ CREATE VIEW vie_XemHoaDon AS
 	JOIN NhanVien nv ON hd.MaNV = nv.MaNV
 	JOIN KhachHang kh ON hd.SDT = kh.SDT
 GO
-
-SELECT * FROM vie_XemHoaDon
 
 -- Procedure thêm nguyên liệu
 CREATE PROCEDURE proc_themNguyenLieu
@@ -777,11 +867,8 @@ RETURN (
 	FROM SanPham
 	WHERE TenSP LIKE N'%'+@keyword+'%' OR MaLoaiSP LIKE N'%'+@keyword+'%'
 )
-SELECT * FROM func_timSanPhamTheoTen ('Trà')
-	-- test func_timNguyenLieu
-	Select * from func_timNguyenLieu ('Trà')
-SELECT * FROM NhanVien
-SELECT * FROM V_ThongTinNhanVien
+
+GO
 CREATE TRIGGER trg_CheckNhanVien
 ON NhanVien
 FOR INSERT, UPDATE
@@ -891,15 +978,14 @@ BEGIN
         @manv, @hoten, @ngaysinh, @gioitinh, @diachi, @sdt, @ngaytuyendung, @macv
     )
 END
-
+GO
 -- Tạo view xem Chi tiết hóa đơn
 CREATE VIEW vie_XemCTHD AS
 	SELECT cthd.MaHD, STRING_AGG(cthd.MaSP + ' (' + CAST(cthd.SoLuong as varchar) + ') ', ' ') AS 'Danh sách sản phẩm', hd.ThoiGianDat, hd.TriGiaHoaDon
 	FROM ChiTietHoaDon cthd
 	JOIN HoaDon hd ON cthd.MaHD = hd.MaHD
 	GROUP BY cthd.MaHD, hd.ThoiGianDat, hd.TriGiaHoaDon
-
-SELECT * FROM HoaDon
+GO
 -- Procedure xếp hóa đơn giảm dần theo ngày đặt
 CREATE PROCEDURE proc_HoaDonGiamTheoOrderTime AS 
 BEGIN
@@ -1017,3 +1103,100 @@ BEGIN
 	RETURN @ChiPhi;
 END;
 GO
+-- Procedure tính doanh thu và khoản chi theo thời điểm
+CREATE FUNCTION func_ChiPhiTheoGiaiDoan
+(@startDate date, @endDate date)
+RETURNS DECIMAL
+AS
+BEGIN
+	DECLARE @ChiPhi decimal = 0;
+	SELECT @ChiPhi = @ChiPhi + COALESCE(SUM(TriGiaDonNhap),0)
+	FROM DonNhapNguyenLieu
+	WHERE NgayNhap BETWEEN @startDate AND @endDate
+
+	SELECT @ChiPhi = @ChiPhi + COALESCE(SUM(TriGiaDonNhap),0)
+	FROM DonNhapSanPham
+	WHERE NgayNhap BETWEEN @startDate AND @endDate
+
+	RETURN @ChiPhi
+END;
+GO
+CREATE FUNCTION func_DoanhThuTheoGiaiDoan
+(@startDate date, @endDate date)
+RETURNS DECIMAL
+AS
+BEGIN
+	DECLARE @doanhThu decimal = 0;
+	 SELECT @doanhthu = COALESCE(SUM(TriGiaHoaDon), 0)
+	 FROM HoaDon
+	 WHERE ThoiGianDat BETWEEN @startDate AND @endDate
+
+	 RETURN @doanhThu;
+END;
+GO
+-- Tạo phân quyền user
+-- Ứng dụng gồm 2 đối tượng (Nhân viên và người quản lý)
+-- Gán các quyền chỉ định cho nhân viên
+-- Gán quyền xem và tham chiếu đến các bảng khác cho nhân viên
+CREATE ROLE Staff
+--Gán các quyền trên table cho role Staff
+GRANT SELECT, REFERENCES ON BangPhanCa TO Staff
+GRANT SELECT, REFERENCES ON CaLamViec TO Staff
+GRANT SELECT, REFERENCES ON CheBien TO Staff
+GRANT SELECT, REFERENCES ON ChiTietHoaDon TO Staff
+GRANT SELECT, REFERENCES ON ChiTietHoaDonUngDung TO Staff
+GRANT SELECT, REFERENCES ON ChiTietNhapHang TO Staff
+GRANT SELECT, REFERENCES ON CongViec TO Staff
+GRANT SELECT, INSERT, REFERENCES ON DonNhapHang TO Staff
+GRANT SELECT, INSERT, REFERENCES ON HoaDon TO Staff
+GRANT SELECT, INSERT, REFERENCES ON HoaDonUngDung TO Staff
+GRANT SELECT, INSERT, REFERENCES ON KhachHang TO Staff
+GRANT SELECT, REFERENCES ON LoaiSanPham TO Staff
+GRANT SELECT, REFERENCES ON NguyenLieu TO Staff
+GRANT SELECT, REFERENCES ON NhaCungCap TO Staff
+GRANT SELECT, REFERENCES ON NhanVien TO Staff
+GRANT SELECT, INSERT, REFERENCES ON PhieuChi TO Staff
+GRANT SELECT, REFERENCES ON SanPham TO Staff
+GRANT SELECT, REFERENCES ON UngDung TO Staff
+GRANT EXECUTE TO Staff
+GRANT SELECT TO Staff
+DENY EXECUTE ON proc_AddEmployee to Staff;
+DENY EXECUTE ON proc_DeleteEmployee to Staff;
+DENY EXECUTE ON proc_EditEmployee to Staff;
+DENY EXECUTE ON proc_suaCheBien to Staff;
+DENY EXECUTE ON proc_suaNguyenLieu to Staff;
+DENY EXECUTE ON proc_suaSanPham to Staff;
+DENY EXECUTE ON proc_xoaSanPham to Staff;
+DENY EXECUTE ON proc_xoaPhanCa to Staff;
+
+CREATE ROLE Manager
+-- Cấp fixed server role
+exec sp_addsrvrolemember Manager, 'sysadmin'
+
+SELECT nl.TenNL, cb.LieuLuong, cb.DonVi as 'Don vi che bien', nl.SoLuong, nl.DonVi as 'Don vi nguyen lieu'
+FROM CheBien cb
+JOIN NguyenLieu nl ON cb.MaNL = nl.MaNL
+WHERE MaSP = 'SP18'
+GO
+-- Procedure lấy ra chế biến và số lượng nguyên liệu còn lại của sản phẩm
+CREATE PROCEDURE proc_LayCongThucCheBien
+(@MaSP varchar(10))
+AS
+BEGIN
+	IF @MaSP = 'SP15' OR @MaSP = 'SP16' OR @MaSP = 'SP17' OR @MaSP = 'SP18' OR @MaSP = 'SP19' OR @MaSP = 'SP20' OR @MaSP = 'SP21'
+	BEGIN
+		RAISERROR ('Sản phẩm không được chế biến theo công thức', 16, 1)
+		ROLLBACK TRANSACTION
+		RETURN
+	END;
+	
+	ELSE
+	BEGIN
+		SELECT nl.TenNL, cb.LieuLuong, cb.DonVi as 'Don vi che bien', nl.SoLuong, nl.DonVi as 'Don vi nguyen lieu'
+		FROM CheBien cb
+		JOIN NguyenLieu nl ON cb.MaNL = nl.MaNL
+		WHERE MaSP = @MaSP
+	END;
+END;
+
+exec proc_LayCongThucCheBien 'SP01'

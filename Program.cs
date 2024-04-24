@@ -16,7 +16,7 @@ namespace MilkTeaShop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FSuppliers());
+            Application.Run(new FMain());
         }
     }
 }

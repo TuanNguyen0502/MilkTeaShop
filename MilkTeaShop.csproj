@@ -64,6 +64,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FProcessing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FProcessing.Designer.cs">
+      <DependentUpon>FProcessing.cs</DependentUpon>
+    </Compile>
     <Compile Include="FReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,6 +212,9 @@
     <Compile Include="UC_Suppliers.Designer.cs">
       <DependentUpon>UC_Suppliers.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FProcessing.resx">
+      <DependentUpon>FProcessing.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FReport.resx">
       <DependentUpon>FReport.cs</DependentUpon>
     </EmbeddedResource>

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblTongDon = new Guna.UI.WinForms.GunaLabel();
@@ -39,7 +39,7 @@
             this.lblTenNCC = new Guna.UI.WinForms.GunaLabel();
             this.btnLuuDon = new Guna.UI.WinForms.GunaButton();
             this.btnXoa = new Guna.UI.WinForms.GunaButton();
-            this.btnThemNL = new Guna.UI.WinForms.GunaButton();
+            this.btnThemSP = new Guna.UI.WinForms.GunaButton();
             this.btnTaoDon = new Guna.UI.WinForms.GunaButton();
             this.txtMaSP = new Guna.UI.WinForms.GunaTextBox();
             this.lblMaSP = new Guna.UI.WinForms.GunaLabel();
@@ -50,7 +50,7 @@
             this.txtDonVi = new Guna.UI.WinForms.GunaTextBox();
             this.lblDonVi = new Guna.UI.WinForms.GunaLabel();
             this.groupBoxDNSP = new System.Windows.Forms.GroupBox();
-            this.flpDSDNNL = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpDSDNSP = new System.Windows.Forms.FlowLayoutPanel();
             this.txtMaNCC = new Guna.UI.WinForms.GunaTextBox();
             this.dgvProducts = new Guna.UI2.WinForms.Guna2DataGridView();
             this.lblMaNCC = new Guna.UI.WinForms.GunaLabel();
@@ -161,6 +161,7 @@
             this.btnLuuDon.TabIndex = 29;
             this.btnLuuDon.Text = "Lưu đơn";
             this.btnLuuDon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnLuuDon.Click += new System.EventHandler(this.btnLuuDon_Click);
             // 
             // btnXoa
             // 
@@ -185,30 +186,32 @@
             this.btnXoa.TabIndex = 31;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
-            // btnThemNL
+            // btnThemSP
             // 
-            this.btnThemNL.AnimationHoverSpeed = 0.07F;
-            this.btnThemNL.AnimationSpeed = 0.03F;
-            this.btnThemNL.BaseColor = System.Drawing.SystemColors.Highlight;
-            this.btnThemNL.BorderColor = System.Drawing.Color.Black;
-            this.btnThemNL.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnThemNL.FocusedColor = System.Drawing.Color.Empty;
-            this.btnThemNL.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnThemNL.ForeColor = System.Drawing.Color.White;
-            this.btnThemNL.Image = null;
-            this.btnThemNL.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnThemNL.Location = new System.Drawing.Point(1233, 343);
-            this.btnThemNL.Name = "btnThemNL";
-            this.btnThemNL.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.btnThemNL.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btnThemNL.OnHoverForeColor = System.Drawing.Color.White;
-            this.btnThemNL.OnHoverImage = null;
-            this.btnThemNL.OnPressedColor = System.Drawing.Color.Black;
-            this.btnThemNL.Size = new System.Drawing.Size(83, 42);
-            this.btnThemNL.TabIndex = 30;
-            this.btnThemNL.Text = "Thêm ";
-            this.btnThemNL.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnThemSP.AnimationHoverSpeed = 0.07F;
+            this.btnThemSP.AnimationSpeed = 0.03F;
+            this.btnThemSP.BaseColor = System.Drawing.SystemColors.Highlight;
+            this.btnThemSP.BorderColor = System.Drawing.Color.Black;
+            this.btnThemSP.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnThemSP.FocusedColor = System.Drawing.Color.Empty;
+            this.btnThemSP.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnThemSP.ForeColor = System.Drawing.Color.White;
+            this.btnThemSP.Image = null;
+            this.btnThemSP.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnThemSP.Location = new System.Drawing.Point(1233, 343);
+            this.btnThemSP.Name = "btnThemSP";
+            this.btnThemSP.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.btnThemSP.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnThemSP.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnThemSP.OnHoverImage = null;
+            this.btnThemSP.OnPressedColor = System.Drawing.Color.Black;
+            this.btnThemSP.Size = new System.Drawing.Size(83, 42);
+            this.btnThemSP.TabIndex = 30;
+            this.btnThemSP.Text = "Thêm ";
+            this.btnThemSP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnThemSP.Click += new System.EventHandler(this.btnThemSP_Click);
             // 
             // btnTaoDon
             // 
@@ -233,6 +236,7 @@
             this.btnTaoDon.TabIndex = 28;
             this.btnTaoDon.Text = "Tạo đơn";
             this.btnTaoDon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnTaoDon.Click += new System.EventHandler(this.btnTaoDon_Click);
             // 
             // txtMaSP
             // 
@@ -256,9 +260,9 @@
             this.lblMaSP.Font = new System.Drawing.Font("Leelawadee UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaSP.Location = new System.Drawing.Point(886, 183);
             this.lblMaSP.Name = "lblMaSP";
-            this.lblMaSP.Size = new System.Drawing.Size(62, 23);
+            this.lblMaSP.Size = new System.Drawing.Size(60, 23);
             this.lblMaSP.TabIndex = 26;
-            this.lblMaSP.Text = "Mã NL";
+            this.lblMaSP.Text = "Mã SP";
             // 
             // txtDonGia
             // 
@@ -341,7 +345,7 @@
             // groupBoxDNSP
             // 
             this.groupBoxDNSP.BackColor = System.Drawing.Color.LavenderBlush;
-            this.groupBoxDNSP.Controls.Add(this.flpDSDNNL);
+            this.groupBoxDNSP.Controls.Add(this.flpDSDNSP);
             this.groupBoxDNSP.Controls.Add(this.flowLayoutPanel1);
             this.groupBoxDNSP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxDNSP.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -352,14 +356,14 @@
             this.groupBoxDNSP.TabStop = false;
             this.groupBoxDNSP.Text = "Đơn nhập sản phẩm";
             // 
-            // flpDSDNNL
+            // flpDSDNSP
             // 
-            this.flpDSDNNL.AutoScroll = true;
-            this.flpDSDNNL.BackColor = System.Drawing.Color.White;
-            this.flpDSDNNL.Location = new System.Drawing.Point(15, 95);
-            this.flpDSDNNL.Name = "flpDSDNNL";
-            this.flpDSDNNL.Size = new System.Drawing.Size(962, 432);
-            this.flpDSDNNL.TabIndex = 1;
+            this.flpDSDNSP.AutoScroll = true;
+            this.flpDSDNSP.BackColor = System.Drawing.Color.White;
+            this.flpDSDNSP.Location = new System.Drawing.Point(15, 95);
+            this.flpDSDNSP.Name = "flpDSDNSP";
+            this.flpDSDNSP.Size = new System.Drawing.Size(962, 432);
+            this.flpDSDNSP.TabIndex = 1;
             // 
             // txtMaNCC
             // 
@@ -380,26 +384,26 @@
             // dgvProducts
             // 
             this.dgvProducts.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.dgvProducts.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgvProducts.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProducts.ColumnHeadersHeight = 4;
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProducts.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProducts.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvProducts.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvProducts.Location = new System.Drawing.Point(12, 51);
             this.dgvProducts.Name = "dgvProducts";
@@ -445,7 +449,7 @@
             this.groupBoxNhapSP.BackColor = System.Drawing.Color.LavenderBlush;
             this.groupBoxNhapSP.Controls.Add(this.btnLuuDon);
             this.groupBoxNhapSP.Controls.Add(this.btnXoa);
-            this.groupBoxNhapSP.Controls.Add(this.btnThemNL);
+            this.groupBoxNhapSP.Controls.Add(this.btnThemSP);
             this.groupBoxNhapSP.Controls.Add(this.btnTaoDon);
             this.groupBoxNhapSP.Controls.Add(this.txtMaSP);
             this.groupBoxNhapSP.Controls.Add(this.lblMaSP);
@@ -498,7 +502,7 @@
         private Guna.UI.WinForms.GunaLabel lblTenNCC;
         private Guna.UI.WinForms.GunaButton btnLuuDon;
         private Guna.UI.WinForms.GunaButton btnXoa;
-        private Guna.UI.WinForms.GunaButton btnThemNL;
+        private Guna.UI.WinForms.GunaButton btnThemSP;
         private Guna.UI.WinForms.GunaButton btnTaoDon;
         private Guna.UI.WinForms.GunaTextBox txtMaSP;
         private Guna.UI.WinForms.GunaLabel lblMaSP;
@@ -509,7 +513,7 @@
         private Guna.UI.WinForms.GunaTextBox txtDonVi;
         private Guna.UI.WinForms.GunaLabel lblDonVi;
         private System.Windows.Forms.GroupBox groupBoxDNSP;
-        private System.Windows.Forms.FlowLayoutPanel flpDSDNNL;
+        private System.Windows.Forms.FlowLayoutPanel flpDSDNSP;
         private Guna.UI.WinForms.GunaTextBox txtMaNCC;
         private Guna.UI2.WinForms.Guna2DataGridView dgvProducts;
         private Guna.UI.WinForms.GunaLabel lblMaNCC;

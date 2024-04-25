@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace MilkTeaShop
 {
-    public partial class FImport_Ingredients : Form
+    public partial class FExport_Ingredients : Form
     {
         readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True";
         private int currentOrderId;
 
-        public FImport_Ingredients()
+        public FExport_Ingredients()
         {
             InitializeComponent();
             InitializeDataGridView();

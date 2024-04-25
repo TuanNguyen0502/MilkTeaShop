@@ -16,7 +16,6 @@ namespace MilkTeaShop
     {
         private string sdt;
         readonly string connStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True";
-        DBConnection dBConnection = new DBConnection();
 
         public FCustomer_Detail(string sdt)
         {
@@ -73,48 +72,94 @@ namespace MilkTeaShop
             string gender = radioButton_Male.Checked ? "Nam" : "Nữ";
             Customer customer = new Customer(textBox_Name.Text, textBox_Phone.Text, gender, dateTimePicker_DOB.Value.ToString());
 
+            // Nếu như thêm mới khách hàng
             if (sdt == null)
             {
-                //if (customer.CheckAllCondition())
+                using (SqlConnection conn = new SqlConnection(connStr))
                 {
-                    string sqlQuery = "exec proc_CreateCustomer @TenKhachHang, @SDT, @GioiTinh, @NgaySinh";
-                    SqlParameter[] lstParams =
+                    try
                     {
-                        new SqlParameter("@TenKhachHang", SqlDbType.NVarChar) {Value = customer.Name},
-                        new SqlParameter("@SDT", SqlDbType.NChar) {Value = customer.Phone},
-                        new SqlParameter("@GioiTinh", SqlDbType.NVarChar) { Value = customer.Gender},
-                        new SqlParameter("@NgaySinh", SqlDbType.Date) {Value = customer.Dob},
-                    };
-                    dBConnection.ExecuteProcedure(sqlQuery, lstParams);
-                    this.Close();
+                        if (conn.State == ConnectionState.Closed)
+                        {
+                            conn.Open();
+                            SqlCommand cmd = new SqlCommand("proc_CreateCustomer", conn);
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            SqlParameter[] lstParams =
+                            {
+                            new SqlParameter("@TenKhachHang", SqlDbType.NVarChar) {Value = customer.Name},
+                            new SqlParameter("@SDT", SqlDbType.NChar) {Value = customer.Phone},
+                            new SqlParameter("@GioiTinh", SqlDbType.NVarChar) { Value = customer.Gender},
+                            new SqlParameter("@NgaySinh", SqlDbType.Date) {Value = customer.Dob},
+                            };
+                            cmd.Parameters.AddRange(lstParams);
+                            if (cmd.ExecuteNonQuery() > 0)
+                                MessageBox.Show("Execute procedure successful !");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error\n" + ex.Message);
+                    }
                 }
+                this.Close();
             }
             else
             {
-                //if (customer.CheckAllCondition())
+                using (SqlConnection conn = new SqlConnection(connStr))
                 {
-                    string sqlQuery = "exec proc_UpdateCustomer @TenKhachHang, @SDT, @GioiTinh, @NgaySinh";
-                    SqlParameter[] lstParams =
+                    try
                     {
-                        new SqlParameter("@TenKhachHang", SqlDbType.NVarChar) {Value = customer.Name},
-                        new SqlParameter("@SDT", SqlDbType.NChar) {Value = customer.Phone},
-                        new SqlParameter("@GioiTinh", SqlDbType.NVarChar) { Value = customer.Gender},
-                        new SqlParameter("@NgaySinh", SqlDbType.Date) {Value = customer.Dob},
-                    };
-                    dBConnection.ExecuteProcedure(sqlQuery, lstParams);
-                    this.Close();
+                        if (conn.State == ConnectionState.Closed)
+                        {
+                            conn.Open();
+                            SqlCommand cmd = new SqlCommand("proc_UpdateCustomer", conn);
+                            cmd.CommandType= CommandType.StoredProcedure;
+                            SqlParameter[] lstParams =
+                            {
+                            new SqlParameter("@TenKhachHang", SqlDbType.NVarChar) {Value = customer.Name},
+                            new SqlParameter("@SDT", SqlDbType.NChar) {Value = customer.Phone},
+                            new SqlParameter("@GioiTinh", SqlDbType.NVarChar) { Value = customer.Gender},
+                            new SqlParameter("@NgaySinh", SqlDbType.Date) {Value = customer.Dob},
+                            };
+                            cmd.Parameters.AddRange(lstParams);
+                            if (cmd.ExecuteNonQuery() > 0)
+                                MessageBox.Show("Execute procedure successful !");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error\n" + ex.Message);
+                    }
                 }
+                this.Close();
             }
         }
 
         private void button_Delete_Click(object sender, EventArgs e)
         {
-            string sqlQuery = "exec proc_DeleteCustomer @SDT";
-            SqlParameter[] lstParams =
+            using (SqlConnection conn = new SqlConnection(connStr))
             {
-                        new SqlParameter("@SDT", SqlDbType.NChar) {Value = textBox_Phone.Text},
-            };
-            dBConnection.ExecuteProcedure(sqlQuery, lstParams);
+                try
+                {
+                    if (conn.State == ConnectionState.Closed)
+                    {
+                        conn.Open();
+                        SqlCommand cmd = new SqlCommand("proc_DeleteCustomer", conn);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        SqlParameter[] lstParams =
+                        {
+                            new SqlParameter("@SDT", SqlDbType.NChar) {Value = textBox_Phone.Text},
+                        };
+                        cmd.Parameters.AddRange(lstParams);
+                        if (cmd.ExecuteNonQuery() > 0)
+                            MessageBox.Show("Execute procedure successful !");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error\n" + ex.Message);
+                }
+            }
             this.Close();
         }
     }

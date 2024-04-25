@@ -162,10 +162,5 @@ namespace MilkTeaShop
             txtDonVi.Text = string.Empty;
             txtDonGia.Text = string.Empty;
         }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

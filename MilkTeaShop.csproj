@@ -70,11 +70,11 @@
     <Compile Include="FImportIngredients.Designer.cs">
       <DependentUpon>FImportIngredients.cs</DependentUpon>
     </Compile>
-    <Compile Include="FImport_Ingredients.cs">
+    <Compile Include="FExport_Ingredients.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FImport_Ingredients.Designer.cs">
-      <DependentUpon>FImport_Ingredients.cs</DependentUpon>
+    <Compile Include="FExport_Ingredients.Designer.cs">
+      <DependentUpon>FExport_Ingredients.cs</DependentUpon>
     </Compile>
     <Compile Include="FImportProduct.cs">
       <SubType>Form</SubType>
@@ -87,6 +87,12 @@
     </Compile>
     <Compile Include="FManager.Designer.cs">
       <DependentUpon>FManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FLogin_User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FLogin_User.Designer.cs">
+      <DependentUpon>FLogin_User.cs</DependentUpon>
     </Compile>
     <Compile Include="FProcessing.cs">
       <SubType>Form</SubType>
@@ -119,6 +125,12 @@
     </Compile>
     <Compile Include="UCDNNL.Designer.cs">
       <DependentUpon>UCDNNL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCDNSP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCDNSP.Designer.cs">
+      <DependentUpon>UCDNSP.cs</DependentUpon>
     </Compile>
     <Compile Include="UC_AtCounter.cs">
       <SubType>UserControl</SubType>
@@ -263,11 +275,14 @@
     <EmbeddedResource Include="FImportIngredients.resx">
       <DependentUpon>FImportIngredients.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FImport_Ingredients.resx">
-      <DependentUpon>FImport_Ingredients.cs</DependentUpon>
+    <EmbeddedResource Include="FExport_Ingredients.resx">
+      <DependentUpon>FExport_Ingredients.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FImportProduct.resx">
       <DependentUpon>FImportProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FLogin_User.resx">
+      <DependentUpon>FLogin_User.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FProcessing.resx">
       <DependentUpon>FProcessing.cs</DependentUpon>
@@ -283,6 +298,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCDNNL.resx">
       <DependentUpon>UCDNNL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCDNSP.resx">
+      <DependentUpon>UCDNSP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_AtCounter.resx">
       <DependentUpon>UC_AtCounter.cs</DependentUpon>
@@ -461,6 +479,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-company-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LogoMilkTeaShop.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_1144760.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -89,9 +89,38 @@ namespace MilkTeaShop
                 new SqlParameter("@keyword", SqlDbType.NVarChar) {Value = textBox_Search.Text},
             };
 
-            List<Dictionary<string, object>> keyValuePairs = dbConnection.ExecuteReaderData_Function(sqlQuery, lstParams);
+            List<Dictionary<string, object>> resultList = new List<Dictionary<string, object>>();
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                try
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlQuery, conn);
+                    cmd.Parameters.AddRange(lstParams);
+
+                    DataTable resultTable = new DataTable();
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(resultTable);
+                    }
+
+                    foreach (DataRow row in resultTable.Rows)
+                    {
+                        Dictionary<string, object> rowData = new Dictionary<string, object>();
+                        foreach (DataColumn col in resultTable.Columns)
+                        {
+                            rowData.Add(col.ColumnName, row[col]);
+                        }
+                        resultList.Add(rowData);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Read error\n" + ex.Message);
+                }
+            }
             flowLayoutPanel1.Controls.Clear();
-            foreach (var keyValue in keyValuePairs)
+            foreach (var keyValue in resultList)
             {
                 UC_Customer item = new UC_Customer((string)keyValue["SDT"]);
                 item.Label_Name.Text = (string)keyValue["TenKH"];

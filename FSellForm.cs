@@ -279,10 +279,9 @@ namespace MilkTeaShop
                 try
                 {
                     conn.Open();
-                    string sqlGetProducts = "SELECT TOP 1 MaHD"+
-                                            " FROM HoaDon"+
-                                            " ORDER BY MaHD Desc";
+                    string sqlGetProducts = "GetProductLastest";
                     SqlCommand cmdGetProducts = new SqlCommand(sqlGetProducts, conn);
+                    cmdGetProducts.CommandType = CommandType.StoredProcedure;
                     int MaHD = (int)cmdGetProducts.ExecuteScalar();
                     MessageBox.Show(MaHD.ToString());
                     foreach (Control control in flp_ContainsOrder.Controls)
@@ -319,7 +318,7 @@ namespace MilkTeaShop
                     try
                     {
                         conn.Open();
-                        SqlCommand cmd = new SqlCommand("exec proc_CreateBill_Test @SDT, @MaNV, @ThoiGianDat, @TriGiaHD", conn);
+                        SqlCommand cmd = new SqlCommand("exec proc_CreateBill @SDT, @MaNV, @ThoiGianDat, @TriGiaHD", conn);
                         SqlParameter[] lstParams =
                         {
                                 new SqlParameter("@SDT", SqlDbType.VarChar) {Value = cbb_options.SelectedItem.ToString()},
@@ -349,5 +348,10 @@ namespace MilkTeaShop
         {
         }
 
+        private void pnl_EmpDetails_Click(object sender, EventArgs e)
+        {
+            FSalesAtTheCounter counter = new FSalesAtTheCounter(lbl_CurrentStaff.Text);
+            counter.ShowDialog();
+        }
     }
 }

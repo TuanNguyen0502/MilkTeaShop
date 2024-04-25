@@ -78,5 +78,10 @@ namespace MilkTeaShop
                 button_nhapNL.Visible = true;
             }
         }
+
+        private void button_App_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FSuppliers());
+        }
     }
 }

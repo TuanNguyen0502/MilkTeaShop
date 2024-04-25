@@ -64,6 +64,24 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FImportIngredients.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FImportIngredients.Designer.cs">
+      <DependentUpon>FImportIngredients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FImport_Ingredients.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FImport_Ingredients.Designer.cs">
+      <DependentUpon>FImport_Ingredients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FImportProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FImportProduct.Designer.cs">
+      <DependentUpon>FImportProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="FProcessing.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +108,12 @@
     </Compile>
     <Compile Include="Suppliers.cs" />
     <Compile Include="SuppliersDAO.cs" />
+    <Compile Include="UCDNNL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCDNNL.Designer.cs">
+      <DependentUpon>UCDNNL.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_AtCounter.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -182,12 +206,6 @@
     <Compile Include="UC_Customer.Designer.cs">
       <DependentUpon>UC_Customer.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC_DNNL.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC_DNNL.Designer.cs">
-      <DependentUpon>UC_DNNL.cs</DependentUpon>
-    </Compile>
     <Compile Include="UC_Expenditures.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -236,6 +254,15 @@
     <Compile Include="UC_Suppliers.Designer.cs">
       <DependentUpon>UC_Suppliers.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FImportIngredients.resx">
+      <DependentUpon>FImportIngredients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FImport_Ingredients.resx">
+      <DependentUpon>FImport_Ingredients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FImportProduct.resx">
+      <DependentUpon>FImportProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FProcessing.resx">
       <DependentUpon>FProcessing.cs</DependentUpon>
     </EmbeddedResource>
@@ -247,6 +274,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FSuppliers.resx">
       <DependentUpon>FSuppliers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCDNNL.resx">
+      <DependentUpon>UCDNNL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_AtCounter.resx">
       <DependentUpon>UC_AtCounter.cs</DependentUpon>
@@ -291,9 +321,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC_Customer.resx">
       <DependentUpon>UC_Customer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UC_DNNL.resx">
-      <DependentUpon>UC_DNNL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_Expenditures.resx">
       <DependentUpon>UC_Expenditures.cs</DependentUpon>

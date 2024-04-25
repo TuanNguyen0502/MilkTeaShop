@@ -201,6 +201,7 @@
             this.button_nhapSP.Text = "Sản phẩm";
             this.button_nhapSP.UseVisualStyleBackColor = false;
             this.button_nhapSP.Visible = false;
+            this.button_nhapSP.Click += new System.EventHandler(this.button_nhapSP_Click);
             // 
             // button_nhapNL
             // 
@@ -217,6 +218,7 @@
             this.button_nhapNL.Text = "Nguyên liệu";
             this.button_nhapNL.UseVisualStyleBackColor = false;
             this.button_nhapNL.Visible = false;
+            this.button_nhapNL.Click += new System.EventHandler(this.button_nhapNL_Click);
             // 
             // button_xuatNL
             // 

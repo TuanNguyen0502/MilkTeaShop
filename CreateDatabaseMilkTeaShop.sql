@@ -1212,3 +1212,21 @@ BEGIN
     FROM HoaDon
     ORDER BY MaHD Desc
 END
+GO
+-- Tạo bảng UserAccount
+CREATE TABLE UserAccount(
+	Username varchar(50),
+	UserPassword varchar(100),
+	MaNV varchar(10)
+)
+GO
+CREATE PROCEDURE proc_CreateAccount(
+	@Username varchar(50),
+	@UserPassword varchar(100),
+	@MaNV varchar(10)
+)
+AS
+BEGIN
+	INSERT INTO UserAccount(Username, UserPassword, MaNV)
+	VALUES (@Username, @UserPassword, @MaNV)
+END;

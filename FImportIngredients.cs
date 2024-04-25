@@ -40,7 +40,7 @@ namespace MilkTeaShop
                             {
                                 UCDNNL uCDNNL = new UCDNNL();
                                 uCDNNL.LblMaDNNL.Text = dataReader["MaDNNL"].ToString();
-                                uCDNNL.LblImportDate.Text = dataReader["NgayNhap"].ToString();
+                                uCDNNL.LblImportDate.Text = ((DateTime)dataReader["NgayNhap"]).ToString("d/M/yyyy");
                                 uCDNNL.LblTriGia.Text = dataReader["TriGiaDonNhap"].ToString();
                                 uCDNNL.LblTenNCC.Text = dataReader["TenNCC"].ToString();
                                 flpDSDNNL.Controls.Add(uCDNNL);
@@ -161,6 +161,11 @@ namespace MilkTeaShop
             txtSoLuong.Text = string.Empty;
             txtDonVi.Text = string.Empty;
             txtDonGia.Text = string.Empty;
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -76,6 +76,12 @@
     <Compile Include="FExport_Ingredients.Designer.cs">
       <DependentUpon>FExport_Ingredients.cs</DependentUpon>
     </Compile>
+    <Compile Include="FImportProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FImportProduct.Designer.cs">
+      <DependentUpon>FImportProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="FProcessing.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -241,6 +247,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FExport_Ingredients.resx">
       <DependentUpon>FExport_Ingredients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FImportProduct.resx">
+      <DependentUpon>FImportProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FProcessing.resx">
       <DependentUpon>FProcessing.cs</DependentUpon>

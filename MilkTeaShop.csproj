@@ -118,6 +118,8 @@
     <Compile Include="FSuppliers.Designer.cs">
       <DependentUpon>FSuppliers.cs</DependentUpon>
     </Compile>
+    <Compile Include="GLOBAL.cs" />
+    <Compile Include="My_DBConnection.cs" />
     <Compile Include="Suppliers.cs" />
     <Compile Include="SuppliersDAO.cs" />
     <Compile Include="UCDNNL.cs">
@@ -488,6 +490,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\user_1144760.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-administrator-100.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

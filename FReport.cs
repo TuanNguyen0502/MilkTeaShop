@@ -13,6 +13,7 @@ namespace MilkTeaShop
 {
     public partial class FReport : Form
     {
+        My_DBConnection db = new My_DBConnection();
         readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True";
         string sqlQuery;
         public FReport()
@@ -22,29 +23,26 @@ namespace MilkTeaShop
         }
         private void FilterDataByDMY(DateTime timePicked)
         {
-            using (SqlConnection conn = new SqlConnection(conStr))
-            {
-                conn.Open();
-                sqlQuery = "DECLARE @doanhThu DECIMAL;"
-                          +"SELECT @doanhThu = dbo.func_tinhDoanhThuTheoNgay(@ngay, @thang, @nam);"
-                          +"SELECT @doanhThu AS 'Doanh thu';";
-                SqlCommand command = new SqlCommand(sqlQuery, conn);
-                command.CommandType = CommandType.StoredProcedure;
+            sqlQuery = "DECLARE @doanhThu DECIMAL;"
+                      +"SELECT @doanhThu = dbo.func_tinhDoanhThuTheoNgay(@ngay, @thang, @nam);"
+                      +"SELECT @doanhThu AS 'Doanh thu';";
+            SqlCommand command = new SqlCommand(sqlQuery, db.getConnRegular);
+            command.CommandType = CommandType.StoredProcedure;
 
-                // Thêm các tham số và giá trị tương ứng
-                command.Parameters.AddWithValue("@ngay", timePicked.Day);
-                command.Parameters.AddWithValue("@thang", timePicked.Month);
-                command.Parameters.AddWithValue("@nam", timePicked.Year);
-
-                decimal doanhThu = (decimal)command.ExecuteScalar();
+            // Thêm các tham số và giá trị tương ứng
+            command.Parameters.AddWithValue("@ngay", timePicked.Day);
+            command.Parameters.AddWithValue("@thang", timePicked.Month);
+            command.Parameters.AddWithValue("@nam", timePicked.Year);
+            db.OpenConnRegular();
+            decimal doanhThu = (decimal)command.ExecuteScalar();
 
 
-                // Lấy giá trị doanh thu từ parameter đầu ra
-                UC_Report report = new UC_Report();
-                report.Time = DateTime.Now;
-                report.Sales = doanhThu;
-                flp_ContainsReport.Controls.Add(report);
-            }
+            // Lấy giá trị doanh thu từ parameter đầu ra
+            UC_Report report = new UC_Report();
+            report.Time = DateTime.Now;
+            report.Sales = doanhThu;
+            flp_ContainsReport.Controls.Add(report);
+            
         }
         private void cbb_OptionMain_SelectedIndexChanged(object sender, EventArgs e)
         {

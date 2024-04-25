@@ -675,6 +675,12 @@ BEGIN
 END;
 
 GO
+CREATE VIEW vie_HDMoiNhat
+AS
+	SELECT TOP 1 *
+	FROM ChiTietHoaDon 
+	ORDER BY MaHD Desc
+GO
 -- thủ tục khôi phục
 CREATE PROCEDURE proc_CreateBill
 @SDT varchar(12), 
@@ -690,8 +696,9 @@ BEGIN
         DECLARE @OutOfStock INT;
         SET @OutOfStock = (
             SELECT COUNT(*)
-            FROM SanPham s 
-            WHERE s.SoLuong < 3 AND s.MaSP IN ('SP15', 'SP16', 'SP17', 'SP18', 'SP19', 'SP20','SP21')
+			FROM vie_HDMoiNhat cthd
+            JOIN SanPham s ON cthd.MaSP = s.MaSP
+            WHERE s.SoLuong < 5 AND s.MaSP IN ('SP15', 'SP16', 'SP17', 'SP18', 'SP19', 'SP20','SP21')
         );
 
         IF @OutOfStock > 0
@@ -1183,16 +1190,7 @@ CREATE TABLE UserAccount(
 	MaNV varchar(10)
 )
 GO
-CREATE PROCEDURE proc_CreateAccount(
-	@Username varchar(50),
-	@UserPassword varchar(100),
-	@MaNV varchar(10)
-)
-AS
-BEGIN
-	INSERT INTO UserAccount(Username, UserPassword, MaNV)
-	VALUES (@Username, @UserPassword, @MaNV)
-END;
+
 -- Tạo phân quyền user
 -- Ứng dụng gồm 2 đối tượng (Nhân viên (Nhân viên gồm: nhân viên bán hàng và nhân viên thông thường) và người quản lý)
 -- Gán các quyền chỉ định cho nhân viên bán hàng và nhân viên thông thường
@@ -1230,18 +1228,7 @@ GRANT SELECT TO Staff_Regular
 GO
 
 -- Tạo trigger tạo login và user cho nhân viên tương ứng khi được đăng ký tài khoản
-CREATE TRIGGER trg_CreateSQLServerAccount
-ON UserAccount
-AFTER INSERT
-AS
-	DECLARE @Username varchar(50), @UserPassword varchar(100), @MaNV varchar(10)
-	SELECT @Username = i.Username, @UserPassword = i.UserPassword, @MaNV = i.MaNV 
-	FROM inserted i
-BEGIN
-	DECLARE @sqlString nvarchar(MAX), @mavc varchar(10)
-
-END;
-
+GO
 CREATE PROCEDURE proc_CreateDonNhapSP
     @NgayNhap DATE,
     @MaNCC VARCHAR(10)
@@ -1467,3 +1454,71 @@ BEGIN
     END CATCH
 END;
 GO
+CREATE FUNCTION [dbo].[checkLogin] (@username NVARCHAR(MAX), @password NVARCHAR(MAX))
+RETURNS BIT
+AS
+BEGIN
+ DECLARE @result BIT;
+ SELECT @result = CAST(COUNT(*) AS BIT)
+ FROM UserAccount
+ WHERE Username = @username AND UserPassword = @password;
+ RETURN @result;
+END;
+SELECT * FROM UserAccount
+DECLARE @loginResult BIT;
+SELECT @loginResult = dbo.checkLogin('admin1', 'admin123');
+PRINT @loginResult;
+
+SELECT dbo.checkLogin('admin1', 'admin123');
+go
+-- Tạo trigger tạo login và user cho nhân viên tương ứng khi được đăng ký tài khoản
+CREATE TRIGGER trg_CreateSQLServerAccount
+ON UserAccount
+AFTER INSERT
+AS
+	DECLARE @Username varchar(50), @UserPassword varchar(100), @MaNV varchar(10)
+	SELECT @Username = i.Username, @UserPassword = i.UserPassword, @MaNV = i.MaNV 
+	FROM inserted i
+BEGIN
+	DECLARE @sqlString nvarchar(MAX), @mavc varchar(10)
+	-- Tạo định danh cấp server - login
+	-- Khai báo một chuỗi tạo login lưu vào biến sqlString
+
+	SET @sqlString = 'CREATE LOGIN [' + @Username + '] WITH PASSWORD='''+ @UserPassword +''',
+	 DEFAULT_DATABASE=[MilkTeaShop], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF'
+	-- Thực thi tạo ra login
+	exec(@sqlString)
+	-- Khai báo một chuỗi tạo user lưu vào biến sqlString
+	SET @sqlString = 'CREATE USER ' + @Username + ' FOR LOGIN ' + @Username 
+	exec(@sqlString)
+
+	DECLARE @MaCV varchar(10)
+	SELECT @MaCV = MaCV
+	FROM NhanVien
+	WHERE MaNV = @MaNV
+
+	IF (@MaCV = 'CV006')
+		SET @sqlString = 'ALTER SERVER ROLE sysadmin' + ' ADD MEMBER ' + @Username;
+	ELSE IF (@MaCV = 'CV003')
+		SET @sqlString = 'ALTER ROLE Staff_Sell ADD MEMBER ' + @Username;
+	ELSE 
+		SET @sqlString = 'ALTER ROLE Staff_Regular ADD MEMBER ' + @Username;
+		
+	exec(@sqlString)
+END;
+GO
+CREATE PROCEDURE proc_CreateAccount(
+	@Username varchar(50),
+	@UserPassword varchar(100),
+	@MaNV varchar(10)
+)
+AS
+BEGIN
+	INSERT INTO UserAccount(Username, UserPassword, MaNV)
+	VALUES (@Username, @UserPassword, @MaNV)
+END;
+exec sp_helplogins
+
+exec proc_CreateAccount 'sales01', 'password123', 'NV003'
+exec proc_CreateAccount 'admin2', 'password123', 'NV006'
+exec proc_CreateAccount 'regular1', 'password123', 'NV002'

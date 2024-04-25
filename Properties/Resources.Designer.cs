@@ -103,6 +103,16 @@ namespace MilkTeaShop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_administrator_100 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-administrator-100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_bubble_tea_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8-bubble-tea-32", resourceCulture);

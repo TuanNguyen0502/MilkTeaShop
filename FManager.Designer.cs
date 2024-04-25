@@ -30,7 +30,6 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnThoat = new Guna.UI.WinForms.GunaButton();
             this.btnCreateAccount = new Guna.UI.WinForms.GunaButton();
             this.txtMaNV = new Guna.UI.WinForms.GunaTextBox();
@@ -39,6 +38,7 @@
             this.lblTaiKhoan = new System.Windows.Forms.Label();
             this.txtMatKhau = new Guna.UI.WinForms.GunaTextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -65,16 +65,6 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::MilkTeaShop.Properties.Resources.user_1144760;
-            this.pictureBox2.Location = new System.Drawing.Point(563, 12);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(159, 138);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 39;
-            this.pictureBox2.TabStop = false;
-            // 
             // btnThoat
             // 
             this.btnThoat.AnimationHoverSpeed = 0.07F;
@@ -87,7 +77,7 @@
             this.btnThoat.ForeColor = System.Drawing.Color.White;
             this.btnThoat.Image = null;
             this.btnThoat.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnThoat.Location = new System.Drawing.Point(678, 428);
+            this.btnThoat.Location = new System.Drawing.Point(670, 421);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btnThoat.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -112,7 +102,7 @@
             this.btnCreateAccount.ForeColor = System.Drawing.Color.White;
             this.btnCreateAccount.Image = null;
             this.btnCreateAccount.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnCreateAccount.Location = new System.Drawing.Point(539, 428);
+            this.btnCreateAccount.Location = new System.Drawing.Point(531, 421);
             this.btnCreateAccount.Name = "btnCreateAccount";
             this.btnCreateAccount.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btnCreateAccount.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -134,7 +124,7 @@
             this.txtMaNV.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.txtMaNV.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtMaNV.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtMaNV.Location = new System.Drawing.Point(538, 368);
+            this.txtMaNV.Location = new System.Drawing.Point(530, 361);
             this.txtMaNV.Name = "txtMaNV";
             this.txtMaNV.PasswordChar = '\0';
             this.txtMaNV.SelectedText = "";
@@ -145,7 +135,7 @@
             // 
             this.lblMaNV.AutoSize = true;
             this.lblMaNV.Font = new System.Drawing.Font("Leelawadee UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaNV.Location = new System.Drawing.Point(538, 339);
+            this.lblMaNV.Location = new System.Drawing.Point(530, 332);
             this.lblMaNV.Name = "lblMaNV";
             this.lblMaNV.Size = new System.Drawing.Size(63, 23);
             this.lblMaNV.TabIndex = 35;
@@ -160,7 +150,7 @@
             this.txtTaiKhoan.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.txtTaiKhoan.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtTaiKhoan.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtTaiKhoan.Location = new System.Drawing.Point(538, 197);
+            this.txtTaiKhoan.Location = new System.Drawing.Point(530, 190);
             this.txtTaiKhoan.Name = "txtTaiKhoan";
             this.txtTaiKhoan.PasswordChar = '\0';
             this.txtTaiKhoan.SelectedText = "";
@@ -171,7 +161,7 @@
             // 
             this.lblTaiKhoan.AutoSize = true;
             this.lblTaiKhoan.Font = new System.Drawing.Font("Leelawadee UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTaiKhoan.Location = new System.Drawing.Point(538, 168);
+            this.lblTaiKhoan.Location = new System.Drawing.Point(530, 161);
             this.lblTaiKhoan.Name = "lblTaiKhoan";
             this.lblTaiKhoan.Size = new System.Drawing.Size(84, 23);
             this.lblTaiKhoan.TabIndex = 33;
@@ -186,7 +176,7 @@
             this.txtMatKhau.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.txtMatKhau.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtMatKhau.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtMatKhau.Location = new System.Drawing.Point(538, 281);
+            this.txtMatKhau.Location = new System.Drawing.Point(530, 274);
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.PasswordChar = '\0';
             this.txtMatKhau.SelectedText = "";
@@ -197,11 +187,21 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Leelawadee UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(538, 252);
+            this.label1.Location = new System.Drawing.Point(530, 245);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 23);
             this.label1.TabIndex = 40;
             this.label1.Text = "Mật khẩu";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::MilkTeaShop.Properties.Resources.icons8_administrator_100;
+            this.pictureBox2.Location = new System.Drawing.Point(563, 12);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(136, 128);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 39;
+            this.pictureBox2.TabStop = false;
             // 
             // FManager
             // 
@@ -219,6 +219,7 @@
             this.Controls.Add(this.lblTaiKhoan);
             this.Controls.Add(this.panel1);
             this.Name = "FManager";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FManager";
             this.Load += new System.EventHandler(this.FManager_Load);
             this.panel1.ResumeLayout(false);

@@ -89,6 +89,11 @@ namespace MilkTeaShop
             OpenChildForm(new FImportIngredients());
         }
 
+        private void button_App_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FSuppliers());
+        }
+
         private void button_xuatNL_Click(object sender, EventArgs e)
         {
             OpenChildForm(new FExport_Ingredients());

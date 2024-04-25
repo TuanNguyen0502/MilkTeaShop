@@ -12,6 +12,7 @@ namespace MilkTeaShop
     public class DBConnection
     {
         SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True;Encrypt=False");
+        readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True;Encrypt=False";
 
         public DataTable LoadData (string query)
         {
@@ -21,8 +22,6 @@ namespace MilkTeaShop
             adapter.Fill(dt);
             return dt;
         }
-        //SqlConnection conn = new SqlConnection(Properties.Settings.Default.connStr);
-        readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True;Encrypt=False";
         public void ThucThi(string thucthi)
         {
             try
@@ -77,14 +76,12 @@ namespace MilkTeaShop
                     SqlCommand cmd = new SqlCommand(sqlQuery, conn);
                     cmd.Parameters.AddRange(lstParams);
 
-                    // Sử dụng SqlDataAdapter để điền dữ liệu từ hàm vào DataTable
                     DataTable resultTable = new DataTable();
                     using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                     {
                         adapter.Fill(resultTable);
                     }
 
-                    // Duyệt qua từng dòng dữ liệu trong DataTable và thêm chúng vào danh sách kết quả
                     foreach (DataRow row in resultTable.Rows)
                     {
                         Dictionary<string, object> rowData = new Dictionary<string, object>();

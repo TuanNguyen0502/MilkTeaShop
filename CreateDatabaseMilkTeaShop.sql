@@ -462,7 +462,6 @@ CREATE VIEW v_DoanhThuTaiQuayTrongNgay AS
 	JOIN SanPham AS sp ON cthd.MaSP = sp.MaSP 
 	WHERE CONVERT(DATE, hd.ThoiGianDat) = CONVERT(DATE, GETDATE())
 	GROUP BY sp.MaSP,sp.TenSP, cthd.SoLuong
-
 GO
 
 -- Xem thông tin nhà cung cấp
@@ -677,7 +676,7 @@ END;
 
 GO
 -- thủ tục khôi phục
-CREATE PROCEDURE proc_CreateBill_Test
+CREATE PROCEDURE proc_CreateBill
 @SDT varchar(12), 
 @MaNV varchar(10), 
 @ThoiGianDat datetime, 
@@ -691,15 +690,14 @@ BEGIN
         DECLARE @OutOfStock INT;
         SET @OutOfStock = (
             SELECT COUNT(*)
-            FROM ChiTietHoaDon c
-            JOIN SanPham s ON c.MaSP = s.MaSP
-            WHERE s.SoLuong < c.SoLuong
+            FROM SanPham s 
+            WHERE s.SoLuong < 3 AND s.MaSP IN ('SP15', 'SP16', 'SP17', 'SP18', 'SP19', 'SP20','SP21')
         );
 
         IF @OutOfStock > 0
         BEGIN
             -- Nếu có sản phẩm hết hàng, hủy bỏ transaction và không thêm hóa đơn
-            RAISERROR ('Some products are out of stock. Please check your order.', 16, 1);
+            RAISERROR ('Sản phẩm đã chọn hết hàng. Thông báo khách hàng chọn món khác, và thông báo đến nhập nguyên liệu.', 16, 1);
             ROLLBACK TRANSACTION;
             RETURN;
         END
@@ -719,17 +717,6 @@ BEGIN
 END;
 GO
 -- Procedure tạo hóa đơn
-CREATE PROCEDURE proc_CreateBill
-@SDT varchar(12), @MaNV varchar(10), @ThoiGianDat datetime, @TriGiaHoaDon NUMERIC(18,0)
-AS
-BEGIN
-	INSERT INTO HoaDon(SDT, MaNV, ThoiGianDat, TriGiaHoaDon)
-	VALUES(@SDT, @MaNV, @ThoiGianDat, @TriGiaHoaDon);
-END;
-
-SELECT * FROM NguyenLieu
-SELECT * FROM SanPham
-SELECT * FROM CheBien
 
 --CREATE PROCEDURE proc_ChuyenNLSangSP
 SELECT * 
@@ -1183,10 +1170,12 @@ CREATE PROCEDURE proc_LayCongThucCheBien
 (@MaSP varchar(10))
 AS
 BEGIN
+	BEGIN TRANSACTION Tran_LayCongThucCheBien
     BEGIN TRY
         IF @MaSP IN ('SP15', 'SP16', 'SP17', 'SP18', 'SP19', 'SP20', 'SP21')
         BEGIN
-            RETURN
+            PRINT ('Sản phẩm '+@MaSP+' không được chế biến theo công thức')
+			ROLLBACK TRANSACTION Tran_LayCongThucCheBien
         END;
 
         ELSE
@@ -1196,11 +1185,15 @@ BEGIN
             JOIN NguyenLieu nl ON cb.MaNL = nl.MaNL
             WHERE MaSP = @MaSP
         END;
+		COMMIT TRANSACTION
     END TRY
     BEGIN CATCH
-        RAISERROR ('Sản phẩm không được chế biến theo công thức', 16, 1)
+        RAISERROR ('Lấy công thức chế biến thất bại', 16, 1)
     END CATCH;
 END;
+SELECT * FROM CheBien
+exec proc_LayCongThucCheBien 'SP15'
+DROP PROCEDURE proc_LayCongThucCheBien
 GO
 -- Procedure lấy sản phẩm theo loại
 CREATE PROCEDURE proc_GetProductByCategory
@@ -1211,3 +1204,11 @@ BEGIN
 	FROM SanPham sp 
 	WHERE sp.MaLoaiSP = @MaLoaiSP
 END;
+GO
+CREATE PROCEDURE GetProductLastest
+AS
+BEGIN
+	SELECT TOP 1 MaHD
+    FROM HoaDon
+    ORDER BY MaHD Desc
+END

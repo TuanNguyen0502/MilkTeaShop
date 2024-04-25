@@ -263,6 +263,7 @@
             this.button_App.TabIndex = 10;
             this.button_App.Text = "Đối tác";
             this.button_App.UseVisualStyleBackColor = false;
+            this.button_App.Click += new System.EventHandler(this.button_App_Click);
             // 
             // button_Logout
             // 

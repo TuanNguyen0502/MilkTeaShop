@@ -94,6 +94,12 @@
     <Compile Include="FReport.Designer.cs">
       <DependentUpon>FReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="FSalesAtTheCounter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FSalesAtTheCounter.Designer.cs">
+      <DependentUpon>FSalesAtTheCounter.cs</DependentUpon>
+    </Compile>
     <Compile Include="FSuppliers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,12 @@
     </Compile>
     <Compile Include="UCDNNL.Designer.cs">
       <DependentUpon>UCDNNL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_AtCounter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_AtCounter.Designer.cs">
+      <DependentUpon>UC_AtCounter.cs</DependentUpon>
     </Compile>
     <Compile Include="UC_BillDetails.cs">
       <SubType>UserControl</SubType>
@@ -257,11 +269,17 @@
     <EmbeddedResource Include="FReport.resx">
       <DependentUpon>FReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FSalesAtTheCounter.resx">
+      <DependentUpon>FSalesAtTheCounter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FSuppliers.resx">
       <DependentUpon>FSuppliers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCDNNL.resx">
       <DependentUpon>UCDNNL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_AtCounter.resx">
+      <DependentUpon>UC_AtCounter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_BillDetails.resx">
       <DependentUpon>UC_BillDetails.cs</DependentUpon>

@@ -82,6 +82,12 @@
     <Compile Include="FImportProduct.Designer.cs">
       <DependentUpon>FImportProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="FManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FManager.Designer.cs">
+      <DependentUpon>FManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="FProcessing.cs">
       <SubType>Form</SubType>
     </Compile>

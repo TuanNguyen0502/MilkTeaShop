@@ -47,7 +47,7 @@
             this.txt_KeyWord = new Guna.UI2.WinForms.Guna2TextBox();
             this.btn_FindProduct = new Guna.UI.WinForms.GunaButton();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.gunaGradient2Panel3 = new Guna.UI.WinForms.GunaGradient2Panel();
+            this.pnl_EmpDetails = new Guna.UI.WinForms.GunaGradient2Panel();
             this.lbl_CurrentStaff = new Guna.UI.WinForms.GunaLabel();
             this.gunaCirclePictureBox1 = new Guna.UI.WinForms.GunaCirclePictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -76,7 +76,7 @@
             this.gunaGradient2Panel1.SuspendLayout();
             this.gunaShadowPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.gunaGradient2Panel3.SuspendLayout();
+            this.pnl_EmpDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gunaGradient2Panel2.SuspendLayout();
@@ -380,7 +380,7 @@
             this.gunaShadowPanel1.Controls.Add(this.txt_KeyWord);
             this.gunaShadowPanel1.Controls.Add(this.btn_FindProduct);
             this.gunaShadowPanel1.Controls.Add(this.pictureBox3);
-            this.gunaShadowPanel1.Controls.Add(this.gunaGradient2Panel3);
+            this.gunaShadowPanel1.Controls.Add(this.pnl_EmpDetails);
             this.gunaShadowPanel1.Controls.Add(this.pictureBox1);
             this.gunaShadowPanel1.Controls.Add(this.gunaLabel2);
             this.gunaShadowPanel1.Controls.Add(this.gunaLabel1);
@@ -444,18 +444,19 @@
             this.pictureBox3.TabIndex = 9;
             this.pictureBox3.TabStop = false;
             // 
-            // gunaGradient2Panel3
+            // pnl_EmpDetails
             // 
-            this.gunaGradient2Panel3.BackColor = System.Drawing.Color.Transparent;
-            this.gunaGradient2Panel3.Controls.Add(this.lbl_CurrentStaff);
-            this.gunaGradient2Panel3.Controls.Add(this.gunaCirclePictureBox1);
-            this.gunaGradient2Panel3.GradientColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(130)))), ((int)(((byte)(68)))));
-            this.gunaGradient2Panel3.GradientColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(72)))), ((int)(((byte)(115)))));
-            this.gunaGradient2Panel3.Location = new System.Drawing.Point(1057, 23);
-            this.gunaGradient2Panel3.Name = "gunaGradient2Panel3";
-            this.gunaGradient2Panel3.Radius = 6;
-            this.gunaGradient2Panel3.Size = new System.Drawing.Size(142, 57);
-            this.gunaGradient2Panel3.TabIndex = 8;
+            this.pnl_EmpDetails.BackColor = System.Drawing.Color.Transparent;
+            this.pnl_EmpDetails.Controls.Add(this.lbl_CurrentStaff);
+            this.pnl_EmpDetails.Controls.Add(this.gunaCirclePictureBox1);
+            this.pnl_EmpDetails.GradientColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(130)))), ((int)(((byte)(68)))));
+            this.pnl_EmpDetails.GradientColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(72)))), ((int)(((byte)(115)))));
+            this.pnl_EmpDetails.Location = new System.Drawing.Point(1057, 23);
+            this.pnl_EmpDetails.Name = "pnl_EmpDetails";
+            this.pnl_EmpDetails.Radius = 6;
+            this.pnl_EmpDetails.Size = new System.Drawing.Size(142, 57);
+            this.pnl_EmpDetails.TabIndex = 8;
+            this.pnl_EmpDetails.Click += new System.EventHandler(this.pnl_EmpDetails_Click);
             // 
             // lbl_CurrentStaff
             // 
@@ -809,8 +810,8 @@
             this.gunaShadowPanel1.ResumeLayout(false);
             this.gunaShadowPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.gunaGradient2Panel3.ResumeLayout(false);
-            this.gunaGradient2Panel3.PerformLayout();
+            this.pnl_EmpDetails.ResumeLayout(false);
+            this.pnl_EmpDetails.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.gunaGradient2Panel2.ResumeLayout(false);
@@ -844,7 +845,7 @@
         private System.Windows.Forms.FlowLayoutPanel flp_ContainsItem;
         private System.Windows.Forms.PictureBox pictureBox2;
         private Guna.UI.WinForms.GunaGradient2Panel gunaGradient2Panel2;
-        private Guna.UI.WinForms.GunaGradient2Panel gunaGradient2Panel3;
+        private Guna.UI.WinForms.GunaGradient2Panel pnl_EmpDetails;
         private Guna.UI.WinForms.GunaGradient2Panel gunaGradient2Panel5;
         private System.Windows.Forms.FlowLayoutPanel flp_ContainsOrder;
         private System.Windows.Forms.Label label1;

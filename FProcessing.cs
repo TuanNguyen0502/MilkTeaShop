@@ -63,7 +63,8 @@ namespace MilkTeaShop
                 }
                 else
                 {
-                    MessageBox.Show($"Không có sản phẩm nào có mã {masp}");
+                    MessageBox.Show($"Sản phẩm {masp} không được chế biến theo công thức");
+                    this.Close();
                 }
             }
         }

@@ -32,13 +32,13 @@
             this.label_Phone = new Guna.UI.WinForms.GunaLabel();
             this.label_Gender = new Guna.UI.WinForms.GunaLabel();
             this.label_DOB = new Guna.UI.WinForms.GunaLabel();
-            this.textBox_Name = new Guna.UI.WinForms.GunaTextBox();
-            this.textBox_Phone = new Guna.UI.WinForms.GunaTextBox();
             this.radioButton_Male = new Guna.UI.WinForms.GunaRadioButton();
             this.radioButton_Female = new Guna.UI.WinForms.GunaRadioButton();
             this.dateTimePicker_DOB = new Guna.UI.WinForms.GunaDateTimePicker();
             this.button_Delete = new Guna.UI.WinForms.GunaAdvenceButton();
             this.button_Save = new Guna.UI.WinForms.GunaAdvenceButton();
+            this.textBox_Name = new Guna.UI2.WinForms.Guna2TextBox();
+            this.textBox_Phone = new Guna.UI2.WinForms.Guna2TextBox();
             this.SuspendLayout();
             // 
             // label_Name
@@ -80,44 +80,6 @@
             this.label_DOB.Size = new System.Drawing.Size(161, 45);
             this.label_DOB.TabIndex = 4;
             this.label_DOB.Text = "Ngày sinh";
-            // 
-            // textBox_Name
-            // 
-            this.textBox_Name.BackColor = System.Drawing.Color.Transparent;
-            this.textBox_Name.BaseColor = System.Drawing.Color.White;
-            this.textBox_Name.BorderColor = System.Drawing.Color.Silver;
-            this.textBox_Name.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBox_Name.FocusedBaseColor = System.Drawing.Color.White;
-            this.textBox_Name.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.textBox_Name.FocusedForeColor = System.Drawing.SystemColors.ControlText;
-            this.textBox_Name.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Name.Location = new System.Drawing.Point(301, 87);
-            this.textBox_Name.Name = "textBox_Name";
-            this.textBox_Name.PasswordChar = '\0';
-            this.textBox_Name.Radius = 10;
-            this.textBox_Name.SelectedText = "";
-            this.textBox_Name.Size = new System.Drawing.Size(476, 53);
-            this.textBox_Name.TabIndex = 6;
-            this.textBox_Name.Text = "Ho va ten";
-            // 
-            // textBox_Phone
-            // 
-            this.textBox_Phone.BackColor = System.Drawing.Color.Transparent;
-            this.textBox_Phone.BaseColor = System.Drawing.Color.White;
-            this.textBox_Phone.BorderColor = System.Drawing.Color.Silver;
-            this.textBox_Phone.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBox_Phone.FocusedBaseColor = System.Drawing.Color.White;
-            this.textBox_Phone.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.textBox_Phone.FocusedForeColor = System.Drawing.SystemColors.ControlText;
-            this.textBox_Phone.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Phone.Location = new System.Drawing.Point(301, 159);
-            this.textBox_Phone.Name = "textBox_Phone";
-            this.textBox_Phone.PasswordChar = '\0';
-            this.textBox_Phone.Radius = 10;
-            this.textBox_Phone.SelectedText = "";
-            this.textBox_Phone.Size = new System.Drawing.Size(476, 53);
-            this.textBox_Phone.TabIndex = 7;
-            this.textBox_Phone.Text = "So dien thoai";
             // 
             // radioButton_Male
             // 
@@ -236,18 +198,65 @@
             this.button_Save.Text = "Save";
             this.button_Save.Click += new System.EventHandler(this.button_Save_Click);
             // 
+            // textBox_Name
+            // 
+            this.textBox_Name.AutoRoundedCorners = true;
+            this.textBox_Name.BorderRadius = 21;
+            this.textBox_Name.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox_Name.DefaultText = "";
+            this.textBox_Name.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.textBox_Name.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.textBox_Name.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.textBox_Name.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.textBox_Name.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.textBox_Name.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_Name.ForeColor = System.Drawing.Color.Black;
+            this.textBox_Name.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.textBox_Name.Location = new System.Drawing.Point(301, 95);
+            this.textBox_Name.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.textBox_Name.Name = "textBox_Name";
+            this.textBox_Name.PasswordChar = '\0';
+            this.textBox_Name.PlaceholderText = "Ho va ten";
+            this.textBox_Name.SelectedText = "";
+            this.textBox_Name.Size = new System.Drawing.Size(476, 45);
+            this.textBox_Name.TabIndex = 12;
+            // 
+            // textBox_Phone
+            // 
+            this.textBox_Phone.AutoRoundedCorners = true;
+            this.textBox_Phone.BorderRadius = 21;
+            this.textBox_Phone.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox_Phone.DefaultText = "";
+            this.textBox_Phone.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.textBox_Phone.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.textBox_Phone.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.textBox_Phone.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.textBox_Phone.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.textBox_Phone.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_Phone.ForeColor = System.Drawing.Color.Black;
+            this.textBox_Phone.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.textBox_Phone.Location = new System.Drawing.Point(301, 167);
+            this.textBox_Phone.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.textBox_Phone.Name = "textBox_Phone";
+            this.textBox_Phone.PasswordChar = '\0';
+            this.textBox_Phone.PlaceholderText = "So dien thoai";
+            this.textBox_Phone.SelectedText = "";
+            this.textBox_Phone.Size = new System.Drawing.Size(476, 45);
+            this.textBox_Phone.TabIndex = 12;
+            // 
             // FCustomer_Detail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 483);
+            this.Controls.Add(this.textBox_Phone);
+            this.Controls.Add(this.textBox_Name);
             this.Controls.Add(this.button_Delete);
             this.Controls.Add(this.button_Save);
             this.Controls.Add(this.dateTimePicker_DOB);
             this.Controls.Add(this.radioButton_Female);
             this.Controls.Add(this.radioButton_Male);
-            this.Controls.Add(this.textBox_Phone);
-            this.Controls.Add(this.textBox_Name);
             this.Controls.Add(this.label_DOB);
             this.Controls.Add(this.label_Gender);
             this.Controls.Add(this.label_Phone);
@@ -268,12 +277,12 @@
         private Guna.UI.WinForms.GunaLabel label_Phone;
         private Guna.UI.WinForms.GunaLabel label_Gender;
         private Guna.UI.WinForms.GunaLabel label_DOB;
-        private Guna.UI.WinForms.GunaTextBox textBox_Name;
-        private Guna.UI.WinForms.GunaTextBox textBox_Phone;
         private Guna.UI.WinForms.GunaRadioButton radioButton_Male;
         private Guna.UI.WinForms.GunaRadioButton radioButton_Female;
         private Guna.UI.WinForms.GunaDateTimePicker dateTimePicker_DOB;
         private Guna.UI.WinForms.GunaAdvenceButton button_Save;
         private Guna.UI.WinForms.GunaAdvenceButton button_Delete;
+        private Guna.UI2.WinForms.Guna2TextBox textBox_Name;
+        private Guna.UI2.WinForms.Guna2TextBox textBox_Phone;
     }
 }

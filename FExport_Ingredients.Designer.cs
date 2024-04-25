@@ -1,6 +1,6 @@
 ﻿namespace MilkTeaShop
 {
-    partial class FImport_Ingredients
+    partial class FExport_Ingredients
     {
         /// <summary>
         /// Required designer variable.

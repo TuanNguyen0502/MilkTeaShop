@@ -87,6 +87,7 @@
             this.button_Detail.Radius = 10;
             this.button_Detail.Size = new System.Drawing.Size(32, 34);
             this.button_Detail.TabIndex = 18;
+            this.button_Detail.Click += new System.EventHandler(this.button_Detail_Click);
             // 
             // lblTenNCC
             // 

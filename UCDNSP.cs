@@ -21,5 +21,10 @@ namespace MilkTeaShop
         public GunaLabel LblImportDate { get => lblNgayNhap; set => lblNgayNhap = value; }
         public GunaLabel LblTriGia { get => lblTongDon; set => lblTongDon = value; }
         public GunaLabel LblTenNCC { get => lblTenNCC; set => lblTenNCC = value; }
+
+        private void button_Detail_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

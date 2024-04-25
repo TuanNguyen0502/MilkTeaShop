@@ -13,6 +13,9 @@ namespace MilkTeaShop
 {
     public partial class UCDNNL : UserControl
     {
+        public delegate void DetailButtonClickedHandler(string orderID);
+        public event DetailButtonClickedHandler OnDetailButtonClicked;
+
         public UCDNNL()
         {
             InitializeComponent();
@@ -22,13 +25,9 @@ namespace MilkTeaShop
         public GunaLabel LblTriGia { get => lblTongDon; set => lblTongDon = value; }
         public GunaLabel LblTenNCC { get => lblTenNCC; set => lblTenNCC = value; }
 
-        private void UCDNNL_Load(object sender, EventArgs e)
+        private void button_Detail_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void lblTenNCC_Click(object sender, EventArgs e)
-        {
+            OnDetailButtonClicked?.Invoke(this.LblMaDNNL.Text);
 
         }
     }

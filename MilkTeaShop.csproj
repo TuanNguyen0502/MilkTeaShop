@@ -114,6 +114,12 @@
     </Compile>
     <Compile Include="Suppliers.cs" />
     <Compile Include="SuppliersDAO.cs" />
+    <Compile Include="UCCTDNNL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCCTDNNL.Designer.cs">
+      <DependentUpon>UCCTDNNL.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCDNNL.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -289,6 +295,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FSuppliers.resx">
       <DependentUpon>FSuppliers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCCTDNNL.resx">
+      <DependentUpon>UCCTDNNL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCDNNL.resx">
       <DependentUpon>UCDNNL.cs</DependentUpon>

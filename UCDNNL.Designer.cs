@@ -83,7 +83,6 @@
             this.lblTenNCC.Size = new System.Drawing.Size(78, 23);
             this.lblTenNCC.TabIndex = 3;
             this.lblTenNCC.Text = "Tên NCC";
-            this.lblTenNCC.Click += new System.EventHandler(this.lblTenNCC_Click);
             // 
             // button_Detail
             // 
@@ -118,6 +117,7 @@
             this.button_Detail.Radius = 10;
             this.button_Detail.Size = new System.Drawing.Size(32, 34);
             this.button_Detail.TabIndex = 13;
+            this.button_Detail.Click += new System.EventHandler(this.button_Detail_Click);
             // 
             // UCDNNL
             // 
@@ -130,7 +130,6 @@
             this.Controls.Add(this.lblMaDNNL);
             this.Name = "UCDNNL";
             this.Size = new System.Drawing.Size(609, 37);
-            this.Load += new System.EventHandler(this.UCDNNL_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

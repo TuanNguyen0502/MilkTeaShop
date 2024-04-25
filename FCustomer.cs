@@ -14,7 +14,7 @@ namespace MilkTeaShop
 {
     public partial class FCustomer : Form
     {
-        DBConnection dbConnection = new DBConnection();
+        readonly string connStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True;Encrypt=False";
 
         public FCustomer()
         {
@@ -35,10 +35,34 @@ namespace MilkTeaShop
         private void LoadInfor()
         {
             string sqlQuery = $"SELECT TenKH, SDT, GioiTinh, NgaySinh FROM v_ThongTinKhachHang";
+            List<Dictionary<string, object>> resultList = new List<Dictionary<string, object>>();
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                try
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlQuery, conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            Dictionary<string, object> rowData = new Dictionary<string, object>();
+                            for (int i = 0; i < reader.FieldCount; i++)
+                            {
+                                rowData.Add(reader.GetName(i), reader.GetValue(i));
+                            }
+                            resultList.Add(rowData);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Read error\n" + ex.Message);
+                }
+            }
 
-            List<Dictionary<string, object>> resultList = dbConnection.ExecuteReaderData(sqlQuery);
             List<UC_Customer> items = new List<UC_Customer>();
-
             foreach (var row in resultList)
             {
                 UC_Customer item = new UC_Customer(row["SDT"].ToString());

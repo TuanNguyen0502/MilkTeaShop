@@ -120,6 +120,12 @@
     <Compile Include="UCDNNL.Designer.cs">
       <DependentUpon>UCDNNL.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCDNSP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCDNSP.Designer.cs">
+      <DependentUpon>UCDNSP.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_AtCounter.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -286,6 +292,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCDNNL.resx">
       <DependentUpon>UCDNNL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCDNSP.resx">
+      <DependentUpon>UCDNSP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_AtCounter.resx">
       <DependentUpon>UC_AtCounter.cs</DependentUpon>

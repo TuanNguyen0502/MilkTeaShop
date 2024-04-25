@@ -34,7 +34,7 @@ namespace MilkTeaShop
 
         private void LoadInfor()
         {
-            string sqlQuery = $"SELECT TenKH, SDT, GioiTinh, NgaySinh FROM KhachHang";
+            string sqlQuery = $"SELECT TenKH, SDT, GioiTinh, NgaySinh FROM v_ThongTinKhachHang";
 
             List<Dictionary<string, object>> resultList = dbConnection.ExecuteReaderData(sqlQuery);
             List<UC_Customer> items = new List<UC_Customer>();

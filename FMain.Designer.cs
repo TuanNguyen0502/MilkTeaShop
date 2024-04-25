@@ -81,7 +81,7 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 10);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(275, 57);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
@@ -260,6 +260,7 @@
             this.button_App.TabIndex = 10;
             this.button_App.Text = "Đối tác";
             this.button_App.UseVisualStyleBackColor = false;
+            this.button_App.Click += new System.EventHandler(this.button_App_Click);
             // 
             // button_Logout
             // 

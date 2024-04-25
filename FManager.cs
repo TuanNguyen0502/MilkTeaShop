@@ -16,5 +16,20 @@ namespace MilkTeaShop
         {
             InitializeComponent();
         }
+
+        private void FManager_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCreateAccount_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

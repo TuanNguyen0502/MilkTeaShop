@@ -284,6 +284,9 @@
     <EmbeddedResource Include="FLogin_User.resx">
       <DependentUpon>FLogin_User.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FManager.resx">
+      <DependentUpon>FManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FProcessing.resx">
       <DependentUpon>FProcessing.cs</DependentUpon>
     </EmbeddedResource>

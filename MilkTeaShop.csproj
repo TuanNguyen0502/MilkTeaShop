@@ -82,6 +82,18 @@
     <Compile Include="FImportProduct.Designer.cs">
       <DependentUpon>FImportProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="FManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FManager.Designer.cs">
+      <DependentUpon>FManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FLogin_User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FLogin_User.Designer.cs">
+      <DependentUpon>FLogin_User.cs</DependentUpon>
+    </Compile>
     <Compile Include="FProcessing.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,13 +118,27 @@
     <Compile Include="FSuppliers.Designer.cs">
       <DependentUpon>FSuppliers.cs</DependentUpon>
     </Compile>
+    <Compile Include="GLOBAL.cs" />
+    <Compile Include="My_DBConnection.cs" />
     <Compile Include="Suppliers.cs" />
     <Compile Include="SuppliersDAO.cs" />
+    <Compile Include="UCCTDNNL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCCTDNNL.Designer.cs">
+      <DependentUpon>UCCTDNNL.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCDNNL.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UCDNNL.Designer.cs">
       <DependentUpon>UCDNNL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCDNSP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCDNSP.Designer.cs">
+      <DependentUpon>UCDNSP.cs</DependentUpon>
     </Compile>
     <Compile Include="UC_AtCounter.cs">
       <SubType>UserControl</SubType>
@@ -263,6 +289,12 @@
     <EmbeddedResource Include="FImportProduct.resx">
       <DependentUpon>FImportProduct.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FLogin_User.resx">
+      <DependentUpon>FLogin_User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FManager.resx">
+      <DependentUpon>FManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FProcessing.resx">
       <DependentUpon>FProcessing.cs</DependentUpon>
     </EmbeddedResource>
@@ -275,8 +307,14 @@
     <EmbeddedResource Include="FSuppliers.resx">
       <DependentUpon>FSuppliers.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCCTDNNL.resx">
+      <DependentUpon>UCCTDNNL.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCDNNL.resx">
       <DependentUpon>UCDNNL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCDNSP.resx">
+      <DependentUpon>UCDNSP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_AtCounter.resx">
       <DependentUpon>UC_AtCounter.cs</DependentUpon>
@@ -455,6 +493,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-company-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LogoMilkTeaShop.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_1144760.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-administrator-100.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

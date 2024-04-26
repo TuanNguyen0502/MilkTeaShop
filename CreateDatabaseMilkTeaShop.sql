@@ -675,6 +675,12 @@ BEGIN
 END;
 
 GO
+CREATE VIEW vie_HDMoiNhat
+AS
+	SELECT TOP 1 *
+	FROM ChiTietHoaDon 
+	ORDER BY MaHD Desc
+GO
 -- thủ tục khôi phục
 CREATE PROCEDURE proc_CreateBill
 @SDT varchar(12), 
@@ -690,8 +696,9 @@ BEGIN
         DECLARE @OutOfStock INT;
         SET @OutOfStock = (
             SELECT COUNT(*)
-            FROM SanPham s 
-            WHERE s.SoLuong < 3 AND s.MaSP IN ('SP15', 'SP16', 'SP17', 'SP18', 'SP19', 'SP20','SP21')
+			FROM vie_HDMoiNhat cthd
+            JOIN SanPham s ON cthd.MaSP = s.MaSP
+            WHERE s.SoLuong < 5 AND s.MaSP IN ('SP15', 'SP16', 'SP17', 'SP18', 'SP19', 'SP20','SP21')
         );
 
         IF @OutOfStock > 0
@@ -1121,44 +1128,7 @@ BEGIN
 	 RETURN @doanhThu;
 END;
 GO
--- Tạo phân quyền user
--- Ứng dụng gồm 2 đối tượng (Nhân viên và người quản lý)
--- Gán các quyền chỉ định cho nhân viên
--- Gán quyền xem và tham chiếu đến các bảng khác cho nhân viên
-CREATE ROLE Staff
---Gán các quyền trên table cho role Staff
-GRANT SELECT, REFERENCES ON BangPhanCa TO Staff
-GRANT SELECT, REFERENCES ON CaLamViec TO Staff
-GRANT SELECT, REFERENCES ON CheBien TO Staff
-GRANT SELECT, REFERENCES ON ChiTietHoaDon TO Staff
-GRANT SELECT, REFERENCES ON ChiTietHoaDonUngDung TO Staff
-GRANT SELECT, REFERENCES ON ChiTietNhapHang TO Staff
-GRANT SELECT, REFERENCES ON CongViec TO Staff
-GRANT SELECT, INSERT, REFERENCES ON DonNhapHang TO Staff
-GRANT SELECT, INSERT, REFERENCES ON HoaDon TO Staff
-GRANT SELECT, INSERT, REFERENCES ON HoaDonUngDung TO Staff
-GRANT SELECT, INSERT, REFERENCES ON KhachHang TO Staff
-GRANT SELECT, REFERENCES ON LoaiSanPham TO Staff
-GRANT SELECT, REFERENCES ON NguyenLieu TO Staff
-GRANT SELECT, REFERENCES ON NhaCungCap TO Staff
-GRANT SELECT, REFERENCES ON NhanVien TO Staff
-GRANT SELECT, INSERT, REFERENCES ON PhieuChi TO Staff
-GRANT SELECT, REFERENCES ON SanPham TO Staff
-GRANT SELECT, REFERENCES ON UngDung TO Staff
-GRANT EXECUTE TO Staff
-GRANT SELECT TO Staff
-DENY EXECUTE ON proc_AddEmployee to Staff;
-DENY EXECUTE ON proc_DeleteEmployee to Staff;
-DENY EXECUTE ON proc_EditEmployee to Staff;
-DENY EXECUTE ON proc_suaCheBien to Staff;
-DENY EXECUTE ON proc_suaNguyenLieu to Staff;
-DENY EXECUTE ON proc_suaSanPham to Staff;
-DENY EXECUTE ON proc_xoaSanPham to Staff;
-DENY EXECUTE ON proc_xoaPhanCa to Staff;
 
-CREATE ROLE Manager
--- Cấp fixed server role
-exec sp_addsrvrolemember Manager, 'sysadmin'
 
 SELECT nl.TenNL, cb.LieuLuong, cb.DonVi as 'Don vi che bien', nl.SoLuong, nl.DonVi as 'Don vi nguyen lieu'
 FROM CheBien cb
@@ -1212,3 +1182,343 @@ BEGIN
     FROM HoaDon
     ORDER BY MaHD Desc
 END
+GO
+-- Tạo bảng UserAccount
+CREATE TABLE UserAccount(
+	Username varchar(50),
+	UserPassword varchar(100),
+	MaNV varchar(10)
+)
+GO
+
+-- Tạo phân quyền user
+-- Ứng dụng gồm 2 đối tượng (Nhân viên (Nhân viên gồm: nhân viên bán hàng và nhân viên thông thường) và người quản lý)
+-- Gán các quyền chỉ định cho nhân viên bán hàng và nhân viên thông thường
+-- Role Staff_Sell cho các nhân viên làm công việc có mã CV003
+CREATE ROLE Staff_Sell
+CREATE ROLE Staff_Regular
+-- Cho phép nhân viên bán hàng xem và tham chiếu trên mọi bảng
+GRANT SELECT, REFERENCES TO Staff_Sell
+-- Cho phép nhân viên bán hàng có quyền thực thi mọi procedure và function, trigger
+GRANT EXECUTE TO Staff_Sell
+-- Hạn chế một số quyền quản trị khỏi nhân viên bán hàng
+DENY EXECUTE ON proc_AddStaff TO Staff_Sell
+DENY EXECUTE ON proc_EditStaff TO Staff_Sell
+DENY EXECUTE ON proc_themNguyenLieu TO Staff_Sell
+DENY EXECUTE ON func_tinhDoanhThuTheoNgay TO Staff_Sell
+DENY EXECUTE ON func_tinhDoanhThuTheoThang TO Staff_Sell
+DENY EXECUTE ON func_tinhDoanhThuTheoNam TO Staff_Sell
+DENY EXECUTE ON func_ChiPhiTheoThang TO Staff_Sell
+DENY EXECUTE ON func_ChiPhiTheoNam TO Staff_Sell
+DENY EXECUTE ON func_ChiPhiTheoGiaiDoan TO Staff_Sell
+DENY EXECUTE ON func_DoanhThuTheoGiaiDoan TO Staff_Sell
+DENY EXECUTE ON proc_CreateDonNhapSP TO Staff_Sell
+DENY EXECUTE ON proc_CreateDonNhapNL TO Staff_Sell
+DENY EXECUTE ON proc_CreateDonXuatNguyenLieu TO Staff_Sell
+DENY EXECUTE ON proc_CreateDonNhapNL TO Staff_Sell
+DENY EXECUTE ON proc_DeleteStaff TO Staff_Sell
+DENY EXECUTE ON proc_themNhaCungCap TO Staff_Sell
+DENY EXECUTE ON proc_UpdateCustomer TO Staff_Sell
+DENY EXECUTE ON proc_DeleteCustomer TO Staff_Sell
+
+-- Cho phép nhân viên thông thường có quyền xem trên mọi bảng
+GRANT SELECT TO Staff_Regular
+
+-- Với administrator cấp quyền sysadmin với nhân viên làm công việc có mã CV006
+GO
+
+-- Tạo trigger tạo login và user cho nhân viên tương ứng khi được đăng ký tài khoản
+GO
+CREATE PROCEDURE proc_CreateDonNhapSP
+    @NgayNhap DATE,
+    @MaNCC VARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRANSACTION
+        BEGIN TRY
+            INSERT INTO DonNhapSanPham(NgayNhap, TriGiaDonNhap, MaNCC)
+            VALUES (@NgayNhap, 0, @MaNCC)
+
+            -- Lấy ID mới được tạo ra từ bản ghi vừa chèn vào
+            DECLARE @NewMaDNSP INT = SCOPE_IDENTITY();
+
+            COMMIT TRANSACTION
+
+            SELECT @NewMaDNSP AS NewMaDNSP
+        END TRY
+        BEGIN CATCH
+            ROLLBACK TRANSACTION
+            SELECT ERROR_MESSAGE() AS ErrorMessage
+        END CATCH
+END
+GO
+CREATE PROCEDURE proc_CreateDonNhapNL
+    @NgayNhap DATE,
+    @MaNCC VARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRANSACTION
+        BEGIN TRY
+            INSERT INTO DonNhapNguyenLieu (NgayNhap, TriGiaDonNhap, MaNCC)
+            VALUES (@NgayNhap, 0, @MaNCC) 
+
+            -- Lấy ID mới được tạo ra từ bản ghi vừa chèn vào
+            DECLARE @NewMaDNNL INT = SCOPE_IDENTITY();
+
+            COMMIT TRANSACTION
+
+            SELECT @NewMaDNNL AS NewMaDNNL
+        END TRY
+        BEGIN CATCH
+            ROLLBACK TRANSACTION
+            SELECT ERROR_MESSAGE() AS ErrorMessage
+        END CATCH
+END
+GO
+-- Procedure tạo đơn xuất nguyên liệu
+CREATE PROCEDURE proc_CreateDonXuatNguyenLieu
+    @NgayXuat DATE,
+    @MaNhanVien VARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRANSACTION
+        BEGIN TRY
+            INSERT INTO DonXuatNguyenLieu (NgayXuat, MaNV)
+            VALUES (@NgayXuat, @MaNhanVien) 
+
+            -- Lấy ID mới được tạo ra từ bản ghi vừa chèn vào
+            DECLARE @NewMaDXNL INT = SCOPE_IDENTITY();
+
+            COMMIT TRANSACTION
+
+            SELECT @NewMaDXNL AS NewMaDXNL
+        END TRY
+        BEGIN CATCH
+            ROLLBACK TRANSACTION
+            SELECT ERROR_MESSAGE() AS ErrorMessage
+        END CATCH
+END
+GO
+CREATE PROCEDURE proc_CreateDonNhapNL
+    @NgayNhap DATE,
+    @MaNCC VARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRANSACTION
+        BEGIN TRY
+            INSERT INTO DonNhapNguyenLieu (NgayNhap, TriGiaDonNhap, MaNCC)
+            VALUES (@NgayNhap, 0, @MaNCC) 
+
+            -- Lấy ID mới được tạo ra từ bản ghi vừa chèn vào
+            DECLARE @NewMaDNNL INT = SCOPE_IDENTITY();
+
+            COMMIT TRANSACTION
+
+            SELECT @NewMaDNNL AS NewMaDNNL
+        END TRY
+        BEGIN CATCH
+            ROLLBACK TRANSACTION
+            SELECT ERROR_MESSAGE() AS ErrorMessage
+        END CATCH
+END
+GO
+CREATE PROCEDURE proc_CreateDonNhapSP
+    @NgayNhap DATE,
+    @MaNCC VARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRANSACTION
+        BEGIN TRY
+            INSERT INTO DonNhapSanPham(NgayNhap, TriGiaDonNhap, MaNCC)
+            VALUES (@NgayNhap, 0, @MaNCC)
+
+            -- Lấy ID mới được tạo ra từ bản ghi vừa chèn vào
+            DECLARE @NewMaDNSP INT = SCOPE_IDENTITY();
+
+            COMMIT TRANSACTION
+
+            SELECT @NewMaDNSP AS NewMaDNSP
+        END TRY
+        BEGIN CATCH
+            ROLLBACK TRANSACTION
+            SELECT ERROR_MESSAGE() AS ErrorMessage
+        END CATCH
+END
+GO
+CREATE PROCEDURE proc_DeleteStaff
+    @MaNV VARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRANSACTION;
+    BEGIN TRY
+        DECLARE @MaDonXuat TABLE (MaDXNL INT);
+        INSERT INTO @MaDonXuat
+        SELECT MaDXNL FROM DonXuatNguyenLieu WHERE MaNV = @MaNV;
+
+        DELETE FROM ChiTiet_DonXuatNguyenLieu
+        WHERE MaDXNL IN (SELECT MaDXNL FROM @MaDonXuat);
+
+        DELETE FROM DonXuatNguyenLieu WHERE MaNV = @MaNV;
+
+        DECLARE @MaHoaDon TABLE (MaHD INT);
+        INSERT INTO @MaHoaDon
+        SELECT MaHD FROM HoaDon WHERE MaNV = @MaNV;
+
+        DELETE FROM ChiTietHoaDon
+        WHERE MaHD IN (SELECT MaHD FROM @MaHoaDon);
+
+        DELETE FROM HoaDon WHERE MaNV = @MaNV;
+
+        DELETE FROM NhanVien WHERE MaNV = @MaNV;
+
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        DECLARE @err NVARCHAR(MAX);
+        SELECT @err = ERROR_MESSAGE();
+        RAISERROR(@err, 16, 1);
+        ROLLBACK TRANSACTION;
+        THROW;
+    END CATCH
+END
+GO
+-- PROCEDURE thêm nhà cung cấp
+CREATE PROCEDURE proc_themNhaCungCap
+@MaNCC varchar(10),
+@TenNCC nvarchar(255),
+@DiaChi nvarchar(255),
+@SDT varchar(11)
+AS
+BEGIN
+	BEGIN TRY
+		--Thêm mới nhà cung cấp
+		INSERT INTO dbo.NhaCungCap(MaNCC, TenNCC, DiaChi, SDT)
+		VALUES (@MaNCC, @TenNCC, @DiaChi, @SDT)
+	END TRY
+	BEGIN CATCH
+		DECLARE @err NVARCHAR(MAX)
+		SELECT @err = N'Lỗi ' + ERROR_MESSAGE()
+		RAISERROR(@err, 16, 1)
+	END CATCH
+END
+GO
+CREATE PROCEDURE proc_UpdateCustomer
+@TenKhachHang nvarchar(255), @SDT nchar(11), @GioiTinh nvarchar(3), @NgaySinh date
+AS
+BEGIN
+	BEGIN TRY
+		UPDATE KhachHang SET TenKH = @TenKhachHang, GioiTinh = @GioiTinh, NgaySinh = @NgaySinh
+		WHERE SDT = @SDT;
+	END TRY
+	BEGIN CATCH
+		DECLARE @error NVARCHAR(MAX)
+		SELECT @error = N'Error: ' + ERROR_MESSAGE()
+		RAISERROR(@error, 16, 1)
+	END CATCH
+END;
+go
+CREATE PROCEDURE proc_DeleteCustomer
+@SDT NCHAR(11)
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+    BEGIN TRANSACTION;
+    BEGIN TRY
+		DECLARE @MaHoaDon int
+		SELECT @MaHoaDon = MaHD FROM HoaDon WHERE SDT = @SDT
+		DELETE FROM ChiTietHoaDon WHERE MaHD = @MaHoaDon;
+        DELETE FROM HoaDon WHERE SDT = @SDT;
+        DELETE FROM KhachHang WHERE SDT = @SDT;
+
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        DECLARE @err NVARCHAR(MAX);
+        SELECT @err = N'Lỗi: ' + ERROR_MESSAGE();
+        RAISERROR(@err, 16, 1);
+        ROLLBACK TRANSACTION;
+        THROW;
+    END CATCH
+END;
+GO
+CREATE FUNCTION [dbo].[checkLogin] (@username NVARCHAR(MAX), @password NVARCHAR(MAX))
+RETURNS BIT
+AS
+BEGIN
+ DECLARE @result BIT;
+ SELECT @result = CAST(COUNT(*) AS BIT)
+ FROM UserAccount
+ WHERE Username = @username AND UserPassword = @password;
+ RETURN @result;
+END;
+SELECT * FROM UserAccount
+DECLARE @loginResult BIT;
+SELECT @loginResult = dbo.checkLogin('admin1', 'admin123');
+PRINT @loginResult;
+
+SELECT dbo.checkLogin('admin1', 'admin123');
+go
+-- Tạo trigger tạo login và user cho nhân viên tương ứng khi được đăng ký tài khoản
+CREATE TRIGGER trg_CreateSQLServerAccount
+ON UserAccount
+AFTER INSERT
+AS
+	DECLARE @Username varchar(50), @UserPassword varchar(100), @MaNV varchar(10)
+	SELECT @Username = i.Username, @UserPassword = i.UserPassword, @MaNV = i.MaNV 
+	FROM inserted i
+BEGIN
+	DECLARE @sqlString nvarchar(MAX), @mavc varchar(10)
+	-- Tạo định danh cấp server - login
+	-- Khai báo một chuỗi tạo login lưu vào biến sqlString
+
+	SET @sqlString = 'CREATE LOGIN [' + @Username + '] WITH PASSWORD='''+ @UserPassword +''',
+	 DEFAULT_DATABASE=[MilkTeaShop], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF'
+	-- Thực thi tạo ra login
+	exec(@sqlString)
+	-- Khai báo một chuỗi tạo user lưu vào biến sqlString
+	SET @sqlString = 'CREATE USER ' + @Username + ' FOR LOGIN ' + @Username 
+	exec(@sqlString)
+
+	DECLARE @MaCV varchar(10)
+	SELECT @MaCV = MaCV
+	FROM NhanVien
+	WHERE MaNV = @MaNV
+
+	IF (@MaCV = 'CV006')
+		SET @sqlString = 'ALTER SERVER ROLE sysadmin' + ' ADD MEMBER ' + @Username;
+	ELSE IF (@MaCV = 'CV003')
+		SET @sqlString = 'ALTER ROLE Staff_Sell ADD MEMBER ' + @Username;
+	ELSE 
+		SET @sqlString = 'ALTER ROLE Staff_Regular ADD MEMBER ' + @Username;
+		
+	exec(@sqlString)
+END;
+GO
+CREATE PROCEDURE proc_CreateAccount(
+	@Username varchar(50),
+	@UserPassword varchar(100),
+	@MaNV varchar(10)
+)
+AS
+BEGIN
+	INSERT INTO UserAccount(Username, UserPassword, MaNV)
+	VALUES (@Username, @UserPassword, @MaNV)
+END;
+exec sp_helplogins
+
+exec proc_CreateAccount 'sales01', 'password123', 'NV003'
+exec proc_CreateAccount 'admin2', 'password123', 'NV006'
+exec proc_CreateAccount 'regular1', 'password123', 'NV002'

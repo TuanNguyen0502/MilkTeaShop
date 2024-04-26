@@ -81,8 +81,8 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(13, 12);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(11, 12, 11, 12);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(309, 71);
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(275, 57);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // label1

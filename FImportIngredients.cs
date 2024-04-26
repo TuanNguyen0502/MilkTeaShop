@@ -39,6 +39,7 @@ namespace MilkTeaShop
                             while (dataReader.Read())
                             {
                                 UCDNNL uCDNNL = new UCDNNL();
+                                uCDNNL.OnDetailButtonClicked += UCDNNL_OnDetailButtonClicked;
                                 uCDNNL.LblMaDNNL.Text = dataReader["MaDNNL"].ToString();
                                 uCDNNL.LblImportDate.Text = ((DateTime)dataReader["NgayNhap"]).ToString("d/M/yyyy");
                                 uCDNNL.LblTriGia.Text = dataReader["TriGiaDonNhap"].ToString();
@@ -65,7 +66,38 @@ namespace MilkTeaShop
             dgvMaterials.Columns.Add("donViColumn", "Đơn Vị");
             dgvMaterials.Columns.Add("donGiaColumn", "Đơn Giá");
         }
+        private void UCDNNL_OnDetailButtonClicked(string orderID)
+        {
+            LoadCTDNNL(orderID);
+        }
 
+        public void LoadCTDNNL(string MaDNNL)
+        {
+            flpCTDNNL.Controls.Clear();
+            string sqlQuery = "SELECT * FROM func_DSCTDNNL(@MaDNNL)";
+
+            using (SqlConnection conn = new SqlConnection(conStr))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(sqlQuery, conn))
+                {
+                    cmd.Parameters.AddWithValue("@MaDNNL", MaDNNL);
+
+                    using (SqlDataReader dataReader = cmd.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            UCCTDNNL uCCTDNNL = new UCCTDNNL();
+                            uCCTDNNL.LblTenNL.Text = dataReader["TenNL"].ToString();
+                            uCCTDNNL.LblDonVi.Text = dataReader["DonVi"].ToString();
+                            uCCTDNNL.LblSoLuong.Text = dataReader["SoLuong"].ToString();
+                            uCCTDNNL.LblDonGia.Text = dataReader["DonGia"].ToString();
+                            flpCTDNNL.Controls.Add(uCCTDNNL);
+                        }
+                    }
+                }
+            }
+        }
         private void btnTaoDon_Click(object sender, EventArgs e)
         {
             DateTime ngayNhap = DateTime.Today;
@@ -104,7 +136,6 @@ namespace MilkTeaShop
                 }
             }
         }
-
         private void btnLuuDon_Click(object sender, EventArgs e)
         {
             LoadListDNNL();
@@ -161,11 +192,6 @@ namespace MilkTeaShop
             txtSoLuong.Text = string.Empty;
             txtDonVi.Text = string.Empty;
             txtDonGia.Text = string.Empty;
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

@@ -19,18 +19,50 @@ namespace MilkTeaShop
         public FExport_Ingredients()
         {
             InitializeComponent();
-            LoadDataGirdViewDonNhapNguyenLieu();
+            LoadDataGirdViewDonXuatNguyenLieu();
+            AddBinding();
         }
 
-        private void LoadDataGirdViewDonNhapNguyenLieu()
+        private void AddBinding()
+        {
+            textBox_MaNhanVien.DataBindings.Add(new Binding("Text", dataGridView_DonXuatNguyenLieu.DataSource, "Mã nhân viên"));
+            textBox_MaDonXuat.DataBindings.Add(new Binding("Text", dataGridView_DonXuatNguyenLieu.DataSource, "Mã đơn"));
+        }
+
+        private void LoadDataGirdViewChiTietDonXuatNguyenLieu()
         {
             using (SqlConnection conn = new SqlConnection(conStr))
             {
                 try
                 {
                     conn.Open();
-                    string sqlStr = string.Format("SELECT * " +
-                        "FROM v_DonXuatNguyenLieu");
+                    string sqlStr = string.Format($"SELECT * FROM func_ChiTietDonXuatNguyenLieu('{textBox_MaDonXuat.Text}')");
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(sqlStr, conn))
+                    {
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        dataGridView_ChiTietDXNL.DataSource = dt;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        private void LoadDataGirdViewDonXuatNguyenLieu()
+        {
+            using (SqlConnection conn = new SqlConnection(conStr))
+            {
+                try
+                {
+                    conn.Open();
+                    string sqlStr = string.Format("SELECT * FROM v_DonXuatNguyenLieu");
                     using (SqlDataAdapter adapter = new SqlDataAdapter(sqlStr, conn))
                     {
                         DataTable dt = new DataTable();
@@ -82,7 +114,7 @@ namespace MilkTeaShop
                     conn.Close();
                 }
             }
-            LoadDataGirdViewDonNhapNguyenLieu();
+            LoadDataGirdViewDonXuatNguyenLieu();
         }
 
 
@@ -102,10 +134,12 @@ namespace MilkTeaShop
                 return;
             }
 
-            int rowIndex = dataGridView_DonXuatNguyenLieu.Rows.Add();
-            dataGridView_DonXuatNguyenLieu.Rows[rowIndex].Cells["maNLColumn"].Value = textBox_MaNguyenLieu.Text.Trim();
-            dataGridView_DonXuatNguyenLieu.Rows[rowIndex].Cells["soLuongColumn"].Value = quantity;
-            dataGridView_DonXuatNguyenLieu.Rows[rowIndex].Cells["donViColumn"].Value = textBox_DonVi.Text.Trim();
+            this.dataGridView_ChiTietDXNL.Rows.Add(textBox_MaNguyenLieu.Text.Trim(), quantity, "NULL", textBox_DonVi.Text.Trim());
+
+            //int rowIndex = dataGridView_ChiTietDXNL.Rows.Add();
+            //dataGridView_ChiTietDXNL.Rows[rowIndex].Cells["Mã nguyên liệu"].Value = textBox_MaNguyenLieu.Text.Trim();
+            //dataGridView_ChiTietDXNL.Rows[rowIndex].Cells["Số lượng"].Value = quantity;
+            //dataGridView_ChiTietDXNL.Rows[rowIndex].Cells["Đơn vị"].Value = textBox_DonVi.Text.Trim();
 
             textBox_MaNguyenLieu.Text = string.Empty;
             textBox_SoLuong.Text = string.Empty;
@@ -128,6 +162,11 @@ namespace MilkTeaShop
             {
                 MessageBox.Show("Please select a row to delete.", "Delete Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void dataGridView_DonXuatNguyenLieu_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            LoadDataGirdViewChiTietDonXuatNguyenLieu();
         }
     }
 }

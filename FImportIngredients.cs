@@ -25,7 +25,7 @@ namespace MilkTeaShop
 
         private void LoadListDNNL()
         {
-            
+             flpDSDNNL.Controls.Clear();
              query = "SELECT * FROM V_DonNhapNguyenLieu";
             using (SqlConnection conn = new SqlConnection(conStr))
             {
@@ -38,9 +38,9 @@ namespace MilkTeaShop
                         {
                             while (dataReader.Read())
                             {
-                                UCDNNL uCDNNL = new UCDNNL();
+                                UC_DonNhap uCDNNL = new UC_DonNhap();
                                 uCDNNL.OnDetailButtonClicked += UCDNNL_OnDetailButtonClicked;
-                                uCDNNL.LblMaDNNL.Text = dataReader["MaDNNL"].ToString();
+                                uCDNNL.LblMaDN.Text = dataReader["MaDNNL"].ToString();
                                 uCDNNL.LblImportDate.Text = ((DateTime)dataReader["NgayNhap"]).ToString("d/M/yyyy");
                                 uCDNNL.LblTriGia.Text = dataReader["TriGiaDonNhap"].ToString();
                                 uCDNNL.LblTenNCC.Text = dataReader["TenNCC"].ToString();
@@ -87,8 +87,8 @@ namespace MilkTeaShop
                     {
                         while (dataReader.Read())
                         {
-                            UCCTDNNL uCCTDNNL = new UCCTDNNL();
-                            uCCTDNNL.LblTenNL.Text = dataReader["TenNL"].ToString();
+                            UC_CTDN uCCTDNNL = new UC_CTDN();
+                            uCCTDNNL.LblTen.Text = dataReader["TenNL"].ToString();
                             uCCTDNNL.LblDonVi.Text = dataReader["DonVi"].ToString();
                             uCCTDNNL.LblSoLuong.Text = dataReader["SoLuong"].ToString();
                             uCCTDNNL.LblDonGia.Text = dataReader["DonGia"].ToString();
@@ -103,6 +103,12 @@ namespace MilkTeaShop
             DateTime ngayNhap = DateTime.Today;
             string maNCC = txtMaNCC.Text.Trim();
 
+            if (string.IsNullOrWhiteSpace(maNCC))
+            {
+                MessageBox.Show("Please enter a valid supplier code (MaNCC).", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             using (SqlConnection conn = new SqlConnection(conStr))
             {
                 try
@@ -115,13 +121,14 @@ namespace MilkTeaShop
                         cmd.Parameters.AddWithValue("@MaNCC", maNCC);
 
                         var result = cmd.ExecuteScalar();
-                        if (int.TryParse(result.ToString(), out currentOrderId))
+                        if (int.TryParse(result.ToString(), out currentOrderId) && currentOrderId > 0)
                         {
                             MessageBox.Show($"Order created successfully with ID: {currentOrderId}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            btnThemNL.Enabled = true;
                         }
                         else
                         {
-                            MessageBox.Show($"An error occurred: {result}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Order could not be created. Please check the supplier code and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -135,10 +142,60 @@ namespace MilkTeaShop
                     LoadListDNNL();
                 }
             }
+
         }
         private void btnLuuDon_Click(object sender, EventArgs e)
         {
-            LoadListDNNL();
+            if (dgvMaterials.Rows.Count == 0 || (dgvMaterials.Rows.Count == 1 && dgvMaterials.Rows[0].IsNewRow))
+            {
+                MessageBox.Show("There are no items to save.", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int savedItemsCount = 0;
+
+            using (SqlConnection conn = new SqlConnection(conStr))
+            {
+                try
+                {
+                    conn.Open();
+                    foreach (DataGridViewRow row in dgvMaterials.Rows)
+                    {
+                        if (!row.IsNewRow)
+                        {
+                            using (SqlCommand cmd = new SqlCommand("InsertChiTietDNNL", conn))
+                            {
+                                cmd.CommandType = CommandType.StoredProcedure;
+                                cmd.Parameters.AddWithValue("@MaDNNL", currentOrderId);
+                                cmd.Parameters.AddWithValue("@MaNL", row.Cells["maNLColumn"].Value);
+                                cmd.Parameters.AddWithValue("@SoLuong", row.Cells["soLuongColumn"].Value);
+                                cmd.Parameters.AddWithValue("@DonVi", row.Cells["donViColumn"].Value);
+                                cmd.Parameters.AddWithValue("@DonGia", row.Cells["donGiaColumn"].Value);
+                                cmd.ExecuteNonQuery();
+                                savedItemsCount++;
+                            }
+                        }
+                    }
+
+                    if (savedItemsCount > 0)
+                    {
+                        MessageBox.Show("All items have been saved successfully.", "Save Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No items were saved to the database.", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    conn.Close();
+                    LoadListDNNL();
+                }
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -161,6 +218,12 @@ namespace MilkTeaShop
 
         private void btnThemNL_Click(object sender, EventArgs e)
         {
+            if (currentOrderId <= 0)
+            {
+                MessageBox.Show("Please create an order before adding items.", "Operation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(txtMaNL.Text) ||
                 string.IsNullOrWhiteSpace(txtSoLuong.Text) ||
                 string.IsNullOrWhiteSpace(txtDonVi.Text) ||

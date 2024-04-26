@@ -181,7 +181,7 @@
             this.btnTaoDon.ForeColor = System.Drawing.Color.White;
             this.btnTaoDon.Image = null;
             this.btnTaoDon.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnTaoDon.Location = new System.Drawing.Point(1412, 58);
+            this.btnTaoDon.Location = new System.Drawing.Point(1412, 66);
             this.btnTaoDon.Name = "btnTaoDon";
             this.btnTaoDon.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btnTaoDon.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -307,7 +307,7 @@
             this.txtMaNCC.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.txtMaNCC.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtMaNCC.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtMaNCC.Location = new System.Drawing.Point(1154, 57);
+            this.txtMaNCC.Location = new System.Drawing.Point(1154, 65);
             this.txtMaNCC.Name = "txtMaNCC";
             this.txtMaNCC.PasswordChar = '\0';
             this.txtMaNCC.SelectedText = "";
@@ -371,7 +371,7 @@
             // 
             this.lblMaNCC.AutoSize = true;
             this.lblMaNCC.Font = new System.Drawing.Font("Leelawadee UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaNCC.Location = new System.Drawing.Point(1065, 68);
+            this.lblMaNCC.Location = new System.Drawing.Point(1065, 76);
             this.lblMaNCC.Name = "lblMaNCC";
             this.lblMaNCC.Size = new System.Drawing.Size(75, 23);
             this.lblMaNCC.TabIndex = 18;

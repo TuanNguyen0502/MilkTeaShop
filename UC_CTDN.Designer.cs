@@ -1,6 +1,6 @@
 ﻿namespace MilkTeaShop
 {
-    partial class UCCTDNNL
+    partial class UC_CTDN
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblTenNL = new Guna.UI.WinForms.GunaLabel();
+            this.lblTen = new Guna.UI.WinForms.GunaLabel();
             this.lblDonVi = new Guna.UI.WinForms.GunaLabel();
             this.lblSoLuong = new Guna.UI.WinForms.GunaLabel();
             this.lblDonGia = new Guna.UI.WinForms.GunaLabel();
             this.SuspendLayout();
             // 
-            // lblTenNL
+            // lblTen
             // 
-            this.lblTenNL.AutoSize = true;
-            this.lblTenNL.Font = new System.Drawing.Font("Leelawadee UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTenNL.Location = new System.Drawing.Point(3, 13);
-            this.lblTenNL.Name = "lblTenNL";
-            this.lblTenNL.Size = new System.Drawing.Size(64, 23);
-            this.lblTenNL.TabIndex = 15;
-            this.lblTenNL.Text = "Tên NL";
+            this.lblTen.AutoSize = true;
+            this.lblTen.Font = new System.Drawing.Font("Leelawadee UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTen.Location = new System.Drawing.Point(3, 13);
+            this.lblTen.Name = "lblTen";
+            this.lblTen.Size = new System.Drawing.Size(64, 23);
+            this.lblTen.TabIndex = 15;
+            this.lblTen.Text = "Tên NL";
             // 
             // lblDonVi
             // 
@@ -53,7 +53,7 @@
             this.lblDonVi.Size = new System.Drawing.Size(59, 23);
             this.lblDonVi.TabIndex = 16;
             this.lblDonVi.Text = "Đơn vị";
-           // 
+            // 
             // lblSoLuong
             // 
             this.lblSoLuong.AutoSize = true;
@@ -81,7 +81,7 @@
             this.Controls.Add(this.lblDonGia);
             this.Controls.Add(this.lblSoLuong);
             this.Controls.Add(this.lblDonVi);
-            this.Controls.Add(this.lblTenNL);
+            this.Controls.Add(this.lblTen);
             this.Name = "UCCTDNNL";
             this.Size = new System.Drawing.Size(382, 45);
             this.ResumeLayout(false);
@@ -91,7 +91,7 @@
 
         #endregion
 
-        private Guna.UI.WinForms.GunaLabel lblTenNL;
+        private Guna.UI.WinForms.GunaLabel lblTen;
         private Guna.UI.WinForms.GunaLabel lblDonVi;
         private Guna.UI.WinForms.GunaLabel lblSoLuong;
         private Guna.UI.WinForms.GunaLabel lblDonGia;

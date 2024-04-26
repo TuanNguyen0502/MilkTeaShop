@@ -19,23 +19,48 @@ namespace MilkTeaShop
         public FExport_Ingredients()
         {
             InitializeComponent();
+            LoadDataGirdViewDonNhapNguyenLieu();
         }
 
-        private void btnTaoDon_Click(object sender, EventArgs e)
+        private void LoadDataGirdViewDonNhapNguyenLieu()
         {
-            DateTime ngayNhap = DateTime.Today;
-            string maNCC = textBox_MaNhanVien.Text.Trim();
-
             using (SqlConnection conn = new SqlConnection(conStr))
             {
                 try
                 {
                     conn.Open();
-                    using (SqlCommand cmd = new SqlCommand("proc_CreateDonNhapNL", conn))
+                    string sqlStr = string.Format("SELECT * " +
+                        "FROM v_DonXuatNguyenLieu");
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(sqlStr, conn))
+                    {
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        dataGridView_DonXuatNguyenLieu.DataSource = dt;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        private void btnTaoDon_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection(conStr))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand("proc_CreateDonXuatNguyenLieu", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@NgayNhap", ngayNhap);
-                        cmd.Parameters.AddWithValue("@MaNCC", maNCC);
+                        cmd.Parameters.AddWithValue("@NgayXuat", DateTime.Now);
+                        cmd.Parameters.AddWithValue("@MaNhanVien", textBox_MaNhanVien.Text);
 
                         var result = cmd.ExecuteScalar();
                         if (int.TryParse(result.ToString(), out currentOrderId))
@@ -57,6 +82,7 @@ namespace MilkTeaShop
                     conn.Close();
                 }
             }
+            LoadDataGirdViewDonNhapNguyenLieu();
         }
 
 
@@ -76,10 +102,10 @@ namespace MilkTeaShop
                 return;
             }
 
-            int rowIndex = dataGridView1.Rows.Add();
-            dataGridView1.Rows[rowIndex].Cells["maNLColumn"].Value = textBox_MaNguyenLieu.Text.Trim();
-            dataGridView1.Rows[rowIndex].Cells["soLuongColumn"].Value = quantity;
-            dataGridView1.Rows[rowIndex].Cells["donViColumn"].Value = textBox_DonVi.Text.Trim();
+            int rowIndex = dataGridView_DonXuatNguyenLieu.Rows.Add();
+            dataGridView_DonXuatNguyenLieu.Rows[rowIndex].Cells["maNLColumn"].Value = textBox_MaNguyenLieu.Text.Trim();
+            dataGridView_DonXuatNguyenLieu.Rows[rowIndex].Cells["soLuongColumn"].Value = quantity;
+            dataGridView_DonXuatNguyenLieu.Rows[rowIndex].Cells["donViColumn"].Value = textBox_DonVi.Text.Trim();
 
             textBox_MaNguyenLieu.Text = string.Empty;
             textBox_SoLuong.Text = string.Empty;
@@ -88,13 +114,13 @@ namespace MilkTeaShop
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
+            if (dataGridView_DonXuatNguyenLieu.SelectedRows.Count > 0)
             {
-                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                foreach (DataGridViewRow row in dataGridView_DonXuatNguyenLieu.SelectedRows)
                 {
                     if (!row.IsNewRow)
                     {
-                        dataGridView1.Rows.Remove(row);
+                        dataGridView_DonXuatNguyenLieu.Rows.Remove(row);
                     }
                 }
             }

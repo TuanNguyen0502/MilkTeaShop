@@ -38,9 +38,9 @@ namespace MilkTeaShop
                         {
                             while (dataReader.Read())
                             {
-                                UCDNNL uCDNNL = new UCDNNL();
+                                UC_DonNhap uCDNNL = new UC_DonNhap();
                                 uCDNNL.OnDetailButtonClicked += UCDNNL_OnDetailButtonClicked;
-                                uCDNNL.LblMaDNNL.Text = dataReader["MaDNNL"].ToString();
+                                uCDNNL.LblMaDN.Text = dataReader["MaDNNL"].ToString();
                                 uCDNNL.LblImportDate.Text = ((DateTime)dataReader["NgayNhap"]).ToString("d/M/yyyy");
                                 uCDNNL.LblTriGia.Text = dataReader["TriGiaDonNhap"].ToString();
                                 uCDNNL.LblTenNCC.Text = dataReader["TenNCC"].ToString();
@@ -87,8 +87,8 @@ namespace MilkTeaShop
                     {
                         while (dataReader.Read())
                         {
-                            UCCTDNNL uCCTDNNL = new UCCTDNNL();
-                            uCCTDNNL.LblTenNL.Text = dataReader["TenNL"].ToString();
+                            UC_CTDN uCCTDNNL = new UC_CTDN();
+                            uCCTDNNL.LblTen.Text = dataReader["TenNL"].ToString();
                             uCCTDNNL.LblDonVi.Text = dataReader["DonVi"].ToString();
                             uCCTDNNL.LblSoLuong.Text = dataReader["SoLuong"].ToString();
                             uCCTDNNL.LblDonGia.Text = dataReader["DonGia"].ToString();

@@ -19,21 +19,12 @@ namespace MilkTeaShop
         public FExport_Ingredients()
         {
             InitializeComponent();
-            InitializeDataGridView();
-        }
-
-        private void InitializeDataGridView()
-        {
-            dgvMaterials.Columns.Add("maNLColumn", "Mã NL");
-            dgvMaterials.Columns.Add("soLuongColumn", "Số Lượng");
-            dgvMaterials.Columns.Add("donViColumn", "Đơn Vị");
-            dgvMaterials.Columns.Add("donGiaColumn", "Đơn Giá");
         }
 
         private void btnTaoDon_Click(object sender, EventArgs e)
         {
             DateTime ngayNhap = DateTime.Today;
-            string maNCC = txtNCC.Text.Trim();
+            string maNCC = textBox_MaNhanVien.Text.Trim();
 
             using (SqlConnection conn = new SqlConnection(conStr))
             {
@@ -71,48 +62,39 @@ namespace MilkTeaShop
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtMaNL.Text) ||
-                string.IsNullOrWhiteSpace(txtSoLuong.Text) ||
-                string.IsNullOrWhiteSpace(txtDonVi.Text) ||
-                string.IsNullOrWhiteSpace(txtDonGia.Text))
+            if (string.IsNullOrWhiteSpace(textBox_MaNguyenLieu.Text) ||
+                string.IsNullOrWhiteSpace(textBox_SoLuong.Text) ||
+                string.IsNullOrWhiteSpace(textBox_DonVi.Text))
             {
                 MessageBox.Show("Please fill in all fields.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (!int.TryParse(txtSoLuong.Text, out int quantity) || quantity <= 0)
+            if (!int.TryParse(textBox_SoLuong.Text, out int quantity) || quantity <= 0)
             {
                 MessageBox.Show("Please enter a valid quantity.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (!decimal.TryParse(txtDonGia.Text, out decimal price) || price <= 0)
-            {
-                MessageBox.Show("Please enter a valid price.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            int rowIndex = dataGridView1.Rows.Add();
+            dataGridView1.Rows[rowIndex].Cells["maNLColumn"].Value = textBox_MaNguyenLieu.Text.Trim();
+            dataGridView1.Rows[rowIndex].Cells["soLuongColumn"].Value = quantity;
+            dataGridView1.Rows[rowIndex].Cells["donViColumn"].Value = textBox_DonVi.Text.Trim();
 
-            int rowIndex = dgvMaterials.Rows.Add();
-            dgvMaterials.Rows[rowIndex].Cells["maNLColumn"].Value = txtMaNL.Text.Trim();
-            dgvMaterials.Rows[rowIndex].Cells["soLuongColumn"].Value = quantity;
-            dgvMaterials.Rows[rowIndex].Cells["donViColumn"].Value = txtDonVi.Text.Trim();
-            dgvMaterials.Rows[rowIndex].Cells["donGiaColumn"].Value = price;
-
-            txtMaNL.Text = string.Empty;
-            txtSoLuong.Text = string.Empty;
-            txtDonVi.Text = string.Empty;
-            txtDonGia.Text = string.Empty;
+            textBox_MaNguyenLieu.Text = string.Empty;
+            textBox_SoLuong.Text = string.Empty;
+            textBox_DonVi.Text = string.Empty;
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (dgvMaterials.SelectedRows.Count > 0)
+            if (dataGridView1.SelectedRows.Count > 0)
             {
-                foreach (DataGridViewRow row in dgvMaterials.SelectedRows)
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                 {
                     if (!row.IsNewRow)
                     {
-                        dgvMaterials.Rows.Remove(row);
+                        dataGridView1.Rows.Remove(row);
                     }
                 }
             }

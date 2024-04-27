@@ -13,7 +13,12 @@ namespace MilkTeaShop
     public partial class FMain : Form
     {
         private Form currentFormChild;
-
+        private string manv;
+        public FMain(string manv)
+        {
+            InitializeComponent();
+            this.manv = manv;
+        }
         public FMain()
         {
             InitializeComponent();
@@ -38,7 +43,7 @@ namespace MilkTeaShop
 
         private void button_Sell_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FSellForm());
+            OpenChildForm(new FSellForm(manv));
         }
 
         private void button_Customer_Click(object sender, EventArgs e)

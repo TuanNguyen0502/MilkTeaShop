@@ -1538,3 +1538,25 @@ EXEC sp_helprolemember 'sysadmin';
 EXEC sp_helpsrvrolemember 'sysadmin';
 
 SELECT * FROM UserAccount
+SELECT MaNV
+FROM UserAccount
+WHERE Username = 'admin2'
+
+GO
+CREATE FUNCTION func_GetMaNVByUsername
+(
+	@Username nvarchar(MAX)
+)
+RETURNS varchar(10)
+AS
+BEGIN
+	Declare @MaNV varchar(10)
+	
+	SELECT @MaNV = MaNV
+	FROM UserAccount
+	WHERE Username = @Username
+
+	RETURN @MaNV
+END;
+
+SELECT dbo.func_GetMaNVByUsername('admin2')

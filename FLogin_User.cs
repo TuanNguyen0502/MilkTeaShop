@@ -24,7 +24,14 @@ namespace MilkTeaShop
         {
             
         }
-
+        public string GetMaNVByAccount(string Username)
+        {
+            string sqlQuery = "SELECT dbo.func_GetMaNVByUsername(@Username)";
+            SqlCommand cmd = new SqlCommand(sqlQuery, db.getConnAdmin);
+            cmd.Parameters.AddWithValue("@Username", Username);
+            string MaNV = (string)cmd.ExecuteScalar();
+            return MaNV;
+        }
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
             GLOBAL.Username = txtTaiKhoan.Text;
@@ -43,7 +50,8 @@ namespace MilkTeaShop
             if (success)
             {
                 MessageBox.Show("Đăng nhập thành công!");
-                Program.MainFormManager.CurrentForm = new FMain();
+                string MaNV = GetMaNVByAccount(txtTaiKhoan.Text);
+                Program.MainFormManager.CurrentForm = new FMain(MaNV);
             }
             else
             {

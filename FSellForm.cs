@@ -18,6 +18,12 @@ namespace MilkTeaShop
         readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True";
         DBConnection dbConn = new DBConnection();
         string sqlQuery;
+        private string manv;
+        public FSellForm(string manv)
+        {
+            InitializeComponent();
+            this.manv = manv;
+        }
         public FSellForm()
         {
             InitializeComponent();
@@ -26,6 +32,7 @@ namespace MilkTeaShop
         private void SellForm_Load(object sender, EventArgs e)
         {
             flp_ContainsItem.Controls.Clear();
+            lbl_CurrentStaff.Text = manv;
             lbl_TotalBill.Text = "0 VNĐ";
             lbl_Pay.Text = "0 VNĐ";
             lbl_SDTKH.Text = "";

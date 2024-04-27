@@ -11,20 +11,22 @@ using System.Windows.Forms;
 
 namespace MilkTeaShop
 {
-    public partial class UCDNSP : UserControl
+    public partial class UCDN_Sub : UserControl
     {
-        public UCDNSP()
+        public delegate void DetailButtonClickedHandler(string orderID);
+        public event DetailButtonClickedHandler OnDetailButtonClicked;
+        public UCDN_Sub()
         {
             InitializeComponent();
         }
-        public GunaLabel LblMaDNSP { get => lblMaDNSP; set => lblMaDNSP = value; }
+        public GunaLabel LblMaDN { get => lblMaDN; set => lblMaDN = value; }
         public GunaLabel LblImportDate { get => lblNgayNhap; set => lblNgayNhap = value; }
         public GunaLabel LblTriGia { get => lblTongDon; set => lblTongDon = value; }
         public GunaLabel LblTenNCC { get => lblTenNCC; set => lblTenNCC = value; }
 
         private void button_Detail_Click(object sender, EventArgs e)
         {
-
+            OnDetailButtonClicked?.Invoke(this.LblMaDN.Text);
         }
     }
 }

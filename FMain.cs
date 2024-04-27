@@ -99,6 +99,11 @@ namespace MilkTeaShop
             OpenChildForm(new FExport_Ingredients());
         }
 
+        private void button_Logout_Click(object sender, EventArgs e)
+        {
+            Program.MainFormManager.CurrentForm = new FLogin_User();
+        }
+
         private void btn_CreateAccount_Click(object sender, EventArgs e)
         {
 

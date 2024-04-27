@@ -23,14 +23,6 @@ namespace MilkTeaShop
             LoadListDNSP();
         }
 
-        private void InitializeDataGridView()
-        {
-            dgvProducts.Columns.Add("maNLColumn", "Mã NL");
-            dgvProducts.Columns.Add("soLuongColumn", "Số Lượng");
-            dgvProducts.Columns.Add("donViColumn", "Đơn Vị");
-            dgvProducts.Columns.Add("donGiaColumn", "Đơn Giá");
-        }
-
         private void LoadListDNSP()
         {
 
@@ -46,8 +38,9 @@ namespace MilkTeaShop
                         {
                             while (dataReader.Read())
                             {
-                                UCDNSP uCDNSP = new UCDNSP();
-                                uCDNSP.LblMaDNSP.Text = dataReader["MaDNSP"].ToString();
+                                UC_DonNhap uCDNSP = new UC_DonNhap();
+                                uCDNSP.OnDetailButtonClicked += UCDNSP_OnDetailButtonClicked;
+                                uCDNSP.LblMaDN.Text = dataReader["MaDNSP"].ToString();
                                 uCDNSP.LblImportDate.Text = ((DateTime)dataReader["NgayNhap"]).ToString("d/M/yyyy");
                                 uCDNSP.LblTriGia.Text = dataReader["TriGiaDonNhap"].ToString();
                                 uCDNSP.LblTenNCC.Text = dataReader["TenNCC"].ToString();
@@ -66,7 +59,44 @@ namespace MilkTeaShop
                 }
             }
         }
+        private void InitializeDataGridView()
+        {
+            dgvProducts.Columns.Add("maNLColumn", "Mã NL");
+            dgvProducts.Columns.Add("soLuongColumn", "Số Lượng");
+            dgvProducts.Columns.Add("donViColumn", "Đơn Vị");
+            dgvProducts.Columns.Add("donGiaColumn", "Đơn Giá");
+        }
+        private void UCDNSP_OnDetailButtonClicked(string orderID)
+        {
+            LoadCTDNSP(orderID);
+        }
+        public void LoadCTDNSP(string MaDNSP)
+        {
+            flpCTDNSP.Controls.Clear();
+            string sqlQuery = "SELECT * FROM func_DSCTDNSP(@MaDNSP)";
 
+            using (SqlConnection conn = new SqlConnection(conStr))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(sqlQuery, conn))
+                {
+                    cmd.Parameters.AddWithValue("@MaDNSP", MaDNSP);
+
+                    using (SqlDataReader dataReader = cmd.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            UC_CTDN uCCTDNNL = new UC_CTDN();
+                            uCCTDNNL.LblTen.Text = dataReader["TenSP"].ToString();
+                            uCCTDNNL.LblDonVi.Text = dataReader["DonVi"].ToString();
+                            uCCTDNNL.LblSoLuong.Text = dataReader["SoLuong"].ToString();
+                            uCCTDNNL.LblDonGia.Text = dataReader["DonGia"].ToString();
+                            flpCTDNSP.Controls.Add(uCCTDNNL);
+                        }
+                    }
+                }
+            }
+        }
         private void btnTaoDon_Click(object sender, EventArgs e)
         {
             DateTime ngayNhap = DateTime.Today;
@@ -101,11 +131,13 @@ namespace MilkTeaShop
                 finally
                 {
                     conn.Close();
-                    //LoadListDNSP();
+                    LoadListDNSP();
                 }
             }
 
         }
+        
+        
 
         private void btnLuuDon_Click(object sender, EventArgs e)
         {

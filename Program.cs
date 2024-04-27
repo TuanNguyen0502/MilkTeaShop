@@ -1,13 +1,22 @@
-﻿using System;
+﻿using Job_Application_Management;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 
 namespace MilkTeaShop
 {
     internal static class Program
     {
+        private static MainFormManager mainFormManager;
+
+        public static MainFormManager MainFormManager
+        {
+            get { return mainFormManager; }
+        }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,7 +25,10 @@ namespace MilkTeaShop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FLogin_User());
+
+            mainFormManager = new MainFormManager();
+            mainFormManager.CurrentForm = new FLogin_User();
+            Application.Run(mainFormManager);
         }
     }
 }

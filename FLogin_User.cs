@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using DocumentFormat.OpenXml.Wordprocessing;
 
 namespace MilkTeaShop
 {
@@ -42,9 +43,7 @@ namespace MilkTeaShop
             if (success)
             {
                 MessageBox.Show("Đăng nhập thành công!");
-                FMain fMain = new FMain();
-                fMain.Show();
-                this.Hide();
+                Program.MainFormManager.CurrentForm = new FMain();
             }
             else
             {

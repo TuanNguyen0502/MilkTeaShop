@@ -122,23 +122,23 @@
     <Compile Include="My_DBConnection.cs" />
     <Compile Include="Suppliers.cs" />
     <Compile Include="SuppliersDAO.cs" />
-    <Compile Include="UCCTDNNL.cs">
+    <Compile Include="UC_CTDN.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UCCTDNNL.Designer.cs">
-      <DependentUpon>UCCTDNNL.cs</DependentUpon>
+    <Compile Include="UC_CTDN.Designer.cs">
+      <DependentUpon>UC_CTDN.cs</DependentUpon>
     </Compile>
-    <Compile Include="UCDNNL.cs">
+    <Compile Include="UC_DonNhap.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UCDNNL.Designer.cs">
-      <DependentUpon>UCDNNL.cs</DependentUpon>
+    <Compile Include="UC_DonNhap.Designer.cs">
+      <DependentUpon>UC_DonNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="UCDNSP.cs">
+    <Compile Include="UCDN_Sub.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UCDNSP.Designer.cs">
-      <DependentUpon>UCDNSP.cs</DependentUpon>
+    <Compile Include="UCDN_Sub.Designer.cs">
+      <DependentUpon>UCDN_Sub.cs</DependentUpon>
     </Compile>
     <Compile Include="UC_AtCounter.cs">
       <SubType>UserControl</SubType>
@@ -307,14 +307,14 @@
     <EmbeddedResource Include="FSuppliers.resx">
       <DependentUpon>FSuppliers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCCTDNNL.resx">
-      <DependentUpon>UCCTDNNL.cs</DependentUpon>
+    <EmbeddedResource Include="UC_CTDN.resx">
+      <DependentUpon>UC_CTDN.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCDNNL.resx">
-      <DependentUpon>UCDNNL.cs</DependentUpon>
+    <EmbeddedResource Include="UC_DonNhap.resx">
+      <DependentUpon>UC_DonNhap.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCDNSP.resx">
-      <DependentUpon>UCDNSP.cs</DependentUpon>
+    <EmbeddedResource Include="UCDN_Sub.resx">
+      <DependentUpon>UCDN_Sub.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_AtCounter.resx">
       <DependentUpon>UC_AtCounter.cs</DependentUpon>

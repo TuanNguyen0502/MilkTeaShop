@@ -98,5 +98,10 @@ namespace MilkTeaShop
         {
             OpenChildForm(new FExport_Ingredients());
         }
+
+        private void btn_CreateAccount_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

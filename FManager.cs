@@ -39,7 +39,10 @@ namespace MilkTeaShop
                 MessageBox.Show($"Tạo tài khoản cho nhân viên {txtMaNV.Text} thành công");
             }
             else
+            {
                 MessageBox.Show("Tạo tài khoản thất bại");
+                db.CloseConnAdmin();
+            }    
         }
 
         private void btnThoat_Click(object sender, EventArgs e)

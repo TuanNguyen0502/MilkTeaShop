@@ -14,6 +14,7 @@ namespace MilkTeaShop
     {
         readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True";
         DBConnection dbConn = new DBConnection();
+        My_DBConnection db = new My_DBConnection();
         string sqlQuery;
         public FBillForm()
         {
@@ -25,24 +26,21 @@ namespace MilkTeaShop
             flp_ContainsBill.Controls.Clear();
             sqlQuery = "SELECT * FROM vie_XemHoaDon";
             List<Dictionary<string, object>> keyValues = dbConn.ExecuteReaderData(sqlQuery);
-            using (SqlConnection conn = new SqlConnection(conStr))
+            SqlCommand cmd = new SqlCommand(sqlQuery, db.getConnRegular);
+            db.OpenConnRegular();
+            using (SqlDataReader reader = cmd.ExecuteReader())
             {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(sqlQuery, conn);
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                while (reader.Read())
                 {
-                    while (reader.Read())
-                    {
-                        UC_BillInfomation hoaDon = new UC_BillInfomation();
-                        hoaDon.MaHD = reader.GetInt32(reader.GetOrdinal("MaHD"));
-                        hoaDon.TenNV = reader.GetString(reader.GetOrdinal("HoTen"));
-                        hoaDon.TenKH = reader.GetString(reader.GetOrdinal("TenKH"));
-                        hoaDon.ThoiGianDat = reader.GetDateTime(reader.GetOrdinal("ThoiGianDat"));
-                        hoaDon.TriGiaDH = reader.GetDecimal(reader.GetOrdinal("TriGiaHoaDon"));
-                        hoaDon.GhiChu = reader.IsDBNull(reader.GetOrdinal("GhiChu")) ? "Không có ghi chú thêm." : reader.GetString(reader.GetOrdinal("GhiChu"));
-                        flp_ContainsBill.Controls.Add(hoaDon);
-                        // Thêm đối tượng hoaDon vào danh sách hoặc làm điều gì đó khác ở đây
-                    }
+                    UC_BillInfomation hoaDon = new UC_BillInfomation();
+                    hoaDon.MaHD = reader.GetInt32(reader.GetOrdinal("MaHD"));
+                    hoaDon.TenNV = reader.GetString(reader.GetOrdinal("HoTen"));
+                    hoaDon.TenKH = reader.GetString(reader.GetOrdinal("TenKH"));
+                    hoaDon.ThoiGianDat = reader.GetDateTime(reader.GetOrdinal("ThoiGianDat"));
+                    hoaDon.TriGiaDH = reader.GetDecimal(reader.GetOrdinal("TriGiaHoaDon"));
+                    hoaDon.GhiChu = reader.IsDBNull(reader.GetOrdinal("GhiChu")) ? "Không có ghi chú thêm." : reader.GetString(reader.GetOrdinal("GhiChu"));
+                    flp_ContainsBill.Controls.Add(hoaDon);
+                    // Thêm đối tượng hoaDon vào danh sách hoặc làm điều gì đó khác ở đây
                 }
             }
         }

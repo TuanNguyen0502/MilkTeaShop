@@ -1185,11 +1185,12 @@ END
 GO
 -- Tạo bảng UserAccount
 CREATE TABLE UserAccount(
-	Username varchar(50),
+	Username varchar(50) PRIMARY KEY,
 	UserPassword varchar(100),
 	MaNV varchar(10)
 )
 GO
+DROP TABLE UserAccount
 
 -- Tạo phân quyền user
 -- Ứng dụng gồm 2 đối tượng (Nhân viên (Nhân viên gồm: nhân viên bán hàng và nhân viên thông thường) và người quản lý)
@@ -1454,20 +1455,23 @@ BEGIN
     END CATCH
 END;
 GO
-CREATE FUNCTION [dbo].[checkLogin] (@username NVARCHAR(MAX), @password NVARCHAR(MAX))
+CREATE FUNCTION func_CheckLogin
+(
+	@Username nvarchar(MAX),
+	@Passwrod nvarchar(MAX)
+)
 RETURNS BIT
 AS
 BEGIN
- DECLARE @result BIT;
- SELECT @result = CAST(COUNT(*) AS BIT)
- FROM UserAccount
- WHERE Username = @username AND UserPassword = @password;
- RETURN @result;
+	Declare @flag bit
+	SELECT @flag = CAST(COUNT(*) AS BIT)
+	FROM UserAccount
+	WHERE @Username = Username AND @Passwrod = UserPassword
+
+	RETURN @flag
 END;
-SELECT * FROM UserAccount
-DECLARE @loginResult BIT;
-SELECT @loginResult = dbo.checkLogin('admin1', 'admin123');
-PRINT @loginResult;
+
+SELECT dbo.func_CheckLogin('admin1', 'admin123');
 
 SELECT dbo.checkLogin('admin1', 'admin123');
 go
@@ -1522,3 +1526,15 @@ exec sp_helplogins
 exec proc_CreateAccount 'sales01', 'password123', 'NV003'
 exec proc_CreateAccount 'admin2', 'password123', 'NV006'
 exec proc_CreateAccount 'regular1', 'password123', 'NV002'
+
+
+SELECT name, type_desc, create_date
+FROM sys.database_principals
+WHERE type_desc IN ('SQL_USER', 'WINDOWS_USER', 'WINDOWS_GROUP');
+SELECT name, type_desc
+FROM sys.database_principals
+WHERE type = 'R';
+EXEC sp_helprolemember 'sysadmin';
+EXEC sp_helpsrvrolemember 'sysadmin';
+
+SELECT * FROM UserAccount

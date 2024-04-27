@@ -38,6 +38,7 @@
             this.lblMatKhau = new System.Windows.Forms.Label();
             this.txtTaiKhoan = new Guna.UI.WinForms.GunaTextBox();
             this.lblTaiKhoan = new System.Windows.Forms.Label();
+            this.gckb_ShowPass = new Guna.UI2.WinForms.Guna2CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.guna2CustomGradientPanel1.SuspendLayout();
@@ -67,6 +68,7 @@
             // 
             // guna2CustomGradientPanel1
             // 
+            this.guna2CustomGradientPanel1.Controls.Add(this.gckb_ShowPass);
             this.guna2CustomGradientPanel1.Controls.Add(this.pictureBox2);
             this.guna2CustomGradientPanel1.Controls.Add(this.btnThoat);
             this.guna2CustomGradientPanel1.Controls.Add(this.btnDangNhap);
@@ -94,7 +96,7 @@
             // 
             this.btnThoat.AnimationHoverSpeed = 0.07F;
             this.btnThoat.AnimationSpeed = 0.03F;
-            this.btnThoat.BaseColor = System.Drawing.SystemColors.Highlight;
+            this.btnThoat.BaseColor = System.Drawing.Color.Tomato;
             this.btnThoat.BorderColor = System.Drawing.Color.Black;
             this.btnThoat.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnThoat.FocusedColor = System.Drawing.Color.Empty;
@@ -102,7 +104,7 @@
             this.btnThoat.ForeColor = System.Drawing.Color.White;
             this.btnThoat.Image = null;
             this.btnThoat.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnThoat.Location = new System.Drawing.Point(191, 380);
+            this.btnThoat.Location = new System.Drawing.Point(196, 414);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btnThoat.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -119,7 +121,7 @@
             // 
             this.btnDangNhap.AnimationHoverSpeed = 0.07F;
             this.btnDangNhap.AnimationSpeed = 0.03F;
-            this.btnDangNhap.BaseColor = System.Drawing.SystemColors.Highlight;
+            this.btnDangNhap.BaseColor = System.Drawing.Color.LimeGreen;
             this.btnDangNhap.BorderColor = System.Drawing.Color.Black;
             this.btnDangNhap.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnDangNhap.FocusedColor = System.Drawing.Color.Empty;
@@ -127,14 +129,14 @@
             this.btnDangNhap.ForeColor = System.Drawing.Color.White;
             this.btnDangNhap.Image = null;
             this.btnDangNhap.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnDangNhap.Location = new System.Drawing.Point(83, 380);
+            this.btnDangNhap.Location = new System.Drawing.Point(76, 414);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btnDangNhap.OnHoverBorderColor = System.Drawing.Color.Black;
             this.btnDangNhap.OnHoverForeColor = System.Drawing.Color.White;
             this.btnDangNhap.OnHoverImage = null;
             this.btnDangNhap.OnPressedColor = System.Drawing.Color.Black;
-            this.btnDangNhap.Size = new System.Drawing.Size(83, 42);
+            this.btnDangNhap.Size = new System.Drawing.Size(102, 42);
             this.btnDangNhap.TabIndex = 30;
             this.btnDangNhap.Text = "Đăng nhập";
             this.btnDangNhap.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -151,7 +153,7 @@
             this.txtMatKhau.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtMatKhau.Location = new System.Drawing.Point(71, 308);
             this.txtMatKhau.Name = "txtMatKhau";
-            this.txtMatKhau.PasswordChar = '\0';
+            this.txtMatKhau.PasswordChar = '*';
             this.txtMatKhau.SelectedText = "";
             this.txtMatKhau.Size = new System.Drawing.Size(223, 43);
             this.txtMatKhau.TabIndex = 22;
@@ -192,6 +194,26 @@
             this.lblTaiKhoan.TabIndex = 0;
             this.lblTaiKhoan.Text = "Tài khoản";
             // 
+            // gckb_ShowPass
+            // 
+            this.gckb_ShowPass.AutoSize = true;
+            this.gckb_ShowPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gckb_ShowPass.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.gckb_ShowPass.CheckedState.BorderRadius = 0;
+            this.gckb_ShowPass.CheckedState.BorderThickness = 0;
+            this.gckb_ShowPass.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.gckb_ShowPass.Location = new System.Drawing.Point(76, 367);
+            this.gckb_ShowPass.Name = "gckb_ShowPass";
+            this.gckb_ShowPass.Size = new System.Drawing.Size(130, 20);
+            this.gckb_ShowPass.TabIndex = 33;
+            this.gckb_ShowPass.Text = "Hiển thị mật khẩu";
+            this.gckb_ShowPass.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.gckb_ShowPass.UncheckedState.BorderRadius = 0;
+            this.gckb_ShowPass.UncheckedState.BorderThickness = 0;
+            this.gckb_ShowPass.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.gckb_ShowPass.UseVisualStyleBackColor = false;
+            this.gckb_ShowPass.CheckedChanged += new System.EventHandler(this.gckb_ShowPass_CheckedChanged);
+            // 
             // FLogin_User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -224,5 +246,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private Guna.UI.WinForms.GunaButton btnThoat;
         private Guna.UI.WinForms.GunaButton btnDangNhap;
+        private Guna.UI2.WinForms.Guna2CheckBox gckb_ShowPass;
     }
 }

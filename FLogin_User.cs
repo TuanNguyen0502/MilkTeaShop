@@ -28,7 +28,7 @@ namespace MilkTeaShop
         {
             GLOBAL.Username = txtTaiKhoan.Text;
             GLOBAL.Password = txtMatKhau.Text;
-            string sqlQuery = "SELECT dbo.checkLogin(@Username, @Password);";
+            string sqlQuery = "SELECT dbo.func_CheckLogin(@Username, @Password);";
             SqlCommand cmd = new SqlCommand(sqlQuery, db.getConnAdmin);
             db.OpenConnAdmin();
             SqlParameter[] lstParam =
@@ -48,13 +48,19 @@ namespace MilkTeaShop
             }
             else
             {
-                MessageBox.Show("Đăng nhập thất bại");
+                MessageBox.Show("Đăng nhập thất bại. Tài khoản hoặc mật khẩu không hợp lệ !");
+                db.CloseConnAdmin();
             }
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void gckb_ShowPass_CheckedChanged(object sender, EventArgs e)
+        {
+            txtMatKhau.PasswordChar = gckb_ShowPass.Checked ? '\0' : '*';
         }
     }
 }

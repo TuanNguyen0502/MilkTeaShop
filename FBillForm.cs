@@ -144,7 +144,7 @@ namespace MilkTeaShop
             }
             catch (SqlException ex)
             {
-                if (ex.Number == 299)
+                if (ex.Number == 229)
                 {
                     MessageBox.Show("Không có quyền sử dụng proc này!");
                 }

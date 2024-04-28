@@ -14,7 +14,6 @@ namespace MilkTeaShop
     public partial class FReport : Form
     {
         My_DBConnection db = new My_DBConnection();
-        readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True";
         string sqlQuery;
         public FReport()
         {
@@ -67,104 +66,127 @@ namespace MilkTeaShop
         {
             if (cbb_OptionMain.SelectedItem.ToString() == "Doanh thu")
             {
-                flp_ContainsHeader.Controls.Clear();
-                UC_Report report_Header = new UC_Report();
-                report_Header.LblSale.Text = $"DOANH THU CHO NGÀY {dtp_DMY.Value.Day}/{dtp_DMY.Value.Month}/{dtp_DMY.Value.Year}";
-                flp_ContainsHeader.Controls.Add(report_Header);
-                flp_ContainsReport.Controls.Clear();
-                DateTime timePicked = dtp_DMY.Value;
-                using (SqlConnection conn = new SqlConnection(conStr))
+                try
                 {
-                    conn.Open();
-                    sqlQuery = "SELECT dbo.func_tinhDoanhThuTheoNgay(@ngay, @thang, @nam) AS 'Doanh thu theo ngay';";
-                    SqlCommand command = new SqlCommand(sqlQuery, conn);
-
-                    // Thêm các tham số và giá trị tương ứng
-                    command.Parameters.AddWithValue("@ngay", timePicked.Day);
-                    command.Parameters.AddWithValue("@thang", timePicked.Month);
-                    command.Parameters.AddWithValue("@nam", timePicked.Year);
-
-                    object result = command.ExecuteScalar();
+                    flp_ContainsHeader.Controls.Clear();
+                    UC_Report report_Header = new UC_Report();
+                    report_Header.LblSale.Text = $"DOANH THU CHO NGÀY {dtp_DMY.Value.Day}/{dtp_DMY.Value.Month}/{dtp_DMY.Value.Year}";
+                    flp_ContainsHeader.Controls.Add(report_Header);
+                    flp_ContainsReport.Controls.Clear();
+                    DateTime timePicked = dtp_DMY.Value;
+                    sqlQuery = "SELECT dbo.func_tinhDoanhThuTheoNgay(@ngay, @thang, @nam)";
+                    SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
+                    cmd.Parameters.AddWithValue("@ngay", timePicked.Day);
+                    cmd.Parameters.AddWithValue("@thang", timePicked.Month);
+                    cmd.Parameters.AddWithValue("@nam", timePicked.Year);
+                    db.OpenConn();
+                    object result = cmd.ExecuteScalar();
                     decimal doanhThu = 0;
                     if (result != null && result != DBNull.Value)
                     {
                         doanhThu = Convert.ToDecimal(result);
                     }
 
-                    // Lấy giá trị doanh thu từ parameter đầu ra
                     UC_Report report = new UC_Report();
                     report.Time = DateTime.Now;
                     report.Sales = doanhThu;
                     flp_ContainsReport.Controls.Add(report);
+
+                }
+                catch (SqlException ex)
+                {
+                    if (ex.Number == 229)
+                    {
+                        MessageBox.Show("Quyền truy cập bị từ chối!");
+                    }
+                }
+                finally
+                {
+                    db.CloseConn();
                 }
             }
-            
         }
 
         private void rdb_Month_CheckedChanged(object sender, EventArgs e)
         {
             if (cbb_OptionMain.SelectedItem.ToString() == "Doanh thu")
             {
-                flp_ContainsHeader.Controls.Clear();
-                UC_Report report_Header = new UC_Report();
-                report_Header.LblSale.Text = $"DOANH THU CHO THÁNG {dtp_DMY.Value.Month}/{dtp_DMY.Value.Year}";
-                flp_ContainsHeader.Controls.Add(report_Header);
-                flp_ContainsReport.Controls.Clear();
-                DateTime timePicked = dtp_DMY.Value;
-                using (SqlConnection conn = new SqlConnection(conStr))
+                try
                 {
-                    conn.Open();
-                    sqlQuery = "SELECT dbo.func_tinhDoanhThuTheoThang(@thang, @nam) AS 'Doanh thu theo thang';";
-                    SqlCommand command = new SqlCommand(sqlQuery, conn);
-
-                    // Thêm các tham số và giá trị tương ứng
-                    command.Parameters.AddWithValue("@thang", timePicked.Month);
-                    command.Parameters.AddWithValue("@nam", timePicked.Year);
-
-                    object result = command.ExecuteScalar();
+                    flp_ContainsHeader.Controls.Clear();
+                    UC_Report report_Header = new UC_Report();
+                    report_Header.LblSale.Text = $"DOANH THU CHO THÁNG {dtp_DMY.Value.Month}/{dtp_DMY.Value.Year}";
+                    flp_ContainsHeader.Controls.Add(report_Header);
+                    flp_ContainsReport.Controls.Clear();
+                    DateTime timePicked = dtp_DMY.Value;
+                    sqlQuery = "SELECT dbo.func_tinhDoanhThuTheoThang(@thang, @nam)";
+                    SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
+                    cmd.Parameters.AddWithValue("@thang", timePicked.Month);
+                    cmd.Parameters.AddWithValue("@nam", timePicked.Year);
+                    db.OpenConn();
+                    object result = cmd.ExecuteScalar();
                     decimal doanhThu = 0;
                     if (result != null && result != DBNull.Value)
                     {
                         doanhThu = Convert.ToDecimal(result);
                     }
 
-                    // Lấy giá trị doanh thu từ parameter đầu ra
                     UC_Report report = new UC_Report();
                     report.Time = DateTime.Now;
                     report.Sales = doanhThu;
                     flp_ContainsReport.Controls.Add(report);
+
+                }
+                catch (SqlException ex)
+                {
+                    if (ex.Number == 229)
+                    {
+                        MessageBox.Show("Quyền truy cập bị từ chối!");
+                    }
+                }
+                finally
+                {
+                    db.CloseConn();
                 }
             }
             else if (cbb_OptionMain.SelectedItem.ToString() == "Khoản chi")
             {
-                flp_ContainsHeader.Controls.Clear();
-                UC_Report report_Header = new UC_Report();
-                report_Header.LblSale.Text = $"KHOẢN CHI CHO THÁNG {dtp_DMY.Value.Month}/{dtp_DMY.Value.Year}";
-                flp_ContainsHeader.Controls.Add(report_Header);
-                flp_ContainsReport.Controls.Clear();
-                DateTime timePicked = dtp_DMY.Value;
-                using (SqlConnection conn = new SqlConnection(conStr))
+                try
                 {
-                    conn.Open();
-                    sqlQuery = "SELECT dbo.func_ChiPhiTheoThang(@thang, @nam) AS 'Chi phi theo thang';";
-                    SqlCommand command = new SqlCommand(sqlQuery, conn);
-
-                    // Thêm các tham số và giá trị tương ứng
-                    command.Parameters.AddWithValue("@thang", timePicked.Month);
-                    command.Parameters.AddWithValue("@nam", timePicked.Year);
-
-                    object result = command.ExecuteScalar();
-                    decimal chiPhi = 0;
+                    flp_ContainsHeader.Controls.Clear();
+                    UC_Report report_Header = new UC_Report();
+                    report_Header.LblSale.Text = $"KHOẢN CHI CHO THÁNG {dtp_DMY.Value.Month}/{dtp_DMY.Value.Year}";
+                    flp_ContainsHeader.Controls.Add(report_Header);
+                    flp_ContainsReport.Controls.Clear();
+                    DateTime timePicked = dtp_DMY.Value;
+                    sqlQuery = "SELECT dbo.func_ChiPhiTheoThang(@thang, @nam)";
+                    SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
+                    cmd.Parameters.AddWithValue("@thang", timePicked.Month);
+                    cmd.Parameters.AddWithValue("@nam", timePicked.Year);
+                    db.OpenConn();
+                    object result = cmd.ExecuteScalar();
+                    decimal doanhThu = 0;
                     if (result != null && result != DBNull.Value)
                     {
-                        chiPhi = Convert.ToDecimal(result);
+                        doanhThu = Convert.ToDecimal(result);
                     }
 
-                    // Lấy giá trị doanh thu từ parameter đầu ra
                     UC_Report report = new UC_Report();
                     report.Time = DateTime.Now;
-                    report.Sales = chiPhi;
+                    report.Sales = doanhThu;
                     flp_ContainsReport.Controls.Add(report);
+
+                }
+                catch (SqlException ex)
+                {
+                    if (ex.Number == 229)
+                    {
+                        MessageBox.Show("Quyền truy cập bị từ chối!");
+                    }
+                }
+                finally
+                {
+                    db.CloseConn();
                 }
             }
         }
@@ -173,64 +195,80 @@ namespace MilkTeaShop
         {
             if (cbb_OptionMain.SelectedItem.ToString() == "Doanh thu")
             {
-                flp_ContainsHeader.Controls.Clear();
-                UC_Report report_Header = new UC_Report();
-                report_Header.LblSale.Text = $"DOANH THU CHO NĂM {dtp_DMY.Value.Year}";
-                flp_ContainsHeader.Controls.Add(report_Header);
-                flp_ContainsReport.Controls.Clear();
-                DateTime timePicked = dtp_DMY.Value;
-                using (SqlConnection conn = new SqlConnection(conStr))
+                try
                 {
-                    conn.Open();
-                    sqlQuery = "SELECT dbo.func_tinhDoanhThuTheoNam(@nam) AS 'Doanh thu theo nam';";
-                    SqlCommand command = new SqlCommand(sqlQuery, conn);
-
-                    // Thêm các tham số và giá trị tương ứng
-                    command.Parameters.AddWithValue("@nam", timePicked.Year);
-
-                    object result = command.ExecuteScalar();
+                    flp_ContainsHeader.Controls.Clear();
+                    UC_Report report_Header = new UC_Report();
+                    report_Header.LblSale.Text = $"DOANH THU CHO NĂM {dtp_DMY.Value.Year}";
+                    flp_ContainsHeader.Controls.Add(report_Header);
+                    flp_ContainsReport.Controls.Clear();
+                    DateTime timePicked = dtp_DMY.Value;
+                    sqlQuery = "SELECT dbo.func_tinhDoanhThuTheoNam(@nam)";
+                    SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
+                    cmd.Parameters.AddWithValue("@nam", timePicked.Year);
+                    db.OpenConn();
+                    object result = cmd.ExecuteScalar();
                     decimal doanhThu = 0;
                     if (result != null && result != DBNull.Value)
                     {
                         doanhThu = Convert.ToDecimal(result);
                     }
 
-                    // Lấy giá trị doanh thu từ parameter đầu ra
                     UC_Report report = new UC_Report();
                     report.Time = DateTime.Now;
                     report.Sales = doanhThu;
                     flp_ContainsReport.Controls.Add(report);
+
+                }
+                catch (SqlException ex)
+                {
+                    if (ex.Number == 229)
+                    {
+                        MessageBox.Show("Quyền truy cập bị từ chối!");
+                    }
+                }
+                finally
+                {
+                    db.CloseConn();
                 }
             }
             else if (cbb_OptionMain.SelectedItem.ToString() == "Khoản chi")
             {
-                flp_ContainsHeader.Controls.Clear();
-                UC_Report report_Header = new UC_Report();
-                report_Header.LblSale.Text = $"KHOẢN CHI CHO NĂM {dtp_DMY.Value.Year}";
-                flp_ContainsHeader.Controls.Add(report_Header);
-                flp_ContainsReport.Controls.Clear();
-                DateTime timePicked = dtp_DMY.Value;
-                using (SqlConnection conn = new SqlConnection(conStr))
+                try
                 {
-                    conn.Open();
-                    sqlQuery = "SELECT dbo.func_ChiPhiTheoNam(@nam) AS 'Chi phi theo nam';";
-                    SqlCommand command = new SqlCommand(sqlQuery, conn);
-
-                    // Thêm các tham số và giá trị tương ứng
-                    command.Parameters.AddWithValue("@nam", timePicked.Year);
-
-                    object result = command.ExecuteScalar();
-                    decimal chiPhi = 0;
+                    flp_ContainsHeader.Controls.Clear();
+                    UC_Report report_Header = new UC_Report();
+                    report_Header.LblSale.Text = $"KHOẢN CHI CHO NĂM {dtp_DMY.Value.Year}";
+                    flp_ContainsHeader.Controls.Add(report_Header);
+                    flp_ContainsReport.Controls.Clear();
+                    DateTime timePicked = dtp_DMY.Value;
+                    sqlQuery = "SELECT dbo.func_tinhDoanhThuTheoNam(@nam)";
+                    SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
+                    cmd.Parameters.AddWithValue("@nam", timePicked.Year);
+                    db.OpenConn();
+                    object result = cmd.ExecuteScalar();
+                    decimal doanhThu = 0;
                     if (result != null && result != DBNull.Value)
                     {
-                        chiPhi = Convert.ToDecimal(result);
+                        doanhThu = Convert.ToDecimal(result);
                     }
 
-                    // Lấy giá trị doanh thu từ parameter đầu ra
                     UC_Report report = new UC_Report();
                     report.Time = DateTime.Now;
-                    report.Sales = chiPhi;
+                    report.Sales = doanhThu;
                     flp_ContainsReport.Controls.Add(report);
+
+                }
+                catch (SqlException ex)
+                {
+                    if (ex.Number == 229)
+                    {
+                        MessageBox.Show("Quyền truy cập bị từ chối!");
+                    }
+                }
+                finally
+                {
+                    db.CloseConn();
                 }
             }
         }
@@ -239,24 +277,21 @@ namespace MilkTeaShop
         {
             if (cbb_OptionMain.SelectedItem.ToString() == "Doanh thu")
             {
-                flp_ContainsHeader.Controls.Clear();
-                UC_Report report_Header = new UC_Report();
-                report_Header.LblSale.Text = $"DOANH THU CHO GIAI ĐOẠN TỪ {dtp_From.Value.Day}/{dtp_From.Value.Month}/{dtp_From.Value.Year} ĐẾN {dtp_To.Value.Day}/{dtp_To.Value.Month}/{dtp_To.Value.Year}";
-                flp_ContainsHeader.Controls.Add(report_Header);
-                flp_ContainsReport.Controls.Clear();
-                DateTime startDate = dtp_From.Value;
-                DateTime endDate = dtp_To.Value;
-                using (SqlConnection conn = new SqlConnection(conStr))
+                try
                 {
-                    conn.Open();
-                    sqlQuery = "SELECT dbo.func_DoanhThuTheoGiaiDoan(@startDate,@endDate) AS 'Doanh thu theo giai doan';";
-                    SqlCommand command = new SqlCommand(sqlQuery, conn);
-
-                    // Thêm các tham số và giá trị tương ứng
-                    command.Parameters.AddWithValue("@startDate", startDate);
-                    command.Parameters.AddWithValue("@endDate", endDate);
-
-                    object result = command.ExecuteScalar();
+                    flp_ContainsHeader.Controls.Clear();
+                    UC_Report report_Header = new UC_Report();
+                    report_Header.LblSale.Text = $"DOANH THU CHO GIAI ĐOẠN TỪ {dtp_From.Value.Day}/{dtp_From.Value.Month}/{dtp_From.Value.Year} ĐẾN {dtp_To.Value.Day}/{dtp_To.Value.Month}/{dtp_To.Value.Year}";
+                    flp_ContainsHeader.Controls.Add(report_Header);
+                    flp_ContainsReport.Controls.Clear();
+                    DateTime startDate = dtp_From.Value;
+                    DateTime endDate = dtp_To.Value;
+                    sqlQuery = "SELECT dbo.func_DoanhThuTheoGiaiDoan(@startDate,@endDate)";
+                    SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
+                    cmd.Parameters.AddWithValue("@startDate", startDate);
+                    cmd.Parameters.AddWithValue("@endDate", endDate);
+                    db.OpenConn();
+                    object result = cmd.ExecuteScalar();
                     decimal doanhThu = 0;
                     if (result != null && result != DBNull.Value)
                     {
@@ -269,38 +304,65 @@ namespace MilkTeaShop
                     report.Sales = doanhThu;
                     flp_ContainsReport.Controls.Add(report);
                 }
+                catch(SqlException ex)
+                {
+                    if (ex.Number == 229)
+                    {
+                        MessageBox.Show("Quyền truy cập bị từ chối");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lỗi:"+ex.Message);
+                    }
+                }
+                finally
+                {
+                    db.CloseConn();
+                }
             }
             else if (cbb_OptionMain.SelectedItem.ToString() == "Khoản chi")
             {
-                flp_ContainsHeader.Controls.Clear();
-                UC_Report report_Header = new UC_Report();
-                report_Header.LblSale.Text = $"CHI PHÍ CHO GIAI ĐOẠN TỪ {dtp_From.Value.Day}/{dtp_From.Value.Month}/{dtp_From.Value.Year} ĐẾN {dtp_To.Value.Day}/{dtp_To.Value.Month}/{dtp_To.Value.Year}";
-                flp_ContainsHeader.Controls.Add(report_Header);
-                flp_ContainsReport.Controls.Clear();
-                DateTime startDate = dtp_From.Value;
-                DateTime endDate = dtp_To.Value;
-                using (SqlConnection conn = new SqlConnection(conStr))
+                try
                 {
-                    conn.Open();
-                    sqlQuery = "SELECT dbo.func_ChiPhiTheoGiaiDoan(@startDate,@endDate) AS 'Doanh thu theo giai doan';";
-                    SqlCommand command = new SqlCommand(sqlQuery, conn);
-
-                    // Thêm các tham số và giá trị tương ứng
-                    command.Parameters.AddWithValue("@startDate", startDate);
-                    command.Parameters.AddWithValue("@endDate", endDate);
-
-                    object result = command.ExecuteScalar();
-                    decimal chiPhi = 0;
+                    flp_ContainsHeader.Controls.Clear();
+                    UC_Report report_Header = new UC_Report();
+                    report_Header.LblSale.Text = $"CHI PHÍ CHO GIAI ĐOẠN TỪ {dtp_From.Value.Day}/{dtp_From.Value.Month}/{dtp_From.Value.Year} ĐẾN {dtp_To.Value.Day}/{dtp_To.Value.Month}/{dtp_To.Value.Year}";
+                    flp_ContainsHeader.Controls.Add(report_Header);
+                    flp_ContainsReport.Controls.Clear();
+                    DateTime startDate = dtp_From.Value;
+                    DateTime endDate = dtp_To.Value;
+                    sqlQuery = "SELECT dbo.func_DoanhThuTheoGiaiDoan(@startDate,@endDate)";
+                    SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
+                    cmd.Parameters.AddWithValue("@startDate", startDate);
+                    cmd.Parameters.AddWithValue("@endDate", endDate);
+                    db.OpenConn();
+                    object result = cmd.ExecuteScalar();
+                    decimal doanhThu = 0;
                     if (result != null && result != DBNull.Value)
                     {
-                        chiPhi = Convert.ToDecimal(result);
+                        doanhThu = Convert.ToDecimal(result);
                     }
 
                     // Lấy giá trị doanh thu từ parameter đầu ra
                     UC_Report report = new UC_Report();
                     report.Time = DateTime.Now;
-                    report.Sales = chiPhi;
+                    report.Sales = doanhThu;
                     flp_ContainsReport.Controls.Add(report);
+                }
+                catch (SqlException ex)
+                {
+                    if (ex.Number == 229)
+                    {
+                        MessageBox.Show("Quyền truy cập bị từ chối");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lỗi:"+ex.Message);
+                    }
+                }
+                finally
+                {
+                    db.CloseConn();
                 }
             }
         }

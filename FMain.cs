@@ -111,7 +111,8 @@ namespace MilkTeaShop
 
         private void btn_CreateAccount_Click(object sender, EventArgs e)
         {
-
+            FManager manager = new FManager();
+            manager.ShowDialog();
         }
     }
 }

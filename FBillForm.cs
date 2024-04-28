@@ -27,7 +27,6 @@ namespace MilkTeaShop
             sqlQuery = "SELECT * FROM vie_XemHoaDon";
             List<Dictionary<string, object>> keyValues = dbConn.ExecuteReaderData(sqlQuery);
             SqlCommand cmd = new SqlCommand(sqlQuery, db.getConnRegular);
-            db.OpenConnRegular();
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())

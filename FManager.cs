@@ -27,12 +27,12 @@ namespace MilkTeaShop
         private void btnCreateAccount_Click(object sender, EventArgs e)
         {
             string sqlQuery = "proc_CreateAccount";
-            SqlCommand cmd = new SqlCommand(sqlQuery, db.getConnAdmin);
+            SqlCommand cmd = new SqlCommand(sqlQuery, db.getConnRegular);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@Username", SqlDbType.VarChar, 50).Value = txtTaiKhoan.Text;
             cmd.Parameters.Add("@UserPassword", SqlDbType.VarChar, 100).Value = txtMatKhau.Text;
             cmd.Parameters.Add("@MaNV", SqlDbType.VarChar, 10).Value = txtMaNV.Text;
-            db.OpenConnAdmin();
+            db.OpenConnRegular();
 
             if (cmd.ExecuteNonQuery() > 0)
             {
@@ -41,7 +41,7 @@ namespace MilkTeaShop
             else
             {
                 MessageBox.Show("Tạo tài khoản thất bại");
-                db.CloseConnAdmin();
+                db.CloseConnRegular();
             }    
         }
 

@@ -15,8 +15,9 @@ namespace MilkTeaShop
 {
     public partial class FSellForm : Form
     {
-        readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True";
-        DBConnection dbConn = new DBConnection();
+        readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True;Encrypt=False";
+        DBConnection dbConn = new DBConnection();   
+        My_DBConnection db = new My_DBConnection();
         string sqlQuery;
         private string manv;
         public FSellForm(string manv)
@@ -281,36 +282,38 @@ namespace MilkTeaShop
         }
         private void saveChiTietHoaDons()
         {
-            using (SqlConnection conn = new SqlConnection(conStr))
+            try
             {
-                try
+                db.OpenConnRegular();
+                string sqlGetProducts = "GetProductLastest";
+                SqlCommand cmdGetProducts = new SqlCommand(sqlGetProducts, db.getConnRegular);
+                cmdGetProducts.CommandType = CommandType.StoredProcedure;
+                int MaHD = (int)cmdGetProducts.ExecuteScalar();
+                MessageBox.Show(MaHD.ToString());
+                foreach (Control control in flp_ContainsOrder.Controls)
                 {
-                    conn.Open();
-                    string sqlGetProducts = "GetProductLastest";
-                    SqlCommand cmdGetProducts = new SqlCommand(sqlGetProducts, conn);
-                    cmdGetProducts.CommandType = CommandType.StoredProcedure;
-                    int MaHD = (int)cmdGetProducts.ExecuteScalar();
-                    MessageBox.Show(MaHD.ToString());
-                    foreach (Control control in flp_ContainsOrder.Controls)
+                    UC_ItemSelected selected = (UC_ItemSelected)control;
+                    string sqlInsertCTHD = "exec proc_CreateBillDetails @MaHD, @MaSP, @SoLuong";
+                    SqlCommand cmdInsertCTHD = new SqlCommand(sqlInsertCTHD, db.getConnRegular);
+                    SqlParameter[] lstParams =
                     {
-                        UC_ItemSelected selected = (UC_ItemSelected)control;
-                        string sqlInsertCTHD = "exec proc_CreateBillDetails @MaHD, @MaSP, @SoLuong";
-                        SqlCommand cmdInsertCTHD = new SqlCommand(sqlInsertCTHD, conn);
-                        SqlParameter[] lstParams =
-                        {
                             new SqlParameter("@MaHD", SqlDbType.Int) {Value = MaHD},
                             new SqlParameter("@MaSP", SqlDbType.NVarChar) {Value = selected.MaSP},
                             new SqlParameter("@SoLuong", SqlDbType.Int) {Value = selected.Numeric_Quantities.Value}
                         };
-                        cmdInsertCTHD.Parameters.AddRange(lstParams);
-                        cmdInsertCTHD.ExecuteNonQuery();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error\n" + ex.Message);
+                    cmdInsertCTHD.Parameters.AddRange(lstParams);
+                    cmdInsertCTHD.ExecuteNonQuery();
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error\n" + ex.Message);
+            }
+            finally
+            {
+                db.CloseConnRegular();
+            }
+           
         }
         private void btn_printBill_Click(object sender, EventArgs e)
         {
@@ -320,28 +323,33 @@ namespace MilkTeaShop
             }
             else
             {
-                using (SqlConnection conn = new SqlConnection(conStr))
+                SqlCommand cmd = new SqlCommand("exec proc_CreateBill @SDT, @MaNV, @ThoiGianDat, @TriGiaHD", db.getConnRegular);
+                SqlParameter[] lstParams =
                 {
-                    try
-                    {
-                        conn.Open();
-                        SqlCommand cmd = new SqlCommand("exec proc_CreateBill @SDT, @MaNV, @ThoiGianDat, @TriGiaHD", conn);
-                        SqlParameter[] lstParams =
-                        {
                                 new SqlParameter("@SDT", SqlDbType.VarChar) {Value = cbb_options.SelectedItem.ToString()},
                                 new SqlParameter("@MaNV", SqlDbType.VarChar) {Value = lbl_CurrentStaff.Text},
                                 new SqlParameter("@ThoiGianDat", SqlDbType.DateTime) {Value = DateTime.Now},
                                 new SqlParameter("@TriGiaHD", SqlDbType.Decimal) {Value = Convert.ToDecimal(lbl_Pay.Text.Substring(0, lbl_Pay.Text.Length - 4))},
-                            };
-                        cmd.Parameters.AddRange(lstParams);
-                        if (cmd.ExecuteNonQuery() > 0)
-                            MessageBox.Show("In hóa đơn thành công !");
-                        saveChiTietHoaDons();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("In hóa đơn thất bại.\n"+ex.Message);
-                    }
+                };
+                cmd.Parameters.AddRange(lstParams);
+                try
+                {
+                    db.OpenConnRegular();
+                    if (cmd.ExecuteNonQuery() > 0)
+                        MessageBox.Show("In hóa đơn thành công !");
+                    saveChiTietHoaDons();
+                }
+                catch (SqlException ex)
+                {
+                    if (ex.Number == 229)
+                        MessageBox.Show("Dịch vụ bị từ chối: Không có quyền sử dụng procedure");
+                    else
+                        MessageBox.Show("Lỗi: "+ex.Message);
+                }
+                catch
+                {
+                    db.CloseConnRegular();
+
                 }
             }
         }

@@ -22,12 +22,11 @@ namespace MilkTeaShop
 
         private void FLogin_User_Load(object sender, EventArgs e)
         {
-            
         }
         public string GetMaNVByAccount(string Username)
         {
             string sqlQuery = "SELECT dbo.func_GetMaNVByUsername(@Username)";
-            SqlCommand cmd = new SqlCommand(sqlQuery, db.getConnAdmin);
+            SqlCommand cmd = new SqlCommand(sqlQuery, db.getConnRegular);
             cmd.Parameters.AddWithValue("@Username", Username);
             string MaNV = (string)cmd.ExecuteScalar();
             return MaNV;
@@ -36,15 +35,17 @@ namespace MilkTeaShop
         {
             GLOBAL.Username = txtTaiKhoan.Text;
             GLOBAL.Password = txtMatKhau.Text;
+            MessageBox.Show($"GLOBAL.Username = {GLOBAL.Username} AND GLOBAL.PASSWORD {GLOBAL.Password}");
+            db.ShowConnRegular();
             string sqlQuery = "SELECT dbo.func_CheckLogin(@Username, @Password);";
-            SqlCommand cmd = new SqlCommand(sqlQuery, db.getConnAdmin);
-            db.OpenConnAdmin();
+            SqlCommand cmd = new SqlCommand(sqlQuery, db.getConnRegular);
             SqlParameter[] lstParam =
             {
                 new SqlParameter("@Username", SqlDbType.VarChar) {Value = txtTaiKhoan.Text},
                 new SqlParameter("@Password", SqlDbType.VarChar) {Value = txtMatKhau.Text},
             };
             cmd.Parameters.AddRange(lstParam);
+            db.OpenConnRegular();
             bool success = (bool)cmd.ExecuteScalar();
 
             if (success)
@@ -56,8 +57,8 @@ namespace MilkTeaShop
             else
             {
                 MessageBox.Show("Đăng nhập thất bại. Tài khoản hoặc mật khẩu không hợp lệ !");
-                db.CloseConnAdmin();
             }
+            db.CloseConnRegular();
         }
 
         private void btnThoat_Click(object sender, EventArgs e)

@@ -1560,3 +1560,4 @@ BEGIN
 END;
 
 SELECT dbo.func_GetMaNVByUsername('admin2')
+SELECT * FROM 

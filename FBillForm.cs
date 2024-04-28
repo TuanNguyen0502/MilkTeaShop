@@ -12,8 +12,6 @@ namespace MilkTeaShop
 {
     public partial class FBillForm : Form
     {
-        readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True";
-        DBConnection dbConn = new DBConnection();
         My_DBConnection db = new My_DBConnection();
         string sqlQuery;
         public FBillForm()
@@ -21,38 +19,16 @@ namespace MilkTeaShop
             InitializeComponent();
         }
 
-        private void btn_AllBill_Click(object sender, EventArgs e)
+        private void SeeBill()
         {
-            flp_ContainsBill.Controls.Clear();
-            sqlQuery = "SELECT * FROM vie_XemHoaDon";
-            List<Dictionary<string, object>> keyValues = dbConn.ExecuteReaderData(sqlQuery);
-            SqlCommand cmd = new SqlCommand(sqlQuery, db.getConnRegular);
-            using (SqlDataReader reader = cmd.ExecuteReader())
+            try
             {
-                while (reader.Read())
-                {
-                    UC_BillInfomation hoaDon = new UC_BillInfomation();
-                    hoaDon.MaHD = reader.GetInt32(reader.GetOrdinal("MaHD"));
-                    hoaDon.TenNV = reader.GetString(reader.GetOrdinal("HoTen"));
-                    hoaDon.TenKH = reader.GetString(reader.GetOrdinal("TenKH"));
-                    hoaDon.ThoiGianDat = reader.GetDateTime(reader.GetOrdinal("ThoiGianDat"));
-                    hoaDon.TriGiaDH = reader.GetDecimal(reader.GetOrdinal("TriGiaHoaDon"));
-                    hoaDon.GhiChu = reader.IsDBNull(reader.GetOrdinal("GhiChu")) ? "Không có ghi chú thêm." : reader.GetString(reader.GetOrdinal("GhiChu"));
-                    flp_ContainsBill.Controls.Add(hoaDon);
-                    // Thêm đối tượng hoaDon vào danh sách hoặc làm điều gì đó khác ở đây
-                }
-            }
-        }
-
-        private void BillForm_Load(object sender, EventArgs e)
-        {
-            sqlQuery = "SELECT * FROM vie_XemHoaDon";
-            List<Dictionary<string,object>> keyValues = dbConn.ExecuteReaderData(sqlQuery);
-            using (SqlConnection conn = new SqlConnection(conStr))
-            {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(sqlQuery, conn);
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                flp_ContainsBill.Controls.Clear();
+                sqlQuery = "SELECT * FROM vie_XemHoaDon";
+                SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
+                db.OpenConn();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
                 {
                     while (reader.Read())
                     {
@@ -67,60 +43,91 @@ namespace MilkTeaShop
                     }
                 }
             }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
+                {
+                    MessageBox.Show("Người dùng không có quyền sử dụng proc này");
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: "+ex.Message);
+                }
+            }
+            finally
+            {
+                db.CloseConn();
+            }
+        }
+
+        private void btn_AllBill_Click(object sender, EventArgs e)
+        {
+            SeeBill();
+        }
+
+        private void BillForm_Load(object sender, EventArgs e)
+        {
+            SeeBill();
         }
 
         private void btn_SeachForBill_Click(object sender, EventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(conStr))
+            try
             {
-                // Mở kết nối
-                connection.Open();
-
-                // Tạo đối tượng SqlCommand
-                using (SqlCommand command = new SqlCommand("proc_FindBill", connection))
+                SqlCommand cmd = new SqlCommand("proc_FindBill", db.getConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                if (!string.IsNullOrEmpty(txt_KeyWord.Text))
                 {
-                    // Đặt kiểu command type là StoredProcedure
-                    command.CommandType = CommandType.StoredProcedure;
-
-                    // Thêm tham số
-                    if (!string.IsNullOrEmpty(txt_KeyWord.Text))
+                    cmd.Parameters.Add("@Keyword", SqlDbType.NVarChar, 100).Value = txt_KeyWord.Text;
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        command.Parameters.Add("@Keyword", SqlDbType.NVarChar, 100).Value = txt_KeyWord.Text;
-                        using (SqlDataReader reader = command.ExecuteReader())
+                        flp_ContainsBill.Controls.Clear();
+                        while (reader.Read())
                         {
-                            flp_ContainsBill.Controls.Clear();
-                            while (reader.Read())
-                            {
-                                UC_BillInfomation hoaDon = new UC_BillInfomation();
-                                hoaDon.MaHD = reader.GetInt32(reader.GetOrdinal("MaHD"));
-                                hoaDon.TenNV = reader.GetString(reader.GetOrdinal("HoTen"));
-                                hoaDon.TenKH = reader.GetString(reader.GetOrdinal("TenKH"));
-                                hoaDon.ThoiGianDat = reader.GetDateTime(reader.GetOrdinal("ThoiGianDat"));
-                                hoaDon.TriGiaDH = reader.GetDecimal(reader.GetOrdinal("TriGiaHoaDon"));
-                                hoaDon.GhiChu = reader.IsDBNull(reader.GetOrdinal("GhiChu")) ? "Không có ghi chú thêm." : reader.GetString(reader.GetOrdinal("GhiChu"));
-                                flp_ContainsBill.Controls.Add(hoaDon);
-                            }
+                            UC_BillInfomation hoaDon = new UC_BillInfomation();
+                            hoaDon.MaHD = reader.GetInt32(reader.GetOrdinal("MaHD"));
+                            hoaDon.TenNV = reader.GetString(reader.GetOrdinal("HoTen"));
+                            hoaDon.TenKH = reader.GetString(reader.GetOrdinal("TenKH"));
+                            hoaDon.ThoiGianDat = reader.GetDateTime(reader.GetOrdinal("ThoiGianDat"));
+                            hoaDon.TriGiaDH = reader.GetDecimal(reader.GetOrdinal("TriGiaHoaDon"));
+                            hoaDon.GhiChu = reader.IsDBNull(reader.GetOrdinal("GhiChu")) ? "Không có ghi chú thêm." : reader.GetString(reader.GetOrdinal("GhiChu"));
+                            flp_ContainsBill.Controls.Add(hoaDon);
                         }
                     }
-                    else
-                    {
-                        MessageBox.Show("Không có từ khóa được cung cấp");
-                    }
                 }
+                else
+                {
+                    MessageBox.Show("Không có từ khóa được cung cấp");
+                }
+            }
+            catch(SqlException ex)
+            {
+                if (ex.Number == 229)
+                {
+                    MessageBox.Show("Không có quyền sử dụng proc này");
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
+            }
+            finally
+            {
+                db.CloseConn();
             }
         }
 
         private void btn_AllBillDetails_Click(object sender, EventArgs e)
         {
-            flp_ContainsHeader.Controls.Clear();
-            UC_BillDetails header_BillDetails = new UC_BillDetails();
-            flp_ContainsHeader.Controls.Add(header_BillDetails);
-            flp_ContainsBill.Controls.Clear();
-            using (SqlConnection conn = new SqlConnection(conStr))
+            try
             {
-                conn.Open();
+                flp_ContainsHeader.Controls.Clear();
+                UC_BillDetails header_BillDetails = new UC_BillDetails();
+                flp_ContainsHeader.Controls.Add(header_BillDetails);
+                flp_ContainsBill.Controls.Clear();
                 sqlQuery = "SELECT * FROM vie_XemCTHD";
-                SqlCommand cmd = new SqlCommand(sqlQuery, conn);
+                SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
+                db.OpenConn();
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
@@ -134,114 +141,219 @@ namespace MilkTeaShop
                         flp_ContainsBill.Controls.Add(item);
                     }
                 }
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 299)
+                {
+                    MessageBox.Show("Không có quyền sử dụng proc này!");
+                }
                 else
                 {
-                    MessageBox.Show("Không có chi tiết hóa đơn nào");
+                    MessageBox.Show("Lỗi: "+ex.Message);
                 }
+            }
+            finally
+            {
+                db.CloseConn();
+            }
+        }
+
+        public void GetBillsLatest()
+        {
+            try
+            {
+                flp_ContainsBill.Controls.Clear();
+                sqlQuery = "proc_HoaDonGiamDanTheoOrderTime";
+                SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                db.OpenConn();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        UC_BillInfomation hoaDon = new UC_BillInfomation();
+                        hoaDon.MaHD = reader.GetInt32(reader.GetOrdinal("MaHD"));
+                        hoaDon.TenNV = reader.GetString(reader.GetOrdinal("HoTen"));
+                        hoaDon.TenKH = reader.GetString(reader.GetOrdinal("TenKH"));
+                        hoaDon.ThoiGianDat = reader.GetDateTime(reader.GetOrdinal("ThoiGianDat"));
+                        hoaDon.TriGiaDH = reader.GetDecimal(reader.GetOrdinal("TriGiaHoaDon"));
+                        hoaDon.GhiChu = reader.IsDBNull(reader.GetOrdinal("GhiChu")) ? "Không có ghi chú thêm." : reader.GetString(reader.GetOrdinal("GhiChu"));
+                        flp_ContainsBill.Controls.Add(hoaDon);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
+                {
+                    MessageBox.Show("Không có quyền sử dụng proc này");
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
+            }
+            finally
+            {
+                db.CloseConn();
+            }
+        }
+        public void GetBillsOldest()
+        {
+            try
+            {
+                flp_ContainsBill.Controls.Clear();
+                sqlQuery = "proc_HoaDonTangTheoOrderTime";
+                SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                db.OpenConn();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        UC_BillInfomation hoaDon = new UC_BillInfomation();
+                        hoaDon.MaHD = reader.GetInt32(reader.GetOrdinal("MaHD"));
+                        hoaDon.TenNV = reader.GetString(reader.GetOrdinal("HoTen"));
+                        hoaDon.TenKH = reader.GetString(reader.GetOrdinal("TenKH"));
+                        hoaDon.ThoiGianDat = reader.GetDateTime(reader.GetOrdinal("ThoiGianDat"));
+                        hoaDon.TriGiaDH = reader.GetDecimal(reader.GetOrdinal("TriGiaHoaDon"));
+                        hoaDon.GhiChu = reader.IsDBNull(reader.GetOrdinal("GhiChu")) ? "Không có ghi chú thêm." : reader.GetString(reader.GetOrdinal("GhiChu"));
+                        flp_ContainsBill.Controls.Add(hoaDon);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
+                {
+                    MessageBox.Show("Không có quyền sử dụng proc này");
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
+            }
+            finally
+            {
+                db.CloseConn();
+            }
+        }
+        public void GetBillsDescByPrice()
+        {
+            try
+            {
+                flp_ContainsBill.Controls.Clear();
+                sqlQuery = "proc_HoaDonGiamTheoTotalBill";
+                SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                db.OpenConn();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        UC_BillInfomation hoaDon = new UC_BillInfomation();
+                        hoaDon.MaHD = reader.GetInt32(reader.GetOrdinal("MaHD"));
+                        hoaDon.TenNV = reader.GetString(reader.GetOrdinal("HoTen"));
+                        hoaDon.TenKH = reader.GetString(reader.GetOrdinal("TenKH"));
+                        hoaDon.ThoiGianDat = reader.GetDateTime(reader.GetOrdinal("ThoiGianDat"));
+                        hoaDon.TriGiaDH = reader.GetDecimal(reader.GetOrdinal("TriGiaHoaDon"));
+                        hoaDon.GhiChu = reader.IsDBNull(reader.GetOrdinal("GhiChu")) ? "Không có ghi chú thêm." : reader.GetString(reader.GetOrdinal("GhiChu"));
+                        flp_ContainsBill.Controls.Add(hoaDon);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
+                {
+                    MessageBox.Show("Không có quyền sử dụng proc này");
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
+            }
+            finally
+            {
+                db.CloseConn();
+            }
+        }
+        public void GetBillsIncrementcByPrice()
+        {
+            try
+            {
+                flp_ContainsBill.Controls.Clear();
+                sqlQuery = "proc_HoaDonTangTheoTotalBill";
+                SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                db.OpenConn();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        UC_BillInfomation hoaDon = new UC_BillInfomation();
+                        hoaDon.MaHD = reader.GetInt32(reader.GetOrdinal("MaHD"));
+                        hoaDon.TenNV = reader.GetString(reader.GetOrdinal("HoTen"));
+                        hoaDon.TenKH = reader.GetString(reader.GetOrdinal("TenKH"));
+                        hoaDon.ThoiGianDat = reader.GetDateTime(reader.GetOrdinal("ThoiGianDat"));
+                        hoaDon.TriGiaDH = reader.GetDecimal(reader.GetOrdinal("TriGiaHoaDon"));
+                        hoaDon.GhiChu = reader.IsDBNull(reader.GetOrdinal("GhiChu")) ? "Không có ghi chú thêm." : reader.GetString(reader.GetOrdinal("GhiChu"));
+                        flp_ContainsBill.Controls.Add(hoaDon);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
+                {
+                    MessageBox.Show("Không có quyền sử dụng proc này");
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
+            }
+            finally
+            {
+                db.CloseConn();
             }
         }
 
         private void cbb_options_SelectedIndexChanged(object sender, EventArgs e)
         {
+            try
+            {
+
+            }
+            catch (SqlException ex)
+            {
+
+            }
+            finally
+            {
+
+            }
             if (cbb_options.SelectedItem.ToString() == "Hóa đơn mới nhất")
             {
-                flp_ContainsBill.Controls.Clear();
-                sqlQuery = "exec proc_HoaDonGiamTheoOrderTime";
-                List<Dictionary<string, object>> keyValues = dbConn.ExecuteReaderData(sqlQuery);
-                using (SqlConnection conn = new SqlConnection(conStr))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand(sqlQuery, conn);
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            UC_BillInfomation hoaDon = new UC_BillInfomation();
-                            hoaDon.MaHD = reader.GetInt32(reader.GetOrdinal("MaHD"));
-                            hoaDon.TenNV = reader.GetString(reader.GetOrdinal("HoTen"));
-                            hoaDon.TenKH = reader.GetString(reader.GetOrdinal("TenKH"));
-                            hoaDon.ThoiGianDat = reader.GetDateTime(reader.GetOrdinal("ThoiGianDat"));
-                            hoaDon.TriGiaDH = reader.GetDecimal(reader.GetOrdinal("TriGiaHoaDon"));
-                            hoaDon.GhiChu = reader.IsDBNull(reader.GetOrdinal("GhiChu")) ? "Không có ghi chú thêm." : reader.GetString(reader.GetOrdinal("GhiChu"));
-                            flp_ContainsBill.Controls.Add(hoaDon);
-                        }
-                    }
-                }
+                GetBillsLatest();
             }
             else if (cbb_options.SelectedItem.ToString() == "Hóa đơn cũ nhất")
             {
-                flp_ContainsBill.Controls.Clear();
-                sqlQuery = "exec proc_HoaDonTangTheoOrderTime";
-                List<Dictionary<string, object>> keyValues = dbConn.ExecuteReaderData(sqlQuery);
-                using (SqlConnection conn = new SqlConnection(conStr))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand(sqlQuery, conn);
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            UC_BillInfomation hoaDon = new UC_BillInfomation();
-                            hoaDon.MaHD = reader.GetInt32(reader.GetOrdinal("MaHD"));
-                            hoaDon.TenNV = reader.GetString(reader.GetOrdinal("HoTen"));
-                            hoaDon.TenKH = reader.GetString(reader.GetOrdinal("TenKH"));
-                            hoaDon.ThoiGianDat = reader.GetDateTime(reader.GetOrdinal("ThoiGianDat"));
-                            hoaDon.TriGiaDH = reader.GetDecimal(reader.GetOrdinal("TriGiaHoaDon"));
-                            hoaDon.GhiChu = reader.IsDBNull(reader.GetOrdinal("GhiChu")) ? "Không có ghi chú thêm." : reader.GetString(reader.GetOrdinal("GhiChu"));
-                            flp_ContainsBill.Controls.Add(hoaDon);
-                        }
-                    }
-                }
+                GetBillsOldest();
             }
             else if (cbb_options.SelectedItem.ToString() == "Số tiền hóa đơn cao nhất")
             {
-                flp_ContainsBill.Controls.Clear();
-                sqlQuery = "exec proc_HoaDonGiamTheoTotalBill";
-                List<Dictionary<string, object>> keyValues = dbConn.ExecuteReaderData(sqlQuery);
-                using (SqlConnection conn = new SqlConnection(conStr))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand(sqlQuery, conn);
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            UC_BillInfomation hoaDon = new UC_BillInfomation();
-                            hoaDon.MaHD = reader.GetInt32(reader.GetOrdinal("MaHD"));
-                            hoaDon.TenNV = reader.GetString(reader.GetOrdinal("HoTen"));
-                            hoaDon.TenKH = reader.GetString(reader.GetOrdinal("TenKH"));
-                            hoaDon.ThoiGianDat = reader.GetDateTime(reader.GetOrdinal("ThoiGianDat"));
-                            hoaDon.TriGiaDH = reader.GetDecimal(reader.GetOrdinal("TriGiaHoaDon"));
-                            hoaDon.GhiChu = reader.IsDBNull(reader.GetOrdinal("GhiChu")) ? "Không có ghi chú thêm." : reader.GetString(reader.GetOrdinal("GhiChu"));
-                            flp_ContainsBill.Controls.Add(hoaDon);
-                        }
-                    }
-                }
+                GetBillsDescByPrice();
+               
             }
             else if (cbb_options.SelectedItem.ToString() == "Số tiền hóa đơn thấp nhất")
             {
-                flp_ContainsBill.Controls.Clear();
-                sqlQuery = "exec proc_HoaDonTangTheoTotalBill";
-                List<Dictionary<string, object>> keyValues = dbConn.ExecuteReaderData(sqlQuery);
-                using (SqlConnection conn = new SqlConnection(conStr))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand(sqlQuery, conn);
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            UC_BillInfomation hoaDon = new UC_BillInfomation();
-                            hoaDon.MaHD = reader.GetInt32(reader.GetOrdinal("MaHD"));
-                            hoaDon.TenNV = reader.GetString(reader.GetOrdinal("HoTen"));
-                            hoaDon.TenKH = reader.GetString(reader.GetOrdinal("TenKH"));
-                            hoaDon.ThoiGianDat = reader.GetDateTime(reader.GetOrdinal("ThoiGianDat"));
-                            hoaDon.TriGiaDH = reader.GetDecimal(reader.GetOrdinal("TriGiaHoaDon"));
-                            hoaDon.GhiChu = reader.IsDBNull(reader.GetOrdinal("GhiChu")) ? "Không có ghi chú thêm." : reader.GetString(reader.GetOrdinal("GhiChu"));
-                            flp_ContainsBill.Controls.Add(hoaDon);
-                        }
-                    }
-                }
+                GetBillsIncrementcByPrice();
             }
         }
     }

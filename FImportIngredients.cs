@@ -51,7 +51,6 @@ namespace MilkTeaShop
                 }
                 catch (Exception ex)
                 {
-
                 }
                 finally
                 {

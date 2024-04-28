@@ -10,27 +10,21 @@ namespace MilkTeaShop
 {
     public class My_DBConnection
     {
-        SqlConnection connRegular = new SqlConnection(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;
+        SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;
                                         User ID="+GLOBAL.Username+";Password="+GLOBAL.Password+";");
-        public void ShowConnRegular()
+        public SqlConnection getConn
         {
-            MessageBox.Show(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;User ID="+GLOBAL.Username+";Password="+GLOBAL.Password+";");
+            get { return conn; }
         }
-        public SqlConnection getConnRegular
+        public void OpenConn()
         {
-            get { return connRegular; }
+            if (conn.State == ConnectionState.Closed)
+                conn.Open();
         }
-
-        
-        public void OpenConnRegular()
+        public void CloseConn()
         {
-            if (connRegular.State == ConnectionState.Closed)
-                connRegular.Open();
-        }
-        public void CloseConnRegular()
-        {
-            if (connRegular.State == ConnectionState.Open)
-                connRegular.Close();
+            if (conn.State == ConnectionState.Open)
+                conn.Close();
         }
     }
 }

@@ -1224,6 +1224,7 @@ DENY EXECUTE ON proc_DeleteCustomer TO Staff_Sell
 
 -- Cho phép nhân viên thông thường có quyền xem trên mọi bảng
 GRANT SELECT TO Staff_Regular
+GRANT EXECUTE ON proc_GetProductByCategory TO Staff_Regular
 
 -- Với administrator cấp quyền sysadmin với nhân viên làm công việc có mã CV006
 GO

@@ -26,14 +26,14 @@ namespace MilkTeaShop
             sqlQuery = "DECLARE @doanhThu DECIMAL;"
                       +"SELECT @doanhThu = dbo.func_tinhDoanhThuTheoNgay(@ngay, @thang, @nam);"
                       +"SELECT @doanhThu AS 'Doanh thu';";
-            SqlCommand command = new SqlCommand(sqlQuery, db.getConnRegular);
+            SqlCommand command = new SqlCommand(sqlQuery, db.getConn);
             command.CommandType = CommandType.StoredProcedure;
 
             // Thêm các tham số và giá trị tương ứng
             command.Parameters.AddWithValue("@ngay", timePicked.Day);
             command.Parameters.AddWithValue("@thang", timePicked.Month);
             command.Parameters.AddWithValue("@nam", timePicked.Year);
-            db.OpenConnRegular();
+            db.OpenConn();
             decimal doanhThu = (decimal)command.ExecuteScalar();
 
 

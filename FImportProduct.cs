@@ -25,7 +25,7 @@ namespace MilkTeaShop
 
         private void LoadListDNSP()
         {
-
+            flpDSDNSP.Controls.Clear();
             query = "SELECT * FROM V_DonNhapSanPham";
             using (SqlConnection conn = new SqlConnection(conStr))
             {
@@ -61,7 +61,7 @@ namespace MilkTeaShop
         }
         private void InitializeDataGridView()
         {
-            dgvProducts.Columns.Add("maNLColumn", "Mã NL");
+            dgvProducts.Columns.Add("maSPColumn", "Mã SP");
             dgvProducts.Columns.Add("soLuongColumn", "Số Lượng");
             dgvProducts.Columns.Add("donViColumn", "Đơn Vị");
             dgvProducts.Columns.Add("donGiaColumn", "Đơn Giá");
@@ -86,12 +86,12 @@ namespace MilkTeaShop
                     {
                         while (dataReader.Read())
                         {
-                            UC_CTDN uCCTDNNL = new UC_CTDN();
-                            uCCTDNNL.LblTen.Text = dataReader["TenSP"].ToString();
-                            uCCTDNNL.LblDonVi.Text = dataReader["DonVi"].ToString();
-                            uCCTDNNL.LblSoLuong.Text = dataReader["SoLuong"].ToString();
-                            uCCTDNNL.LblDonGia.Text = dataReader["DonGia"].ToString();
-                            flpCTDNSP.Controls.Add(uCCTDNNL);
+                            UC_CTDN uCCTDNSP = new UC_CTDN();
+                            uCCTDNSP.LblTen.Text = dataReader["TenSP"].ToString();
+                            uCCTDNSP.LblDonVi.Text = dataReader["DonVi"].ToString();
+                            uCCTDNSP.LblSoLuong.Text = dataReader["SoLuong"].ToString();
+                            uCCTDNSP.LblDonGia.Text = dataReader["DonGia"].ToString();
+                            flpCTDNSP.Controls.Add(uCCTDNSP);
                         }
                     }
                 }
@@ -101,6 +101,12 @@ namespace MilkTeaShop
         {
             DateTime ngayNhap = DateTime.Today;
             string maNCC = txtMaNCC.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(maNCC))
+            {
+                MessageBox.Show("Please enter a valid supplier code (MaNCC).", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             using (SqlConnection conn = new SqlConnection(conStr))
             {
@@ -117,10 +123,11 @@ namespace MilkTeaShop
                         if (int.TryParse(result.ToString(), out currentOrderId))
                         {
                             MessageBox.Show($"Order created successfully with ID: {currentOrderId}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            btnThemSP.Enabled = true;
                         }
                         else
                         {
-                            MessageBox.Show($"An error occurred: {result}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Order could not be created. Please check the supplier code and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -134,14 +141,59 @@ namespace MilkTeaShop
                     LoadListDNSP();
                 }
             }
-
-        }
-        
-        
-
+        }      
         private void btnLuuDon_Click(object sender, EventArgs e)
         {
+            if (dgvProducts.Rows.Count == 0 || (dgvProducts.Rows.Count == 1 && dgvProducts.Rows[0].IsNewRow))
+            {
+                MessageBox.Show("There are no items to save.", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            int savedItemsCount = 0;
+
+            using (SqlConnection conn = new SqlConnection(conStr))
+            {
+                try
+                {
+                    conn.Open();
+                    foreach (DataGridViewRow row in dgvProducts.Rows)
+                    {
+                        if (!row.IsNewRow)
+                        {
+                            using (SqlCommand cmd = new SqlCommand("InsertChiTietDNSP", conn))
+                            {
+                                cmd.CommandType = CommandType.StoredProcedure;
+                                cmd.Parameters.AddWithValue("@MaDNSP", currentOrderId);
+                                cmd.Parameters.AddWithValue("@MaSP", row.Cells["maSPColumn"].Value);
+                                cmd.Parameters.AddWithValue("@SoLuong", row.Cells["soLuongColumn"].Value);
+                                cmd.Parameters.AddWithValue("@DonVi", row.Cells["donViColumn"].Value);
+                                cmd.Parameters.AddWithValue("@DonGia", row.Cells["donGiaColumn"].Value);
+                                cmd.ExecuteNonQuery();
+                                savedItemsCount++;
+                            }
+                        }
+                    }
+
+                    if (savedItemsCount > 0)
+                    {
+                        MessageBox.Show("All items have been saved successfully.", "Save Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No items were saved to the database.", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    conn.Close();
+                    LoadListDNSP();
+                }
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -164,6 +216,12 @@ namespace MilkTeaShop
 
         private void btnThemSP_Click(object sender, EventArgs e)
         {
+            if (currentOrderId <= 0)
+            {
+                MessageBox.Show("Please create an order before adding items.", "Operation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(txtMaSP.Text) ||
                 string.IsNullOrWhiteSpace(txtSoLuong.Text) ||
                 string.IsNullOrWhiteSpace(txtDonVi.Text) ||
@@ -186,7 +244,7 @@ namespace MilkTeaShop
             }
 
             int rowIndex = dgvProducts.Rows.Add();
-            dgvProducts.Rows[rowIndex].Cells["maNLColumn"].Value = txtMaSP.Text.Trim();
+            dgvProducts.Rows[rowIndex].Cells["maSPColumn"].Value = txtMaSP.Text.Trim();
             dgvProducts.Rows[rowIndex].Cells["soLuongColumn"].Value = quantity;
             dgvProducts.Rows[rowIndex].Cells["donViColumn"].Value = txtDonVi.Text.Trim();
             dgvProducts.Rows[rowIndex].Cells["donGiaColumn"].Value = price;

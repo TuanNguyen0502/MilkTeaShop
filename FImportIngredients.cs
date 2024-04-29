@@ -70,7 +70,6 @@ namespace MilkTeaShop
         {
             LoadCTDNNL(orderID);
         }
-
         public void LoadCTDNNL(string MaDNNL)
         {
             flpCTDNNL.Controls.Clear();
@@ -142,7 +141,6 @@ namespace MilkTeaShop
                     LoadListDNNL();
                 }
             }
-
         }
         private void btnLuuDon_Click(object sender, EventArgs e)
         {

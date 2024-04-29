@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,13 +18,13 @@ namespace MilkTeaShop
         }
         public void Sua(Suppliers sup)
         {
-            string sua = string.Format("UPDATE NhaCungCap SET TENNCC = N'{0}', SDT = '{1}', DiaChi = N'{2}' WHERE MANCC = '{3}'", sup.TenNCC, sup.SdtNCC, sup.DiaChiNCC, sup.MaNCC );
-            db.ThucThi(sua);
+            string sua = string.Format("Execute proc_UpdateNCC '{0}', N'{1}', N'{2}', '{3}'", sup.MaNCC, sup.TenNCC, sup.DiaChiNCC, sup.SdtNCC);
+            db.ThucThi(sua);       
         }
 
         public void Xoa(Suppliers sup)
         {
-            string xoa = string.Format("DELETE NhaCungCap WHERE MANCC = '{0}'", sup.MaNCC);
+            string xoa = string.Format("Execute proc_DeleteNCC '{0}'", sup.MaNCC);
             db.ThucThi(xoa);
         }
     }

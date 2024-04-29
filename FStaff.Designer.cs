@@ -88,7 +88,6 @@
             this.txtSearch.SelectedText = "";
             this.txtSearch.Size = new System.Drawing.Size(648, 46);
             this.txtSearch.TabIndex = 4;
-            this.txtSearch.TextChanged += new System.EventHandler(this.textBox_Search_TextChanged);
             // 
             // btnSearch
             // 

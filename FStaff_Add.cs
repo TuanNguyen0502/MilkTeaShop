@@ -13,62 +13,65 @@ namespace MilkTeaShop
 {
     public partial class FStaff_Add : Form
     {
-        readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True";
+        My_DBConnection db = new My_DBConnection(); 
         public FStaff_Add()
         {
             InitializeComponent();
         }
-
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(conStr))
+            try
             {
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand("proc_AddStaff", conn))
+                SqlCommand cmd = new SqlCommand("proc_AddStaff", db.getConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                db.OpenConn();
+
+                string gender = rdobtnMale.Checked ? "Nam" : "Nữ";
+                cmd.Parameters.AddWithValue("@MaNV", txtID.Text);
+                cmd.Parameters.AddWithValue("@HoTen", txtName.Text);
+                cmd.Parameters.AddWithValue("@GioiTinh", gender);
+                cmd.Parameters.AddWithValue("@NgaySinh", dtpDOB.Value.Date);
+                cmd.Parameters.AddWithValue("@DiaChi", txtAddress.Text);
+                cmd.Parameters.AddWithValue("@SDT", txtPhone.Text);
+                cmd.Parameters.AddWithValue("@NgayTuyenDung", dtpDOREC.Value.Date);
+                object selectedJob = cbbIDJOB.SelectedValue;
+                if (selectedJob == null)
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    string gender = rdobtnMale.Checked ? "Nam" : "Nữ";
-
-                    cmd.Parameters.AddWithValue("@MaNV", txtID.Text);
-                    cmd.Parameters.AddWithValue("@HoTen", txtName.Text);
-                    cmd.Parameters.AddWithValue("@GioiTinh", gender);
-                    cmd.Parameters.AddWithValue("@NgaySinh", dtpDOB.Value.Date);
-                    cmd.Parameters.AddWithValue("@DiaChi", txtAddress.Text);
-                    cmd.Parameters.AddWithValue("@SDT", txtPhone.Text);
-                    cmd.Parameters.AddWithValue("@NgayTuyenDung", dtpDOREC.Value.Date);
-                    object selectedJob = cbbIDJOB.SelectedValue;
-                    if (selectedJob == null)
-                    {
-                        selectedJob = cbbIDJOB.SelectedItem;
-                    }
-
-                    if (selectedJob != null)
-                    {
-                        cmd.Parameters.Add(new SqlParameter("@MaCV", SqlDbType.NChar, 10) { Value = selectedJob.ToString() });
-                    }
-                    else
-                    {
-                        MessageBox.Show("Please select a job position.");
-                        return;
-                    }
-                    try
-                    {
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Employee added successfully!");
-                        this.DialogResult = DialogResult.OK;
-                        this.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Failed to add employee. Error: " + ex.Message);
-                    }
+                    selectedJob = cbbIDJOB.SelectedItem;
                 }
+
+                if (selectedJob != null)
+                {
+                    cmd.Parameters.Add(new SqlParameter("@MaCV", SqlDbType.NChar, 10) { Value = selectedJob.ToString() });
+                }
+                else
+                {
+                    MessageBox.Show("Please select a job position.");
+                    return;
+                }
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Employee added successfully!");
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
+                {
+                    MessageBox.Show("Bị hạn chế quyền\n" + ex.Message);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
+            }
+            finally
+            {
+                db.CloseConn();
             }
         }
     }

@@ -52,7 +52,7 @@ namespace MilkTeaShop
 
         private void FSuppliers_Load(object sender, EventArgs e)
         {
-            string query = "Select * from NhaCungCap";
+            string query = "SELECT * FROM view_NhaCungCap";
             GeneratePanel(query);
         }
 

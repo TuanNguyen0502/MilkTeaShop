@@ -17,13 +17,13 @@ namespace MilkTeaShop
         }
         public void Sua(Ingredient ig)
         {
-            string sua = string.Format("UPDATE NGUYENLIEU SET TENNL = N'{0}', SoLuong = '{1}', DonVi = N'{2}' WHERE MANL = '{3}'", ig.TenNL, ig.SoLuong, ig.DonVi, ig.MaNL);
+            string sua = string.Format("Execute proc_UpdateNL '{0}', N'{1}', N'{2}', '{3}'", ig.MaNL, ig.TenNL, ig.SoLuong, ig.DonVi);
             db.ThucThi(sua);
         }
 
         public void Xoa(Ingredient ig)
         {
-            string xoa = string.Format("DELETE FROM NGUYENLIEU WHERE MANL = '{0}'", ig.MaNL);
+            string xoa = string.Format("Execute proc_DeleteNL '{0}'", ig.MaNL);
             db.ThucThi(xoa);
         }
     }

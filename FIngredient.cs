@@ -27,7 +27,7 @@ namespace MilkTeaShop
 
         private void FIngredient_Load(object sender, EventArgs e)
         {
-            string query = "Select * from NguyenLieu";
+            string query = "SELECT * FROM view_NguyenLieu";
             GeneratePanel(query);
         }
 
@@ -81,7 +81,7 @@ namespace MilkTeaShop
         {
             if (cb_ConHang.Checked)
             {
-                string query = "Select * from NguyenLieu where TrangThai = 'Available'";
+                string query = "SELECT * FROM view_NL_Available";
                 GeneratePanel(query);
                 this.Refresh();
                 cb_HetHang.Enabled = false;
@@ -97,7 +97,7 @@ namespace MilkTeaShop
         {
             if (cb_HetHang.Checked)
             {
-                string query = "Select * from NguyenLieu where TrangThai = 'Unavailable'";
+                string query = "SELECT * FROM view_NL_Unavailable";
                 GeneratePanel(query);
                 this.Refresh();
                 cb_ConHang.Enabled = false;

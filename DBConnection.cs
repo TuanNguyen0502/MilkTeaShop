@@ -13,7 +13,7 @@ namespace MilkTeaShop
     {
         SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True;Encrypt=False");
         readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True;Encrypt=False";
-
+        
         public DataTable LoadData (string query)
         {
             string sqlStr = string.Format(query);

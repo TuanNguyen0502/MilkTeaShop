@@ -22,34 +22,41 @@ namespace MilkTeaShop
 
         private void FLogin_User_Load(object sender, EventArgs e)
         {
-            
         }
-
+        public string GetMaNVByAccount(string Username)
+        {
+            string sqlQuery = "SELECT dbo.func_GetMaNVByUsername(@Username)";
+            SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
+            cmd.Parameters.AddWithValue("@Username", Username);
+            string MaNV = (string)cmd.ExecuteScalar();
+            return MaNV;
+        }
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
             GLOBAL.Username = txtTaiKhoan.Text;
             GLOBAL.Password = txtMatKhau.Text;
             string sqlQuery = "SELECT dbo.func_CheckLogin(@Username, @Password);";
-            SqlCommand cmd = new SqlCommand(sqlQuery, db.getConnAdmin);
-            db.OpenConnAdmin();
+            SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
             SqlParameter[] lstParam =
             {
                 new SqlParameter("@Username", SqlDbType.VarChar) {Value = txtTaiKhoan.Text},
                 new SqlParameter("@Password", SqlDbType.VarChar) {Value = txtMatKhau.Text},
             };
             cmd.Parameters.AddRange(lstParam);
+            db.OpenConn();
             bool success = (bool)cmd.ExecuteScalar();
 
             if (success)
             {
                 MessageBox.Show("Đăng nhập thành công!");
-                Program.MainFormManager.CurrentForm = new FMain();
+                string MaNV = GetMaNVByAccount(txtTaiKhoan.Text);
+                Program.MainFormManager.CurrentForm = new FMain(MaNV);
             }
             else
             {
                 MessageBox.Show("Đăng nhập thất bại. Tài khoản hoặc mật khẩu không hợp lệ !");
-                db.CloseConnAdmin();
             }
+            db.CloseConn();
         }
 
         private void btnThoat_Click(object sender, EventArgs e)

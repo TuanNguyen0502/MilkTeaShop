@@ -28,13 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox_XuatNL = new System.Windows.Forms.GroupBox();
+            this.button_SuaDon = new Guna.UI.WinForms.GunaButton();
+            this.dateTimePicker_NgayXuat = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.gunaLabel2 = new Guna.UI.WinForms.GunaLabel();
+            this.textBox_MaDonXuat = new Guna.UI2.WinForms.Guna2TextBox();
+            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.dataGridView_DonXuatNguyenLieu = new Guna.UI2.WinForms.Guna2DataGridView();
             this.textBox_DonVi = new Guna.UI2.WinForms.Guna2TextBox();
             this.textBox_SoLuong = new Guna.UI2.WinForms.Guna2TextBox();
@@ -42,7 +47,7 @@
             this.textBox_MaNhanVien = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnThem = new Guna.UI.WinForms.GunaButton();
             this.button_TaoDon = new Guna.UI.WinForms.GunaButton();
-            this.btnLuu = new Guna.UI.WinForms.GunaButton();
+            this.button_SuaChiTiet = new Guna.UI.WinForms.GunaButton();
             this.lblNCC = new Guna.UI.WinForms.GunaLabel();
             this.lblDonvi = new Guna.UI.WinForms.GunaLabel();
             this.lblSoLuong = new Guna.UI.WinForms.GunaLabel();
@@ -50,8 +55,6 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox_CTDXNL = new System.Windows.Forms.GroupBox();
             this.dataGridView_ChiTietDXNL = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.textBox_MaDonXuat = new Guna.UI2.WinForms.Guna2TextBox();
-            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.groupBox_XuatNL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_DonXuatNguyenLieu)).BeginInit();
             this.groupBox_CTDXNL.SuspendLayout();
@@ -61,6 +64,9 @@
             // groupBox_XuatNL
             // 
             this.groupBox_XuatNL.BackColor = System.Drawing.Color.White;
+            this.groupBox_XuatNL.Controls.Add(this.button_SuaDon);
+            this.groupBox_XuatNL.Controls.Add(this.dateTimePicker_NgayXuat);
+            this.groupBox_XuatNL.Controls.Add(this.gunaLabel2);
             this.groupBox_XuatNL.Controls.Add(this.textBox_MaDonXuat);
             this.groupBox_XuatNL.Controls.Add(this.gunaLabel1);
             this.groupBox_XuatNL.Controls.Add(this.dataGridView_DonXuatNguyenLieu);
@@ -70,7 +76,7 @@
             this.groupBox_XuatNL.Controls.Add(this.textBox_MaNhanVien);
             this.groupBox_XuatNL.Controls.Add(this.btnThem);
             this.groupBox_XuatNL.Controls.Add(this.button_TaoDon);
-            this.groupBox_XuatNL.Controls.Add(this.btnLuu);
+            this.groupBox_XuatNL.Controls.Add(this.button_SuaChiTiet);
             this.groupBox_XuatNL.Controls.Add(this.lblNCC);
             this.groupBox_XuatNL.Controls.Add(this.lblDonvi);
             this.groupBox_XuatNL.Controls.Add(this.lblSoLuong);
@@ -82,33 +88,117 @@
             this.groupBox_XuatNL.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox_XuatNL.Name = "groupBox_XuatNL";
             this.groupBox_XuatNL.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox_XuatNL.Size = new System.Drawing.Size(1591, 502);
+            this.groupBox_XuatNL.Size = new System.Drawing.Size(1616, 502);
             this.groupBox_XuatNL.TabIndex = 0;
             this.groupBox_XuatNL.TabStop = false;
             this.groupBox_XuatNL.Text = "Xuất nguyên liệu";
             // 
+            // button_SuaDon
+            // 
+            this.button_SuaDon.AnimationHoverSpeed = 0.07F;
+            this.button_SuaDon.AnimationSpeed = 0.03F;
+            this.button_SuaDon.BaseColor = System.Drawing.SystemColors.Highlight;
+            this.button_SuaDon.BorderColor = System.Drawing.Color.Black;
+            this.button_SuaDon.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.button_SuaDon.FocusedColor = System.Drawing.Color.Empty;
+            this.button_SuaDon.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold);
+            this.button_SuaDon.ForeColor = System.Drawing.Color.White;
+            this.button_SuaDon.Image = null;
+            this.button_SuaDon.ImageSize = new System.Drawing.Size(20, 20);
+            this.button_SuaDon.Location = new System.Drawing.Point(1472, 97);
+            this.button_SuaDon.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_SuaDon.Name = "button_SuaDon";
+            this.button_SuaDon.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.button_SuaDon.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.button_SuaDon.OnHoverForeColor = System.Drawing.Color.White;
+            this.button_SuaDon.OnHoverImage = null;
+            this.button_SuaDon.OnPressedColor = System.Drawing.Color.Black;
+            this.button_SuaDon.Size = new System.Drawing.Size(118, 52);
+            this.button_SuaDon.TabIndex = 42;
+            this.button_SuaDon.Text = "Sửa đơn";
+            this.button_SuaDon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.button_SuaDon.Click += new System.EventHandler(this.button_SuaDon_Click);
+            // 
+            // dateTimePicker_NgayXuat
+            // 
+            this.dateTimePicker_NgayXuat.AutoRoundedCorners = true;
+            this.dateTimePicker_NgayXuat.BorderRadius = 25;
+            this.dateTimePicker_NgayXuat.Checked = true;
+            this.dateTimePicker_NgayXuat.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker_NgayXuat.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker_NgayXuat.Location = new System.Drawing.Point(1289, 156);
+            this.dateTimePicker_NgayXuat.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dateTimePicker_NgayXuat.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dateTimePicker_NgayXuat.Name = "dateTimePicker_NgayXuat";
+            this.dateTimePicker_NgayXuat.Size = new System.Drawing.Size(301, 52);
+            this.dateTimePicker_NgayXuat.TabIndex = 41;
+            this.dateTimePicker_NgayXuat.Value = new System.DateTime(2024, 4, 28, 17, 36, 26, 164);
+            // 
+            // gunaLabel2
+            // 
+            this.gunaLabel2.AutoSize = true;
+            this.gunaLabel2.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold);
+            this.gunaLabel2.Location = new System.Drawing.Point(1149, 167);
+            this.gunaLabel2.Name = "gunaLabel2";
+            this.gunaLabel2.Size = new System.Drawing.Size(131, 32);
+            this.gunaLabel2.TabIndex = 40;
+            this.gunaLabel2.Text = "Ngày xuất";
+            // 
+            // textBox_MaDonXuat
+            // 
+            this.textBox_MaDonXuat.AutoRoundedCorners = true;
+            this.textBox_MaDonXuat.BorderRadius = 25;
+            this.textBox_MaDonXuat.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox_MaDonXuat.DefaultText = "";
+            this.textBox_MaDonXuat.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.textBox_MaDonXuat.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.textBox_MaDonXuat.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.textBox_MaDonXuat.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.textBox_MaDonXuat.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.textBox_MaDonXuat.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold);
+            this.textBox_MaDonXuat.ForeColor = System.Drawing.Color.Black;
+            this.textBox_MaDonXuat.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.textBox_MaDonXuat.Location = new System.Drawing.Point(1288, 31);
+            this.textBox_MaDonXuat.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.textBox_MaDonXuat.Name = "textBox_MaDonXuat";
+            this.textBox_MaDonXuat.PasswordChar = '\0';
+            this.textBox_MaDonXuat.PlaceholderText = "";
+            this.textBox_MaDonXuat.SelectedText = "";
+            this.textBox_MaDonXuat.Size = new System.Drawing.Size(177, 52);
+            this.textBox_MaDonXuat.TabIndex = 39;
+            // 
+            // gunaLabel1
+            // 
+            this.gunaLabel1.AutoSize = true;
+            this.gunaLabel1.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold);
+            this.gunaLabel1.Location = new System.Drawing.Point(1121, 41);
+            this.gunaLabel1.Name = "gunaLabel1";
+            this.gunaLabel1.Size = new System.Drawing.Size(159, 32);
+            this.gunaLabel1.TabIndex = 38;
+            this.gunaLabel1.Text = "Mã đơn xuất";
+            // 
             // dataGridView_DonXuatNguyenLieu
             // 
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
-            this.dataGridView_DonXuatNguyenLieu.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_DonXuatNguyenLieu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            this.dataGridView_DonXuatNguyenLieu.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_DonXuatNguyenLieu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView_DonXuatNguyenLieu.ColumnHeadersHeight = 34;
             this.dataGridView_DonXuatNguyenLieu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView_DonXuatNguyenLieu.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView_DonXuatNguyenLieu.DefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridView_DonXuatNguyenLieu.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dataGridView_DonXuatNguyenLieu.Location = new System.Drawing.Point(12, 41);
             this.dataGridView_DonXuatNguyenLieu.Name = "dataGridView_DonXuatNguyenLieu";
@@ -155,13 +245,13 @@
             this.textBox_DonVi.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold);
             this.textBox_DonVi.ForeColor = System.Drawing.Color.Black;
             this.textBox_DonVi.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.textBox_DonVi.Location = new System.Drawing.Point(1289, 288);
+            this.textBox_DonVi.Location = new System.Drawing.Point(1289, 356);
             this.textBox_DonVi.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.textBox_DonVi.Name = "textBox_DonVi";
             this.textBox_DonVi.PasswordChar = '\0';
             this.textBox_DonVi.PlaceholderText = "";
             this.textBox_DonVi.SelectedText = "";
-            this.textBox_DonVi.Size = new System.Drawing.Size(277, 52);
+            this.textBox_DonVi.Size = new System.Drawing.Size(302, 52);
             this.textBox_DonVi.TabIndex = 36;
             // 
             // textBox_SoLuong
@@ -178,13 +268,13 @@
             this.textBox_SoLuong.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold);
             this.textBox_SoLuong.ForeColor = System.Drawing.Color.Black;
             this.textBox_SoLuong.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.textBox_SoLuong.Location = new System.Drawing.Point(1289, 224);
+            this.textBox_SoLuong.Location = new System.Drawing.Point(1289, 292);
             this.textBox_SoLuong.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.textBox_SoLuong.Name = "textBox_SoLuong";
             this.textBox_SoLuong.PasswordChar = '\0';
             this.textBox_SoLuong.PlaceholderText = "";
             this.textBox_SoLuong.SelectedText = "";
-            this.textBox_SoLuong.Size = new System.Drawing.Size(277, 52);
+            this.textBox_SoLuong.Size = new System.Drawing.Size(302, 52);
             this.textBox_SoLuong.TabIndex = 35;
             // 
             // textBox_MaNguyenLieu
@@ -201,13 +291,13 @@
             this.textBox_MaNguyenLieu.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold);
             this.textBox_MaNguyenLieu.ForeColor = System.Drawing.Color.Black;
             this.textBox_MaNguyenLieu.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.textBox_MaNguyenLieu.Location = new System.Drawing.Point(1289, 160);
+            this.textBox_MaNguyenLieu.Location = new System.Drawing.Point(1288, 228);
             this.textBox_MaNguyenLieu.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.textBox_MaNguyenLieu.Name = "textBox_MaNguyenLieu";
             this.textBox_MaNguyenLieu.PasswordChar = '\0';
             this.textBox_MaNguyenLieu.PlaceholderText = "";
             this.textBox_MaNguyenLieu.SelectedText = "";
-            this.textBox_MaNguyenLieu.Size = new System.Drawing.Size(277, 52);
+            this.textBox_MaNguyenLieu.Size = new System.Drawing.Size(302, 52);
             this.textBox_MaNguyenLieu.TabIndex = 34;
             // 
             // textBox_MaNhanVien
@@ -224,7 +314,7 @@
             this.textBox_MaNhanVien.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold);
             this.textBox_MaNhanVien.ForeColor = System.Drawing.Color.Black;
             this.textBox_MaNhanVien.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.textBox_MaNhanVien.Location = new System.Drawing.Point(1289, 93);
+            this.textBox_MaNhanVien.Location = new System.Drawing.Point(1288, 95);
             this.textBox_MaNhanVien.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.textBox_MaNhanVien.Name = "textBox_MaNhanVien";
             this.textBox_MaNhanVien.PasswordChar = '\0';
@@ -242,11 +332,11 @@
             this.btnThem.BorderColor = System.Drawing.Color.Black;
             this.btnThem.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnThem.FocusedColor = System.Drawing.Color.Empty;
-            this.btnThem.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnThem.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnThem.ForeColor = System.Drawing.Color.White;
             this.btnThem.Image = null;
             this.btnThem.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnThem.Location = new System.Drawing.Point(1184, 418);
+            this.btnThem.Location = new System.Drawing.Point(1198, 418);
             this.btnThem.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnThem.Name = "btnThem";
             this.btnThem.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
@@ -254,7 +344,7 @@
             this.btnThem.OnHoverForeColor = System.Drawing.Color.White;
             this.btnThem.OnHoverImage = null;
             this.btnThem.OnPressedColor = System.Drawing.Color.Black;
-            this.btnThem.Size = new System.Drawing.Size(128, 52);
+            this.btnThem.Size = new System.Drawing.Size(183, 52);
             this.btnThem.TabIndex = 32;
             this.btnThem.Text = "Thêm chi tiết";
             this.btnThem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -268,11 +358,11 @@
             this.button_TaoDon.BorderColor = System.Drawing.Color.Black;
             this.button_TaoDon.DialogResult = System.Windows.Forms.DialogResult.None;
             this.button_TaoDon.FocusedColor = System.Drawing.Color.Empty;
-            this.button_TaoDon.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.button_TaoDon.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold);
             this.button_TaoDon.ForeColor = System.Drawing.Color.White;
             this.button_TaoDon.Image = null;
             this.button_TaoDon.ImageSize = new System.Drawing.Size(20, 20);
-            this.button_TaoDon.Location = new System.Drawing.Point(1473, 93);
+            this.button_TaoDon.Location = new System.Drawing.Point(1473, 31);
             this.button_TaoDon.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button_TaoDon.Name = "button_TaoDon";
             this.button_TaoDon.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
@@ -280,42 +370,43 @@
             this.button_TaoDon.OnHoverForeColor = System.Drawing.Color.White;
             this.button_TaoDon.OnHoverImage = null;
             this.button_TaoDon.OnPressedColor = System.Drawing.Color.Black;
-            this.button_TaoDon.Size = new System.Drawing.Size(93, 52);
+            this.button_TaoDon.Size = new System.Drawing.Size(118, 52);
             this.button_TaoDon.TabIndex = 31;
             this.button_TaoDon.Text = "Tạo đơn";
             this.button_TaoDon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.button_TaoDon.Click += new System.EventHandler(this.btnTaoDon_Click);
             // 
-            // btnLuu
+            // button_SuaChiTiet
             // 
-            this.btnLuu.AnimationHoverSpeed = 0.07F;
-            this.btnLuu.AnimationSpeed = 0.03F;
-            this.btnLuu.BaseColor = System.Drawing.SystemColors.Highlight;
-            this.btnLuu.BorderColor = System.Drawing.Color.Black;
-            this.btnLuu.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnLuu.FocusedColor = System.Drawing.Color.Empty;
-            this.btnLuu.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnLuu.ForeColor = System.Drawing.Color.White;
-            this.btnLuu.Image = null;
-            this.btnLuu.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnLuu.Location = new System.Drawing.Point(1351, 418);
-            this.btnLuu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.btnLuu.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btnLuu.OnHoverForeColor = System.Drawing.Color.White;
-            this.btnLuu.OnHoverImage = null;
-            this.btnLuu.OnPressedColor = System.Drawing.Color.Black;
-            this.btnLuu.Size = new System.Drawing.Size(114, 52);
-            this.btnLuu.TabIndex = 28;
-            this.btnLuu.Text = "Sua chi tiet";
-            this.btnLuu.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.button_SuaChiTiet.AnimationHoverSpeed = 0.07F;
+            this.button_SuaChiTiet.AnimationSpeed = 0.03F;
+            this.button_SuaChiTiet.BaseColor = System.Drawing.SystemColors.Highlight;
+            this.button_SuaChiTiet.BorderColor = System.Drawing.Color.Black;
+            this.button_SuaChiTiet.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.button_SuaChiTiet.FocusedColor = System.Drawing.Color.Empty;
+            this.button_SuaChiTiet.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold);
+            this.button_SuaChiTiet.ForeColor = System.Drawing.Color.White;
+            this.button_SuaChiTiet.Image = null;
+            this.button_SuaChiTiet.ImageSize = new System.Drawing.Size(20, 20);
+            this.button_SuaChiTiet.Location = new System.Drawing.Point(1408, 418);
+            this.button_SuaChiTiet.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_SuaChiTiet.Name = "button_SuaChiTiet";
+            this.button_SuaChiTiet.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.button_SuaChiTiet.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.button_SuaChiTiet.OnHoverForeColor = System.Drawing.Color.White;
+            this.button_SuaChiTiet.OnHoverImage = null;
+            this.button_SuaChiTiet.OnPressedColor = System.Drawing.Color.Black;
+            this.button_SuaChiTiet.Size = new System.Drawing.Size(158, 52);
+            this.button_SuaChiTiet.TabIndex = 28;
+            this.button_SuaChiTiet.Text = "Sửa chi tiết";
+            this.button_SuaChiTiet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.button_SuaChiTiet.Click += new System.EventHandler(this.button_SuaChiTiet_Click);
             // 
             // lblNCC
             // 
             this.lblNCC.AutoSize = true;
             this.lblNCC.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblNCC.Location = new System.Drawing.Point(1111, 113);
+            this.lblNCC.Location = new System.Drawing.Point(1111, 104);
             this.lblNCC.Name = "lblNCC";
             this.lblNCC.Size = new System.Drawing.Size(169, 32);
             this.lblNCC.TabIndex = 26;
@@ -325,7 +416,7 @@
             // 
             this.lblDonvi.AutoSize = true;
             this.lblDonvi.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblDonvi.Location = new System.Drawing.Point(1181, 308);
+            this.lblDonvi.Location = new System.Drawing.Point(1192, 366);
             this.lblDonvi.Name = "lblDonvi";
             this.lblDonvi.Size = new System.Drawing.Size(89, 32);
             this.lblDonvi.TabIndex = 22;
@@ -335,7 +426,7 @@
             // 
             this.lblSoLuong.AutoSize = true;
             this.lblSoLuong.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblSoLuong.Location = new System.Drawing.Point(1163, 235);
+            this.lblSoLuong.Location = new System.Drawing.Point(1164, 303);
             this.lblSoLuong.Name = "lblSoLuong";
             this.lblSoLuong.Size = new System.Drawing.Size(117, 32);
             this.lblSoLuong.TabIndex = 20;
@@ -345,7 +436,7 @@
             // 
             this.lblMaNL.AutoSize = true;
             this.lblMaNL.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblMaNL.Location = new System.Drawing.Point(1178, 180);
+            this.lblMaNL.Location = new System.Drawing.Point(1192, 238);
             this.lblMaNL.Name = "lblMaNL";
             this.lblMaNL.Size = new System.Drawing.Size(88, 32);
             this.lblMaNL.TabIndex = 18;
@@ -361,32 +452,33 @@
             this.groupBox_CTDXNL.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox_CTDXNL.Name = "groupBox_CTDXNL";
             this.groupBox_CTDXNL.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox_CTDXNL.Size = new System.Drawing.Size(1591, 443);
+            this.groupBox_CTDXNL.Size = new System.Drawing.Size(1616, 443);
             this.groupBox_CTDXNL.TabIndex = 1;
             this.groupBox_CTDXNL.TabStop = false;
             this.groupBox_CTDXNL.Text = "Chi tiết đơn xuất nguyên liệu";
             // 
             // dataGridView_ChiTietDXNL
             // 
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
-            this.dataGridView_ChiTietDXNL.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_ChiTietDXNL.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
-            this.dataGridView_ChiTietDXNL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView_ChiTietDXNL.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
+            this.dataGridView_ChiTietDXNL.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_ChiTietDXNL.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.dataGridView_ChiTietDXNL.ColumnHeadersHeight = 34;
+            this.dataGridView_ChiTietDXNL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView_ChiTietDXNL.DefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridView_ChiTietDXNL.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dataGridView_ChiTietDXNL.Location = new System.Drawing.Point(12, 39);
             this.dataGridView_ChiTietDXNL.Name = "dataGridView_ChiTietDXNL";
@@ -407,7 +499,7 @@
             this.dataGridView_ChiTietDXNL.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridView_ChiTietDXNL.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataGridView_ChiTietDXNL.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.dataGridView_ChiTietDXNL.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_ChiTietDXNL.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dataGridView_ChiTietDXNL.ThemeStyle.HeaderStyle.Height = 34;
             this.dataGridView_ChiTietDXNL.ThemeStyle.ReadOnly = true;
             this.dataGridView_ChiTietDXNL.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
@@ -417,52 +509,21 @@
             this.dataGridView_ChiTietDXNL.ThemeStyle.RowsStyle.Height = 28;
             this.dataGridView_ChiTietDXNL.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dataGridView_ChiTietDXNL.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            // 
-            // textBox_MaDonXuat
-            // 
-            this.textBox_MaDonXuat.AutoRoundedCorners = true;
-            this.textBox_MaDonXuat.BorderRadius = 25;
-            this.textBox_MaDonXuat.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBox_MaDonXuat.DefaultText = "";
-            this.textBox_MaDonXuat.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.textBox_MaDonXuat.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.textBox_MaDonXuat.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.textBox_MaDonXuat.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.textBox_MaDonXuat.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.textBox_MaDonXuat.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold);
-            this.textBox_MaDonXuat.ForeColor = System.Drawing.Color.Black;
-            this.textBox_MaDonXuat.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.textBox_MaDonXuat.Location = new System.Drawing.Point(1288, 31);
-            this.textBox_MaDonXuat.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.textBox_MaDonXuat.Name = "textBox_MaDonXuat";
-            this.textBox_MaDonXuat.PasswordChar = '\0';
-            this.textBox_MaDonXuat.PlaceholderText = "";
-            this.textBox_MaDonXuat.SelectedText = "";
-            this.textBox_MaDonXuat.Size = new System.Drawing.Size(177, 52);
-            this.textBox_MaDonXuat.TabIndex = 39;
-            // 
-            // gunaLabel1
-            // 
-            this.gunaLabel1.AutoSize = true;
-            this.gunaLabel1.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold);
-            this.gunaLabel1.Location = new System.Drawing.Point(1121, 41);
-            this.gunaLabel1.Name = "gunaLabel1";
-            this.gunaLabel1.Size = new System.Drawing.Size(159, 32);
-            this.gunaLabel1.TabIndex = 38;
-            this.gunaLabel1.Text = "Mã đơn xuất";
+            this.dataGridView_ChiTietDXNL.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_ChiTietDXNL_CellClick);
             // 
             // FExport_Ingredients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1591, 945);
+            this.ClientSize = new System.Drawing.Size(1616, 945);
             this.Controls.Add(this.groupBox_CTDXNL);
             this.Controls.Add(this.groupBox_XuatNL);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FExport_Ingredients";
             this.Text = "FImport_Ingredients";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.groupBox_XuatNL.ResumeLayout(false);
             this.groupBox_XuatNL.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_DonXuatNguyenLieu)).EndInit();
@@ -481,7 +542,7 @@
         private Guna.UI.WinForms.GunaLabel lblMaNL;
         private Guna.UI.WinForms.GunaLabel lblNCC;
         private Guna.UI.WinForms.GunaLabel lblDonvi;
-        private Guna.UI.WinForms.GunaButton btnLuu;
+        private Guna.UI.WinForms.GunaButton button_SuaChiTiet;
         private Guna.UI.WinForms.GunaButton button_TaoDon;
         private Guna.UI.WinForms.GunaButton btnThem;
         private Guna.UI2.WinForms.Guna2TextBox textBox_MaNhanVien;
@@ -492,5 +553,8 @@
         private Guna.UI2.WinForms.Guna2DataGridView dataGridView_ChiTietDXNL;
         private Guna.UI2.WinForms.Guna2TextBox textBox_MaDonXuat;
         private Guna.UI.WinForms.GunaLabel gunaLabel1;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dateTimePicker_NgayXuat;
+        private Guna.UI.WinForms.GunaLabel gunaLabel2;
+        private Guna.UI.WinForms.GunaButton button_SuaDon;
     }
 }

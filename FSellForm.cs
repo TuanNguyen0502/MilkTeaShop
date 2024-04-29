@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data;
 using System.Data.SqlClient;
 using Guna.UI.WinForms;
 
@@ -15,9 +14,14 @@ namespace MilkTeaShop
 {
     public partial class FSellForm : Form
     {
-        readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True";
-        DBConnection dbConn = new DBConnection();
+        My_DBConnection db = new My_DBConnection();
         string sqlQuery;
+        private string manv;
+        public FSellForm(string manv)
+        {
+            InitializeComponent();
+            this.manv = manv;
+        }
         public FSellForm()
         {
             InitializeComponent();
@@ -26,6 +30,7 @@ namespace MilkTeaShop
         private void SellForm_Load(object sender, EventArgs e)
         {
             flp_ContainsItem.Controls.Clear();
+            lbl_CurrentStaff.Text = manv;
             lbl_TotalBill.Text = "0 VNĐ";
             lbl_Pay.Text = "0 VNĐ";
             lbl_SDTKH.Text = "";
@@ -43,47 +48,87 @@ namespace MilkTeaShop
         }
         public void GetItemSelled(string MaLoaiSP)
         {
-            sqlQuery = "exec proc_GetProductByCategory @MaLoaiSP";
-            SqlParameter[] lstParams =
+            try
             {
-                new SqlParameter("@MaLoaiSP", SqlDbType.VarChar) {Value = MaLoaiSP}
-            };
-            List<Dictionary<string, object>> keyValuePairs = dbConn.ExecuteReaderData(sqlQuery, lstParams);
-            foreach (var keyValue in keyValuePairs)
+                sqlQuery = "exec proc_GetProductByCategory @MaLoaiSP";
+                SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
+                cmd.Parameters.AddWithValue("@MaLoaiSP", MaLoaiSP);
+                db.OpenConn();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        UC_ItemSelled item = new UC_ItemSelled();
+                        item.MaSP = reader.GetString(reader.GetOrdinal("MaSP"));
+                        item.TenSP = reader.GetString(reader.GetOrdinal("TenSP"));
+                        item.DonGia = reader.GetDecimal(reader.GetOrdinal("DonGia"));
+                        item.ThoiGianBan = DateTime.Now;
+                        item.ClickIntoItemSelling += itemSelling_Click;
+                        item.ClickIntoLineItemSelling += itemLineSelling_Click;
+                        item.ShadowPanel_CheBien_Click += shadowPanel_CheBien_Click;
+                        item.NameItem_Click += nameItem_Click;
+                        flp_ContainsItem.Controls.Add(item);
+                    }
+                }
+            }
+            catch (SqlException ex)
             {
-                UC_ItemSelled item = new UC_ItemSelled();
-                item.MaSP = (string)keyValue["MaSP"];
-                item.TenSP = (string)keyValue["TenSP"];
-                item.DonGia = (decimal)keyValue["DonGia"];
-                item.ThoiGianBan = DateTime.Now;
-                item.ClickIntoItemSelling += itemSelling_Click;
-                item.ClickIntoLineItemSelling += itemLineSelling_Click;
-                item.ShadowPanel_CheBien_Click += shadowPanel_CheBien_Click;
-                item.NameItem_Click += nameItem_Click;
-                flp_ContainsItem.Controls.Add(item);
+                if (ex.Number == 229)
+                {
+                    MessageBox.Show("Bị hạn chế quyền\n"+ex.Message);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: "+ex.Message);
+                }
+            }
+            finally
+            {
+                db.CloseConn();
             }
         }
         public void GetItemSelled(string MaLoaiSP, System.Drawing.Image icon)
         {
-            sqlQuery = "exec proc_GetProductByCategory @MaLoaiSP";
-            SqlParameter[] lstParams =
+            try
             {
-                new SqlParameter("@MaLoaiSP", SqlDbType.VarChar) {Value = MaLoaiSP}
-            };
-            List<Dictionary<string, object>> keyValuePairs = dbConn.ExecuteReaderData(sqlQuery, lstParams);
-            foreach (var keyValue in keyValuePairs)
+                sqlQuery = "exec proc_GetProductByCategory @MaLoaiSP";
+                SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
+                cmd.Parameters.AddWithValue("@MaLoaiSP", MaLoaiSP);
+                db.OpenConn();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        UC_ItemSelled item = new UC_ItemSelled();
+                        item.MaSP = reader.GetString(reader.GetOrdinal("MaSP"));
+                        item.TenSP = reader.GetString(reader.GetOrdinal("TenSP"));
+                        item.DonGia = reader.GetDecimal(reader.GetOrdinal("DonGia"));
+                        item.ThoiGianBan = DateTime.Now;
+                        item.Icon = icon;
+                        item.ClickIntoItemSelling += itemSelling_Click;
+                        item.ClickIntoLineItemSelling += itemLineSelling_Click;
+                        item.ShadowPanel_CheBien_Click += shadowPanel_CheBien_Click;
+                        item.NameItem_Click += nameItem_Click;
+                        flp_ContainsItem.Controls.Add(item);
+                    }
+                }
+            }
+            catch (SqlException ex)
             {
-                UC_ItemSelled item = new UC_ItemSelled();
-                item.MaSP = (string)keyValue["MaSP"];
-                item.TenSP = (string)keyValue["TenSP"];
-                item.DonGia = (decimal)keyValue["DonGia"];
-                item.ThoiGianBan = DateTime.Now;
-                item.Icon = icon;
-                item.ClickIntoItemSelling += itemSelling_Click;
-                item.ClickIntoLineItemSelling += itemLineSelling_Click;
-                item.ShadowPanel_CheBien_Click += shadowPanel_CheBien_Click;
-                item.NameItem_Click += nameItem_Click;
-                flp_ContainsItem.Controls.Add(item);
+                if (ex.Number == 229)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: "+ex.Message);
+                }
+            }
+            finally
+            {
+                db.CloseConn();
             }
         }
         public void SetBill()
@@ -225,85 +270,120 @@ namespace MilkTeaShop
 
         private void btn_FindProduct_Click(object sender, EventArgs e)
         {
-            string keyword = txt_KeyWord.Text;
-            sqlQuery = "SELECT * FROM func_timSanPhamTheoTen(@keyword)";
-            SqlParameter[] lstParams =
+            try
             {
+                string keyword = txt_KeyWord.Text;
+                sqlQuery = "SELECT * FROM func_timSanPhamTheoTen(@keyword)";
+                SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
+                cmd.Parameters.AddWithValue("@keyword", keyword);
+                SqlParameter[] lstParams =
+                {
                 new SqlParameter("@keyword", SqlDbType.NVarChar) {Value = keyword},
-            };
-            List<Dictionary<string,object>> keyValuePairs = dbConn.ExecuteReaderData_Function(sqlQuery, lstParams);
-            flp_ContainsItem.Controls.Clear();
-            flp_ContainsOrder.Controls.Clear();
-            foreach (var keyValue in keyValuePairs)
+                };
+                cmd.Parameters.AddRange(lstParams);
+                db.OpenConn();
+                flp_ContainsItem.Controls.Clear();
+                flp_ContainsOrder.Controls.Clear();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        UC_ItemSelled item = new UC_ItemSelled();
+                        item.MaSP = reader.GetString(reader.GetOrdinal("MaSP"));
+                        item.TenSP = reader.GetString(reader.GetOrdinal("TenSP"));
+                        item.DonGia = reader.GetDecimal(reader.GetOrdinal("DonGia"));
+                        item.MaLoaiSP = reader.GetString(reader.GetOrdinal("MaLoaiSP"));
+                        item.ThoiGianBan = DateTime.Now;
+                        item.ClickIntoItemSelling += itemSelling_Click;
+                        item.ClickIntoLineItemSelling += itemLineSelling_Click;
+                        item.ShadowPanel_CheBien_Click += shadowPanel_CheBien_Click;
+                        item.NameItem_Click += nameItem_Click;
+                        if (item.MaLoaiSP == "LSP01")
+                        {
+                            item.Icon = global::MilkTeaShop.Properties.Resources._6eafb191a7f1e895b1b9ae2c50c1d03d;
+                        }
+                        else if (item.MaLoaiSP == "LSP02")
+                        {
+                            item.Icon =global::MilkTeaShop.Properties.Resources._8_quan_sinh_to_ngon_o_sai_gon_giup_tran_day_nang_luong_202112221952077020;
+                        }
+                        else if (item.MaLoaiSP == "LSP03")
+                        {
+                            item.Icon =global::MilkTeaShop.Properties.Resources.mo_hinh_kinh_doanh_nuoc_ep_trai_cay_dia;
+                        }
+                        else if (item.MaLoaiSP == "LSP04")
+                        {
+                            item.Icon =global::MilkTeaShop.Properties.Resources.nuoc_ep_dau;
+                        }
+                        else if (item.MaLoaiSP == "LSP05")
+                        {
+                            item.Icon =global::MilkTeaShop.Properties.Resources.top_8_quan_sua_chua_tran_chau_ha_long_thom_ngon_kho_cuong_01_1641920517;
+                        }
+                        else if (item.MaLoaiSP == "LSP06")
+                        {
+                            item.Icon =global::MilkTeaShop.Properties.Resources._435574413_966712192126145_2678475277908280524_n;
+                        }
+                        flp_ContainsItem.Controls.Add(item);
+                    }
+                }
+            }
+            catch (SqlException ex)
             {
-                UC_ItemSelled item = new UC_ItemSelled();
-                item.MaSP = (string)keyValue["MaSP"];
-                item.TenSP = (string)keyValue["TenSP"];
-                item.DonGia = (decimal)keyValue["DonGia"];
-                item.MaLoaiSP = (string)keyValue["MaLoaiSP"];
-                item.ThoiGianBan = DateTime.Now;
-                item.ClickIntoItemSelling += itemSelling_Click;
-                item.ClickIntoLineItemSelling += itemLineSelling_Click;
-                item.ShadowPanel_CheBien_Click += shadowPanel_CheBien_Click;
-                item.NameItem_Click += nameItem_Click;
-                if (item.MaLoaiSP == "LSP01")
+                if (ex.Number == 229)
                 {
-                    item.Icon = global::MilkTeaShop.Properties.Resources._6eafb191a7f1e895b1b9ae2c50c1d03d;
-                }else if (item.MaLoaiSP == "LSP02")
-                {
-                    item.Icon =global::MilkTeaShop.Properties.Resources._8_quan_sinh_to_ngon_o_sai_gon_giup_tran_day_nang_luong_202112221952077020;
+                    MessageBox.Show("Bị hạn chế quyền\n"+ex.Message);
                 }
-                else if (item.MaLoaiSP == "LSP03")
+                else
                 {
-                    item.Icon =global::MilkTeaShop.Properties.Resources.mo_hinh_kinh_doanh_nuoc_ep_trai_cay_dia;
+                    MessageBox.Show("Lỗi"+ex.Message);
                 }
-                else if (item.MaLoaiSP == "LSP04")
-                {
-                    item.Icon =global::MilkTeaShop.Properties.Resources.nuoc_ep_dau;
-                }
-                else if (item.MaLoaiSP == "LSP05")
-                {
-                    item.Icon =global::MilkTeaShop.Properties.Resources.top_8_quan_sua_chua_tran_chau_ha_long_thom_ngon_kho_cuong_01_1641920517;
-                }
-                else if (item.MaLoaiSP == "LSP06")
-                {
-                    item.Icon =global::MilkTeaShop.Properties.Resources._435574413_966712192126145_2678475277908280524_n;
-                }
-                flp_ContainsItem.Controls.Add(item);
+            }
+            finally
+            {
+                db.CloseConn();
             }
         }
         private void saveChiTietHoaDons()
         {
-            using (SqlConnection conn = new SqlConnection(conStr))
+            try
             {
-                try
+                db.OpenConn();
+                string sqlGetProducts = "GetProductLastest";
+                SqlCommand cmdGetProducts = new SqlCommand(sqlGetProducts, db.getConn);
+                cmdGetProducts.CommandType = CommandType.StoredProcedure;
+                int MaHD = (int)cmdGetProducts.ExecuteScalar();
+                MessageBox.Show(MaHD.ToString());
+                foreach (Control control in flp_ContainsOrder.Controls)
                 {
-                    conn.Open();
-                    string sqlGetProducts = "GetProductLastest";
-                    SqlCommand cmdGetProducts = new SqlCommand(sqlGetProducts, conn);
-                    cmdGetProducts.CommandType = CommandType.StoredProcedure;
-                    int MaHD = (int)cmdGetProducts.ExecuteScalar();
-                    MessageBox.Show(MaHD.ToString());
-                    foreach (Control control in flp_ContainsOrder.Controls)
+                    UC_ItemSelected selected = (UC_ItemSelected)control;
+                    string sqlInsertCTHD = "exec proc_CreateBillDetails @MaHD, @MaSP, @SoLuong";
+                    SqlCommand cmdInsertCTHD = new SqlCommand(sqlInsertCTHD, db.getConn);
+                    SqlParameter[] lstParams =
                     {
-                        UC_ItemSelected selected = (UC_ItemSelected)control;
-                        string sqlInsertCTHD = "exec proc_CreateBillDetails @MaHD, @MaSP, @SoLuong";
-                        SqlCommand cmdInsertCTHD = new SqlCommand(sqlInsertCTHD, conn);
-                        SqlParameter[] lstParams =
-                        {
                             new SqlParameter("@MaHD", SqlDbType.Int) {Value = MaHD},
                             new SqlParameter("@MaSP", SqlDbType.NVarChar) {Value = selected.MaSP},
                             new SqlParameter("@SoLuong", SqlDbType.Int) {Value = selected.Numeric_Quantities.Value}
                         };
-                        cmdInsertCTHD.Parameters.AddRange(lstParams);
-                        cmdInsertCTHD.ExecuteNonQuery();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error\n" + ex.Message);
+                    cmdInsertCTHD.Parameters.AddRange(lstParams);
+                    cmdInsertCTHD.ExecuteNonQuery();
                 }
             }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
+                {
+                    MessageBox.Show("Bị hạn chế quyền\n"+ex.Message);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: "+ex.Message);
+                }
+            }
+            finally
+            {
+                db.CloseConn();
+            }
+           
         }
         private void btn_printBill_Click(object sender, EventArgs e)
         {
@@ -313,28 +393,37 @@ namespace MilkTeaShop
             }
             else
             {
-                using (SqlConnection conn = new SqlConnection(conStr))
+                SqlCommand cmd = new SqlCommand("exec proc_CreateBill @SDT, @MaNV, @ThoiGianDat, @TriGiaHD", db.getConn);
+                SqlParameter[] lstParams =
                 {
-                    try
-                    {
-                        conn.Open();
-                        SqlCommand cmd = new SqlCommand("exec proc_CreateBill @SDT, @MaNV, @ThoiGianDat, @TriGiaHD", conn);
-                        SqlParameter[] lstParams =
-                        {
                                 new SqlParameter("@SDT", SqlDbType.VarChar) {Value = cbb_options.SelectedItem.ToString()},
                                 new SqlParameter("@MaNV", SqlDbType.VarChar) {Value = lbl_CurrentStaff.Text},
                                 new SqlParameter("@ThoiGianDat", SqlDbType.DateTime) {Value = DateTime.Now},
                                 new SqlParameter("@TriGiaHD", SqlDbType.Decimal) {Value = Convert.ToDecimal(lbl_Pay.Text.Substring(0, lbl_Pay.Text.Length - 4))},
-                            };
-                        cmd.Parameters.AddRange(lstParams);
-                        if (cmd.ExecuteNonQuery() > 0)
-                            MessageBox.Show("In hóa đơn thành công !");
+                };
+                cmd.Parameters.AddRange(lstParams);
+                try
+                {
+                    db.OpenConn();
+                    if (cmd.ExecuteNonQuery() > 0)
+                    {
+                        MessageBox.Show("In hóa đơn thành công !");
                         saveChiTietHoaDons();
                     }
-                    catch (Exception ex)
+                }
+                catch (SqlException ex)
+                {
+                    if (ex.Number == 229)
                     {
-                        MessageBox.Show("In hóa đơn thất bại.\n"+ex.Message);
+                        MessageBox.Show("Bị hạn chế quyền\n"+ex.Message);
                     }
+                    else
+                        MessageBox.Show("Lỗi: "+ex.Message);
+                }
+                catch
+                {
+                    db.CloseConn();
+
                 }
             }
         }

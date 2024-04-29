@@ -1200,6 +1200,8 @@ CREATE ROLE Staff_Sell
 CREATE ROLE Staff_Regular
 -- Cho phép nhân viên bán hàng xem và tham chiếu trên mọi bảng
 GRANT SELECT, REFERENCES TO Staff_Sell
+GRANT SELECT, INSERT, UPDATE, DELETE ON NhanVien TO Staff
+GRANT SELECT, INSERT, UPDATE, DELETE ON NhanVien TO Staff
 -- Cho phép nhân viên bán hàng có quyền thực thi mọi procedure và function, trigger
 GRANT EXECUTE TO Staff_Sell
 -- Hạn chế một số quyền quản trị khỏi nhân viên bán hàng
@@ -1224,6 +1226,7 @@ DENY EXECUTE ON proc_DeleteCustomer TO Staff_Sell
 
 -- Cho phép nhân viên thông thường có quyền xem trên mọi bảng
 GRANT SELECT TO Staff_Regular
+GRANT EXECUTE ON proc_GetProductByCategory TO Staff_Regular
 
 -- Với administrator cấp quyền sysadmin với nhân viên làm công việc có mã CV006
 GO
@@ -1538,3 +1541,30 @@ EXEC sp_helprolemember 'sysadmin';
 EXEC sp_helpsrvrolemember 'sysadmin';
 
 SELECT * FROM UserAccount
+SELECT MaNV
+FROM UserAccount
+WHERE Username = 'admin2'
+
+GO
+CREATE FUNCTION func_GetMaNVByUsername
+(
+	@Username nvarchar(MAX)
+)
+RETURNS varchar(10)
+AS
+BEGIN
+	Declare @MaNV varchar(10)
+	
+	SELECT @MaNV = MaNV
+	FROM UserAccount
+	WHERE Username = @Username
+
+	RETURN @MaNV
+END;
+GO
+CREATE VIEW V_ThongTinNhanVienDangLamViec
+AS
+	SELECT nv.MaNV, nv.HoTen, nv.GioiTinh, nv.NgaySinh, nv.DiaChi, nv.SDT, nv.NgayTuyenDung, cv.TenCV, cv.Luong
+	FROM NhanVien nv, CongViec cv
+	WHERE nv.MaCV = cv.MaCV AND TrangThaiLamViec = N'Đang làm việc'
+SELECT * FROM NhanVien

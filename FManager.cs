@@ -26,23 +26,40 @@ namespace MilkTeaShop
 
         private void btnCreateAccount_Click(object sender, EventArgs e)
         {
-            string sqlQuery = "proc_CreateAccount";
-            SqlCommand cmd = new SqlCommand(sqlQuery, db.getConnAdmin);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@Username", SqlDbType.VarChar, 50).Value = txtTaiKhoan.Text;
-            cmd.Parameters.Add("@UserPassword", SqlDbType.VarChar, 100).Value = txtMatKhau.Text;
-            cmd.Parameters.Add("@MaNV", SqlDbType.VarChar, 10).Value = txtMaNV.Text;
-            db.OpenConnAdmin();
+            try
+            {
+                string sqlQuery = "proc_CreateAccount";
+                SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@Username", SqlDbType.VarChar, 50).Value = txtTaiKhoan.Text;
+                cmd.Parameters.Add("@UserPassword", SqlDbType.VarChar, 100).Value = txtMatKhau.Text;
+                cmd.Parameters.Add("@MaNV", SqlDbType.VarChar, 10).Value = txtMaNV.Text;
+                db.OpenConn();
 
-            if (cmd.ExecuteNonQuery() > 0)
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    MessageBox.Show($"Tạo tài khoản cho nhân viên {txtMaNV.Text} thành công");
+                }
+                else
+                {
+                    MessageBox.Show("Tạo tài khoản thất bại");
+                }
+            } 
+            catch(SqlException ex)
             {
-                MessageBox.Show($"Tạo tài khoản cho nhân viên {txtMaNV.Text} thành công");
+                if (ex.Number == 229)
+                {
+                    MessageBox.Show("Không có quyền admin!");
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: "+ex.Message);
+                }
             }
-            else
+            catch
             {
-                MessageBox.Show("Tạo tài khoản thất bại");
-                db.CloseConnAdmin();
-            }    
+                db.CloseConn();
+            }
         }
 
         private void btnThoat_Click(object sender, EventArgs e)

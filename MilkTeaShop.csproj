@@ -120,6 +120,7 @@
     </Compile>
     <Compile Include="GLOBAL.cs" />
     <Compile Include="My_DBConnection.cs" />
+    <Compile Include="SellBillDAO.cs" />
     <Compile Include="Suppliers.cs" />
     <Compile Include="SuppliersDAO.cs" />
     <Compile Include="UC_CTDN.cs">

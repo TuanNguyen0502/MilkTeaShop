@@ -1200,6 +1200,8 @@ CREATE ROLE Staff_Sell
 CREATE ROLE Staff_Regular
 -- Cho phép nhân viên bán hàng xem và tham chiếu trên mọi bảng
 GRANT SELECT, REFERENCES TO Staff_Sell
+GRANT SELECT, INSERT, UPDATE, DELETE ON NhanVien TO Staff
+GRANT SELECT, INSERT, UPDATE, DELETE ON NhanVien TO Staff
 -- Cho phép nhân viên bán hàng có quyền thực thi mọi procedure và function, trigger
 GRANT EXECUTE TO Staff_Sell
 -- Hạn chế một số quyền quản trị khỏi nhân viên bán hàng
@@ -1559,6 +1561,10 @@ BEGIN
 
 	RETURN @MaNV
 END;
-
-SELECT dbo.func_GetMaNVByUsername('admin2')
-SELECT * FROM 
+GO
+CREATE VIEW V_ThongTinNhanVienDangLamViec
+AS
+	SELECT nv.MaNV, nv.HoTen, nv.GioiTinh, nv.NgaySinh, nv.DiaChi, nv.SDT, nv.NgayTuyenDung, cv.TenCV, cv.Luong
+	FROM NhanVien nv, CongViec cv
+	WHERE nv.MaCV = cv.MaCV AND TrangThaiLamViec = N'Đang làm việc'
+SELECT * FROM NhanVien

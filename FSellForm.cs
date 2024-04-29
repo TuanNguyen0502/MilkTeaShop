@@ -76,7 +76,7 @@ namespace MilkTeaShop
             {
                 if (ex.Number == 229)
                 {
-                    MessageBox.Show("Không có quyền sử dụng proc này!");
+                    MessageBox.Show("Bị hạn chế quyền\n"+ex.Message);
                 }
                 else
                 {
@@ -119,7 +119,7 @@ namespace MilkTeaShop
             {
                 if (ex.Number == 229)
                 {
-                    MessageBox.Show("Không có quyền sử dụng proc này!");
+                    MessageBox.Show(ex.Message);
                 }
                 else
                 {
@@ -331,7 +331,7 @@ namespace MilkTeaShop
             {
                 if (ex.Number == 229)
                 {
-                    MessageBox.Show("Không có quyền sử dụng proc này!");
+                    MessageBox.Show("Bị hạn chế quyền\n"+ex.Message);
                 }
                 else
                 {
@@ -368,9 +368,16 @@ namespace MilkTeaShop
                     cmdInsertCTHD.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                MessageBox.Show("Error\n" + ex.Message);
+                if (ex.Number == 229)
+                {
+                    MessageBox.Show("Bị hạn chế quyền\n"+ex.Message);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: "+ex.Message);
+                }
             }
             finally
             {
@@ -399,13 +406,17 @@ namespace MilkTeaShop
                 {
                     db.OpenConn();
                     if (cmd.ExecuteNonQuery() > 0)
+                    {
                         MessageBox.Show("In hóa đơn thành công !");
-                    saveChiTietHoaDons();
+                        saveChiTietHoaDons();
+                    }
                 }
                 catch (SqlException ex)
                 {
                     if (ex.Number == 229)
-                        MessageBox.Show("Dịch vụ bị từ chối: Không có quyền sử dụng procedure");
+                    {
+                        MessageBox.Show("Bị hạn chế quyền\n"+ex.Message);
+                    }
                     else
                         MessageBox.Show("Lỗi: "+ex.Message);
                 }

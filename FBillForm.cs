@@ -47,7 +47,7 @@ namespace MilkTeaShop
             {
                 if (ex.Number == 229)
                 {
-                    MessageBox.Show("Người dùng không có quyền sử dụng proc này");
+                    MessageBox.Show("Bị hạn chế quyền\n"+ex.Message);
                 }
                 else
                 {
@@ -104,7 +104,7 @@ namespace MilkTeaShop
             {
                 if (ex.Number == 229)
                 {
-                    MessageBox.Show("Không có quyền sử dụng proc này");
+                    MessageBox.Show("Bị hạn chế quyền\n"+ex.Message);
                 }
                 else
                 {
@@ -188,7 +188,7 @@ namespace MilkTeaShop
             {
                 if (ex.Number == 229)
                 {
-                    MessageBox.Show("Không có quyền sử dụng proc này");
+                    MessageBox.Show("Bị hạn chế quyền\n"+ex.Message);
                 }
                 else
                 {
@@ -229,7 +229,7 @@ namespace MilkTeaShop
             {
                 if (ex.Number == 229)
                 {
-                    MessageBox.Show("Không có quyền sử dụng proc này");
+                    MessageBox.Show("Bị hạn chế quyền\n"+ex.Message);
                 }
                 else
                 {
@@ -270,7 +270,7 @@ namespace MilkTeaShop
             {
                 if (ex.Number == 229)
                 {
-                    MessageBox.Show("Không có quyền sử dụng proc này");
+                    MessageBox.Show("Bị hạn chế quyền\n"+ex.Message);
                 }
                 else
                 {
@@ -311,7 +311,7 @@ namespace MilkTeaShop
             {
                 if (ex.Number == 229)
                 {
-                    MessageBox.Show("Không có quyền sử dụng proc này");
+                    MessageBox.Show("Bị hạn chế quyền\n"+ex.Message);
                 }
                 else
                 {
@@ -326,18 +326,6 @@ namespace MilkTeaShop
 
         private void cbb_options_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
-
-            }
-            catch (SqlException ex)
-            {
-
-            }
-            finally
-            {
-
-            }
             if (cbb_options.SelectedItem.ToString() == "Hóa đơn mới nhất")
             {
                 GetBillsLatest();

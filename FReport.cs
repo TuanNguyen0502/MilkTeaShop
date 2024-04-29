@@ -97,7 +97,7 @@ namespace MilkTeaShop
                 {
                     if (ex.Number == 229)
                     {
-                        MessageBox.Show("Quyền truy cập bị từ chối!");
+                        MessageBox.Show("Bị hạn chế quyền\n"+ex.Message);
                     }
                 }
                 finally
@@ -141,7 +141,7 @@ namespace MilkTeaShop
                 {
                     if (ex.Number == 229)
                     {
-                        MessageBox.Show("Quyền truy cập bị từ chối!");
+                        MessageBox.Show("Bị hạn chế quyền\n"+ex.Message);
                     }
                 }
                 finally
@@ -181,7 +181,7 @@ namespace MilkTeaShop
                 {
                     if (ex.Number == 229)
                     {
-                        MessageBox.Show("Quyền truy cập bị từ chối!");
+                        MessageBox.Show("Bị hạn chế quyền\n"+ex.Message);
                     }
                 }
                 finally
@@ -224,7 +224,7 @@ namespace MilkTeaShop
                 {
                     if (ex.Number == 229)
                     {
-                        MessageBox.Show("Quyền truy cập bị từ chối!");
+                        MessageBox.Show("Bị hạn chế quyền\n"+ex.Message);
                     }
                 }
                 finally
@@ -263,7 +263,7 @@ namespace MilkTeaShop
                 {
                     if (ex.Number == 229)
                     {
-                        MessageBox.Show("Quyền truy cập bị từ chối!");
+                        MessageBox.Show("Bị hạn chế quyền\n"+ex.Message);
                     }
                 }
                 finally
@@ -308,7 +308,7 @@ namespace MilkTeaShop
                 {
                     if (ex.Number == 229)
                     {
-                        MessageBox.Show("Quyền truy cập bị từ chối");
+                        MessageBox.Show("Bị hạn chế quyền\n"+ex.Message);
                     }
                     else
                     {
@@ -353,7 +353,7 @@ namespace MilkTeaShop
                 {
                     if (ex.Number == 229)
                     {
-                        MessageBox.Show("Quyền truy cập bị từ chối");
+                        MessageBox.Show("Bị hạn chế quyền\n"+ex.Message);
                     }
                     else
                     {

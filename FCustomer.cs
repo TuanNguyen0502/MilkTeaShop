@@ -20,6 +20,9 @@ namespace MilkTeaShop
         public FCustomer()
         {
             InitializeComponent();
+            flowLayoutPanel1.AutoScroll = false;
+            flowLayoutPanel1.HorizontalScroll.Enabled = false;
+            flowLayoutPanel1.AutoScroll = true;
         }
 
         private void button_AddCustomer_Click(object sender, EventArgs e)

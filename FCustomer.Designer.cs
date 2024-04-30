@@ -41,12 +41,12 @@
             this.label_CustomerGender = new Guna.UI.WinForms.GunaLabel();
             this.label_CustomerPhone = new Guna.UI.WinForms.GunaLabel();
             this.gunaPanel1.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gunaPanel1
             // 
+            this.gunaPanel1.Controls.Add(this.tableLayoutPanel1);
             this.gunaPanel1.Controls.Add(this.textBox_Search);
             this.gunaPanel1.Controls.Add(this.button_Search);
             this.gunaPanel1.Controls.Add(this.button_AddCustomer);
@@ -54,7 +54,7 @@
             this.gunaPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.gunaPanel1.Location = new System.Drawing.Point(0, 0);
             this.gunaPanel1.Name = "gunaPanel1";
-            this.gunaPanel1.Size = new System.Drawing.Size(1568, 121);
+            this.gunaPanel1.Size = new System.Drawing.Size(1561, 196);
             this.gunaPanel1.TabIndex = 0;
             // 
             // textBox_Search
@@ -158,13 +158,13 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Controls.Add(this.tableLayoutPanel1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 121);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 196);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1568, 588);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1561, 910);
             this.flowLayoutPanel1.TabIndex = 1;
+            this.flowLayoutPanel1.WrapContents = false;
             // 
             // tableLayoutPanel1
             // 
@@ -178,7 +178,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label_CustomerDOB, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.label_CustomerGender, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label_CustomerPhone, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 138);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -233,7 +233,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1568, 709);
+            this.AutoScroll = true;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1561, 1106);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.gunaPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -242,7 +244,6 @@
             this.Load += new System.EventHandler(this.FCustomer_Load);
             this.gunaPanel1.ResumeLayout(false);
             this.gunaPanel1.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

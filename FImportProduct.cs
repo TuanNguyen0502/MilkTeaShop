@@ -13,7 +13,8 @@ namespace MilkTeaShop
 {
     public partial class FImportProduct : Form
     {
-        readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True";
+        My_DBConnection db = new My_DBConnection();
+        //readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True";
         private int currentOrderId;
         string query;
         public FImportProduct()
@@ -22,8 +23,45 @@ namespace MilkTeaShop
             InitializeDataGridView();
             LoadListDNSP();
         }
-
         private void LoadListDNSP()
+        {
+            try
+            {
+                flpDSDNSP.Controls.Clear();
+                string sqlQuery = "SELECT * FROM V_DonNhapSanPham";
+                SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
+                db.OpenConn();
+                using (SqlDataReader dataReader = cmd.ExecuteReader())
+                {
+                    while (dataReader.Read())
+                    {
+                        UC_DonNhap ucDNSP = new UC_DonNhap();
+                        ucDNSP.OnDetailButtonClicked += UCDNSP_OnDetailButtonClicked;
+                        ucDNSP.LblMaDN.Text = dataReader["MaDNSP"].ToString();
+                        ucDNSP.LblImportDate.Text = ((DateTime)dataReader["NgayNhap"]).ToString("d/M/yyyy");
+                        ucDNSP.LblTriGia.Text = dataReader["TriGiaDonNhap"].ToString();
+                        ucDNSP.LblTenNCC.Text = dataReader["TenNCC"].ToString();
+                        flpDSDNSP.Controls.Add(ucDNSP);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
+                {
+                    MessageBox.Show("Bị hạn chế quyền\n" + ex.Message);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
+            }
+            finally
+            {
+                db.CloseConn();
+            }
+        }
+        /*private void LoadListDNSP()
         {
             flpDSDNSP.Controls.Clear();
             query = "SELECT * FROM V_DonNhapSanPham";
@@ -58,7 +96,7 @@ namespace MilkTeaShop
 
                 }
             }
-        }
+        }*/
         private void InitializeDataGridView()
         {
             dgvProducts.Columns.Add("maSPColumn", "Mã SP");
@@ -71,6 +109,44 @@ namespace MilkTeaShop
             LoadCTDNSP(orderID);
         }
         public void LoadCTDNSP(string MaDNSP)
+        {
+            try
+            {
+                flpCTDNSP.Controls.Clear();
+                string sqlQuery = "SELECT * FROM func_DSCTDNSP(@MaDNSP)";
+                SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
+                cmd.Parameters.AddWithValue("@MaDNSP", MaDNSP);
+                db.OpenConn();
+                using (SqlDataReader dataReader = cmd.ExecuteReader())
+                {
+                    while (dataReader.Read())
+                    {
+                        UC_CTDN uCCTDNSP = new UC_CTDN();
+                        uCCTDNSP.LblTen.Text = dataReader["TenSP"].ToString();
+                        uCCTDNSP.LblDonVi.Text = dataReader["DonVi"].ToString();
+                        uCCTDNSP.LblSoLuong.Text = dataReader["SoLuong"].ToString();
+                        uCCTDNSP.LblDonGia.Text = dataReader["DonGia"].ToString();
+                        flpCTDNSP.Controls.Add(uCCTDNSP);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
+                {
+                    MessageBox.Show("Bị hạn chế quyền\n" + ex.Message);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
+            }
+            finally
+            {
+                db.CloseConn();
+            }
+        }
+        /*public void LoadCTDNSP(string MaDNSP)
         {
             flpCTDNSP.Controls.Clear();
             string sqlQuery = "SELECT * FROM func_DSCTDNSP(@MaDNSP)";
@@ -96,8 +172,54 @@ namespace MilkTeaShop
                     }
                 }
             }
-        }
+        }*/
         private void btnTaoDon_Click(object sender, EventArgs e)
+        {
+            DateTime ngayNhap = DateTime.Today;
+            string maNCC = txtMaNCC.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(maNCC))
+            {
+                MessageBox.Show("Please enter a valid supplier code (MaNCC).", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            try
+            {
+                SqlCommand cmd = new SqlCommand("proc_CreateDonNhapSP", db.getConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@NgayNhap", ngayNhap);
+                cmd.Parameters.AddWithValue("@MaNCC", maNCC);
+                db.OpenConn();
+
+                var result = cmd.ExecuteScalar();
+                if (int.TryParse(result.ToString(), out currentOrderId) && currentOrderId > 0)
+                {
+                    MessageBox.Show($"Order created successfully with ID: {currentOrderId}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnThemSP.Enabled = true;
+                }
+                else
+                {
+                    MessageBox.Show("Order could not be created. Please check the supplier code and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
+                {
+                    MessageBox.Show("Bị hạn chế quyền\n" + ex.Message);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
+            }
+            finally
+            {
+                db.CloseConn();
+                LoadListDNSP();
+            }
+        }
+        /*private void btnTaoDon_Click(object sender, EventArgs e)
         {
             DateTime ngayNhap = DateTime.Today;
             string maNCC = txtMaNCC.Text.Trim();
@@ -141,8 +263,62 @@ namespace MilkTeaShop
                     LoadListDNSP();
                 }
             }
-        }      
+        }*/
         private void btnLuuDon_Click(object sender, EventArgs e)
+        {
+            if (dgvProducts.Rows.Count == 0 || (dgvProducts.Rows.Count == 1 && dgvProducts.Rows[0].IsNewRow))
+            {
+                MessageBox.Show("There are no items to save.", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            int savedItemsCount = 0;
+            try
+            {
+                db.OpenConn();
+                foreach (DataGridViewRow row in dgvProducts.Rows)
+                {
+                    if (!row.IsNewRow)
+                    {
+                        using (SqlCommand cmd = new SqlCommand("InsertChiTietDNSP", db.getConn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@MaDNSP", currentOrderId);
+                            cmd.Parameters.AddWithValue("@MaSP", row.Cells["maSPColumn"].Value);
+                            cmd.Parameters.AddWithValue("@SoLuong", row.Cells["soLuongColumn"].Value);
+                            cmd.Parameters.AddWithValue("@DonVi", row.Cells["donViColumn"].Value);
+                            cmd.Parameters.AddWithValue("@DonGia", row.Cells["donGiaColumn"].Value);
+                            cmd.ExecuteNonQuery();
+                            savedItemsCount++;
+                        }
+                    }
+                }
+                if (savedItemsCount > 0)
+                {
+                    MessageBox.Show("All items have been saved successfully.", "Save Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("No items were saved to the database.", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
+                {
+                    MessageBox.Show("Bị hạn chế quyền\n" + ex.Message);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
+            }
+            finally
+            {
+                db.CloseConn();
+                LoadListDNSP();
+            }
+        }
+        /*private void btnLuuDon_Click(object sender, EventArgs e)
         {
             if (dgvProducts.Rows.Count == 0 || (dgvProducts.Rows.Count == 1 && dgvProducts.Rows[0].IsNewRow))
             {
@@ -194,7 +370,7 @@ namespace MilkTeaShop
                     LoadListDNSP();
                 }
             }
-        }
+        }*/
 
         private void btnXoa_Click(object sender, EventArgs e)
         {

@@ -208,7 +208,6 @@ namespace MilkTeaShop
                 db.CloseConn();
                 LoadListDNNL();
             }
-
         }
         private void btnXoa_Click(object sender, EventArgs e)
         {

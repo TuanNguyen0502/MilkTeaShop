@@ -17,132 +17,184 @@ namespace MilkTeaShop
 {
     public partial class FStaff : Form
     {
-        readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True";
+        My_DBConnection db = new My_DBConnection();
         public FStaff()
         {
             InitializeComponent();
-            LoadStaff_Working();
             cbbWorkStatus.Text = "Đang làm việc";
+        }
+        private void cbbWorkStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbbWorkStatus.SelectedIndex == 0)
+            {
+                LoadStaff();
+            }
+            else if (cbbWorkStatus.SelectedIndex == 1)
+            {
+                LoadStaff_Working();
+            }
+            else
+            {
+                LoadStaff_Layoff();
+            }
         }
         public void LoadStaff()
         {
-            flpanelListStaff.Controls.Clear();
-            string sqlQuery = "SELECT * FROM V_ThongTinNhanVien";
-            using (SqlConnection conn = new SqlConnection(conStr))
+            try
             {
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand(sqlQuery, conn))
+                flpanelListStaff.Controls.Clear();
+                string sqlQuery = "SELECT * FROM V_ThongTinNhanVien";
+                SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
+                db.OpenConn();
+                using (SqlDataReader dataReader = cmd.ExecuteReader())
                 {
-                    using (SqlDataReader dataReader = cmd.ExecuteReader())
+                    while (dataReader.Read())
                     {
-                        while (dataReader.Read())
-                        {
-                            UC_Staff staff = new UC_Staff();
-                            staff.LblID.Text = dataReader["MaNV"].ToString();
-                            staff.LblName.Text = dataReader["HoTen"].ToString();
-                            staff.LblSex.Text = dataReader["GioiTinh"].ToString();
-                            DateTime dob = dataReader.GetDateTime(dataReader.GetOrdinal("NgaySinh"));
-                            staff.LblDob.Text = dob.ToString("yyyy-MM-dd");
-                            staff.LblAddress.Text = dataReader["DiaChi"].ToString();
-                            staff.LblPhone.Text = dataReader["SDT"].ToString();
-                            DateTime ngayTuyenDung = dataReader.GetDateTime(dataReader.GetOrdinal("NgayTuyenDung"));
-                            staff.LblNgayTuyenDung.Text = ngayTuyenDung.ToString("yyyy-MM-dd");
-                            staff.LblJob.Text = dataReader["TenCV"].ToString();
-                            staff.LblSalary.Text = dataReader["Luong"].ToString();
+                        UC_Staff staff = new UC_Staff();
+                        staff.LblID.Text = dataReader["MaNV"].ToString();
+                        staff.LblName.Text = dataReader["HoTen"].ToString();
+                        staff.LblSex.Text = dataReader["GioiTinh"].ToString();
+                        DateTime dob = dataReader.GetDateTime(dataReader.GetOrdinal("NgaySinh"));
+                        staff.LblDob.Text = dob.ToString("yyyy-MM-dd");
+                        staff.LblAddress.Text = dataReader["DiaChi"].ToString();
+                        staff.LblPhone.Text = dataReader["SDT"].ToString();
+                        DateTime ngayTuyenDung = dataReader.GetDateTime(dataReader.GetOrdinal("NgayTuyenDung"));
+                        staff.LblNgayTuyenDung.Text = ngayTuyenDung.ToString("yyyy-MM-dd");
+                        staff.LblJob.Text = dataReader["TenCV"].ToString();
+                        staff.LblSalary.Text = dataReader["Luong"].ToString();
 
-                            flpanelListStaff.Controls.Add(staff);
-                        }
+                        flpanelListStaff.Controls.Add(staff);
+                    }
+                }
+                foreach (Control control in flpanelListStaff.Controls)
+                {
+                    if (control is UC_Staff staffControl)
+                    {
+                        staffControl.OnDetailsUpdated += (s, e) => LoadStaff();
                     }
                 }
             }
-            foreach (Control control in flpanelListStaff.Controls)
+            catch ( SqlException ex )
             {
-                if (control is UC_Staff staffControl)
+                if (ex.Number == 229)
                 {
-                    staffControl.OnDetailsUpdated += (s, e) => LoadStaff();
+                    MessageBox.Show("Bị hạn chế quyền\n" + ex.Message);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
                 }
             }
+            finally 
+            { 
+                db.CloseConn(); 
+            }     
         }
 
         public void LoadStaff_Working()
         {
-            string sqlQuery = "SELECT * FROM V_ThongTinNhanVienDangLamViec";
-            using (SqlConnection conn = new SqlConnection(conStr))
+            try
             {
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand(sqlQuery, conn))
+                flpanelListStaff.Controls.Clear();
+                string sqlQuery = "SELECT * FROM V_ThongTinNhanVienDangLamViec";
+                SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
+                db.OpenConn();
+                using (SqlDataReader dataReader = cmd.ExecuteReader())
                 {
-                    using (SqlDataReader dataReader = cmd.ExecuteReader())
+                    while (dataReader.Read())
                     {
-                        while (dataReader.Read())
-                        {
-                            UC_Staff staff = new UC_Staff();
-                            staff.LblID.Text = dataReader["MaNV"].ToString();
-                            staff.LblName.Text = dataReader["HoTen"].ToString();
-                            staff.LblSex.Text = dataReader["GioiTinh"].ToString();
-                            DateTime dob = dataReader.GetDateTime(dataReader.GetOrdinal("NgaySinh"));
-                            staff.LblDob.Text = dob.ToString("yyyy-MM-dd");
-                            staff.LblAddress.Text = dataReader["DiaChi"].ToString();
-                            staff.LblPhone.Text = dataReader["SDT"].ToString();
-                            DateTime ngayTuyenDung = dataReader.GetDateTime(dataReader.GetOrdinal("NgayTuyenDung"));
-                            staff.LblNgayTuyenDung.Text = ngayTuyenDung.ToString("yyyy-MM-dd");
-                            staff.LblJob.Text = dataReader["TenCV"].ToString();
-                            staff.LblSalary.Text = dataReader["Luong"].ToString();
+                        UC_Staff staff = new UC_Staff();
+                        staff.LblID.Text = dataReader["MaNV"].ToString();
+                        staff.LblName.Text = dataReader["HoTen"].ToString();
+                        staff.LblSex.Text = dataReader["GioiTinh"].ToString();
+                        DateTime dob = dataReader.GetDateTime(dataReader.GetOrdinal("NgaySinh"));
+                        staff.LblDob.Text = dob.ToString("yyyy-MM-dd");
+                        staff.LblAddress.Text = dataReader["DiaChi"].ToString();
+                        staff.LblPhone.Text = dataReader["SDT"].ToString();
+                        DateTime ngayTuyenDung = dataReader.GetDateTime(dataReader.GetOrdinal("NgayTuyenDung"));
+                        staff.LblNgayTuyenDung.Text = ngayTuyenDung.ToString("yyyy-MM-dd");
+                        staff.LblJob.Text = dataReader["TenCV"].ToString();
+                        staff.LblSalary.Text = dataReader["Luong"].ToString();
 
-                            flpanelListStaff.Controls.Add(staff);
-                        }
+                        flpanelListStaff.Controls.Add(staff);
+                    }
+                }
+                foreach (Control control in flpanelListStaff.Controls)
+                {
+                    if (control is UC_Staff staffControl)
+                    {
+                        staffControl.OnDetailsUpdated += (s, e) => LoadStaff_Working();
                     }
                 }
             }
-            foreach (Control control in flpanelListStaff.Controls)
+            catch (SqlException ex)
             {
-                if (control is UC_Staff staffControl)
+                if (ex.Number == 229)
                 {
-                    staffControl.OnDetailsUpdated += (s, e) => LoadStaff_Working();
+                    MessageBox.Show("Bị hạn chế quyền\n" + ex.Message);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
                 }
             }
+            finally
+            {
+                db.CloseConn();
+            }
         }
-
         public void LoadStaff_Layoff()
         {
-            flpanelListStaff.Controls.Clear();
-            string sqlQuery = "SELECT * FROM V_ThongTinNhanVienNghiViec";
-            using (SqlConnection conn = new SqlConnection(conStr))
+            try
             {
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand(sqlQuery, conn))
+                flpanelListStaff.Controls.Clear();
+                string sqlQuery = "SELECT * FROM V_ThongTinNhanVienNghiViec";
+                SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
+                db.OpenConn();
+                using (SqlDataReader dataReader = cmd.ExecuteReader())
                 {
-                    using (SqlDataReader dataReader = cmd.ExecuteReader())
+                    while (dataReader.Read())
                     {
-                        while (dataReader.Read())
-                        {
-                            UC_Staff staff = new UC_Staff();
-                            staff.LblID.Text = dataReader["MaNV"].ToString();
-                            staff.LblName.Text = dataReader["HoTen"].ToString();
-                            staff.LblSex.Text = dataReader["GioiTinh"].ToString();
-                            DateTime dob = dataReader.GetDateTime(dataReader.GetOrdinal("NgaySinh"));
-                            staff.LblDob.Text = dob.ToString("yyyy-MM-dd");
-                            staff.LblAddress.Text = dataReader["DiaChi"].ToString();
-                            staff.LblPhone.Text = dataReader["SDT"].ToString();
-                            DateTime ngayTuyenDung = dataReader.GetDateTime(dataReader.GetOrdinal("NgayTuyenDung"));
-                            staff.LblNgayTuyenDung.Text = ngayTuyenDung.ToString("yyyy-MM-dd");
-                            staff.LblJob.Text = dataReader["TenCV"].ToString();
-                            staff.LblSalary.Text = dataReader["Luong"].ToString();
+                        UC_Staff staff = new UC_Staff();
+                        staff.LblID.Text = dataReader["MaNV"].ToString();
+                        staff.LblName.Text = dataReader["HoTen"].ToString();
+                        staff.LblSex.Text = dataReader["GioiTinh"].ToString();
+                        DateTime dob = dataReader.GetDateTime(dataReader.GetOrdinal("NgaySinh"));
+                        staff.LblDob.Text = dob.ToString("yyyy-MM-dd");
+                        staff.LblAddress.Text = dataReader["DiaChi"].ToString();
+                        staff.LblPhone.Text = dataReader["SDT"].ToString();
+                        DateTime ngayTuyenDung = dataReader.GetDateTime(dataReader.GetOrdinal("NgayTuyenDung"));
+                        staff.LblNgayTuyenDung.Text = ngayTuyenDung.ToString("yyyy-MM-dd");
+                        staff.LblJob.Text = dataReader["TenCV"].ToString();
+                        staff.LblSalary.Text = dataReader["Luong"].ToString();
 
-                            flpanelListStaff.Controls.Add(staff);
-                        }
+                        flpanelListStaff.Controls.Add(staff);
+                    }
+                }
+                foreach (Control control in flpanelListStaff.Controls)
+                {
+                    if (control is UC_Staff staffControl)
+                    {
+                        staffControl.OnDetailsUpdated += (s, e) => LoadStaff_Layoff();
                     }
                 }
             }
-            foreach (Control control in flpanelListStaff.Controls)
+            catch (SqlException ex)
             {
-                if (control is UC_Staff staffControl)
+                if (ex.Number == 229)
                 {
-                    staffControl.OnDetailsUpdated += (s, e) => LoadStaff_Layoff();
+                    MessageBox.Show("Bị hạn chế quyền\n" + ex.Message);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
                 }
             }
+            finally
+            {
+                db.CloseConn();
+            }
         }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
            FStaff_Add fStaff_Add = new FStaff_Add();
@@ -151,62 +203,52 @@ namespace MilkTeaShop
                 LoadStaff_Working();
             }
         }
-
-        private void textBox_Search_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button_Search_Click(object sender, EventArgs e)
         {
-            flpanelListStaff.Controls.Clear();
-            string keyword = txtSearch.Text.Trim();
-            string sqlQuery = "SELECT * FROM func_FindStaff(@keyword)";
-
-            using (SqlConnection conn = new SqlConnection(conStr))
+            try
             {
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand(sqlQuery, conn))
+                flpanelListStaff.Controls.Clear();
+                string keyword = txtSearch.Text.Trim();
+                string sqlQuery = "SELECT * FROM func_FindStaff(@keyword)";
+                SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
+                cmd.Parameters.AddWithValue("@keyword", keyword);
+                db.OpenConn();
+                
+                using (SqlDataReader dataReader = cmd.ExecuteReader())
                 {
-                    cmd.Parameters.AddWithValue("@keyword", keyword);
-
-                    using (SqlDataReader dataReader = cmd.ExecuteReader())
+                    while (dataReader.Read())
                     {
-                        while (dataReader.Read())
-                        {
-                            UC_Staff staff = new UC_Staff();
-                            staff.LblID.Text = dataReader["MaNV"].ToString();
-                            staff.LblName.Text = dataReader["HoTen"].ToString();
-                            staff.LblSex.Text = dataReader["GioiTinh"].ToString();
-                            DateTime dob = dataReader.GetDateTime(dataReader.GetOrdinal("NgaySinh"));
-                            staff.LblDob.Text = dob.ToString("yyyy-MM-dd");
-                            staff.LblAddress.Text = dataReader["DiaChi"].ToString();
-                            staff.LblPhone.Text = dataReader["SDT"].ToString();
-                            DateTime hiringDate = dataReader.GetDateTime(dataReader.GetOrdinal("NgayTuyenDung"));
-                            staff.LblNgayTuyenDung.Text = hiringDate.ToString("yyyy-MM-dd");
-                            staff.LblJob.Text = dataReader["TenCV"].ToString();
-                            staff.LblSalary.Text = dataReader["Luong"].ToString();
+                        UC_Staff staff = new UC_Staff();
+                        staff.LblID.Text = dataReader["MaNV"].ToString();
+                        staff.LblName.Text = dataReader["HoTen"].ToString();
+                        staff.LblSex.Text = dataReader["GioiTinh"].ToString();
+                        DateTime dob = dataReader.GetDateTime(dataReader.GetOrdinal("NgaySinh"));
+                        staff.LblDob.Text = dob.ToString("yyyy-MM-dd");
+                        staff.LblAddress.Text = dataReader["DiaChi"].ToString();
+                        staff.LblPhone.Text = dataReader["SDT"].ToString();
+                        DateTime hiringDate = dataReader.GetDateTime(dataReader.GetOrdinal("NgayTuyenDung"));
+                        staff.LblNgayTuyenDung.Text = hiringDate.ToString("yyyy-MM-dd");
+                        staff.LblJob.Text = dataReader["TenCV"].ToString();
+                        staff.LblSalary.Text = dataReader["Luong"].ToString();
 
-                            flpanelListStaff.Controls.Add(staff);
-                        }
+                        flpanelListStaff.Controls.Add(staff);
                     }
                 }
             }
-        }
-
-        private void cbbWorkStatus_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbbWorkStatus.SelectedIndex == 0)
+            catch (SqlException ex)
             {
-                LoadStaff();
+                if (ex.Number == 229)
+                {
+                    MessageBox.Show("Bị hạn chế quyền\n" + ex.Message);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
             }
-            else if (cbbWorkStatus.SelectedIndex == 1) 
+            finally
             {
-                LoadStaff_Working(); 
-            }
-            else
-            {
-                LoadStaff_Layoff();
+                db.CloseConn();
             }
         }
     }

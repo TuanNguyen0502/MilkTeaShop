@@ -14,8 +14,8 @@ namespace MilkTeaShop
 {
     public partial class FStaff_Detail : Form
     {
-        readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True";
 
+        My_DBConnection db = new My_DBConnection();
         private string ID;
         public FStaff_Detail(string id)
         {
@@ -23,124 +23,144 @@ namespace MilkTeaShop
             this.ID = id;
             LoadDetails();
         }
-
         private void LoadDetails()
         {
-            string sqlQuery = "SELECT * FROM NhanVien WHERE MaNV = @MaNV";
-            using (SqlConnection conn = new SqlConnection(conStr))
+            try
             {
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand(sqlQuery, conn))
+                string sqlQuery = "SELECT * FROM NhanVien WHERE MaNV = @MaNV";
+                SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
+                cmd.Parameters.AddWithValue("@MaNV", ID);
+                db.OpenConn();
+                using (SqlDataReader dataReader = cmd.ExecuteReader())
                 {
-                    cmd.Parameters.AddWithValue("@MaNV", ID);
-
-                    using (SqlDataReader dataReader = cmd.ExecuteReader())
+                    if (dataReader.Read())
                     {
-                        if (dataReader.Read())
+
+                        lblID.Text = dataReader["MaNV"].ToString();
+                        txtName.Text = dataReader["HoTen"].ToString();
+                        if (dataReader["GioiTinh"].ToString() == "Nam")
                         {
-                                                       
-                            lblID.Text = dataReader["MaNV"].ToString();
-                            txtName.Text = dataReader["HoTen"].ToString();
-                            if (dataReader["GioiTinh"].ToString() == "Nam")
-                            {
-                                rdobtnMale.Checked = true;
-                            }
-                            else if (dataReader["GioiTinh"].ToString() == "Nữ")
-                            {
-                                rdobtnFemale.Checked = true;
-                            }
-                            dtpDOB.Value = Convert.ToDateTime(dataReader["NgaySinh"]);
-                            txtAddress.Text = dataReader["DiaChi"].ToString();
-                            txtPhone.Text = dataReader["SDT"].ToString();
-                            dtpDOREC.Value = Convert.ToDateTime(dataReader["NgayTuyenDung"]);
-                            cbbIDJOB.SelectedItem = dataReader["MaCV"].ToString().Trim();
-                            cbbWorkStatus.SelectedItem = dataReader["TrangThaiLamViec"].ToString().Trim();
+                            rdobtnMale.Checked = true;
                         }
+                        else if (dataReader["GioiTinh"].ToString() == "Nữ")
+                        {
+                            rdobtnFemale.Checked = true;
+                        }
+                        dtpDOB.Value = Convert.ToDateTime(dataReader["NgaySinh"]);
+                        txtAddress.Text = dataReader["DiaChi"].ToString();
+                        txtPhone.Text = dataReader["SDT"].ToString();
+                        dtpDOREC.Value = Convert.ToDateTime(dataReader["NgayTuyenDung"]);
+                        cbbIDJOB.SelectedItem = dataReader["MaCV"].ToString().Trim();
+                        cbbWorkStatus.SelectedItem = dataReader["TrangThaiLamViec"].ToString().Trim();
                     }
                 }
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
+                {
+                    MessageBox.Show("Bị hạn chế quyền\n" + ex.Message);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
+            }
+            finally
+            {
+                db.CloseConn();
             }
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(conStr))
+            try
             {
-                try
+                SqlCommand cmd = new SqlCommand("proc_EditStaff", db.getConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                db.OpenConn();
+
+                string gender = rdobtnMale.Checked ? "Nam" : "Nữ";
+                cmd.Parameters.AddWithValue("@manv", lblID.Text);
+                cmd.Parameters.AddWithValue("@hoten", txtName.Text);
+                cmd.Parameters.AddWithValue("@gioitinh", gender);
+                cmd.Parameters.AddWithValue("@ngaysinh", dtpDOB.Value.Date);
+                cmd.Parameters.AddWithValue("@diachi", txtAddress.Text);
+                cmd.Parameters.AddWithValue("@sdt", txtPhone.Text);
+                cmd.Parameters.AddWithValue("@ngaytuyendung", dtpDOREC.Value.Date);
+                object selectedJob = cbbIDJOB.SelectedValue;
+                if (selectedJob == null)
                 {
-                    conn.Open();
-                    using (SqlCommand cmd = new SqlCommand("proc_EditStaff", conn))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-
-                        string gender = rdobtnMale.Checked ? "Nam" : "Nữ";                        
-
-                        cmd.Parameters.AddWithValue("@manv", lblID.Text);
-                        cmd.Parameters.AddWithValue("@hoten", txtName.Text);
-                        cmd.Parameters.AddWithValue("@gioitinh", gender);
-                        cmd.Parameters.AddWithValue("@ngaysinh", dtpDOB.Value.Date);
-                        cmd.Parameters.AddWithValue("@diachi", txtAddress.Text);
-                        cmd.Parameters.AddWithValue("@sdt", txtPhone.Text);
-                        cmd.Parameters.AddWithValue("@ngaytuyendung", dtpDOREC.Value.Date);
-                        object selectedJob = cbbIDJOB.SelectedValue;
-                        if (selectedJob == null)
-                        {
-                            selectedJob = cbbIDJOB.SelectedItem;
-                        }
-
-                        if (selectedJob != null)
-                        {
-                            cmd.Parameters.Add(new SqlParameter("@MaCV", SqlDbType.NChar, 10) { Value = selectedJob.ToString() });
-                        }
-                        object selectedWorkStatus = cbbWorkStatus.SelectedValue;
-                        if (selectedWorkStatus == null)
-                        {
-                            selectedWorkStatus = cbbWorkStatus.SelectedItem;
-                        }
-
-                        if (selectedJob != null)
-                        {
-                            cmd.Parameters.Add(new SqlParameter("@trangthailamviec", SqlDbType.NVarChar, 30) { Value = selectedWorkStatus.ToString() });
-                        }
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Employee details updated successfully!");
-                        this.DialogResult = DialogResult.OK;
-                        this.Close();
-                    }
+                    selectedJob = cbbIDJOB.SelectedItem;
                 }
-                catch (Exception ex)
+
+                if (selectedJob != null)
                 {
-                    MessageBox.Show("Failed to update employee details. Error: " + ex.Message);
+                    cmd.Parameters.Add(new SqlParameter("@MaCV", SqlDbType.NChar, 10) { Value = selectedJob.ToString() });
                 }
+                object selectedWorkStatus = cbbWorkStatus.SelectedValue;
+                if (selectedWorkStatus == null)
+                {
+                    selectedWorkStatus = cbbWorkStatus.SelectedItem;
+                }
+
+                if (selectedJob != null)
+                {
+                    cmd.Parameters.Add(new SqlParameter("@trangthailamviec", SqlDbType.NVarChar, 30) { Value = selectedWorkStatus.ToString() });
+                }
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Employee details updated successfully!");
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
+                {
+                    MessageBox.Show("Bị hạn chế quyền\n" + ex.Message);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
+            }
+            finally
+            {
+                db.CloseConn();
+            }
+        }
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("proc_DeleteStaff", db.getConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@manv", lblID.Text);
+                db.OpenConn();
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Staff deleted successfully!");
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
+                {
+                    MessageBox.Show("Bị hạn chế quyền\n" + ex.Message);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
+            }
+            finally
+            {
+                db.CloseConn();
             }
         }
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            using (SqlConnection conn = new SqlConnection(conStr))
-            {
-                try
-                {
-                    conn.Open();
-                    using (SqlCommand cmd = new SqlCommand("proc_DeleteStaff", conn))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-
-                        cmd.Parameters.AddWithValue("@manv", lblID.Text);
-                        
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Staff deleted successfully!");
-                        this.DialogResult = DialogResult.OK;
-                        this.Close();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Failed to delete this staff. Error: " + ex.Message);
-                }
-            }
         }
     }
 }

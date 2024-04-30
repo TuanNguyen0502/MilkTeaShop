@@ -15,6 +15,7 @@ namespace MilkTeaShop
     {
         private readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True";
         private int currentOrderId;
+        private My_DBConnection db = new My_DBConnection();
 
         public FExport_Ingredients()
         {
@@ -33,88 +34,100 @@ namespace MilkTeaShop
 
         private void LoadDataGirdViewChiTietDonXuatNguyenLieu()
         {
-            using (SqlConnection conn = new SqlConnection(conStr))
+            try
             {
-                try
+                db.OpenConn();
+                string sqlStr = string.Format($"SELECT * FROM func_ChiTietDonXuatNguyenLieu('{textBox_MaDonXuat.Text}')");
+                using (SqlDataAdapter adapter = new SqlDataAdapter(sqlStr, db.getConn))
                 {
-                    conn.Open();
-                    string sqlStr = string.Format($"SELECT * FROM func_ChiTietDonXuatNguyenLieu('{textBox_MaDonXuat.Text}')");
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(sqlStr, conn))
-                    {
-                        DataTable dt = new DataTable();
-                        adapter.Fill(dt);
-                        dataGridView_ChiTietDXNL.DataSource = dt;
-                    }
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dataGridView_ChiTietDXNL.DataSource = dt;
                 }
-                catch (Exception ex)
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
                 {
-                    MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Bị hạn chế quyền\n" + ex.Message);
                 }
-                finally
+                else
                 {
-                    conn.Close();
+                    MessageBox.Show("Lỗi: " + ex.Message);
                 }
+            }
+            finally
+            {
+                db.CloseConn();
             }
         }
 
         private void LoadDataGirdViewDonXuatNguyenLieu()
         {
-            using (SqlConnection conn = new SqlConnection(conStr))
+            try
             {
-                try
+                db.OpenConn();
+                string sqlStr = string.Format("SELECT * FROM v_DonXuatNguyenLieu");
+                using (SqlDataAdapter adapter = new SqlDataAdapter(sqlStr, db.getConn))
                 {
-                    conn.Open();
-                    string sqlStr = string.Format("SELECT * FROM v_DonXuatNguyenLieu");
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(sqlStr, conn))
-                    {
-                        DataTable dt = new DataTable();
-                        adapter.Fill(dt);
-                        dataGridView_DonXuatNguyenLieu.DataSource = dt;
-                    }
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dataGridView_DonXuatNguyenLieu.DataSource = dt;
                 }
-                catch (Exception ex)
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
                 {
-                    MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Bị hạn chế quyền\n" + ex.Message);
                 }
-                finally
+                else
                 {
-                    conn.Close();
+                    MessageBox.Show("Lỗi: " + ex.Message);
                 }
+            }
+            finally
+            {
+                db.CloseConn();
             }
         }
 
         private void btnTaoDon_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(conStr))
+            try
             {
-                try
+                db.OpenConn();
+                using (SqlCommand cmd = new SqlCommand("proc_CreateDonXuatNguyenLieu", db.getConn))
                 {
-                    conn.Open();
-                    using (SqlCommand cmd = new SqlCommand("proc_CreateDonXuatNguyenLieu", conn))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@NgayXuat", DateTime.Now);
-                        cmd.Parameters.AddWithValue("@MaNhanVien", textBox_MaNhanVien.Text);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@NgayXuat", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@MaNhanVien", textBox_MaNhanVien.Text);
 
-                        var result = cmd.ExecuteScalar();
-                        if (int.TryParse(result.ToString(), out currentOrderId))
-                        {
-                            MessageBox.Show($"Order created successfully with ID: {currentOrderId}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show($"An error occurred: {result}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                    var result = cmd.ExecuteScalar();
+                    if (int.TryParse(result.ToString(), out currentOrderId))
+                    {
+                        MessageBox.Show($"Order created successfully with ID: {currentOrderId}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"An error occurred: {result}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                catch (Exception ex)
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
                 {
-                    MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Bị hạn chế quyền\n" + ex.Message);
                 }
-                finally
+                else
                 {
-                    conn.Close();
+                    MessageBox.Show("Lỗi: " + ex.Message);
                 }
+            }
+            finally
+            {
+                db.CloseConn();
             }
         }
 
@@ -135,31 +148,35 @@ namespace MilkTeaShop
                 return;
             }
 
-            using (SqlConnection conn = new SqlConnection(conStr))
+            try
             {
-                try
+                db.OpenConn();
+                using (SqlCommand cmd = new SqlCommand("proc_CreateChiTietDonXuatNguyenLieu", db.getConn))
                 {
-                    conn.Open();
-                    using (SqlCommand cmd = new SqlCommand("proc_CreateChiTietDonXuatNguyenLieu", conn))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@MaDonXuatNguyenLieu", textBox_MaDonXuat.Text);
-                        cmd.Parameters.AddWithValue("@MaNguyenLieu", textBox_MaNguyenLieu.Text);
-                        cmd.Parameters.AddWithValue("@SoLuong", textBox_SoLuong.Text);
-                        cmd.Parameters.AddWithValue("@DonVi", textBox_DonVi.Text);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@MaDonXuatNguyenLieu", textBox_MaDonXuat.Text);
+                    cmd.Parameters.AddWithValue("@MaNguyenLieu", textBox_MaNguyenLieu.Text);
+                    cmd.Parameters.AddWithValue("@SoLuong", textBox_SoLuong.Text);
+                    cmd.Parameters.AddWithValue("@DonVi", textBox_DonVi.Text);
 
-                        cmd.ExecuteScalar();
-                        MessageBox.Show("Succeed.");
-                    }
+                    cmd.ExecuteScalar();
+                    MessageBox.Show("Succeed.");
                 }
-                catch (Exception ex)
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
                 {
-                    MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Bị hạn chế quyền\n" + ex.Message);
                 }
-                finally
+                else
                 {
-                    conn.Close();
+                    MessageBox.Show("Lỗi: " + ex.Message);
                 }
+            }
+            finally
+            {
+                db.CloseConn();
             }
             LoadDataGirdViewChiTietDonXuatNguyenLieu();
         }
@@ -178,63 +195,71 @@ namespace MilkTeaShop
 
         private void button_SuaDon_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(conStr))
+            try
             {
-                try
+                db.OpenConn();
+                using (SqlCommand cmd = new SqlCommand("proc_UpdateDonXuatNguyenLieu", db.getConn))
                 {
-                    conn.Open();
-                    using (SqlCommand cmd = new SqlCommand("proc_UpdateDonXuatNguyenLieu", conn))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@MaDXNL", textBox_MaDonXuat.Text);
-                        cmd.Parameters.AddWithValue("@NgayXuat", dateTimePicker_NgayXuat.Value.ToShortDateString());
-                        cmd.Parameters.AddWithValue("@MaNhanVien", textBox_MaNhanVien.Text);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@MaDXNL", textBox_MaDonXuat.Text);
+                    cmd.Parameters.AddWithValue("@NgayXuat", dateTimePicker_NgayXuat.Value.ToShortDateString());
+                    cmd.Parameters.AddWithValue("@MaNhanVien", textBox_MaNhanVien.Text);
 
-                        cmd.ExecuteScalar();
-                        MessageBox.Show("Succeed.");
-                    }
+                    cmd.ExecuteScalar();
+                    MessageBox.Show("Succeed.");
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
-                {
-                    conn.Close();
-                }
-                LoadDataGirdViewDonXuatNguyenLieu();
             }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
+                {
+                    MessageBox.Show("Bị hạn chế quyền\n" + ex.Message);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
+            }
+            finally
+            {
+                db.CloseConn();
+            }
+            LoadDataGirdViewDonXuatNguyenLieu();
         }
 
         private void button_SuaChiTiet_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(conStr))
+            try
             {
-                try
+                db.OpenConn();
+                using (SqlCommand cmd = new SqlCommand("proc_UpdateChiTietDonXuatNguyenLieu", db.getConn))
                 {
-                    conn.Open();
-                    using (SqlCommand cmd = new SqlCommand("proc_UpdateChiTietDonXuatNguyenLieu", conn))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@MaDonXuatNguyenLieu", textBox_MaDonXuat.Text);
-                        cmd.Parameters.AddWithValue("@MaNguyenLieu", textBox_MaNguyenLieu.Text);
-                        cmd.Parameters.AddWithValue("@SoLuong", textBox_SoLuong.Text);
-                        cmd.Parameters.AddWithValue("@DonVi", textBox_DonVi.Text);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@MaDonXuatNguyenLieu", textBox_MaDonXuat.Text);
+                    cmd.Parameters.AddWithValue("@MaNguyenLieu", textBox_MaNguyenLieu.Text);
+                    cmd.Parameters.AddWithValue("@SoLuong", textBox_SoLuong.Text);
+                    cmd.Parameters.AddWithValue("@DonVi", textBox_DonVi.Text);
 
-                        cmd.ExecuteScalar();
-                        MessageBox.Show("Succeed.");
-                    }
+                    cmd.ExecuteScalar();
+                    MessageBox.Show("Succeed.");
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
-                {
-                    conn.Close();
-                }
-                LoadDataGirdViewChiTietDonXuatNguyenLieu();
             }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
+                {
+                    MessageBox.Show("Bị hạn chế quyền\n" + ex.Message);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
+            }
+            finally
+            {
+                db.CloseConn();
+            }
+            LoadDataGirdViewChiTietDonXuatNguyenLieu();
         }
     }
 }

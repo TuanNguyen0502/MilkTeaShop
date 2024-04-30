@@ -1190,49 +1190,6 @@ CREATE TABLE UserAccount(
 	MaNV varchar(10)
 )
 GO
-DROP TABLE UserAccount
-
--- Tạo phân quyền user
--- Ứng dụng gồm 2 đối tượng (Nhân viên (Nhân viên gồm: nhân viên bán hàng và nhân viên thông thường) và người quản lý)
--- Gán các quyền chỉ định cho nhân viên bán hàng và nhân viên thông thường
--- Role Staff_Sell cho các nhân viên làm công việc có mã CV003
-CREATE ROLE Staff_Sell
-CREATE ROLE Staff_Regular
--- Cho phép nhân viên bán hàng xem và tham chiếu trên mọi bảng
-GRANT SELECT, REFERENCES TO Staff_Sell
-GRANT SELECT, INSERT, UPDATE, DELETE ON NhanVien TO Staff
-GRANT SELECT, INSERT, UPDATE, DELETE ON NhanVien TO Staff
--- Cho phép nhân viên bán hàng có quyền thực thi mọi procedure và function, trigger
-GRANT EXECUTE TO Staff_Sell
--- Hạn chế một số quyền quản trị khỏi nhân viên bán hàng
-DENY EXECUTE ON proc_AddStaff TO Staff_Sell
-DENY EXECUTE ON proc_EditStaff TO Staff_Sell
-DENY EXECUTE ON proc_themNguyenLieu TO Staff_Sell
-DENY EXECUTE ON func_tinhDoanhThuTheoNgay TO Staff_Sell
-DENY EXECUTE ON func_tinhDoanhThuTheoThang TO Staff_Sell
-DENY EXECUTE ON func_tinhDoanhThuTheoNam TO Staff_Sell
-DENY EXECUTE ON func_ChiPhiTheoThang TO Staff_Sell
-DENY EXECUTE ON func_ChiPhiTheoNam TO Staff_Sell
-DENY EXECUTE ON func_ChiPhiTheoGiaiDoan TO Staff_Sell
-DENY EXECUTE ON func_DoanhThuTheoGiaiDoan TO Staff_Sell
-DENY EXECUTE ON proc_CreateDonNhapSP TO Staff_Sell
-DENY EXECUTE ON proc_CreateDonNhapNL TO Staff_Sell
-DENY EXECUTE ON proc_CreateDonXuatNguyenLieu TO Staff_Sell
-DENY EXECUTE ON proc_CreateDonNhapNL TO Staff_Sell
-DENY EXECUTE ON proc_DeleteStaff TO Staff_Sell
-DENY EXECUTE ON proc_themNhaCungCap TO Staff_Sell
-DENY EXECUTE ON proc_UpdateCustomer TO Staff_Sell
-DENY EXECUTE ON proc_DeleteCustomer TO Staff_Sell
-
--- Cho phép nhân viên thông thường có quyền xem trên mọi bảng
-GRANT SELECT TO Staff_Regular
-GRANT EXECUTE ON proc_GetProductByCategory TO Staff_Regular
-
--- Với administrator cấp quyền sysadmin với nhân viên làm công việc có mã CV006
-GO
-
--- Tạo trigger tạo login và user cho nhân viên tương ứng khi được đăng ký tài khoản
-GO
 CREATE PROCEDURE proc_CreateDonNhapSP
     @NgayNhap DATE,
     @MaNCC VARCHAR(10)
@@ -1517,7 +1474,7 @@ GO
 CREATE PROCEDURE proc_CreateAccount(
 	@Username varchar(50),
 	@UserPassword varchar(100),
-	@MaNV varchar(10)
+	@MaNV varchar(10) 
 )
 AS
 BEGIN
@@ -1567,4 +1524,129 @@ AS
 	SELECT nv.MaNV, nv.HoTen, nv.GioiTinh, nv.NgaySinh, nv.DiaChi, nv.SDT, nv.NgayTuyenDung, cv.TenCV, cv.Luong
 	FROM NhanVien nv, CongViec cv
 	WHERE nv.MaCV = cv.MaCV AND TrangThaiLamViec = N'Đang làm việc'
-SELECT * FROM NhanVien
+	GO
+-- Tạo procedure xóa tài khoản người dùng
+CREATE PROCEDURE proc_DeleteUserAccountByUserName
+(
+	@Username nvarchar(MAX)
+)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	IF @Username NOT IN (SELECT Username FROM UserAccount)
+	BEGIN
+		RAISERROR('Username không tồn tại', 16, 1)
+		RETURN
+	END
+	ELSE
+	BEGIN
+		-- Xóa phiên làm việc của account
+		DECLARE @SessionID int;
+		SELECT @SessionID = session_id
+		FROM sys.dm_exec_sessions
+		WHERE login_name = @Username
+		IF @SessionID IS NOT NULL
+		BEGIN
+			DECLARE @sqlQuery nvarchar(MAX)
+			SET @sqlQuery = 'kill ' + Convert(nvarchar(20), @SessionID)
+			exec(@sqlQuery)
+		END
+		-- Xóa account khỏi CSDL
+		DELETE FROM UserAccount
+		WHERE Username = @Username
+	
+		DECLARE @QuoteUsername nvarchar(MAX)
+		SET @QuoteUsername = QUOTENAME(@Username)
+		-- Sau khi xóa account thì xóa luôn login và user
+		DECLARE @DropQuery nvarchar(MAX)
+		SET @DropQuery = 'DROP LOGIN ' + @QuoteUsername
+		EXEC(@DropQuery)
+	
+		SET @DropQuery = 'DROP USER ' + @QuoteUsername
+		EXEC(@DropQuery)
+	END
+END;
+GO
+-- Tạo procedure xóa nhân viên đồng thời xóa luôn account đã tạo
+CREATE PROCEDURE proc_DeleteEmpoyee
+(
+	@Username nvarchar(MAX),
+	@MaNV varchar(10)
+)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	IF @Username NOT IN (SELECT Username FROM UserAccount)
+	BEGIN
+		RAISERROR('Tài khoản không tồn tại',16,1)
+		RETURN
+	END;
+	ELSE
+	BEGIN
+		DECLARE @SessionID int, @sqlQuery nvarchar(MAX)
+		SELECT @SessionID = session_id
+		FROM sys.dm_exec_sessions
+		WHERE login_name = @Username
+
+		IF @SessionID IS NOT NULL
+		BEGIN
+			SET @sqlQuery = 'kill ' + Convert(nvarchar(20), @SessionID)
+			exec(@sqlQuery)
+		END
+		BEGIN TRANSACTION
+			BEGIN TRY
+				DELETE FROM NhanVien WHERE MaNV = @MaNV
+				DELETE FROM HoaDon WHERE MaNV = @MaNV
+				DELETE FROM DonXuatNguyenLieu WHERE MaNV = @MaNV
+				-- Xóa login
+				SET @sqlQuery = 'DROP LOGIN ' + @Username
+				exec(@sqlQuery)
+				-- Xóa user
+				SET @sqlQuery = 'DROP USER ' + @Username
+				exec(@sqlQuery)
+				-- Xóa account khỏi table UserAccount
+				DELETE FROM UserAccount WHERE @Username = Username AND @MANV = MaNV
+			END TRY
+			BEGIN CATCH
+				DECLARE @err nvarchar(MAX)
+				SET @err = N'Lỗi' + ERROR_MESSAGE()
+				RAISERROR(@err,16,1)
+				ROLLBACK TRANSACTION;
+				THROW;
+			END CATCH
+		COMMIT TRANSACTION
+	END;
+END;
+
+exec proc_DeleteUserAccountByUserName 'regular1'
+SELECT * FROM UserAccount
+
+-- Tạo phân quyền user
+-- Ứng dụng gồm 2 đối tượng (Nhân viên (Nhân viên gồm: nhân viên bán hàng và nhân viên thông thường) và người quản lý)
+-- Gán các quyền chỉ định cho nhân viên bán hàng và nhân viên thông thường
+-- Role Staff_Sell cho các nhân viên làm công việc có mã CV003
+REVOKE SELECT, REFERENCES ON DATABASE::[MilkTeashop] FROM Staff_Sell
+REVOKE EXECUTE ON DATABASE::[MilkTeaShop] FROM Staff_Sell
+CREATE ROLE Staff_Sell
+CREATE ROLE Staff_Regular
+-- Cho phép nhân viên bán hàng xem và tham chiếu trên mọi bảng
+REVOKE EXECUTE ON DATABASE::[MilkTeaShop] FROM Staff_Sell
+
+-- Cho phép nhân viên bán hàng có quyền thực thi mọi procedure và function, trigger
+
+-- Cho phép nhân viên thông thường có quyền xem trên mọi bảng
+GRANT SELECT TO Staff_Regular
+GRANT EXECUTE ON proc_GetProductByCategory TO Staff_Regular
+
+-- Với administrator cấp quyền sysadmin với nhân viên làm công việc có mã CV006
+GO
+
+-- Tạo trigger tạo login và user cho nhân viên tương ứng khi được đăng ký tài khoản
+
+SELECT DPrin.name AS RoleName,
+    OBJECT_NAME(major_id) AS ObjectName,
+    permission_name AS Permission
+FROM MilkTeaShop.sys.database_permissions AS DP
+JOIN MilkTeaShop.sys.database_principals AS DPrin ON DP.grantee_principal_id = DPrin.principal_id
+WHERE DPrin.type_desc = 'DATABASE_ROLE' AND DPrin.name = 'Staff_Regular';
+

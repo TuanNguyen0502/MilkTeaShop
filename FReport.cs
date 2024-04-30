@@ -20,29 +20,6 @@ namespace MilkTeaShop
             InitializeComponent();
             cbb_OptionMain.SelectedIndex = 0;
         }
-        private void FilterDataByDMY(DateTime timePicked)
-        {
-            sqlQuery = "DECLARE @doanhThu DECIMAL;"
-                      +"SELECT @doanhThu = dbo.func_tinhDoanhThuTheoNgay(@ngay, @thang, @nam);"
-                      +"SELECT @doanhThu AS 'Doanh thu';";
-            SqlCommand command = new SqlCommand(sqlQuery, db.getConn);
-            command.CommandType = CommandType.StoredProcedure;
-
-            // Thêm các tham số và giá trị tương ứng
-            command.Parameters.AddWithValue("@ngay", timePicked.Day);
-            command.Parameters.AddWithValue("@thang", timePicked.Month);
-            command.Parameters.AddWithValue("@nam", timePicked.Year);
-            db.OpenConn();
-            decimal doanhThu = (decimal)command.ExecuteScalar();
-
-
-            // Lấy giá trị doanh thu từ parameter đầu ra
-            UC_Report report = new UC_Report();
-            report.Time = DateTime.Now;
-            report.Sales = doanhThu;
-            flp_ContainsReport.Controls.Add(report);
-            
-        }
         private void cbb_OptionMain_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbb_OptionMain.SelectedIndex == -1)

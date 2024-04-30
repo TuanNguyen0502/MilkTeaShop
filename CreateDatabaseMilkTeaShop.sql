@@ -1375,6 +1375,15 @@ BEGIN
 	END CATCH
 END
 GO
+-- Procedure tạo khach hang
+CREATE PROCEDURE proc_CreateCustomer
+@TenKhachHang nvarchar(255), @SDT nchar(11), @GioiTinh nvarchar(3), @NgaySinh date
+AS
+BEGIN
+	INSERT INTO KhachHang(TenKH, SDT, GioiTinh, NgaySinh)
+	VALUES(@TenKhachHang, @SDT, @GioiTinh, @NgaySinh);
+END;
+GO
 CREATE PROCEDURE proc_UpdateCustomer
 @TenKhachHang nvarchar(255), @SDT nchar(11), @GioiTinh nvarchar(3), @NgaySinh date
 AS
@@ -1525,6 +1534,10 @@ AS
 	FROM NhanVien nv, CongViec cv
 	WHERE nv.MaCV = cv.MaCV AND TrangThaiLamViec = N'Đang làm việc'
 	GO
+-- Tạo view xem tài khoản người dùng
+CREATE VIEW vie_SeeAccount AS
+	SELECT * FROM UserAccount
+
 -- Tạo procedure xóa tài khoản người dùng
 CREATE PROCEDURE proc_DeleteUserAccountByUserName
 (
@@ -1624,18 +1637,47 @@ SELECT * FROM UserAccount
 -- Tạo phân quyền user
 -- Ứng dụng gồm 2 đối tượng (Nhân viên (Nhân viên gồm: nhân viên bán hàng và nhân viên thông thường) và người quản lý)
 -- Gán các quyền chỉ định cho nhân viên bán hàng và nhân viên thông thường
+
 -- Role Staff_Sell cho các nhân viên làm công việc có mã CV003
-REVOKE SELECT, REFERENCES ON DATABASE::[MilkTeashop] FROM Staff_Sell
-REVOKE EXECUTE ON DATABASE::[MilkTeaShop] FROM Staff_Sell
 CREATE ROLE Staff_Sell
+-- Role Staff_Regular cho các nhân viên làm các công việc còn lại (không phải thu ngân)
 CREATE ROLE Staff_Regular
--- Cho phép nhân viên bán hàng xem và tham chiếu trên mọi bảng
-REVOKE EXECUTE ON DATABASE::[MilkTeaShop] FROM Staff_Sell
 
--- Cho phép nhân viên bán hàng có quyền thực thi mọi procedure và function, trigger
+-- Cho phép nhân viên bán hàng xem và tham chiếu trên trên một số bảng
+GRANT SELECT, REFERENCES ON NhanVien TO Staff_Sell
+GRANT SELECT, REFERENCES, INSERT, UPDATE ON KhachHang TO Staff_Sell
+GRANT SELECT, REFERENCES, INSERT, UPDATE ON HoaDon TO Staff_Sell
+GRANT SELECT, REFERENCES, INSERT, UPDATE ON ChiTietHoaDon TO Staff_Sell
+GRANT SELECT, REFERENCES ON CheBien TO Staff_Sell
+GRANT SELECT, REFERENCES ON SanPham TO Staff_Sell
+GRANT SELECT, REFERENCES ON NguyenLieu TO Staff_Sell
+GRANT SELECT, REFERENCES ON CongViec TO Staff_Sell
+GRANT SELECT, REFERENCES ON DonXuatNguyenLieu TO Staff_Sell
+GRANT SELECT, REFERENCES ON ChiTietDonXuatNguyenLieu TO Staff_Sell
+GRANT SELECT, REFERENCES ON UserAccount TO Staff_Sell
+-- Gán quyền thực thi trên các procedure, function, cho role Staff
+GRANT EXECUTE TO Staff_Sell
+GRANT SELECT TO Staff_Sell
+DENY EXECUTE ON proc_AddStaff TO Staff_Sell
+DENY EXECUTE ON proc_CreateAccount TO Staff_Sell
+DENY EXECUTE ON proc_CreateDonNhapNL TO Staff_Sell
+DENY EXECUTE ON proc_CreateDonNhapSP TO Staff_Sell
+DENY EXECUTE ON proc_DeleteCustomer TO Staff_Sell
+DENY EXECUTE ON proc_DeleteStaff TO Staff_Sell
+DENY EXECUTE ON pro_DeleteUserAccountByUserName TO Staff_Sell
+DENY EXECUTE ON proc_EditStaff TO Staff_Sell 
+DENY EXECUTE ON proc_ThemNguyenLieu TO Staff_Sell
+DENY EXECUTE ON func_ChiPhiTheoGiaiDoan TO Staff_Sell
+DENY EXECUTE ON func_ChiPhiTheoThang TO Staff_Sell
+DENY EXECUTE ON func_ChiPhiTheoNam TO Staff_Sell
+DENY SELECT ON V_DonNhapNguyenLieu TO Staff_Sell
+DENY SELECT ON V_DonNhapSanPham TO Staff_Sell
+DENY SELECT ON V_ThongTinNhanVienNghiViec TO Staff_Sell
 
--- Cho phép nhân viên thông thường có quyền xem trên mọi bảng
-GRANT SELECT TO Staff_Regular
+-- Cho phép nhân viên thông thường có quyền xem bảng nhân viên, và một số view
+GRANT SELECT ON NhanVien TO Staff_Regular
+GRANT SELECT ON V_ThongTinNhanVien TO Staff_Regular
+GRANT SELECT ON UserAccount TO Staff_Regular
 GRANT EXECUTE ON proc_GetProductByCategory TO Staff_Regular
 
 -- Với administrator cấp quyền sysadmin với nhân viên làm công việc có mã CV006
@@ -1650,3 +1692,9 @@ FROM MilkTeaShop.sys.database_permissions AS DP
 JOIN MilkTeaShop.sys.database_principals AS DPrin ON DP.grantee_principal_id = DPrin.principal_id
 WHERE DPrin.type_desc = 'DATABASE_ROLE' AND DPrin.name = 'Staff_Regular';
 
+SELECT DPrin.name AS RoleName,
+    OBJECT_NAME(major_id) AS ObjectName,
+    permission_name AS Permission
+FROM MilkTeaShop.sys.database_permissions AS DP
+JOIN MilkTeaShop.sys.database_principals AS DPrin ON DP.grantee_principal_id = DPrin.principal_id
+WHERE DPrin.type_desc = 'DATABASE_ROLE' AND DPrin.name = 'Staff_Sell';

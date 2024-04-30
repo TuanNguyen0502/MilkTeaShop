@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Guna.UI2.WinForms;
+using Guna.UI.WinForms;
 
 namespace MilkTeaShop
 {
@@ -18,6 +20,9 @@ namespace MilkTeaShop
         {
             InitializeComponent();
         }
+        public string Username { get { return txtTaiKhoan.Text; } set { txtTaiKhoan.Text = value; } }
+        public string Passowrd { get { return txtMatKhau.Text; } set { txtMatKhau.Text = value; } }
+        public string EmpID { get { return txtMaNV.Text; } set { txtMaNV.Text = value; } }
 
         private void FManager_Load(object sender, EventArgs e)
         {
@@ -65,6 +70,16 @@ namespace MilkTeaShop
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRemoveEmpAcc_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

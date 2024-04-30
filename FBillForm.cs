@@ -164,7 +164,7 @@ namespace MilkTeaShop
             try
             {
                 flp_ContainsBill.Controls.Clear();
-                sqlQuery = "proc_HoaDonGiamDanTheoOrderTime";
+                sqlQuery = "proc_HoaDonGiamTheoOrderTime";
                 SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 db.OpenConn();

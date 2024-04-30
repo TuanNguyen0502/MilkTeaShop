@@ -19,10 +19,18 @@ namespace MilkTeaShop
             InitializeComponent();
         }
 
+        public void GetHeaderBill()
+        {
+            flp_ContainsHeader.Controls.Clear();
+            UC_BillInfomation bill = new UC_BillInfomation();
+            flp_ContainsHeader.Controls.Add(bill);
+        }
+
         private void SeeBill()
         {
             try
             {
+                GetHeaderBill();
                 flp_ContainsBill.Controls.Clear();
                 sqlQuery = "SELECT * FROM vie_XemHoaDon";
                 SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
@@ -76,12 +84,14 @@ namespace MilkTeaShop
             {
                 SqlCommand cmd = new SqlCommand("proc_FindBill", db.getConn);
                 cmd.CommandType = CommandType.StoredProcedure;
+                db.OpenConn();
                 if (!string.IsNullOrEmpty(txt_KeyWord.Text))
                 {
                     cmd.Parameters.Add("@Keyword", SqlDbType.NVarChar, 100).Value = txt_KeyWord.Text;
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         flp_ContainsBill.Controls.Clear();
+
                         while (reader.Read())
                         {
                             UC_BillInfomation hoaDon = new UC_BillInfomation();
@@ -163,6 +173,7 @@ namespace MilkTeaShop
         {
             try
             {
+                GetHeaderBill();
                 flp_ContainsBill.Controls.Clear();
                 sqlQuery = "proc_HoaDonGiamTheoOrderTime";
                 SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
@@ -204,6 +215,7 @@ namespace MilkTeaShop
         {
             try
             {
+                GetHeaderBill();
                 flp_ContainsBill.Controls.Clear();
                 sqlQuery = "proc_HoaDonTangTheoOrderTime";
                 SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
@@ -245,6 +257,7 @@ namespace MilkTeaShop
         {
             try
             {
+                GetHeaderBill();
                 flp_ContainsBill.Controls.Clear();
                 sqlQuery = "proc_HoaDonGiamTheoTotalBill";
                 SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
@@ -286,6 +299,7 @@ namespace MilkTeaShop
         {
             try
             {
+                GetHeaderBill();
                 flp_ContainsBill.Controls.Clear();
                 sqlQuery = "proc_HoaDonTangTheoTotalBill";
                 SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);

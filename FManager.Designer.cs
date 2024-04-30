@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnThoat = new Guna.UI.WinForms.GunaButton();
             this.btnCreateAccount = new Guna.UI.WinForms.GunaButton();
             this.txtMaNV = new Guna.UI.WinForms.GunaTextBox();
@@ -40,13 +41,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnRemove = new Guna.UI.WinForms.GunaButton();
             this.btnRemoveEmpAcc = new Guna.UI.WinForms.GunaButton();
             this.btnEdit = new Guna.UI.WinForms.GunaButton();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -57,6 +57,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(457, 615);
             this.panel1.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = global::MilkTeaShop.Properties.Resources.LogoMilkTeaShop;
+            this.pictureBox1.InitialImage = global::MilkTeaShop.Properties.Resources.icons8_tick_48;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(457, 615);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // btnThoat
             // 
@@ -124,7 +136,7 @@
             this.txtMaNV.PasswordChar = '\0';
             this.txtMaNV.SelectedText = "";
             this.txtMaNV.Size = new System.Drawing.Size(223, 43);
-            this.txtMaNV.TabIndex = 36;
+            this.txtMaNV.TabIndex = 41;
             // 
             // lblMaNV
             // 
@@ -176,7 +188,7 @@
             this.txtMatKhau.PasswordChar = '\0';
             this.txtMatKhau.SelectedText = "";
             this.txtMatKhau.Size = new System.Drawing.Size(223, 43);
-            this.txtMatKhau.TabIndex = 41;
+            this.txtMatKhau.TabIndex = 36;
             // 
             // label1
             // 
@@ -202,18 +214,6 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 39;
             this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::MilkTeaShop.Properties.Resources.LogoMilkTeaShop;
-            this.pictureBox1.InitialImage = global::MilkTeaShop.Properties.Resources.icons8_tick_48;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(457, 615);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // btnRemove
             // 
@@ -294,6 +294,7 @@
             this.btnEdit.TabIndex = 44;
             this.btnEdit.Text = "Sửa account";
             this.btnEdit.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // FManager
             // 
@@ -319,8 +320,8 @@
             this.Text = "FManager";
             this.Load += new System.EventHandler(this.FManager_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

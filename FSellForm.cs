@@ -276,11 +276,6 @@ namespace MilkTeaShop
                 sqlQuery = "SELECT * FROM func_timSanPhamTheoTen(@keyword)";
                 SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
                 cmd.Parameters.AddWithValue("@keyword", keyword);
-                SqlParameter[] lstParams =
-                {
-                new SqlParameter("@keyword", SqlDbType.NVarChar) {Value = keyword},
-                };
-                cmd.Parameters.AddRange(lstParams);
                 db.OpenConn();
                 flp_ContainsItem.Controls.Clear();
                 flp_ContainsOrder.Controls.Clear();

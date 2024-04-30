@@ -13,7 +13,7 @@ namespace MilkTeaShop
 {
     public partial class FProcessing : Form
     {
-        readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True";
+        My_DBConnection db = new My_DBConnection();
         string sqlQuery;
         private string masp;
         private string tensp;
@@ -33,13 +33,13 @@ namespace MilkTeaShop
         }
         public void GetProcessingByMaSP()
         {
-            using (SqlConnection conn = new SqlConnection(conStr))
+            try
             {
                 sqlQuery = "exec proc_LayCongThucCheBien @MaSP";
+                SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
                 string[] arrayNL = new string[4];
-                SqlCommand cmd = new SqlCommand(sqlQuery, conn);
                 cmd.Parameters.AddWithValue("@MaSP", masp);
-                conn.Open();
+                db.OpenConn();
                 SqlDataReader reader = cmd.ExecuteReader();
                 int i = 0;
                 if (reader.HasRows)
@@ -66,6 +66,15 @@ namespace MilkTeaShop
                     MessageBox.Show($"Sản phẩm {masp} không được chế biến theo công thức");
                     this.Close();
                 }
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
+                    MessageBox.Show("Bị hạn chế quyền"+ex.Message);
+            }
+            finally
+            {
+                db.CloseConn();
             }
         }
 

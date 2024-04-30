@@ -16,6 +16,7 @@ namespace MilkTeaShop
     {
         private string sdt;
         readonly string connStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True";
+        My_DBConnection db = new My_DBConnection();
 
         public FCustomer_Detail(string sdt)
         {
@@ -34,14 +35,14 @@ namespace MilkTeaShop
 
         private void LoadData()
         {
-            if (sdt != null)
+            try
             {
-                using (SqlConnection conn = new SqlConnection(connStr))
+                if (sdt != null)
                 {
-                    conn.Open();
+                    db.OpenConn();
                     string sqlQuery = $"SELECT TenKH, SDT, GioiTinh, NgaySinh " +
                         $"FROM KhachHang WHERE SDT = '{sdt}'";
-                    SqlCommand cmd = new SqlCommand(sqlQuery, conn);
+                    SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.HasRows)
                     {
@@ -65,102 +66,113 @@ namespace MilkTeaShop
                         MessageBox.Show("No rows found");
                 }
             }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
+                {
+                    MessageBox.Show("Bị hạn chế quyền\n" + ex.Message);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
+            }
+            finally
+            {
+                db.CloseConn();
+            }
         }
 
         private void button_Save_Click(object sender, EventArgs e)
         {
-            string gender = radioButton_Male.Checked ? "Nam" : "Nữ";
-            Customer customer = new Customer(textBox_Name.Text, textBox_Phone.Text, gender, dateTimePicker_DOB.Value.ToString());
+            try
+            {
+                string gender = radioButton_Male.Checked ? "Nam" : "Nữ";
+                Customer customer = new Customer(textBox_Name.Text, textBox_Phone.Text, gender, dateTimePicker_DOB.Value.ToString());
 
-            // Nếu như thêm mới khách hàng
-            if (sdt == null)
-            {
-                using (SqlConnection conn = new SqlConnection(connStr))
+                // Nếu như thêm mới khách hàng
+                if (sdt == null)
                 {
-                    try
+                    db.OpenConn();
+                    SqlCommand cmd = new SqlCommand("proc_CreateCustomer", db.getConn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    SqlParameter[] lstParams =
                     {
-                        if (conn.State == ConnectionState.Closed)
-                        {
-                            conn.Open();
-                            SqlCommand cmd = new SqlCommand("proc_CreateCustomer", conn);
-                            cmd.CommandType = CommandType.StoredProcedure;
-                            SqlParameter[] lstParams =
-                            {
-                            new SqlParameter("@TenKhachHang", SqlDbType.NVarChar) {Value = customer.Name},
-                            new SqlParameter("@SDT", SqlDbType.NChar) {Value = customer.Phone},
-                            new SqlParameter("@GioiTinh", SqlDbType.NVarChar) { Value = customer.Gender},
-                            new SqlParameter("@NgaySinh", SqlDbType.Date) {Value = customer.Dob},
-                            };
-                            cmd.Parameters.AddRange(lstParams);
-                            if (cmd.ExecuteNonQuery() > 0)
-                                MessageBox.Show("Execute procedure successful !");
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error\n" + ex.Message);
-                    }
+                        new SqlParameter("@TenKhachHang", SqlDbType.NVarChar) {Value = customer.Name},
+                        new SqlParameter("@SDT", SqlDbType.NChar) {Value = customer.Phone},
+                        new SqlParameter("@GioiTinh", SqlDbType.NVarChar) { Value = customer.Gender},
+                        new SqlParameter("@NgaySinh", SqlDbType.Date) {Value = customer.Dob},
+                    };
+                    cmd.Parameters.AddRange(lstParams);
+                    if (cmd.ExecuteNonQuery() > 0)
+                        MessageBox.Show("Execute procedure successful !");
                 }
-                this.Close();
-            }
-            else
-            {
-                using (SqlConnection conn = new SqlConnection(connStr))
+                else
                 {
-                    try
+                    db.OpenConn();
+                    SqlCommand cmd = new SqlCommand("proc_UpdateCustomer", db.getConn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    SqlParameter[] lstParams =
                     {
-                        if (conn.State == ConnectionState.Closed)
-                        {
-                            conn.Open();
-                            SqlCommand cmd = new SqlCommand("proc_UpdateCustomer", conn);
-                            cmd.CommandType= CommandType.StoredProcedure;
-                            SqlParameter[] lstParams =
-                            {
-                            new SqlParameter("@TenKhachHang", SqlDbType.NVarChar) {Value = customer.Name},
-                            new SqlParameter("@SDT", SqlDbType.NChar) {Value = customer.Phone},
-                            new SqlParameter("@GioiTinh", SqlDbType.NVarChar) { Value = customer.Gender},
-                            new SqlParameter("@NgaySinh", SqlDbType.Date) {Value = customer.Dob},
-                            };
-                            cmd.Parameters.AddRange(lstParams);
-                            if (cmd.ExecuteNonQuery() > 0)
-                                MessageBox.Show("Execute procedure successful !");
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error\n" + ex.Message);
-                    }
+                        new SqlParameter("@TenKhachHang", SqlDbType.NVarChar) {Value = customer.Name},
+                        new SqlParameter("@SDT", SqlDbType.NChar) {Value = customer.Phone},
+                        new SqlParameter("@GioiTinh", SqlDbType.NVarChar) { Value = customer.Gender},
+                        new SqlParameter("@NgaySinh", SqlDbType.Date) {Value = customer.Dob},
+                    };
+                    cmd.Parameters.AddRange(lstParams);
+                    if (cmd.ExecuteNonQuery() > 0)
+                        MessageBox.Show("Execute procedure successful !");
                 }
-                this.Close();
             }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
+                {
+                    MessageBox.Show("Bị hạn chế quyền\n" + ex.Message);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
+            }
+            finally
+            {
+                db.CloseConn();
+            }
+            this.Close();
         }
 
         private void button_Delete_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(connStr))
+            try
             {
-                try
+                db.OpenConn();
+                SqlCommand cmd = new SqlCommand("proc_DeleteCustomer", db.getConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlParameter[] lstParams =
                 {
-                    if (conn.State == ConnectionState.Closed)
-                    {
-                        conn.Open();
-                        SqlCommand cmd = new SqlCommand("proc_DeleteCustomer", conn);
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        SqlParameter[] lstParams =
-                        {
-                            new SqlParameter("@SDT", SqlDbType.NChar) {Value = textBox_Phone.Text},
-                        };
-                        cmd.Parameters.AddRange(lstParams);
-                        if (cmd.ExecuteNonQuery() > 0)
-                            MessageBox.Show("Execute procedure successful !");
-                    }
-                }
-                catch (Exception ex)
+                    new SqlParameter("@SDT", SqlDbType.NChar) {Value = textBox_Phone.Text},
+                };
+                cmd.Parameters.AddRange(lstParams);
+                if (cmd.ExecuteNonQuery() > 0)
+                    MessageBox.Show("Execute procedure successful !");
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
                 {
-                    MessageBox.Show("Error\n" + ex.Message);
+                    MessageBox.Show("Bị hạn chế quyền\n" + ex.Message);
                 }
+                else
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
+            }
+            finally
+            { 
+                db.CloseConn();
             }
             this.Close();
         }
-    }
+    }                                   
 }

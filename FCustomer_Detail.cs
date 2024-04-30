@@ -41,7 +41,8 @@ namespace MilkTeaShop
                 {
                     db.OpenConn();
                     string sqlQuery = $"SELECT TenKH, SDT, GioiTinh, NgaySinh " +
-                        $"FROM KhachHang WHERE SDT = '{sdt}'";
+                        $"FROM v_ThongTinKhachHang " +
+                        $"WHERE SDT = '{sdt}'";
                     SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.HasRows)

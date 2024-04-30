@@ -13,7 +13,7 @@ namespace MilkTeaShop
 {
     public partial class FImportIngredients : Form
     {
-        readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True";
+        My_DBConnection db = new My_DBConnection();
         private int currentOrderId;
         string query;
         public FImportIngredients()
@@ -22,40 +22,42 @@ namespace MilkTeaShop
             InitializeDataGridView();
             LoadListDNNL();
         }
-
         private void LoadListDNNL()
         {
-             flpDSDNNL.Controls.Clear();
-             query = "SELECT * FROM V_DonNhapNguyenLieu";
-            using (SqlConnection conn = new SqlConnection(conStr))
+            try
             {
-                try
+                flpDSDNNL.Controls.Clear();
+                string sqlQuery = "SELECT * FROM V_DonNhapNguyenLieu";
+                SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
+                db.OpenConn();
+                using (SqlDataReader dataReader = cmd.ExecuteReader())
                 {
-                    conn.Open();
-                    using(SqlCommand cmd = new SqlCommand(query, conn))
+                    while (dataReader.Read())
                     {
-                        using(SqlDataReader dataReader = cmd.ExecuteReader())
-                        {
-                            while (dataReader.Read())
-                            {
-                                UC_DonNhap uCDNNL = new UC_DonNhap();
-                                uCDNNL.OnDetailButtonClicked += UCDNNL_OnDetailButtonClicked;
-                                uCDNNL.LblMaDN.Text = dataReader["MaDNNL"].ToString();
-                                uCDNNL.LblImportDate.Text = ((DateTime)dataReader["NgayNhap"]).ToString("d/M/yyyy");
-                                uCDNNL.LblTriGia.Text = dataReader["TriGiaDonNhap"].ToString();
-                                uCDNNL.LblTenNCC.Text = dataReader["TenNCC"].ToString();
-                                flpDSDNNL.Controls.Add(uCDNNL);
-                            }
-                        }
+                        UC_DonNhap uCDNNL = new UC_DonNhap();
+                        uCDNNL.OnDetailButtonClicked += UCDNNL_OnDetailButtonClicked;
+                        uCDNNL.LblMaDN.Text = dataReader["MaDNNL"].ToString();
+                        uCDNNL.LblImportDate.Text = ((DateTime)dataReader["NgayNhap"]).ToString("d/M/yyyy");
+                        uCDNNL.LblTriGia.Text = dataReader["TriGiaDonNhap"].ToString();
+                        uCDNNL.LblTenNCC.Text = dataReader["TenNCC"].ToString();
+                        flpDSDNNL.Controls.Add(uCDNNL);
                     }
                 }
-                catch (Exception ex)
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
                 {
+                    MessageBox.Show("Bị hạn chế quyền\n" + ex.Message);
                 }
-                finally
+                else
                 {
-
+                    MessageBox.Show("Lỗi: " + ex.Message);
                 }
+            }
+            finally
+            {
+                db.CloseConn();
             }
         }
         private void InitializeDataGridView()
@@ -71,29 +73,40 @@ namespace MilkTeaShop
         }
         public void LoadCTDNNL(string MaDNNL)
         {
-            flpCTDNNL.Controls.Clear();
-            string sqlQuery = "SELECT * FROM func_DSCTDNNL(@MaDNNL)";
-
-            using (SqlConnection conn = new SqlConnection(conStr))
+            try
             {
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand(sqlQuery, conn))
+                flpCTDNNL.Controls.Clear();
+                string sqlQuery = "SELECT * FROM func_DSCTDNNL(@MaDNNL)";
+                SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
+                cmd.Parameters.AddWithValue("@MaDNNL", MaDNNL);
+                db.OpenConn();
+                using (SqlDataReader dataReader = cmd.ExecuteReader())
                 {
-                    cmd.Parameters.AddWithValue("@MaDNNL", MaDNNL);
-
-                    using (SqlDataReader dataReader = cmd.ExecuteReader())
+                    while (dataReader.Read())
                     {
-                        while (dataReader.Read())
-                        {
-                            UC_CTDN uCCTDNNL = new UC_CTDN();
-                            uCCTDNNL.LblTen.Text = dataReader["TenNL"].ToString();
-                            uCCTDNNL.LblDonVi.Text = dataReader["DonVi"].ToString();
-                            uCCTDNNL.LblSoLuong.Text = dataReader["SoLuong"].ToString();
-                            uCCTDNNL.LblDonGia.Text = dataReader["DonGia"].ToString();
-                            flpCTDNNL.Controls.Add(uCCTDNNL);
-                        }
+                        UC_CTDN uCCTDNNL = new UC_CTDN();
+                        uCCTDNNL.LblTen.Text = dataReader["TenNL"].ToString();
+                        uCCTDNNL.LblDonVi.Text = dataReader["DonVi"].ToString();
+                        uCCTDNNL.LblSoLuong.Text = dataReader["SoLuong"].ToString();
+                        uCCTDNNL.LblDonGia.Text = dataReader["DonGia"].ToString();
+                        flpCTDNNL.Controls.Add(uCCTDNNL);
                     }
                 }
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
+                {
+                    MessageBox.Show("Bị hạn chế quyền\n" + ex.Message);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
+            }
+            finally
+            {
+                db.CloseConn();
             }
         }
         private void btnTaoDon_Click(object sender, EventArgs e)
@@ -106,39 +119,40 @@ namespace MilkTeaShop
                 MessageBox.Show("Please enter a valid supplier code (MaNCC).", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            using (SqlConnection conn = new SqlConnection(conStr))
+            try
             {
-                try
-                {
-                    conn.Open();
-                    using (SqlCommand cmd = new SqlCommand("proc_CreateDonNhapNL", conn))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@NgayNhap", ngayNhap);
-                        cmd.Parameters.AddWithValue("@MaNCC", maNCC);
+                SqlCommand cmd = new SqlCommand("proc_CreateDonNhapNL", db.getConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@NgayNhap", ngayNhap);
+                cmd.Parameters.AddWithValue("@MaNCC", maNCC);
+                db.OpenConn();
 
-                        var result = cmd.ExecuteScalar();
-                        if (int.TryParse(result.ToString(), out currentOrderId) && currentOrderId > 0)
-                        {
-                            MessageBox.Show($"Order created successfully with ID: {currentOrderId}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            btnThemNL.Enabled = true;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Order could not be created. Please check the supplier code and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
-                catch (Exception ex)
+                var result = cmd.ExecuteScalar();
+                if (int.TryParse(result.ToString(), out currentOrderId) && currentOrderId > 0)
                 {
-                    MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Order created successfully with ID: {currentOrderId}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnThemNL.Enabled = true;
                 }
-                finally
+                else
                 {
-                    conn.Close();
-                    LoadListDNNL();
+                    MessageBox.Show("Order could not be created. Please check the supplier code and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
+                {
+                    MessageBox.Show("Bị hạn chế quyền\n" + ex.Message);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
+            }
+            finally
+            {
+                db.CloseConn();
+                LoadListDNNL();
             }
         }
         private void btnLuuDon_Click(object sender, EventArgs e)
@@ -148,53 +162,54 @@ namespace MilkTeaShop
                 MessageBox.Show("There are no items to save.", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
             int savedItemsCount = 0;
-
-            using (SqlConnection conn = new SqlConnection(conStr))
+            try
             {
-                try
+                db.OpenConn();
+                foreach (DataGridViewRow row in dgvMaterials.Rows)
                 {
-                    conn.Open();
-                    foreach (DataGridViewRow row in dgvMaterials.Rows)
+                    if (!row.IsNewRow)
                     {
-                        if (!row.IsNewRow)
+                        using (SqlCommand cmd = new SqlCommand("InsertChiTietDNNL", db.getConn))
                         {
-                            using (SqlCommand cmd = new SqlCommand("InsertChiTietDNNL", conn))
-                            {
-                                cmd.CommandType = CommandType.StoredProcedure;
-                                cmd.Parameters.AddWithValue("@MaDNNL", currentOrderId);
-                                cmd.Parameters.AddWithValue("@MaNL", row.Cells["maNLColumn"].Value);
-                                cmd.Parameters.AddWithValue("@SoLuong", row.Cells["soLuongColumn"].Value);
-                                cmd.Parameters.AddWithValue("@DonVi", row.Cells["donViColumn"].Value);
-                                cmd.Parameters.AddWithValue("@DonGia", row.Cells["donGiaColumn"].Value);
-                                cmd.ExecuteNonQuery();
-                                savedItemsCount++;
-                            }
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@MaDNNL", currentOrderId);
+                            cmd.Parameters.AddWithValue("@MaNL", row.Cells["maNLColumn"].Value);
+                            cmd.Parameters.AddWithValue("@SoLuong", row.Cells["soLuongColumn"].Value);
+                            cmd.Parameters.AddWithValue("@DonVi", row.Cells["donViColumn"].Value);
+                            cmd.Parameters.AddWithValue("@DonGia", row.Cells["donGiaColumn"].Value);
+                            cmd.ExecuteNonQuery();
+                            savedItemsCount++;
                         }
                     }
-
-                    if (savedItemsCount > 0)
-                    {
-                        MessageBox.Show("All items have been saved successfully.", "Save Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("No items were saved to the database.", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
                 }
-                catch (Exception ex)
+                if (savedItemsCount > 0)
                 {
-                    MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("All items have been saved successfully.", "Save Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                finally
+                else
                 {
-                    conn.Close();
-                    LoadListDNNL();
+                    MessageBox.Show("No items were saved to the database.", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-        }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
+                {
+                    MessageBox.Show("Bị hạn chế quyền\n" + ex.Message);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
+            }
+            finally
+            {
+                db.CloseConn();
+                LoadListDNNL();
+            }
 
+        }
         private void btnXoa_Click(object sender, EventArgs e)
         {
             if (dgvMaterials.SelectedRows.Count > 0)
@@ -212,7 +227,6 @@ namespace MilkTeaShop
                 MessageBox.Show("Please select a row to delete.", "Delete Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
         private void btnThemNL_Click(object sender, EventArgs e)
         {
             if (currentOrderId <= 0)

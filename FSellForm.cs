@@ -27,9 +27,38 @@ namespace MilkTeaShop
             InitializeComponent();
 
         }
+
+        public void GetPhones()
+        {
+            try
+            {
+                db.OpenConn();
+                SqlCommand cmd = new SqlCommand("proc_GetPhoneCustomers", db.getConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        cbb_options.Items.Add(reader.GetString(0));
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
+                    MessageBox.Show("Bị hạn chế quyền.\n"+ex.Message);
+            }
+            finally
+            {
+                db.CloseConn();
+            }
+        }
+
         private void SellForm_Load(object sender, EventArgs e)
         {
             flp_ContainsItem.Controls.Clear();
+            GetPhones();
             lbl_CurrentStaff.Text = manv;
             lbl_TotalBill.Text = "0 VNĐ";
             lbl_Pay.Text = "0 VNĐ";

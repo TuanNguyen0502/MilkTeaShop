@@ -118,30 +118,5 @@ namespace MilkTeaShop
                 db.CloseConn();
             }
         }
-
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                SqlCommand cmd = new SqlCommand("proc_UpdateAccount", db.getConn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@Username", SqlDbType.NVarChar, 200).Value = txtTaiKhoan.Text;
-                cmd.Parameters.Add("@Password", SqlDbType.NVarChar, 200).Value = txtMatKhau.Text;
-                cmd.Parameters.Add("@MaNV", SqlDbType.VarChar, 10).Value = txtMaNV.Text;
-                db.OpenConn();
-
-                if (cmd.ExecuteNonQuery() > 0)
-                    MessageBox.Show($"Sửa tài khoản cho nhân viên {txtMaNV.Text} thành công!");
-            }
-            catch (SqlException ex)
-            {
-                if (ex.Number == 229)
-                    MessageBox.Show("Không có quyền admin");
-            }
-            finally
-            {
-                db.CloseConn();
-            }
-        }
     }
 }

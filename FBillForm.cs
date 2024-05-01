@@ -82,12 +82,13 @@ namespace MilkTeaShop
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("proc_FindBill", db.getConn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                db.OpenConn();
+                
                 if (!string.IsNullOrEmpty(txt_KeyWord.Text))
                 {
+                    SqlCommand cmd = new SqlCommand("proc_FindBill", db.getConn);
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@Keyword", SqlDbType.NVarChar, 100).Value = txt_KeyWord.Text;
+                    db.OpenConn();
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         flp_ContainsBill.Controls.Clear();

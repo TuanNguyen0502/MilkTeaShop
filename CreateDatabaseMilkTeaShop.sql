@@ -1673,6 +1673,8 @@ DENY EXECUTE ON proc_CreateDonNhapSP TO Staff_Sell
 DENY EXECUTE ON proc_DeleteCustomer TO Staff_Sell
 DENY EXECUTE ON proc_DeleteStaff TO Staff_Sell
 DENY EXECUTE ON pro_DeleteUserAccountByUserName TO Staff_Sell
+DENY EXECUTE ON proc_DeleteEmployee TO Staff_Sell 
+DENY EXECUTE ON proc_UpdateAccount TO Staff_Sell 
 DENY EXECUTE ON proc_EditStaff TO Staff_Sell 
 DENY EXECUTE ON proc_ThemNguyenLieu TO Staff_Sell
 DENY EXECUTE ON func_ChiPhiTheoGiaiDoan TO Staff_Sell
@@ -1687,7 +1689,6 @@ GRANT SELECT ON NhanVien TO Staff_Regular
 GRANT SELECT ON V_ThongTinNhanVien TO Staff_Regular
 GRANT SELECT ON UserAccount TO Staff_Regular
 GRANT EXECUTE ON proc_GetProductByCategory TO Staff_Regular
-
 -- Với administrator cấp quyền sysadmin với nhân viên làm công việc có mã CV006
 GO
 
@@ -1706,3 +1707,13 @@ SELECT DPrin.name AS RoleName,
 FROM MilkTeaShop.sys.database_permissions AS DP
 JOIN MilkTeaShop.sys.database_principals AS DPrin ON DP.grantee_principal_id = DPrin.principal_id
 WHERE DPrin.type_desc = 'DATABASE_ROLE' AND DPrin.name = 'Staff_Sell';
+EXEC sp_helprotect @username = 'Staff_Sell';
+GO
+CREATE PROCEDURE proc_GetPhoneCustomers
+AS
+BEGIN
+	SELECT SDT
+	FROM KhachHang
+END;
+
+SELECT * FROM KhachHang

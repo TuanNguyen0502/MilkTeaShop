@@ -545,22 +545,6 @@
             this.cbb_options.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbb_options.ForeColor = System.Drawing.Color.Black;
             this.cbb_options.FormattingEnabled = true;
-            this.cbb_options.Items.AddRange(new object[] {
-            "0123156789",
-            "0123456791",
-            "0123458791",
-            "0123186792",
-            "0123459793",
-            "0934167890",
-            "0934463791",
-            "0341234567",
-            "0394506792",
-            "0934267893",
-            "0934567870",
-            "0934562991",
-            "0391233567",
-            "0394561792",
-            "0934467893"});
             this.cbb_options.Location = new System.Drawing.Point(310, 11);
             this.cbb_options.Name = "cbb_options";
             this.cbb_options.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));

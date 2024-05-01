@@ -43,7 +43,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnRemove = new Guna.UI.WinForms.GunaButton();
             this.btnRemoveEmpAcc = new Guna.UI.WinForms.GunaButton();
-            this.btnEdit = new Guna.UI.WinForms.GunaButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -108,7 +107,7 @@
             this.btnCreateAccount.ForeColor = System.Drawing.Color.White;
             this.btnCreateAccount.Image = null;
             this.btnCreateAccount.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnCreateAccount.Location = new System.Drawing.Point(490, 456);
+            this.btnCreateAccount.Location = new System.Drawing.Point(559, 456);
             this.btnCreateAccount.Name = "btnCreateAccount";
             this.btnCreateAccount.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btnCreateAccount.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -228,7 +227,7 @@
             this.btnRemove.ForeColor = System.Drawing.Color.White;
             this.btnRemove.Image = null;
             this.btnRemove.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnRemove.Location = new System.Drawing.Point(793, 456);
+            this.btnRemove.Location = new System.Drawing.Point(723, 456);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btnRemove.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -255,7 +254,7 @@
             this.btnRemoveEmpAcc.ForeColor = System.Drawing.Color.White;
             this.btnRemoveEmpAcc.Image = null;
             this.btnRemoveEmpAcc.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnRemoveEmpAcc.Location = new System.Drawing.Point(595, 532);
+            this.btnRemoveEmpAcc.Location = new System.Drawing.Point(607, 530);
             this.btnRemoveEmpAcc.Name = "btnRemoveEmpAcc";
             this.btnRemoveEmpAcc.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btnRemoveEmpAcc.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -263,45 +262,17 @@
             this.btnRemoveEmpAcc.OnHoverImage = null;
             this.btnRemoveEmpAcc.OnPressedColor = System.Drawing.Color.Black;
             this.btnRemoveEmpAcc.Radius = 6;
-            this.btnRemoveEmpAcc.Size = new System.Drawing.Size(208, 61);
+            this.btnRemoveEmpAcc.Size = new System.Drawing.Size(192, 51);
             this.btnRemoveEmpAcc.TabIndex = 43;
             this.btnRemoveEmpAcc.Text = "Xóa nhân viên và account";
             this.btnRemoveEmpAcc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnRemoveEmpAcc.Click += new System.EventHandler(this.btnRemoveEmpAcc_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.AnimationHoverSpeed = 0.07F;
-            this.btnEdit.AnimationSpeed = 0.03F;
-            this.btnEdit.BackColor = System.Drawing.Color.Transparent;
-            this.btnEdit.BaseColor = System.Drawing.SystemColors.Highlight;
-            this.btnEdit.BorderColor = System.Drawing.Color.Black;
-            this.btnEdit.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnEdit.FocusedColor = System.Drawing.Color.Empty;
-            this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnEdit.ForeColor = System.Drawing.Color.White;
-            this.btnEdit.Image = null;
-            this.btnEdit.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnEdit.Location = new System.Drawing.Point(645, 456);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.btnEdit.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btnEdit.OnHoverForeColor = System.Drawing.Color.White;
-            this.btnEdit.OnHoverImage = null;
-            this.btnEdit.OnPressedColor = System.Drawing.Color.Black;
-            this.btnEdit.Radius = 6;
-            this.btnEdit.Size = new System.Drawing.Size(114, 42);
-            this.btnEdit.TabIndex = 44;
-            this.btnEdit.Text = "Sửa account";
-            this.btnEdit.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // FManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(936, 615);
-            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnRemoveEmpAcc);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.txtMatKhau);
@@ -343,6 +314,5 @@
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private Guna.UI.WinForms.GunaButton btnRemoveEmpAcc;
         private Guna.UI.WinForms.GunaButton btnRemove;
-        private Guna.UI.WinForms.GunaButton btnEdit;
     }
 }

@@ -8,7 +8,7 @@ namespace MilkTeaShop
 {
     public class IngredientsDAO
     {
-        DBConnection db = new DBConnection();
+        My_DBConnection db = new My_DBConnection();
 
         public void Them (Ingredient ig)
         {

@@ -9,7 +9,7 @@ namespace MilkTeaShop
 {
     public class SuppliersDAO
     {
-        DBConnection db = new DBConnection();
+        My_DBConnection db = new My_DBConnection();
         
         public void Them(Suppliers sup)
         {

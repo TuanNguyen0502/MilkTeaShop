@@ -26,11 +26,9 @@ namespace MilkTeaShop
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            /*mainFormManager = new MainFormManager();
+            mainFormManager = new MainFormManager();
             mainFormManager.CurrentForm = new FLogin_User();
-            Application.Run(mainFormManager);*/
-
-            Application.Run(new FIngredient());
+            Application.Run(mainFormManager);
         }
     }
 }

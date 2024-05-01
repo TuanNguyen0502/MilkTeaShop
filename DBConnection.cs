@@ -14,36 +14,7 @@ namespace MilkTeaShop
         SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True;Encrypt=False");
         readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True;Encrypt=False";
         
-        public DataTable LoadData (string query)
-        {
-            string sqlStr = string.Format(query);
-            SqlDataAdapter adapter = new SqlDataAdapter(sqlStr, conStr);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-            return dt;
-        }
-        public void ThucThi(string thucthi)
-        {
-            try
-            {
-                conn.Open();
-                string sqlStr = thucthi;
-                SqlCommand command = new SqlCommand(sqlStr, conn);
-                if(command.ExecuteNonQuery() > 0)
-                {
-                    MessageBox.Show("Thành công");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi: " + ex);
-            }
-            finally
-            {
-                conn.Close();
-            }
-
-        }
+        
         public void ExecuteProcedure(string sqlQuery, SqlParameter[] lstParams)
         {
             using (SqlConnection conn = new SqlConnection(conStr))

@@ -90,7 +90,6 @@ namespace MilkTeaShop
                 db.CloseConn(); 
             }     
         }
-
         public void LoadStaff_Working()
         {
             try

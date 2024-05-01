@@ -27,7 +27,7 @@ namespace MilkTeaShop
         {
             try
             {
-                string sqlQuery = "SELECT * FROM NhanVien WHERE MaNV = @MaNV";
+                string sqlQuery = "SELECT * FROM V_ThongTinNhanVien WHERE MaNV = @MaNV";
                 SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
                 cmd.Parameters.AddWithValue("@MaNV", ID);
                 db.OpenConn();

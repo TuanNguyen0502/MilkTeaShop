@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace MilkTeaShop
 {
     public partial class FSuppliers : Form
     {
-        DBConnection db = new DBConnection();
+        My_DBConnection db = new My_DBConnection();
         UC_Suppliers uC_sup = new UC_Suppliers();
         SuppliersDAO supDao = new SuppliersDAO();
 
@@ -32,7 +33,7 @@ namespace MilkTeaShop
         {
             Panel_NCC.Controls.Clear();
             DataTable dt = new DataTable();
-            dt = db.LoadData(query);
+            dt = LoadData(query);
             int x = 0;
             foreach (DataRow dr in dt.Rows)
             {
@@ -92,6 +93,14 @@ namespace MilkTeaShop
             string query = "Select * from func_timNhaCungCap (N'" + txt_SearchNCC.Text + "')";
             GeneratePanel(query);
             this.Refresh();
+        }
+        public DataTable LoadData(string query)
+        {
+            string sqlStr = string.Format(query);
+            SqlDataAdapter adapter = new SqlDataAdapter(sqlStr, db.getConn);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            return dt;
         }
     }
 }

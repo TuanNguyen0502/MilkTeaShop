@@ -1490,13 +1490,21 @@ BEGIN
 	INSERT INTO UserAccount(Username, UserPassword, MaNV)
 	VALUES (@Username, @UserPassword, @MaNV)
 END;
+GO
+CREATE PROCEDURE proc_UpdateAccount(
+	@Username nvarchar(50),
+	@Password nvarchar(100),
+	@MaNV varchar(10)
+)
+AS
+BEGIN
+	UPDATE UserAccount
+	SET UserPassword = @Password, MaNV = @MaNV
+	WHERE Username = @Username
+END;
+exec proc_UpdateAccount 'sale1', 'mk1', 'NV003'
+SELECT * FROM UserAccount
 exec sp_helplogins
-
-exec proc_CreateAccount 'sales01', 'password123', 'NV003'
-exec proc_CreateAccount 'admin2', 'password123', 'NV006'
-exec proc_CreateAccount 'regular1', 'password123', 'NV002'
-
-
 SELECT name, type_desc, create_date
 FROM sys.database_principals
 WHERE type_desc IN ('SQL_USER', 'WINDOWS_USER', 'WINDOWS_GROUP');

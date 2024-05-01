@@ -44,12 +44,15 @@ namespace MilkTeaShop
             manager.Passowrd = e.Password;
             manager.EmpID = e.EmpID;
             manager.ShowDialog();
+            LoadUserAccounts();
         }
 
         public void LoadUserAccounts()
         {
             try
             {
+                pnlCenter.Controls.Clear();
+                pnlCenter.Dock = DockStyle.Fill;
                 flp_ContainsAccount = new FlowLayoutPanel();
                 flp_ContainsAccount.Size = new Size(920, 605);
                 UC_Account acc = new UC_Account();
@@ -88,8 +91,6 @@ namespace MilkTeaShop
 
         private void btn_Home_Click(object sender, EventArgs e)
         {
-            pnlCenter.Controls.Clear();
-            pnlCenter.Dock = DockStyle.Fill;
             LoadUserAccounts();
         }
 
@@ -100,12 +101,12 @@ namespace MilkTeaShop
 
         private void btn_Edit_Click(object sender, EventArgs e)
         {
-            FManager manage = new FManager();
+            OpenChildForm(new FManager());
         }
 
         private void btn_Delete_Click(object sender, EventArgs e)
         {
-
+            OpenChildForm(new FManager());
         }
 
         private void btn_Exit_Click(object sender, EventArgs e)

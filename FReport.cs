@@ -219,7 +219,7 @@ namespace MilkTeaShop
                     flp_ContainsHeader.Controls.Add(report_Header);
                     flp_ContainsReport.Controls.Clear();
                     DateTime timePicked = dtp_DMY.Value;
-                    sqlQuery = "SELECT dbo.func_tinhDoanhThuTheoNam(@nam)";
+                    sqlQuery = "SELECT dbo.func_ChiPhiTheoNam(@nam)";
                     SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
                     cmd.Parameters.AddWithValue("@nam", timePicked.Year);
                     db.OpenConn();
@@ -308,7 +308,7 @@ namespace MilkTeaShop
                     flp_ContainsReport.Controls.Clear();
                     DateTime startDate = dtp_From.Value;
                     DateTime endDate = dtp_To.Value;
-                    sqlQuery = "SELECT dbo.func_DoanhThuTheoGiaiDoan(@startDate,@endDate)";
+                    sqlQuery = "SELECT dbo.func_ChiPhiTheoGiaiDoan(@startDate,@endDate)";
                     SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
                     cmd.Parameters.AddWithValue("@startDate", startDate);
                     cmd.Parameters.AddWithValue("@endDate", endDate);

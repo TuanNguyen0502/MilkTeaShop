@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,8 @@ namespace MilkTeaShop
 {
     public partial class FIngredient : Form
     {
-        DBConnection db = new DBConnection();
+        My_DBConnection mydb = new My_DBConnection();
+      
         UC_Ingredient uC_Ing = new UC_Ingredient();
         IngredientsDAO igDao = new IngredientsDAO();
         public Guna2TextBox Txt_MaNL { get => txt_MaNL; set => txt_MaNL = value; }
@@ -41,7 +43,7 @@ namespace MilkTeaShop
         {
             Panel_NL.Controls.Clear();
             DataTable dt = new DataTable();
-            dt = db.LoadData(query);
+            dt = LoadData(query);
             int x = 0;
             foreach (DataRow dr in dt.Rows)
             {
@@ -123,5 +125,14 @@ namespace MilkTeaShop
             txt_SoLuong.Text = "";
             txt_DonVi.Text = "";
         }
+        public DataTable LoadData(string query)
+        {
+            string sqlStr = string.Format(query);
+            SqlDataAdapter adapter = new SqlDataAdapter(sqlStr, mydb.getConn);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            return dt;
+        }
+        
     }
 }

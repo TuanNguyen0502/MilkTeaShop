@@ -107,5 +107,28 @@ namespace MilkTeaShop
             }
         }
         #endregion
+
+        public void ThucThi(string thucthi)
+        {
+            try
+            {
+                conn.Open();
+                string sqlStr = thucthi;
+                SqlCommand command = new SqlCommand(sqlStr, conn);
+                if (command.ExecuteNonQuery() > 0)
+                {
+                    MessageBox.Show("Thành công");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
     }
 }

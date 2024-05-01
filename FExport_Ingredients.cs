@@ -129,8 +129,8 @@ namespace MilkTeaShop
             {
                 db.CloseConn();
             }
+            LoadDataGirdViewDonXuatNguyenLieu();
         }
-
 
         private void btnThem_Click(object sender, EventArgs e)
         {

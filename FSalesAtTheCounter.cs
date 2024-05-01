@@ -13,8 +13,7 @@ namespace MilkTeaShop
 {
     public partial class FSalesAtTheCounter : Form
     {
-        readonly string conStr = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MilkTeaShop;Integrated Security=True";
-        DBConnection dbConn = new DBConnection();
+        My_DBConnection db = new My_DBConnection();
         string sqlQuery;
         private string manv;
         public FSalesAtTheCounter(string manv)
@@ -24,11 +23,11 @@ namespace MilkTeaShop
         }
         public void GetSalesAtTheCounter()
         {
-            using (SqlConnection conn = new SqlConnection(conStr))
+            try
             {
+                db.OpenConn();
                 sqlQuery = "SELECT * FROM v_DoanhThuTaiQuayTrongNgay";
-                SqlCommand cmd = new SqlCommand(sqlQuery, conn);
-                conn.Open();
+                SqlCommand cmd = new SqlCommand(sqlQuery, db.getConn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
@@ -46,6 +45,15 @@ namespace MilkTeaShop
                 {
                     MessageBox.Show("Chưa bán sản phẩm nào !");
                 }
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 229)
+                    MessageBox.Show("Bị hạn chế quyền.\n"+ex.Message);
+            }
+            finally
+            {
+                db.CloseConn();
             }
         }
 

@@ -696,8 +696,7 @@ BEGIN
         DECLARE @OutOfStock INT;
         SET @OutOfStock = (
             SELECT COUNT(*)
-			FROM vie_HDMoiNhat cthd
-            JOIN SanPham s ON cthd.MaSP = s.MaSP
+			FROM SanPham s
             WHERE s.SoLuong < 5 AND s.MaSP IN ('SP15', 'SP16', 'SP17', 'SP18', 'SP19', 'SP20','SP21')
         );
 
@@ -1716,4 +1715,4 @@ BEGIN
 	FROM KhachHang
 END;
 
-SELECT * FROM KhachHang
+SELECT * FROM SanPham
